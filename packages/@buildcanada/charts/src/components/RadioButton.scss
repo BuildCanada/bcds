@@ -1,0 +1,69 @@
+@use "sass:math";
+
+.radio {
+    $radio-size: 16px;
+
+    $light-stroke: $gray-30;
+    $hover-stroke: $blue-30;
+    $active-fill: $blue-50;
+
+    position: relative;
+
+    label {
+        margin: 0; // style leak in admin
+        cursor: pointer;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .outer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $radio-size;
+        height: $radio-size;
+
+        background: white;
+        pointer-events: none;
+        border-radius: 50%;
+        border: 1px solid $light-stroke;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .inner {
+            width: math.div($radio-size, 2);
+            height: math.div($radio-size, 2);
+            background-color: $active-fill;
+            border-radius: 50%;
+        }
+    }
+
+    input:focus-visible + .outer {
+        outline: 2px solid $controls-color;
+    }
+
+    input:checked + .outer {
+        border-color: $hover-stroke;
+    }
+
+    .label {
+        @include grapher_label-2-regular;
+        padding-left: $radio-size + 8px;
+        cursor: pointer;
+        user-select: none;
+        color: $dark-text;
+    }
+
+    &:hover {
+        input:not(:checked) + .outer {
+            border-color: $hover-stroke;
+        }
+    }
+}

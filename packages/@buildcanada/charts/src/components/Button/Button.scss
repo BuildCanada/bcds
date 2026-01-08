@@ -1,0 +1,110 @@
+.owid-btn {
+    @include body-3-medium;
+    padding: 8.5px 24px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+
+    &.owid-btn--icon-only {
+        padding: 4.5px 9px;
+    }
+
+    &:disabled {
+        cursor: default;
+
+        &.owid-btn--solid-blue,
+        &.owid-btn--solid-dark-blue,
+        &.owid-btn--solid-light-blue,
+        &.owid-btn--solid-vermillion {
+            color: $blue-50;
+            background-color: $blue-10;
+        }
+
+        &.owid-btn--outline-vermillion,
+        &.owid-btn--outline-white {
+            color: $blue-40;
+            border-color: $blue-40;
+        }
+    }
+
+    svg {
+        font-size: 0.75rem;
+    }
+}
+
+.owid-btn--icon-right {
+    margin-left: 0.5rem;
+}
+
+.owid-btn--icon-left {
+    margin-right: 0.5rem;
+}
+
+.owid-btn--solid-vermillion {
+    background-color: $vermillion;
+    color: #fff;
+
+    &:hover {
+        background-color: $accent-vermillion;
+    }
+}
+
+.owid-btn--outline-vermillion {
+    border-color: $vermillion;
+    color: $vermillion;
+
+    &:hover {
+        border-color: $accent-vermillion;
+        color: $accent-vermillion;
+    }
+}
+
+.owid-btn--solid-blue {
+    background-color: $blue-60;
+    color: #fff;
+
+    &:hover {
+        background-color: $blue-90;
+    }
+}
+
+.owid-btn--solid-dark-blue {
+    background-color: $blue-95;
+    color: #fff;
+
+    &:hover {
+        background-color: #164377;
+    }
+}
+
+.owid-btn--solid-light-blue {
+    background-color: $blue-20;
+    color: $blue-90;
+
+    &:hover {
+        background-color: $blue-10;
+    }
+}
+
+.owid-btn--outline-white {
+    background-color: transparent;
+    border-color: $white;
+    color: $white;
+
+    &:hover {
+        background-color: $white;
+        color: $blue-90;
+    }
+}
+
+.owid-btn--outline-light-blue {
+    border-color: $blue-20;
+    color: $blue-90;
+
+    &:hover {
+        background-color: $white;
+        color: $blue-90;
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "../../../devTools/tsconfigs/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "paths": {
+      "@buildcanada/charts/*": ["./*"]
+    }
+  },
+  "include": ["src/**/*", "src/**/*.json"],
+  "exclude": ["node_modules", "dist"]
+}

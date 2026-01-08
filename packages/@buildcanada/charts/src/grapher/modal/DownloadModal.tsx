@@ -1,0 +1,1226 @@
+import * as _ from "lodash-es"
+import { useCallback, useMemo, useState } from "react"
+import * as React from "react"
+import { observable, computed, action, makeObservable } from "mobx"
+import { observer } from "mobx-react"
+import cx from "classnames"
+import {
+    Bounds,
+    canWriteToClipboard,
+    fetchWithTimeout,
+    formatValue,
+    getOriginAttributionFragments,
+    getPhraseForProcessingLevel,
+    triggerDownloadFromBlob,
+    triggerDownloadFromUrl,
+} from "../../utils/index.js"
+import {
+    Checkbox,
+    CodeSnippet,
+    OverlayHeader,
+    RadioButton,
+    LoadingIndicator,
+} from "../../components/index.js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+    faCircleExclamation,
+    faCopy,
+    faDownload,
+    faInfoCircle,
+    faSpinner,
+} from "@fortawesome/free-solid-svg-icons"
+import {
+    OwidColumnDef,
+    OwidOrigin,
+    QueryParams,
+    type GrapherImageDownloadEvent,
+} from "../../types/index.js"
+import {
+    BlankOwidTable,
+    OwidTable,
+    CoreColumn,
+} from "../../core-table/index.js"
+import { Modal } from "./Modal"
+import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer.js"
+import { TabItem, Tabs } from "../tabs/Tabs.js"
+import {
+    DownloadIconFullDataset,
+    DownloadIconSelected,
+} from "./DownloadIcons.js"
+import { match } from "ts-pattern"
+import * as R from "remeda"
+import {
+    DEFAULT_GRAPHER_BOUNDS,
+    DEFAULT_GRAPHER_BOUNDS_SQUARE,
+    GrapherModal,
+} from "../core/GrapherConstants"
+
+export interface DownloadModalManager {
+    displaySlug: string
+    rasterize: GrapherRasterizeFn
+    staticBounds?: Bounds
+    staticBoundsWithDetails?: Bounds
+    baseUrl?: string
+    queryStr?: string
+    externalQueryParams?: QueryParams
+    inputTable?: OwidTable
+    transformedTable?: OwidTable
+    filteredTableForDisplay?: OwidTable
+    yColumnsFromDimensionsOrSlugsOrAuto?: CoreColumn[]
+    detailsOrderedByReference?: string[]
+    activeModal?: GrapherModal
+    frameBounds?: Bounds
+    captionedChartBounds?: Bounds
+    isOnChartOrMapTab?: boolean
+    isOnTableTab?: boolean
+    isOnArchivalPage?: boolean
+    hasArchivedPage?: boolean
+    showAdminControls?: boolean
+    isSocialMediaExport?: boolean
+    isWikimediaExport?: boolean
+    isPublished?: boolean
+    activeColumnSlugs?: string[]
+    isServerSideDownloadAvailable?: boolean
+    logImageDownloadEvent?: (action: GrapherImageDownloadEvent) => void
+    activeDownloadModalTab: DownloadModalTabName
+}
+
+interface DownloadModalProps {
+    manager: DownloadModalManager
+}
+
+export enum DownloadModalTabName {
+    "Vis" = "Vis",
+    "Data" = "Data",
+}
+
+@observer
+export class DownloadModal extends React.Component<DownloadModalProps> {
+    constructor(props: DownloadModalProps) {
+        super(props)
+        makeObservable(this)
+    }
+
+    private get tabItems(): TabItem<DownloadModalTabName>[] {
+        return [
+            {
+                key: DownloadModalTabName.Vis,
+                element: <>Visualization</>,
+                buttonProps: {
+                    dataTrackNote: "chart_download_modal_tab_visualization",
+                },
+            },
+            {
+                key: DownloadModalTabName.Data,
+                element: <>Data</>,
+                buttonProps: {
+                    dataTrackNote: "chart_download_modal_tab_data",
+                },
+            },
+        ]
+    }
+
+    @computed private get frameBounds() {
+        return this.props.manager.frameBounds ?? DEFAULT_GRAPHER_BOUNDS
+    }
+
+    @computed private get modalBounds() {
+        const maxWidth = 640
+        const padWidth = Math.max(16, (this.frameBounds.width - maxWidth) / 2)
+        return this.frameBounds.padHeight(16).padWidth(padWidth)
+    }
+
+    @computed private get activeTab(): DownloadModalTabName {
+        return this.props.manager.activeDownloadModalTab
+    }
+
+    @computed private get isVisTabActive() {
+        return this.activeTab === DownloadModalTabName.Vis
+    }
+
+    @computed private get isDataTabActive() {
+        return this.activeTab === DownloadModalTabName.Data
+    }
+
+    @action.bound private onTabChange(key: DownloadModalTabName) {
+        this.props.manager.activeDownloadModalTab = key
+    }
+
+    @action.bound private onDismiss() {
+        this.props.manager.activeModal = undefined
+    }
+
+    override render(): React.ReactElement {
+        return (
+            <Modal
+                bounds={this.modalBounds}
+                onDismiss={this.onDismiss}
+                alignVertical="top"
+            >
+                <div
+                    className="download-modal-content"
+                    style={{ maxHeight: this.modalBounds.height }}
+                >
+                    <OverlayHeader
+                        title="Download"
+                        onDismiss={this.onDismiss}
+                    />
+                    <div className="download-modal__tab-list">
+                        <Tabs
+                            variant="slim"
+                            items={this.tabItems}
+                            selectedKey={this.activeTab}
+                            onChange={this.onTabChange}
+                        />
+                    </div>
+
+                    {/* Tabs */}
+                    {/**
+                     * We only hide the inactive tab with display: none and don't unmount it,
+                     * so that the tab state (selected radio buttons, etc) is preserved
+                     * when switching between tabs.
+                     */}
+                    <div className="download-modal__tab-panel" role="tabpanel">
+                        <div
+                            className="download-modal__tab-content"
+                            style={{
+                                display: this.isVisTabActive
+                                    ? undefined
+                                    : "none",
+                            }}
+                            role="tab"
+                            aria-hidden={!this.isVisTabActive}
+                        >
+                            <DownloadModalVisTab {...this.props} />
+                        </div>
+                        <div
+                            className="download-modal__tab-content"
+                            style={{
+                                display: this.isDataTabActive
+                                    ? undefined
+                                    : "none",
+                            }}
+                            role="tab"
+                            aria-hidden={!this.isDataTabActive}
+                        >
+                            <DownloadModalDataTab {...this.props} />
+                        </div>
+                    </div>
+                </div>
+            </Modal>
+        )
+    }
+}
+
+@observer
+export class DownloadModalVisTab extends React.Component<DownloadModalProps> {
+    constructor(props: DownloadModalProps) {
+        super(props)
+
+        makeObservable<
+            DownloadModalVisTab,
+            | "svgBlob"
+            | "svgPreviewUrl"
+            | "pngBlob"
+            | "pngPreviewUrl"
+            | "canWriteToClipboard"
+            | "isReady"
+            | "shouldIncludeDetails"
+        >(this, {
+            svgBlob: observable,
+            svgPreviewUrl: observable,
+            pngBlob: observable,
+            pngPreviewUrl: observable,
+            canWriteToClipboard: observable,
+            isReady: observable,
+            shouldIncludeDetails: observable,
+        })
+    }
+
+    @computed private get staticBounds(): Bounds {
+        return this.manager.staticBounds ?? DEFAULT_GRAPHER_BOUNDS
+    }
+
+    @computed private get captionedChartBounds(): Bounds {
+        return this.manager.captionedChartBounds ?? DEFAULT_GRAPHER_BOUNDS
+    }
+
+    @computed private get isExportingSquare(): boolean {
+        return (
+            this.manager.staticBounds?.width ===
+            this.manager.staticBounds?.height
+        )
+    }
+
+    @computed private get isSocialMediaExport(): boolean {
+        return this.manager.isSocialMediaExport ?? false
+    }
+
+    @computed private get isWikimediaExport(): boolean {
+        return this.manager.isWikimediaExport ?? false
+    }
+
+    @computed private get targetBounds(): Bounds {
+        if (this.shouldIncludeDetails)
+            return this.manager.staticBoundsWithDetails ?? this.staticBounds
+        else return this.staticBounds
+    }
+
+    @computed private get targetWidth(): number {
+        return this.targetBounds.width
+    }
+
+    @computed private get targetHeight(): number {
+        return this.targetBounds.height
+    }
+
+    @computed private get manager(): DownloadModalManager {
+        return this.props.manager
+    }
+
+    private svgBlob: Blob | undefined = undefined
+    private svgPreviewUrl: string | undefined = undefined
+
+    private pngBlob: Blob | undefined = undefined
+    private pngPreviewUrl: string | undefined = undefined
+    private canWriteToClipboard: boolean = false
+
+    private isReady: boolean = false
+
+    private shouldIncludeDetails = true
+
+    @action.bound private export(): void {
+        // render the graphic then cache data-urls for display & blobs for downloads
+        this.manager
+            .rasterize({ includeDetails: this.shouldIncludeDetails })
+            .then(({ url, blob, svgUrl, svgBlob }) => {
+                this.pngPreviewUrl = url
+                this.pngBlob = blob
+                this.svgPreviewUrl = svgUrl
+                this.svgBlob = svgBlob
+                this.markAsReady()
+            })
+            .catch((err) => {
+                console.error(JSON.stringify(err))
+                this.markAsReady()
+            })
+    }
+
+    @action.bound private markAsReady(): void {
+        this.isReady = true
+    }
+
+    @action.bound private reset(): void {
+        this.isReady = false
+    }
+
+    @computed private get fallbackPngUrl(): string {
+        return `${this.manager.baseUrl || ""}.png${this.manager.queryStr || ""}`
+    }
+    @computed private get baseFilename(): string {
+        return this.manager.displaySlug
+    }
+
+    @action.bound private onPngDownload(): void {
+        const filename = this.baseFilename + ".png"
+        if (this.pngBlob) {
+            triggerDownloadFromBlob(filename, this.pngBlob)
+        } else {
+            triggerDownloadFromUrl(filename, this.fallbackPngUrl)
+        }
+        this.manager.logImageDownloadEvent?.("chart_download_png")
+    }
+
+    @action.bound private onSvgDownload(): void {
+        const filename = this.baseFilename + ".svg"
+        if (this.svgBlob) {
+            triggerDownloadFromBlob(filename, this.svgBlob)
+        }
+        this.manager.logImageDownloadEvent?.("chart_download_svg")
+    }
+
+    @action.bound private toggleExportFormat(): void {
+        this.manager.staticBounds = this.isExportingSquare
+            ? DEFAULT_GRAPHER_BOUNDS
+            : DEFAULT_GRAPHER_BOUNDS_SQUARE
+    }
+
+    @action.bound private toggleExportForUseInSocialMedia(): void {
+        this.manager.isSocialMediaExport = !this.isSocialMediaExport
+    }
+
+    @action.bound private toggleExportForUseOnWikimedia(): void {
+        this.manager.isWikimediaExport = !this.isWikimediaExport
+    }
+
+    @action.bound private toggleIncludeDetails(): void {
+        this.shouldIncludeDetails = !this.shouldIncludeDetails
+    }
+
+    @computed private get hasDetails(): boolean {
+        return !_.isEmpty(this.manager.detailsOrderedByReference)
+    }
+
+    @computed private get showExportControls(): boolean {
+        return this.hasDetails || !!this.manager.showAdminControls
+    }
+
+    @computed private get showInteractiveEmbedTip(): boolean {
+        return !!(this.manager.isOnArchivalPage || this.manager.hasArchivedPage)
+    }
+
+    @action.bound openEmbedDialog(): void {
+        this.manager.activeModal = GrapherModal.Embed
+    }
+
+    @computed get showCopyPngButton(): boolean {
+        return !!this.manager.showAdminControls && this.canWriteToClipboard
+    }
+
+    @action.bound async onCopyPng(): Promise<void> {
+        try {
+            if (!this.pngBlob) return
+            await navigator.clipboard.write([
+                new ClipboardItem({ "image/png": this.pngBlob }),
+            ])
+        } catch (err) {
+            console.error("couldn't copy PNG to clipboard", err)
+        }
+    }
+
+    override componentDidMount(): void {
+        queueMicrotask(() => this.export())
+
+        void canWriteToClipboard().then(
+            (canWriteToClipboard) =>
+                (this.canWriteToClipboard = canWriteToClipboard)
+        )
+    }
+
+    override render(): React.ReactElement {
+        if (!this.isReady) return <LoadingIndicator color="#000" />
+
+        const {
+            manager,
+            svgPreviewUrl,
+            captionedChartBounds,
+            targetWidth,
+            targetHeight,
+            showInteractiveEmbedTip,
+        } = this
+        const pngPreviewUrl = this.pngPreviewUrl || this.fallbackPngUrl
+
+        let previewWidth: number
+        let previewHeight: number
+        const boundScalar = 0.17
+        if (
+            captionedChartBounds.width / captionedChartBounds.height >
+            targetWidth / targetHeight
+        ) {
+            previewHeight = Math.min(
+                72,
+                captionedChartBounds.height * boundScalar
+            )
+            previewWidth = (targetWidth / targetHeight) * previewHeight
+        } else {
+            previewWidth = Math.min(
+                102,
+                captionedChartBounds.width * boundScalar
+            )
+            previewHeight = (targetHeight / targetWidth) * previewWidth
+        }
+
+        const imageStyle = {
+            minWidth: previewWidth,
+            minHeight: previewHeight,
+            maxWidth: previewWidth,
+            maxHeight: previewHeight,
+            opacity: this.isReady ? 1 : 0,
+        }
+
+        return (
+            <div>
+                {manager.isOnChartOrMapTab ? (
+                    <div className="download-modal__vis-section">
+                        {showInteractiveEmbedTip && (
+                            <Callout
+                                title="Did you know?"
+                                icon={<FontAwesomeIcon icon={faInfoCircle} />}
+                            >
+                                Instead of downloading a static image of this
+                                chart, you can also{" "}
+                                <a
+                                    onClick={this.openEmbedDialog}
+                                    data-track-note="chart_download_click_interactive_embed"
+                                >
+                                    embed an interactive version
+                                </a>
+                                .{" "}
+                                {this.manager.isOnArchivalPage ? (
+                                    <>
+                                        The interactive version will stay fixed
+                                        over time and will always show the same
+                                        chart and data you are seeing now.
+                                    </>
+                                ) : (
+                                    <>
+                                        You can choose between a live embed that
+                                        always reflects our latest data updates,
+                                        or a snapshot embed that stays fixed at
+                                        the time you created it.
+                                    </>
+                                )}
+                            </Callout>
+                        )}
+                        <div>
+                            {this.showCopyPngButton && (
+                                <button
+                                    className="download-modal__download-button download-modal__download-button--variant-copy"
+                                    onClick={this.onCopyPng}
+                                >
+                                    <FontAwesomeIcon icon={faCopy} />
+                                    Copy PNG
+                                </button>
+                            )}
+                            <DownloadButton
+                                title="Image (PNG)"
+                                description="Suitable for most uses, widely compatible."
+                                previewImageUrl={pngPreviewUrl}
+                                onClick={this.onPngDownload}
+                                imageStyle={imageStyle}
+                            />
+                            <DownloadButton
+                                title="Vector graphic (SVG)"
+                                description="For high quality prints, or further editing the chart in graphics software."
+                                previewImageUrl={svgPreviewUrl}
+                                onClick={this.onSvgDownload}
+                                imageStyle={imageStyle}
+                            />
+                        </div>
+                        {this.showExportControls && (
+                            <>
+                                {this.hasDetails && (
+                                    <Checkbox
+                                        checked={this.shouldIncludeDetails}
+                                        label="Include terminology definitions at bottom of chart"
+                                        onChange={(): void => {
+                                            this.reset()
+                                            this.toggleIncludeDetails()
+                                            this.export()
+                                        }}
+                                    />
+                                )}
+                                {this.manager.showAdminControls && (
+                                    <Checkbox
+                                        checked={this.isExportingSquare}
+                                        label="Square format"
+                                        onChange={action((): void => {
+                                            this.reset()
+                                            this.toggleExportFormat()
+
+                                            if (!this.isExportingSquare) {
+                                                this.manager.isSocialMediaExport = false
+                                            }
+
+                                            this.export()
+                                        })}
+                                    />
+                                )}
+                                {this.manager.showAdminControls && (
+                                    <Checkbox
+                                        checked={this.isSocialMediaExport}
+                                        label="For use in social media (internal)"
+                                        onChange={action((): void => {
+                                            this.reset()
+                                            this.toggleExportForUseInSocialMedia()
+
+                                            // set reasonable defaults for social media exports
+                                            if (this.isSocialMediaExport) {
+                                                this.manager.staticBounds =
+                                                    DEFAULT_GRAPHER_BOUNDS_SQUARE
+                                                this.shouldIncludeDetails = false
+                                            }
+
+                                            this.export()
+                                        })}
+                                    />
+                                )}
+                                {this.manager.showAdminControls && (
+                                    <Checkbox
+                                        checked={this.isWikimediaExport}
+                                        label="Optimize SVG for Wikipedia upload"
+                                        onChange={action((): void => {
+                                            this.reset()
+                                            this.toggleExportForUseOnWikimedia()
+
+                                            this.export()
+                                        })}
+                                    />
+                                )}
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    <Callout
+                        title="Chart can't currently be exported to image"
+                        icon={<FontAwesomeIcon icon={faCircleExclamation} />}
+                    >
+                        Try switching to the "Chart" or "Map" tab to download a
+                        static image of this chart.
+                        <br />
+                        You can also download the data used in this chart by
+                        navigating to the "Data" tab.
+                    </Callout>
+                )}
+            </div>
+        )
+    }
+}
+
+enum CsvDownloadType {
+    Full = "full",
+    CurrentSelection = "current_selection",
+}
+
+interface DataDownloadContextBase {
+    slug: string
+    searchParams: URLSearchParams
+    externalSearchParams: URLSearchParams
+    baseUrl: string
+}
+
+interface DataDownloadContextServerSide extends DataDownloadContextBase {
+    // Configurable options
+    csvDownloadType: CsvDownloadType
+    shortColNames: boolean
+}
+
+interface DataDownloadContextClientSide extends DataDownloadContextBase {
+    // Configurable options
+    csvDownloadType: CsvDownloadType
+    shortColNames: boolean
+
+    // Only needed for local CSV generation
+    fullTable: OwidTable
+    filteredTable: OwidTable
+    activeColumnSlugs: string[] | undefined
+}
+
+const createCsvBlobLocally = async (ctx: DataDownloadContextClientSide) => {
+    const downloadTable =
+        ctx.csvDownloadType === CsvDownloadType.Full
+            ? ctx.fullTable
+            : ctx.filteredTable
+    const csv = downloadTable.toPrettyCsv(
+        ctx.shortColNames,
+        ctx.activeColumnSlugs
+    )
+
+    return new Blob([csv], { type: "text/csv;charset=utf-8" })
+}
+
+const getDownloadSearchParams = (ctx: DataDownloadContextServerSide) => {
+    const searchParams = new URLSearchParams()
+    searchParams.set("v", "1") // API versioning
+    searchParams.set(
+        "csvType",
+        match(ctx.csvDownloadType)
+            .with(CsvDownloadType.CurrentSelection, () => "filtered")
+            .with(CsvDownloadType.Full, () => "full")
+            .exhaustive()
+    )
+    searchParams.set("useColumnShortNames", ctx.shortColNames.toString())
+    const otherParams =
+        ctx.csvDownloadType === CsvDownloadType.CurrentSelection
+            ? // Append all the current grapher settings, e.g.
+              // ?time=2020&selection=~USA + mdim dimensions.
+              ctx.searchParams
+            : // Use the base grapher settings + mdim dimensions.
+              ctx.externalSearchParams
+    for (const [key, value] of otherParams.entries()) {
+        searchParams.set(key, value)
+    }
+    return searchParams
+}
+
+const getDownloadUrl = (
+    extension: "csv" | "metadata.json" | "zip",
+    ctx: DataDownloadContextServerSide
+) => {
+    const searchParams = getDownloadSearchParams(ctx)
+    const searchStr = searchParams.toString().replaceAll("%7E", "~")
+    return `${ctx.baseUrl}.${extension}` + (searchStr ? `?${searchStr}` : "")
+}
+
+export const getNonRedistributableInfo = (
+    table: OwidTable | undefined
+): { cols: CoreColumn[] | undefined; sourceLinks: string[] | undefined } => {
+    if (!table) return { cols: undefined, sourceLinks: undefined }
+
+    const nonRedistributableCols = table.columnsAsArray.filter(
+        (col) => (col.def as OwidColumnDef).nonRedistributable
+    )
+
+    if (!nonRedistributableCols.length)
+        return { cols: undefined, sourceLinks: undefined }
+
+    const sourceLinks = nonRedistributableCols
+        .map((col) => {
+            const def = col.def as OwidColumnDef
+            return def.sourceLink ?? def.origins?.[0]?.urlMain
+        })
+        .filter((link): link is string => !!link)
+
+    return { cols: nonRedistributableCols, sourceLinks: _.uniq(sourceLinks) }
+}
+
+const CodeExamplesBlock = (props: { csvUrl: string; metadataUrl: string }) => {
+    const code = {
+        "Excel / Google Sheets": `=IMPORTDATA("${props.csvUrl}")`,
+        "Python with Pandas": `import pandas as pd
+import requests
+
+# Fetch the data.
+df = pd.read_csv("${props.csvUrl}", storage_options = {'User-Agent': 'Our World In Data data fetch/1.0'})
+
+# Fetch the metadata
+metadata = requests.get("${props.metadataUrl}").json()`,
+        R: `library(jsonlite)
+
+# Fetch the data
+df <- read.csv("${props.csvUrl}")
+
+# Fetch the metadata
+metadata <- fromJSON("${props.metadataUrl}")`,
+        Stata: `import delimited "${props.csvUrl}", encoding("utf-8") clear`,
+    }
+
+    return (
+        <div className="download-modal__data-section">
+            <div className="download-modal__heading-with-caption">
+                <h3 className="grapher_h3-semibold">Code examples</h3>
+                <p className="grapher_label-2-regular">
+                    Examples of how to load this data into different data
+                    analysis tools.
+                </p>
+            </div>
+            <div className="download-modal__code-blocks">
+                {Object.entries(code).map(([name, snippet]) => (
+                    <div key={name}>
+                        <h4 className="grapher_body-2-medium">{name}</h4>
+                        <CodeSnippet code={snippet} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+const SourceAndCitationSection = ({ table }: { table?: OwidTable }) => {
+    // Sources can come either from origins (new format) or from the source field of the column (old format)
+    const origins =
+        table?.defs
+            .flatMap((def) => def.origins ?? [])
+            ?.filter((o) => o !== undefined) ?? []
+
+    const otherSources =
+        table?.columnsAsArray
+            .map((col) => col.source)
+            .filter((s) => s !== undefined && s.dataPublishedBy !== undefined)
+            .map(
+                (s): OwidOrigin => ({
+                    producer: s.dataPublishedBy,
+                    urlMain: s.link,
+                })
+            ) ?? []
+
+    const originsUniq = _.uniqBy(
+        [...origins, ...otherSources],
+        (o) => o.urlMain ?? o.datePublished
+    )
+
+    const attributions = getOriginAttributionFragments(originsUniq)
+
+    const sourceLinks = R.zip(attributions, originsUniq).map(
+        ([attribution, origin]) => {
+            const link = origin?.urlMain
+
+            if (link)
+                return (
+                    <li key={link}>
+                        <a href={link}>{attribution}</a>
+                    </li>
+                )
+            else return <li key={attribution}>{attribution}</li>
+        }
+    )
+
+    // Find the highest processing level of all columns
+    const owidProcessingLevel = table?.columnsAsArray
+        .map((col) => (col.def as OwidColumnDef).owidProcessingLevel)
+        .reduce((prev, curr) => {
+            if (prev === "major" || curr === "major") return "major" as const
+            if (prev === "minor" || curr === "minor") return "minor" as const
+            return undefined
+        }, undefined)
+
+    const sourceIsOwid =
+        attributions.length === 1 &&
+        attributions[0].toLowerCase() === "our world in data"
+    const processingLevelPhrase = !sourceIsOwid
+        ? getPhraseForProcessingLevel(owidProcessingLevel)
+        : undefined
+    const fullProcessingPhrase = processingLevelPhrase ? (
+        <>
+            {" "}
+            – <i>{processingLevelPhrase} by Our World in Data</i>
+        </>
+    ) : undefined
+
+    return (
+        <div className="download-modal__data-section download-modal__sources">
+            <h3 className="grapher_h3-semibold">Source and citation</h3>
+            {sourceLinks.length > 0 && (
+                <div className="download-modal__data-sources">
+                    <strong>Data sources:</strong>{" "}
+                    <ul className="download-modal__data-sources-list">
+                        {sourceLinks}
+                    </ul>
+                    {fullProcessingPhrase}
+                </div>
+            )}
+            <div>
+                <strong>Citation guidance:</strong> Please credit all sources
+                listed above. Data provided by third-party sources through Our
+                World in Data remains subject to the original{" "}
+                {sourceLinks.length === 1 ? "provider's" : "providers'"} license
+                terms.
+            </div>
+        </div>
+    )
+}
+
+const ApiAndCodeExamplesSection = (props: {
+    downloadCtxBase: DataDownloadContextBase
+    firstYColDef?: OwidColumnDef
+}) => {
+    const [onlyVisible, setOnlyVisible] = useState(false)
+    const [shortColNames, setShortColNames] = useState(true)
+
+    const exLongName = props.firstYColDef?.name
+    const exShortName = props.firstYColDef?.shortName
+
+    // Some charts, like pre-ETL ones or csv-based explorers, don't have short names available for their variables
+    const shortNamesAvailable = !!exShortName
+
+    const downloadCtx: DataDownloadContextServerSide = useMemo(
+        () => ({
+            ...props.downloadCtxBase,
+            csvDownloadType: onlyVisible
+                ? CsvDownloadType.CurrentSelection
+                : CsvDownloadType.Full,
+            shortColNames,
+        }),
+        [props.downloadCtxBase, onlyVisible, shortColNames]
+    )
+
+    const csvUrl = useMemo(
+        () => getDownloadUrl("csv", downloadCtx),
+        [downloadCtx]
+    )
+    const metadataUrl = useMemo(
+        () => getDownloadUrl("metadata.json", downloadCtx),
+        [downloadCtx]
+    )
+
+    return (
+        <>
+            <div className="download-modal__data-section">
+                <div className="download-modal__heading-with-caption">
+                    <h3 className="grapher_h3-semibold">Data API</h3>
+                    <p className="grapher_label-2-regular">
+                        Use these URLs to programmatically access this chart's
+                        data and configure your requests with the options below.{" "}
+                        <a
+                            href="https://docs.owid.io/projects/etl/api/"
+                            data-track-note="chart_download_modal_api_docs"
+                        >
+                            Our documentation provides more information
+                        </a>{" "}
+                        on how to use the API, and you can find a few code
+                        examples below.
+                    </p>
+                </div>
+
+                <section className="download-modal__api-urls">
+                    <div>
+                        <h4 className="grapher_body-2-medium">
+                            Data URL (CSV format)
+                        </h4>
+                        <CodeSnippet code={csvUrl} />
+                    </div>
+                    <div>
+                        <h4 className="grapher_body-2-medium">
+                            Metadata URL (JSON format)
+                        </h4>
+                        <CodeSnippet code={metadataUrl} />
+                    </div>
+                </section>
+                <section className="download-modal__config-list">
+                    <RadioButton
+                        label="Download full data, including all entities and time points"
+                        group="onlyVisible"
+                        checked={!onlyVisible}
+                        onChange={() => setOnlyVisible(false)}
+                    />
+                    <RadioButton
+                        label="Download only the currently selected data visible in the chart"
+                        group="onlyVisible"
+                        checked={onlyVisible}
+                        onChange={() => setOnlyVisible(true)}
+                    />
+                </section>
+                {shortNamesAvailable && (
+                    <section className="download-modal__config-list">
+                        <div>
+                            <RadioButton
+                                label="Long column names"
+                                group="shortColNames"
+                                checked={!shortColNames}
+                                onChange={() => setShortColNames(false)}
+                            />
+                            <p>
+                                e.g. <code>{exLongName}</code>
+                            </p>
+                        </div>
+                        <div>
+                            <RadioButton
+                                label="Shortened column names"
+                                group="shortColNames"
+                                checked={shortColNames}
+                                onChange={() => setShortColNames(true)}
+                            />
+                            <p>
+                                e.g.{" "}
+                                <code style={{ wordBreak: "break-all" }}>
+                                    {exShortName}
+                                </code>
+                            </p>
+                        </div>
+                    </section>
+                )}
+            </div>
+
+            <CodeExamplesBlock csvUrl={csvUrl} metadataUrl={metadataUrl} />
+        </>
+    )
+}
+
+export const DownloadModalDataTab = (props: DownloadModalProps) => {
+    const { yColumnsFromDimensionsOrSlugsOrAuto: yColumns } = props.manager
+
+    const { cols: nonRedistributableCols, sourceLinks } =
+        getNonRedistributableInfo(props.manager.inputTable)
+
+    // Server-side download is not necessarily available for all types of charts
+    const serverSideDownloadAvailable =
+        props.manager.isServerSideDownloadAvailable
+
+    const downloadCtx: Omit<
+        DataDownloadContextClientSide,
+        "csvDownloadType" | "shortColNames"
+    > = useMemo(() => {
+        const externalSearchParams = new URLSearchParams()
+        for (const [key, value] of Object.entries(
+            props.manager.externalQueryParams ?? {}
+        )) {
+            if (value) {
+                externalSearchParams.set(key, value)
+            }
+        }
+        return {
+            slug: props.manager.displaySlug,
+            searchParams: new URLSearchParams(props.manager.queryStr),
+            externalSearchParams,
+            baseUrl:
+                props.manager.baseUrl ??
+                `/grapher/${props.manager.displaySlug}`,
+
+            fullTable: props.manager.inputTable ?? BlankOwidTable(),
+            filteredTable:
+                (props.manager.isOnTableTab
+                    ? props.manager.filteredTableForDisplay
+                    : props.manager.transformedTable) ?? BlankOwidTable(),
+            activeColumnSlugs: props.manager.activeColumnSlugs,
+        }
+    }, [
+        props.manager.baseUrl,
+        props.manager.displaySlug,
+        props.manager.queryStr,
+        props.manager.externalQueryParams,
+        props.manager.isOnTableTab,
+        props.manager.inputTable,
+        props.manager.transformedTable,
+        props.manager.filteredTableForDisplay,
+        props.manager.activeColumnSlugs,
+    ])
+
+    const onDownloadClick = useCallback(
+        async (csvDownloadType: CsvDownloadType) => {
+            const ctx = {
+                ...downloadCtx,
+                csvDownloadType,
+                // Hard code shortColNames here, since it's not obvious that the
+                // radio button to change shortColNames would influence what
+                // this button does. We use long names, since they are always
+                // available and more useful than short names in e.g. Excel,
+                // which is the more likely tool of choice for a casual user,
+                // who doesn't use the API.
+                shortColNames: false,
+            }
+            if (serverSideDownloadAvailable) {
+                try {
+                    const url = getDownloadUrl("zip", ctx)
+                    const response = await fetchWithTimeout(url, 5000, {
+                        method: "GET",
+                        headers: { Accept: "application/zip" },
+                    })
+
+                    if (!response.ok) {
+                        throw new Error(
+                            `Server download failed: ${response.status}`
+                        )
+                    }
+
+                    const blob = await response.blob()
+                    const fullOrFiltered =
+                        csvDownloadType === CsvDownloadType.Full
+                            ? ""
+                            : ".filtered"
+                    triggerDownloadFromBlob(
+                        ctx.slug + fullOrFiltered + ".zip",
+                        blob
+                    )
+                } catch (error) {
+                    // Fallback to client-side CSV download
+                    console.warn(
+                        "Server-side download failed, falling back to client-side",
+                        error
+                    )
+                    const blob = await createCsvBlobLocally(ctx)
+                    triggerDownloadFromBlob(ctx.slug + ".csv", blob)
+                }
+            } else {
+                // Direct client-side download
+                void createCsvBlobLocally(ctx).then((blob) => {
+                    triggerDownloadFromBlob(ctx.slug + ".csv", blob)
+                })
+            }
+        },
+        [downloadCtx, serverSideDownloadAvailable]
+    )
+
+    if (nonRedistributableCols?.length) {
+        return (
+            <div>
+                <Callout
+                    title="The data in this chart is not available to download"
+                    icon={<FontAwesomeIcon icon={faInfoCircle} />}
+                >
+                    The data is published under a license that doesn't allow us
+                    to redistribute it.
+                    {sourceLinks?.length && (
+                        <>
+                            {" "}
+                            Please visit the
+                            {sourceLinks.length > 1
+                                ? " data publishers' websites "
+                                : " data publisher's website "}
+                            for more details:
+                            <ul>
+                                {sourceLinks.map((link, i) => (
+                                    <li key={i}>
+                                        <a href={link}>{link}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
+                </Callout>
+            </div>
+        )
+    }
+
+    const downloadHelpText = serverSideDownloadAvailable ? (
+        <p className="grapher_label-2-regular">
+            Download the data shown in this chart as a ZIP file containing a CSV
+            file, metadata in JSON format, and a README. The CSV file can be
+            opened in Excel, Google Sheets, and other data analysis tools.
+        </p>
+    ) : (
+        <p className="grapher_label-2-regular">
+            Download the data used to create this chart. The data is provided in
+            CSV format, which can be opened in Excel, Google Sheets, and other
+            data analysis tools.
+        </p>
+    )
+
+    const firstYColDef = yColumns?.[0]?.def as OwidColumnDef | undefined
+
+    const fullDataDescription = `Includes all entities and time points`
+    const filteredDataDescription = `Includes only the entities and time points currently visible in the chart`
+
+    const fullTableRowCountSnippet = makeNumberOfRowsSnippet(
+        downloadCtx.fullTable.numRows
+    )
+    const filteredTableRowCountSnippet = makeNumberOfRowsSnippet(
+        downloadCtx.filteredTable.numRows
+    )
+
+    return (
+        <>
+            <SourceAndCitationSection table={props.manager.inputTable} />
+            <div className="download-modal__data-section">
+                <div className="download-modal__heading-with-caption">
+                    <h3 className="grapher_h3-semibold">Quick download</h3>
+                    {downloadHelpText}
+                </div>
+                <div>
+                    <DownloadButton
+                        title="Download full data"
+                        description={
+                            fullDataDescription + fullTableRowCountSnippet
+                        }
+                        icon={<DownloadIconFullDataset />}
+                        onClick={() => onDownloadClick(CsvDownloadType.Full)}
+                        tracking={
+                            "chart_download_full_data--" +
+                            (serverSideDownloadAvailable ? "server" : "client")
+                        }
+                    />
+                    <DownloadButton
+                        title="Download displayed data"
+                        description={
+                            filteredDataDescription +
+                            filteredTableRowCountSnippet
+                        }
+                        icon={<DownloadIconSelected />}
+                        onClick={() =>
+                            onDownloadClick(CsvDownloadType.CurrentSelection)
+                        }
+                        tracking={
+                            "chart_download_filtered_data--" +
+                            (serverSideDownloadAvailable ? "server" : "client")
+                        }
+                    />
+                </div>
+            </div>
+            {serverSideDownloadAvailable && (
+                <ApiAndCodeExamplesSection
+                    downloadCtxBase={downloadCtx}
+                    firstYColDef={firstYColDef}
+                />
+            )}
+        </>
+    )
+}
+
+interface DownloadButtonProps {
+    title: string
+    description: string
+    onClick: () => void
+    icon?: React.ReactElement
+    previewImageUrl?: string
+    imageStyle?: React.CSSProperties
+    tracking?: string
+}
+
+function DownloadButton(props: DownloadButtonProps): React.ReactElement {
+    const { onClick } = props
+
+    const [isDownloading, setIsDownloading] = useState(false)
+    const [showLoadingUI, setShowLoadingUI] = useState(false)
+
+    const handleClick = useCallback(async () => {
+        setIsDownloading(true)
+
+        // Delay showing the loading UI to prevent flashing for quick downloads
+        const loadingTimeout = setTimeout(() => setShowLoadingUI(true), 300)
+
+        try {
+            await onClick()
+        } finally {
+            clearTimeout(loadingTimeout)
+            setIsDownloading(false)
+            setShowLoadingUI(false)
+        }
+    }, [onClick])
+
+    return (
+        <button
+            className={cx("download-modal__download-button", {
+                "download-modal__download-button--loading": showLoadingUI,
+            })}
+            onClick={handleClick}
+            data-track-note={props.tracking}
+            disabled={isDownloading}
+        >
+            {props.icon && (
+                <div className="download-modal__option-icon">{props.icon}</div>
+            )}
+            {props.previewImageUrl && (
+                <div className="download-modal__download-preview-img">
+                    <img src={props.previewImageUrl} style={props.imageStyle} />
+                </div>
+            )}
+            <div className="download-modal__download-button-content">
+                <h4 className="grapher_body-2-semibold">{props.title}</h4>
+                <div className="download-modal__download-button-description-wrapper">
+                    <p className="grapher_label-1-regular download-modal__download-button-description">
+                        {props.description}
+                    </p>
+                    {showLoadingUI && (
+                        <p className="grapher_label-1-regular download-modal__download-button-loading-label">
+                            Downloading…
+                        </p>
+                    )}
+                </div>
+            </div>
+            <div className="download-modal__download-icon">
+                {showLoadingUI ? (
+                    <FontAwesomeIcon icon={faSpinner} spin />
+                ) : (
+                    <FontAwesomeIcon icon={faDownload} />
+                )}
+            </div>
+        </button>
+    )
+}
+
+interface CalloutProps {
+    title: React.ReactNode
+    icon?: React.ReactElement
+    children: React.ReactNode
+}
+
+function Callout(props: CalloutProps): React.ReactElement {
+    return (
+        <div className="download-modal__callout">
+            {props.title && (
+                <h4 className="title grapher_body-2-semibold">
+                    {props.icon}
+                    {props.title}
+                </h4>
+            )}
+            <p className="grapher_label-2-regular grapher_light">
+                {props.children}
+            </p>
+        </div>
+    )
+}
+
+function makeNumberOfRowsSnippet(numRows: number): string {
+    if (numRows <= 0) return " (empty)"
+    if (numRows === 1) return " (1 row)"
+    return ` (${formatValue(numRows, { numDecimalPlaces: 0 })} rows)`
+}

@@ -262,6 +262,8 @@
     "workspaces": [
         "functions",
         "packages/@ourworldindata/*",
+        "packages/@buildcanada/*",
+        "examples/*",
         "."
     ],
     "license": "MIT"

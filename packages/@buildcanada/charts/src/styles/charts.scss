@@ -1,0 +1,15 @@
+/**
+ * @buildcanada/charts - Main Stylesheet
+ *
+ * This file imports all necessary styles for the charts library.
+ * Import this in your application:
+ *
+ *   import '@buildcanada/charts/styles.css'
+ */
+
+// Import the main grapher styles which include all component styles
+@import "../grapher/core/grapher.scss";
+
+// Explorer styles
+@import "../explorer/Explorer.scss";
+@import "../explorer/ExplorerControls.scss";

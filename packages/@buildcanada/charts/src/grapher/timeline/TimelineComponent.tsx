@@ -1,0 +1,658 @@
+import * as _ from "lodash-es"
+import * as React from "react"
+import { select } from "d3-selection"
+import cx from "classnames"
+import {
+    getRelativeMouse,
+    isMobile,
+    Bounds,
+    Time,
+    Tippy,
+} from "../../utils/index.js"
+import { observable, computed, action, makeObservable } from "mobx"
+import { observer } from "mobx-react"
+import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons"
+import {
+    TimelineController,
+    TimelineManager,
+    TimelineDragTarget,
+} from "./TimelineController"
+import { ActionButton } from "../controls/ActionButtons"
+import {
+    DEFAULT_GRAPHER_BOUNDS,
+    GRAPHER_FRAME_PADDING_HORIZONTAL,
+    GRAPHER_TIMELINE_CLASS,
+} from "../core/GrapherConstants.js"
+
+export const TIMELINE_HEIGHT = 32 // Keep in sync with $timelineHeight in TimelineComponent.scss
+
+const HANDLE_DIAMETER = 20 // Keep in sync with $handle-diameter in TimelineComponent.scss
+const HANDLE_TOOLTIP_FADE_TIME_MS = 2000
+
+enum MarkerType {
+    Start = "startMarker",
+    End = "endMarker",
+}
+
+interface TimelineComponentProps {
+    timelineController: TimelineController
+    maxWidth?: number
+}
+
+@observer
+export class TimelineComponent extends React.Component<TimelineComponentProps> {
+    base = React.createRef<HTMLDivElement>()
+
+    constructor(props: TimelineComponentProps) {
+        super(props)
+
+        makeObservable<
+            TimelineComponent,
+            | "startTooltipVisible"
+            | "endTooltipVisible"
+            | "lastUpdatedTooltip"
+            | "hoverTime"
+        >(this, {
+            startTooltipVisible: observable,
+            endTooltipVisible: observable,
+            lastUpdatedTooltip: observable,
+            hoverTime: observable,
+        })
+    }
+
+    /** Currently hovered time */
+    private hoverTime?: Time
+
+    @computed protected get maxWidth(): number {
+        return this.props.maxWidth ?? DEFAULT_GRAPHER_BOUNDS.width
+    }
+
+    @computed private get dragTarget(): TimelineDragTarget | undefined {
+        return this.manager.timelineDragTarget
+    }
+
+    @computed private get isDragging(): boolean {
+        return !!this.dragTarget
+    }
+
+    @computed private get manager(): TimelineManager {
+        return this.props.timelineController.manager
+    }
+
+    @computed private get controller(): TimelineController {
+        return this.props.timelineController
+    }
+
+    private get sliderBounds(): Bounds {
+        return this.slider
+            ? Bounds.fromRect(this.slider.getBoundingClientRect())
+            : new Bounds(0, 0, 100, 100)
+    }
+
+    private slider?: Element | HTMLElement | null
+    private playButton?: Element | HTMLElement | null
+
+    private getInputTimeFromMouse(
+        event: MouseEvent | TouchEvent
+    ): number | undefined {
+        const { minTime, maxTime } = this.controller
+        if (!this.slider) return
+        const mouseX = getRelativeMouse(this.slider, event).x
+
+        const fracWidth = mouseX / this.sliderBounds.width
+        return minTime + fracWidth * (maxTime - minTime)
+    }
+
+    @action.bound private onDrag(inputTime: number): void {
+        this.controller.onDrag()
+        this.manager.timelineDragTarget = this.controller.dragHandleToTime(
+            this.dragTarget!,
+            inputTime
+        )
+        this.showTooltips()
+    }
+
+    @action.bound private showTooltips(): void {
+        this.hideStartTooltip.cancel()
+        this.hideEndTooltip.cancel()
+        this.startTooltipVisible = true
+        this.endTooltipVisible = true
+
+        if (this.dragTarget === "start")
+            this.lastUpdatedTooltip = MarkerType.Start
+        if (this.dragTarget === "end") this.lastUpdatedTooltip = MarkerType.End
+        if (this.manager.startHandleTimeBound > this.manager.endHandleTimeBound)
+            this.lastUpdatedTooltip =
+                this.lastUpdatedTooltip === MarkerType.Start
+                    ? MarkerType.End
+                    : MarkerType.Start
+    }
+
+    private getDragTarget(
+        inputTime: number,
+        isStartMarker: boolean,
+        isEndMarker: boolean
+    ): TimelineDragTarget {
+        const { startHandleTimeBound, endHandleTimeBound } = this.manager
+
+        if (
+            startHandleTimeBound === endHandleTimeBound &&
+            (isStartMarker || isEndMarker)
+        )
+            return "both"
+        else if (isStartMarker || inputTime <= startHandleTimeBound)
+            return "start"
+        else if (isEndMarker || inputTime >= endHandleTimeBound) return "end"
+        return "both"
+    }
+
+    @action.bound private onMouseDown(event: MouseEvent | TouchEvent): void {
+        this.manager.onTimelineClick?.()
+
+        // Immediately hide the hover time handle
+        this.hoverTime = undefined
+
+        const targetEl = select(event.target as Element)
+
+        const inputTime = this.getInputTimeFromMouse(event)
+        if (!inputTime) return
+
+        this.manager.timelineDragTarget = this.getDragTarget(
+            inputTime,
+            targetEl.classed(MarkerType.Start),
+            targetEl.classed(MarkerType.End)
+        )
+
+        if (this.dragTarget === "both")
+            this.controller.setDragOffsets(inputTime)
+
+        this.onDrag(inputTime)
+
+        event.preventDefault()
+    }
+
+    private queuedDrag?: boolean
+    @action.bound private onMouseMove(event: MouseEvent | TouchEvent): void {
+        const { dragTarget } = this
+        if (!dragTarget) return
+        if (this.queuedDrag) return
+
+        this.queuedDrag = true
+        const inputTime = this.getInputTimeFromMouse(event)
+        if (inputTime) this.onDrag(inputTime)
+        this.queuedDrag = false
+    }
+
+    @action.bound private onMouseUp(): void {
+        this.manager.timelineDragTarget = undefined
+
+        if (this.manager.isPlaying) return
+
+        if (isMobile()) {
+            if (this.startTooltipVisible) this.hideStartTooltip()
+            if (this.endTooltipVisible) this.hideEndTooltip()
+        } else if (!this.mouseHoveringOverTimeline) {
+            this.startTooltipVisible = false
+            this.endTooltipVisible = false
+        }
+    }
+
+    @computed private get areBothHandlesVisible(): boolean {
+        return this.controller.startTime !== this.controller.endTime
+    }
+
+    @computed private get shouldShowHoverTimeHandle(): boolean {
+        return (
+            !this.manager.isSingleTimeSelectionActive &&
+            !this.isDragging &&
+            !this.areBothHandlesVisible
+        )
+    }
+
+    private setHoverTime(event: MouseEvent | TouchEvent): void {
+        if (!this.shouldShowHoverTimeHandle) return
+
+        const inputTime = this.getInputTimeFromMouse(event)
+        if (!inputTime) return
+
+        if (!this.slider) return
+        const mouseX = getRelativeMouse(this.slider, event).x
+        const startX =
+            this.controller.startTimeProgress * this.slider.clientWidth
+
+        // Hide the hover handle when the mouse is positioned directly over
+        // the existing time handle
+        if (Math.abs(mouseX - startX) < HANDLE_DIAMETER) {
+            this.hoverTime = undefined
+            return
+        }
+
+        const timeBound = this.controller.getTimeBoundFromDrag(inputTime)
+        if (!Number.isFinite(timeBound)) return
+
+        this.hoverTime = timeBound
+    }
+
+    @computed private get hoverTimeProgress(): number | undefined {
+        if (this.hoverTime === undefined) return undefined
+        return this.controller.calculateProgress(this.hoverTime)
+    }
+
+    private mouseHoveringOverTimeline: boolean = false
+    @action.bound private onMouseOverSlider(event: MouseEvent): void {
+        this.mouseHoveringOverTimeline = true
+
+        this.hideStartTooltip.cancel()
+        this.startTooltipVisible = true
+
+        this.hideEndTooltip.cancel()
+        this.endTooltipVisible = true
+
+        this.setHoverTime(event)
+    }
+
+    @action.bound private onMouseMoveSlider(event: MouseEvent): void {
+        this.setHoverTime(event)
+    }
+
+    @action.bound private onMouseLeaveSlider(): void {
+        if (!this.manager.isPlaying && !this.isDragging) {
+            this.startTooltipVisible = false
+            this.endTooltipVisible = false
+        }
+        this.mouseHoveringOverTimeline = false
+        this.hoverTime = undefined
+    }
+
+    private hideStartTooltip = _.debounce(() => {
+        this.startTooltipVisible = false
+    }, HANDLE_TOOLTIP_FADE_TIME_MS)
+    private hideEndTooltip = _.debounce(() => {
+        this.endTooltipVisible = false
+    }, HANDLE_TOOLTIP_FADE_TIME_MS)
+
+    @action.bound private onPlayTouchEnd(evt: Event): void {
+        evt.preventDefault()
+        evt.stopPropagation()
+        void this.controller.togglePlay()
+    }
+
+    @action.bound private onSliderTouchStart(event: Event): void {
+        this.onMouseDown(event as TouchEvent)
+    }
+
+    @computed private get showPlayLabel(): boolean {
+        const labelWidth = Bounds.forText("Play time-lapse", {
+            fontSize: 13,
+        }).width
+        return labelWidth < 0.1 * this.maxWidth
+    }
+
+    override componentDidMount(): void {
+        const current = this.base.current
+
+        if (current) {
+            this.slider = current.querySelector(".slider")
+            this.playButton = current.querySelector(".play")
+        }
+
+        document.documentElement.addEventListener("mouseup", this.onMouseUp)
+        document.documentElement.addEventListener("mouseleave", this.onMouseUp)
+        document.documentElement.addEventListener("mousemove", this.onMouseMove)
+        document.documentElement.addEventListener("touchend", this.onMouseUp)
+        document.documentElement.addEventListener("touchmove", this.onMouseMove)
+        this.slider?.addEventListener("touchstart", this.onSliderTouchStart, {
+            passive: false,
+        })
+        this.playButton?.addEventListener("touchend", this.onPlayTouchEnd, {
+            passive: false,
+        })
+    }
+
+    override componentWillUnmount(): void {
+        document.documentElement.removeEventListener("mouseup", this.onMouseUp)
+        document.documentElement.removeEventListener(
+            "mouseleave",
+            this.onMouseUp
+        )
+        document.documentElement.removeEventListener(
+            "mousemove",
+            this.onMouseMove
+        )
+        document.documentElement.removeEventListener("touchend", this.onMouseUp)
+        document.documentElement.removeEventListener(
+            "touchmove",
+            this.onMouseMove
+        )
+        this.slider?.removeEventListener("touchstart", this.onSliderTouchStart)
+        this.playButton?.removeEventListener("touchend", this.onPlayTouchEnd)
+    }
+
+    private formatTime(time: number): string {
+        return this.manager.formatTimeFn
+            ? this.manager.formatTimeFn(time)
+            : time.toString()
+    }
+
+    private timelineEdgeMarker(
+        markerType: "start" | "end"
+    ): React.ReactElement {
+        const { controller } = this
+        const time =
+            markerType === "start" ? controller.minTime : controller.maxTime
+        return (
+            <button
+                className="date clickable"
+                type="button"
+                onClick={action((): void =>
+                    markerType === "start"
+                        ? controller.resetStartToMin()
+                        : controller.resetEndToMax()
+                )}
+                onMouseEnter={action(() => {
+                    if (this.shouldShowHoverTimeHandle) this.hoverTime = time
+                })}
+                onMouseLeave={action(() => {
+                    this.hoverTime = undefined
+                })}
+            >
+                {this.formatTime(time)}
+            </button>
+        )
+    }
+
+    private startTooltipVisible: boolean = false
+    private endTooltipVisible: boolean = false
+    private lastUpdatedTooltip?: MarkerType
+
+    @action.bound private togglePlay(): void {
+        void this.controller.togglePlay()
+    }
+
+    @action.bound updateStartTimeOnKeyDown(key: string): void {
+        const { controller } = this
+        if (key === "Home") {
+            controller.resetStartToMin()
+        } else if (key === "End") {
+            controller.setStartToMax()
+        } else if (key === "ArrowLeft" || key === "ArrowDown") {
+            controller.decreaseStartTime()
+        } else if (key === "ArrowRight" || key === "ArrowUp") {
+            controller.increaseStartTime()
+        } else if (key === "PageUp") {
+            controller.increaseStartTimeByLargeStep()
+        } else if (key === "PageDown") {
+            controller.decreaseStartTimeByLargeStep()
+        }
+    }
+
+    @action.bound updateEndTimeOnKeyDown(key: string): void {
+        const { controller } = this
+        if (key === "Home") {
+            controller.setEndToMin()
+        } else if (key === "End") {
+            controller.resetEndToMax()
+        } else if (key === "ArrowLeft" || key === "ArrowDown") {
+            controller.decreaseEndTime()
+        } else if (key === "ArrowRight" || key === "ArrowUp") {
+            controller.increaseEndTime()
+        } else if (key === "PageUp") {
+            controller.increaseEndTimeByLargeStep()
+        } else if (key === "PageDown") {
+            controller.decreaseEndTimeByLargeStep()
+        }
+    }
+
+    convertToTime(time: number): number {
+        if (time === -Infinity) return this.controller.minTime
+        if (time === +Infinity) return this.controller.maxTime
+        return time
+    }
+
+    override render(): React.ReactElement {
+        const { manager, controller, hoverTime } = this
+        const {
+            startTimeProgress,
+            endTimeProgress,
+            minTime,
+            maxTime,
+            startTime,
+            endTime,
+        } = controller
+
+        const formattedMinTime = this.formatTime(minTime)
+        const formattedMaxTime = this.formatTime(maxTime)
+        const formattedStartTime = this.formatTime(startTime)
+        const formattedEndTime = this.formatTime(endTime)
+        const formattedHoverTime =
+            hoverTime !== undefined ? this.formatTime(hoverTime) : undefined
+
+        return (
+            <div
+                ref={this.base}
+                className={cx(GRAPHER_TIMELINE_CLASS, {
+                    hover: this.mouseHoveringOverTimeline,
+                })}
+                style={{ padding: `0 ${GRAPHER_FRAME_PADDING_HORIZONTAL}px` }}
+                role="group"
+                aria-label="Timeline controls"
+                onMouseOver={action((event) =>
+                    this.onMouseOverSlider(event.nativeEvent)
+                )}
+                onMouseLeave={this.onMouseLeaveSlider}
+                onMouseMove={action((event) =>
+                    this.onMouseMoveSlider(event.nativeEvent)
+                )}
+            >
+                {!this.manager.disablePlay && (
+                    <ActionButton
+                        dataTrackNote={
+                            manager.isPlaying
+                                ? "timeline_pause"
+                                : "timeline_play"
+                        }
+                        onMouseDown={(e): void => e.stopPropagation()}
+                        onClick={this.togglePlay}
+                        showLabel={this.showPlayLabel}
+                        label={
+                            (manager.isPlaying ? "Pause" : "Play") +
+                            " time-lapse"
+                        }
+                        icon={manager.isPlaying ? faPause : faPlay}
+                        isActive={manager.isPlaying}
+                        style={{ minWidth: TIMELINE_HEIGHT }}
+                    />
+                )}
+                {this.timelineEdgeMarker("start")}
+                <div
+                    className="slider clickable"
+                    role="group"
+                    aria-label="Timeline slider"
+                    onMouseDown={(event) => this.onMouseDown(event.nativeEvent)}
+                >
+                    <TimelineHandle
+                        type={MarkerType.Start}
+                        ariaLabel="Start time"
+                        offsetPercent={startTimeProgress * 100}
+                        formattedMinTime={formattedMinTime}
+                        formattedMaxTime={formattedMaxTime}
+                        formattedCurrTime={formattedStartTime}
+                        tooltipVisible={this.startTooltipVisible}
+                        tooltipZIndex={
+                            this.lastUpdatedTooltip === MarkerType.Start ? 2 : 1
+                        }
+                        onKeyDown={action((e) => {
+                            // Prevent scrolling
+                            if (
+                                e.key === "Home" ||
+                                e.key === "End" ||
+                                e.key === "PageUp" ||
+                                e.key === "PageDown"
+                            )
+                                e.preventDefault()
+
+                            this.updateStartTimeOnKeyDown(e.key)
+                        })}
+                        onFocus={action(() => {
+                            this.showTooltips()
+                        })}
+                        onBlur={action(() => {
+                            this.startTooltipVisible = false
+                            this.endTooltipVisible = false
+                        })}
+                    />
+                    <TimelineInterval
+                        startTimeProgress={startTimeProgress}
+                        endTimeProgress={endTimeProgress}
+                    />
+                    {this.hoverTimeProgress !== undefined && (
+                        <TimelineInterval
+                            className="interval-hover"
+                            startTimeProgress={Math.min(
+                                startTimeProgress,
+                                this.hoverTimeProgress
+                            )}
+                            endTimeProgress={Math.max(
+                                startTimeProgress,
+                                this.hoverTimeProgress
+                            )}
+                            ariaHidden={true}
+                        />
+                    )}
+                    <TimelineHandle
+                        type={MarkerType.End}
+                        ariaLabel="End time"
+                        offsetPercent={endTimeProgress * 100}
+                        formattedMinTime={formattedMinTime}
+                        formattedMaxTime={formattedMaxTime}
+                        formattedCurrTime={formattedEndTime}
+                        tooltipVisible={this.endTooltipVisible}
+                        tooltipZIndex={
+                            this.lastUpdatedTooltip === MarkerType.End ? 2 : 1
+                        }
+                        onKeyDown={action((e) => {
+                            // prevent browser to scroll to the top or bottom of the page
+                            if (
+                                e.key === "Home" ||
+                                e.key === "End" ||
+                                e.key === "PageUp" ||
+                                e.key === "PageDown"
+                            )
+                                e.preventDefault()
+
+                            this.updateEndTimeOnKeyDown(e.key)
+                        })}
+                        onFocus={action(() => {
+                            this.showTooltips()
+                        })}
+                        onBlur={action(() => {
+                            this.startTooltipVisible = false
+                            this.endTooltipVisible = false
+                        })}
+                    />
+                    {this.hoverTime !== undefined &&
+                        this.hoverTimeProgress !== undefined && (
+                            <TimelineHandle
+                                type="hoverMarker"
+                                offsetPercent={this.hoverTimeProgress * 100}
+                                formattedMinTime={formattedMinTime}
+                                formattedMaxTime={formattedMaxTime}
+                                formattedCurrTime={formattedHoverTime!}
+                                tooltipVisible={true}
+                                tooltipZIndex={3}
+                            />
+                        )}
+                </div>
+                {this.timelineEdgeMarker("end")}
+            </div>
+        )
+    }
+}
+
+const TimelineHandle = ({
+    type,
+    ariaLabel,
+    offsetPercent,
+    formattedMinTime,
+    formattedMaxTime,
+    formattedCurrTime,
+    tooltipVisible,
+    tooltipZIndex,
+    onKeyDown,
+    onFocus,
+    onBlur,
+}: {
+    type: MarkerType | "hoverMarker"
+    ariaLabel?: string
+    offsetPercent: number
+    formattedMinTime: string
+    formattedMaxTime: string
+    formattedCurrTime: string
+    tooltipVisible: boolean
+    tooltipZIndex: number
+    onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>
+    onFocus?: React.FocusEventHandler<HTMLDivElement>
+    onBlur?: React.FocusEventHandler<HTMLDivElement>
+}): React.ReactElement => {
+    const isInteractive = type !== "hoverMarker"
+    return (
+        // @ts-expect-error aria-value* fields expect a number, but if we're dealing with daily data,
+        // the numeric representation of a date is meaningless, so we pass the formatted date string instead.
+        <div
+            className={cx("handle", type)}
+            style={{ left: `${offsetPercent}%`, zIndex: tooltipZIndex }}
+            role="slider"
+            tabIndex={isInteractive ? 0 : -1}
+            aria-valuemin={castToNumberIfPossible(formattedMinTime)}
+            aria-valuenow={castToNumberIfPossible(formattedCurrTime)}
+            aria-valuemax={castToNumberIfPossible(formattedMaxTime)}
+            aria-valuetext={formattedCurrTime}
+            aria-label={ariaLabel}
+            aria-orientation="horizontal"
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onKeyDown={onKeyDown}
+        >
+            <Tippy
+                content={formattedCurrTime}
+                theme="grapher-dark"
+                placement="top"
+                visible={tooltipVisible}
+                arrow={true}
+            >
+                <div className="icon" />
+            </Tippy>
+        </div>
+    )
+}
+
+const TimelineInterval = ({
+    startTimeProgress,
+    endTimeProgress,
+    className,
+    ariaHidden,
+}: {
+    startTimeProgress: number
+    endTimeProgress: number
+    className?: string
+    ariaHidden?: boolean
+}): React.ReactElement => {
+    const left = startTimeProgress * 100
+    const right = 100 - endTimeProgress * 100
+    return (
+        <div
+            className={cx("interval", className)}
+            style={{ left: `${left}%`, right: `${right}%` }}
+            role="presentation"
+            aria-hidden={ariaHidden}
+        />
+    )
+}
+
+function castToNumberIfPossible(s: string): string | number {
+    return isNumber(s) ? +s : s
+}
+
+function isNumber(s: string): boolean {
+    return /^\d+$/.test(s)
+}

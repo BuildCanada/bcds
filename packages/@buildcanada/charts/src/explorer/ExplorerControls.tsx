@@ -1,0 +1,210 @@
+import { Component } from "react"
+import { Dropdown } from "../grapher/index.js"
+import { bind } from "../utils/index.js"
+import {
+    ExplorerControlType,
+    ExplorerChoiceOption,
+    ExplorerChoice,
+} from "./ExplorerConstants.js"
+import { GridBoolean } from "./gridLang/GridLangConstants.js"
+import classNames from "classnames"
+import * as R from "remeda"
+
+const AVAILABLE_OPTION_CLASS = "AvailableOption"
+const UNAVAILABLE_OPTION_CLASS = "UnavailableOption"
+const SELECTED_OPTION_CLASS = "SelectedOption"
+const EXPLORER_DROPDOWN_CLASS = "ExplorerDropdown"
+const HIDDEN_CONTROL_HEADER_CLASS = "HiddenControlHeader"
+
+export class ExplorerControlBar extends Component<{
+    isMobile?: boolean
+    showControls?: boolean
+    closeControls?: () => void
+    children: React.ReactNode
+}> {
+    override render() {
+        const { isMobile, showControls, closeControls } = this.props
+        const mobileCloseButton = isMobile ? (
+            <a
+                className="btn btn-primary mobile-button"
+                onClick={closeControls}
+            >
+                Done
+            </a>
+        ) : undefined
+
+        const showMobileControls = isMobile && showControls
+        return (
+            <form
+                className={classNames(
+                    "ExplorerControlBar",
+                    showMobileControls
+                        ? `show-controls-popup`
+                        : isMobile
+                          ? `hide-controls-popup`
+                          : false
+                )}
+            >
+                {this.props.children}
+                {mobileCloseButton}
+            </form>
+        )
+    }
+}
+
+interface ExplorerDropdownOption {
+    label: string
+    value: string
+}
+
+const ExplorerDropdown = (props: {
+    options: ExplorerDropdownOption[]
+    value: ExplorerDropdownOption
+    isMobile: boolean
+    onChange: (option: string) => void
+    ariaLabel?: string
+}) => {
+    const { options, value, isMobile, onChange, ariaLabel } = props
+    const isSearchable = !isMobile && options.length > 10
+    const dropdownOptions = options.map((option) => ({
+        label: option.label,
+        value: option.value,
+    }))
+    const selectedOption =
+        dropdownOptions.find((option) => option.value === value?.value) ?? null
+    const isDisabled = options.length < 2
+
+    return (
+        <Dropdown
+            className={EXPLORER_DROPDOWN_CLASS}
+            options={dropdownOptions}
+            value={selectedOption}
+            onChange={(option) => {
+                if (option) onChange(option.value)
+            }}
+            isDisabled={isDisabled}
+            isSearchable={isSearchable}
+            placeholder="-"
+            aria-label={ariaLabel}
+        />
+    )
+}
+
+export class ExplorerControlPanel extends Component<{
+    choice: ExplorerChoice
+    explorerSlug?: string
+    onChange?: (value: string) => void
+    isMobile: boolean
+}> {
+    private renderCheckboxOrRadio(option: ExplorerChoiceOption, index: number) {
+        const { explorerSlug, choice } = this.props
+        const { title, type, value } = choice
+        const { available, label, checked } = option
+        const isCheckbox = type === ExplorerControlType.Checkbox
+        const onChangeValue = isCheckbox
+            ? checked
+                ? GridBoolean.false
+                : GridBoolean.true
+            : option.value
+        const currentValue = isCheckbox
+            ? checked
+                ? GridBoolean.true
+                : GridBoolean.false
+            : value
+
+        return (
+            <div key={index} className="ControlOption">
+                <label
+                    className={classNames(
+                        {
+                            [SELECTED_OPTION_CLASS]: checked,
+                        },
+                        available
+                            ? AVAILABLE_OPTION_CLASS
+                            : UNAVAILABLE_OPTION_CLASS
+                    )}
+                >
+                    <input
+                        onChange={() => this.customOnChange(onChangeValue)}
+                        type={isCheckbox ? "checkbox" : "radio"}
+                        disabled={!available}
+                        name={title}
+                        checked={checked}
+                        value={currentValue}
+                        data-track-note={`${
+                            explorerSlug ?? "explorer"
+                        }_click_${title.toLowerCase()}`}
+                    />{" "}
+                    {label}
+                </label>
+            </div>
+        )
+    }
+
+    private get options() {
+        return this.props.choice.options ?? []
+    }
+
+    private renderDropdown() {
+        const options = this.options
+            .filter((option) => option.available)
+            .map((option) => {
+                return {
+                    label: option.label,
+                    value: option.value,
+                }
+            })
+        const value = options.find(
+            (option) => option.value === this.props.choice.value
+        ) ?? { label: "-", value: "-" }
+
+        return (
+            <ExplorerDropdown
+                options={options}
+                value={value}
+                isMobile={this.props.isMobile}
+                onChange={this.customOnChange}
+                ariaLabel={this.props.choice.title}
+            />
+        )
+    }
+
+    @bind private customOnChange(value: string) {
+        this.props.onChange?.(value)
+    }
+
+    private renderColumn(
+        key: string,
+        hideTitle: boolean,
+        options?: ExplorerChoiceOption[]
+    ) {
+        const { title, type, displayTitle } = this.props.choice
+        return (
+            <div key={key} className="ExplorerControl">
+                <div
+                    className={classNames("ControlHeader", {
+                        [HIDDEN_CONTROL_HEADER_CLASS]: hideTitle === true,
+                    })}
+                >
+                    {displayTitle ?? title}
+                </div>
+                {type === ExplorerControlType.Dropdown
+                    ? this.renderDropdown()
+                    : (options ?? this.options).map((option, index) =>
+                          this.renderCheckboxOrRadio(option, index)
+                      )}
+            </div>
+        )
+    }
+
+    override render() {
+        const { choice } = this.props
+        const { title, type } = choice
+        const { options } = this
+        if (type === ExplorerControlType.Radio && options.length > 4)
+            return R.chunk(options, 3).map((optionsGroup, column) =>
+                this.renderColumn(`${title}${column}`, column > 0, optionsGroup)
+            )
+        return this.renderColumn(title, type === ExplorerControlType.Checkbox)
+    }
+}
