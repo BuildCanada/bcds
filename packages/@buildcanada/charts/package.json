@@ -21,7 +21,9 @@
     "build": "",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static"
   },
   "keywords": [
     "charts",
@@ -79,6 +81,8 @@
     "versor": "^0.2.0"
   },
   "devDependencies": {
+    "@storybook/react": "^10.1.11",
+    "@storybook/react-vite": "^10.1.11",
     "@testing-library/react": "^16.3.0",
     "@types/colorbrewer": "^1.0.29",
     "@types/d3": "^7.4.3",
@@ -95,7 +99,10 @@
     "@types/url-parse": "^1.4.8",
     "eslint": "^9.37.0",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "sass": "^1.77.0",
+    "storybook": "^10.1.11",
     "typescript": "~5.9.2",
+    "vite": "^6.0.0",
     "vitest": "^4.0.15"
   }
 }
