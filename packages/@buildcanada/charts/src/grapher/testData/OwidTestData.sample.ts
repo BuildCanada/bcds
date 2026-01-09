@@ -180,3 +180,94 @@ export const LifeExpectancyGrapher = (
     grapherState.inputTable = inputTable
     return grapherState
 }
+
+/**
+ * Canadian province population data for testing Canada map view.
+ * Covers 1971-2023 with realistic historical population trends.
+ * Growth rates vary by province to reflect actual demographic patterns.
+ */
+function generateCanadaProvinceData(): TestData {
+    // Population in millions (2023 estimates) and average annual growth rates
+    // Growth rates reflect historical patterns: western provinces grew faster
+    const provinceData: Record<
+        string,
+        { pop2023: number; growthRate: number }
+    > = {
+        Ontario: { pop2023: 15.8, growthRate: 1.4 },
+        Quebec: { pop2023: 8.8, growthRate: 0.8 },
+        "British Columbia": { pop2023: 5.4, growthRate: 1.8 },
+        Alberta: { pop2023: 4.6, growthRate: 2.2 },
+        Manitoba: { pop2023: 1.4, growthRate: 0.9 },
+        Saskatchewan: { pop2023: 1.2, growthRate: 0.6 },
+        "Nova Scotia": { pop2023: 1.0, growthRate: 0.4 },
+        "New Brunswick": { pop2023: 0.8, growthRate: 0.3 },
+        "Newfoundland and Labrador": { pop2023: 0.5, growthRate: -0.2 },
+        "Prince Edward Island": { pop2023: 0.17, growthRate: 0.8 },
+        "Northwest Territories": { pop2023: 0.045, growthRate: 1.0 },
+        Yukon: { pop2023: 0.044, growthRate: 1.5 },
+        Nunavut: { pop2023: 0.04, growthRate: 2.0 },
+    }
+
+    // Every 5 years from 1971 to 2023
+    const years = [
+        1971, 1976, 1981, 1986, 1991, 1996, 2001, 2006, 2011, 2016, 2021, 2023,
+    ]
+    const data: TestData = []
+
+    for (const [provinceName, { pop2023, growthRate }] of Object.entries(
+        provinceData
+    )) {
+        const entity = fakeEntities[provinceName]
+        if (!entity) continue
+
+        for (const year of years) {
+            // Calculate population going backwards from 2023 using compound growth
+            const yearsFromBase = 2023 - year
+            const growthFactor = Math.pow(1 + growthRate / 100, -yearsFromBase)
+            const value = Math.round(pop2023 * growthFactor * 1000) / 1000
+
+            data.push({ year, entity, value })
+        }
+    }
+
+    return data
+}
+
+/**
+ * Grapher configured for Canadian province data.
+ * Shows population by province/territory.
+ */
+export const CanadaProvinceGrapher = (
+    props: Partial<GrapherProgrammaticInterface> = {}
+): GrapherState => {
+    const populationId = 815384
+    const populationMetadata: TestMetadata = {
+        id: populationId,
+        display: {
+            name: "Population",
+            unit: "million",
+            shortUnit: "M",
+            numDecimalPlaces: 2,
+        },
+    }
+    const provinceData = generateCanadaProvinceData()
+    const dimensions = [
+        {
+            variableId: populationId,
+            property: DimensionProperty.y,
+        },
+    ]
+    const grapherState = new GrapherState({
+        ...props,
+        dimensions,
+    })
+    const inputTable = legacyToOwidTableAndDimensionsWithMandatorySlug(
+        createOwidTestDataset([
+            { data: provinceData, metadata: populationMetadata },
+        ]),
+        dimensions,
+        {}
+    )
+    grapherState.inputTable = inputTable
+    return grapherState
+}

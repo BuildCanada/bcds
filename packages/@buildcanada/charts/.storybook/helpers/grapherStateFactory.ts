@@ -1,8 +1,15 @@
 import { Bounds } from "../../src/utils/index.js"
 import { GrapherState } from "../../src/grapher/core/GrapherState.js"
-import { LifeExpectancyGrapher } from "../../src/grapher/testData/OwidTestData.sample.js"
+import {
+    LifeExpectancyGrapher,
+    CanadaProvinceGrapher,
+} from "../../src/grapher/testData/OwidTestData.sample.js"
 import type { GrapherProgrammaticInterface } from "../../src/grapher/core/Grapher.js"
-import { ColorSchemeName, GRAPHER_CHART_TYPES, MapRegionName } from "../../src/types/index.js"
+import {
+    ColorSchemeName,
+    GRAPHER_CHART_TYPES,
+    MapRegionName,
+} from "../../src/types/index.js"
 
 /**
  * Create a GrapherState configured for Storybook stories.
@@ -117,12 +124,12 @@ export function createMapChartState(
 
 /**
  * Create a GrapherState for a Canada provincial map story
- * Shows Canadian provinces/territories as individually selectable regions
+ * Shows Canadian provinces/territories with population data
  */
 export function createCanadaMapChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
-    return LifeExpectancyGrapher({
+    return CanadaProvinceGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         hasMapTab: true,
         tab: "map",

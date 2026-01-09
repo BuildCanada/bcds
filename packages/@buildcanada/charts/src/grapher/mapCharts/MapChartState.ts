@@ -20,6 +20,7 @@ import {
     ColorSchemeName,
     ColumnSlug,
     EntityName,
+    MapRegionName,
     PrimitiveType,
     TickFormattingOptions,
     Time,
@@ -33,7 +34,11 @@ import {
 } from "../../utils/index.js"
 import { MapConfig } from "./MapConfig"
 import { combineHistoricalAndProjectionColumns } from "../chart/ChartUtils"
-import { getCountriesByRegion, isOnTheMap } from "./MapHelpers"
+import {
+    getCountriesByRegion,
+    isOnTheCanadaMap,
+    isOnTheMap,
+} from "./MapHelpers"
 import { MapSelectionArray } from "../selection/MapSelectionArray"
 import { ColorScale, ColorScaleManager } from "../color/ColorScale"
 import { ColorScaleConfig } from "../color/ColorScaleConfig"
@@ -132,6 +137,14 @@ export class MapChartState implements ChartState, ColorScaleManager {
     }
 
     private dropNonMapEntities(table: OwidTable): OwidTable {
+        // For Canada region, filter by Canadian provinces/territories
+        if (this.mapConfig.region === MapRegionName.Canada) {
+            const entityNamesToSelect =
+                table.availableEntityNames.filter(isOnTheCanadaMap)
+            return table.filterByEntityNames(entityNamesToSelect)
+        }
+
+        // For world and other regions, filter by world map entities
         const entityNamesToSelect =
             table.availableEntityNames.filter(isOnTheMap)
         return table.filterByEntityNames(entityNamesToSelect)

@@ -94,7 +94,10 @@ export interface ChartsAnalytics {
     /**
      * Custom analytics handler
      */
-    trackEvent?: (eventName: string, properties: Record<string, unknown>) => void
+    trackEvent?: (
+        eventName: string,
+        properties: Record<string, unknown>
+    ) => void
 }
 
 export interface ChartsConfig {
@@ -126,7 +129,7 @@ export const defaultChartsConfig: Partial<ChartsConfig> = {
     branding: {
         licenseText: "CC BY",
         licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-        poweredByText: "Powered by Charts",
+        poweredByText: "Powered by Build Canada Charts",
     },
     errorReporting: {
         enabled: false,
@@ -139,7 +142,9 @@ export const defaultChartsConfig: Partial<ChartsConfig> = {
 /**
  * Merge user config with defaults
  */
-export function mergeWithDefaults(config: ChartsConfig): Required<ChartsConfig> {
+export function mergeWithDefaults(
+    config: ChartsConfig
+): Required<ChartsConfig> {
     return {
         branding: {
             ...defaultChartsConfig.branding,

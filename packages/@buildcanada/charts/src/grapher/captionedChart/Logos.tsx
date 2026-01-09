@@ -1,8 +1,11 @@
 import * as React from "react"
 import {
-    OWID_LOGO_SVG,
+    BUILDCANADA_LOGO_SVG,
+    BUILDCANADA_WIDE_LOGO_SVG,
+    CANADASPENDS_LOGO_SVG,
     CORE_LOGO_SVG,
     GV_LOGO_SVG,
+    OWID_LOGO_SVG,
     SMALL_OWID_LOGO_SVG,
 } from "./LogosSVG"
 import { LogoOption } from "../../types/index.js"
@@ -36,6 +39,27 @@ const logos: Record<LogoOption, LogoAttributes> = {
         height: 350,
         targetHeight: 52,
     },
+    buildcanada: {
+        svg: BUILDCANADA_LOGO_SVG,
+        width: 65,
+        height: 65,
+        targetHeight: 36,
+        url: "https://buildcanada.ca",
+    },
+    "buildcanada-wide": {
+        svg: BUILDCANADA_WIDE_LOGO_SVG,
+        width: 107,
+        height: 65,
+        targetHeight: 36,
+        url: "https://buildcanada.ca",
+    },
+    canadaspends: {
+        svg: CANADASPENDS_LOGO_SVG,
+        width: 117,
+        height: 36,
+        targetHeight: 36,
+        url: "https://canadaspends.ca",
+    },
 }
 
 // owid logo optimized for small sizes
@@ -61,7 +85,7 @@ export class Logo {
     }
 
     private get logo(): LogoOption {
-        return this.props.logo ?? LogoOption.owid
+        return this.props.logo ?? LogoOption["buildcanada-wide"]
     }
 
     private get spec(): LogoAttributes {

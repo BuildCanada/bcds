@@ -124,13 +124,16 @@ abstract class AbstractFooter<
         if (this.manager.hasOWIDLogo) {
             return branding?.licenseText ?? "CC BY"
         }
-        return branding?.poweredByText ?? "Powered by Charts"
+        return branding?.poweredByText ?? "Powered by Build Canada Charts"
     }
 
     @computed protected get licenseUrl(): string {
         const branding = this.manager.branding
         if (this.manager.hasOWIDLogo) {
-            return branding?.licenseUrl ?? "https://creativecommons.org/licenses/by/4.0/"
+            return (
+                branding?.licenseUrl ??
+                "https://creativecommons.org/licenses/by/4.0/"
+            )
         }
         return branding?.poweredByUrl ?? ""
     }
@@ -153,9 +156,7 @@ abstract class AbstractFooter<
             return undefined
 
         const url = Url.fromURL(originUrl)
-        return url.originAndPath
-            ?.replace(/^https?:\/\//, "")
-            .replace(/\/$/, "") // remove trailing slash
+        return url.originAndPath?.replace(/^https?:\/\//, "").replace(/\/$/, "") // remove trailing slash
     }
 
     protected static constructLicenseAndOriginUrlText(

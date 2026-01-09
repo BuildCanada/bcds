@@ -342,6 +342,9 @@ export enum LogoOption {
     owid = "owid",
     "core+owid" = "core+owid",
     "gv+owid" = "gv+owid",
+    buildcanada = "buildcanada",
+    "buildcanada-wide" = "buildcanada-wide",
+    canadaspends = "canadaspends",
 }
 
 export interface ProjectionColumnInfo {

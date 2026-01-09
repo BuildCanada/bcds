@@ -183,7 +183,7 @@ export const MAP_VIEWPORTS: Record<MapRegionName, MapViewport> = {
     SouthAmerica: { x: 0.52, y: 0.815, width: 0.1, height: 0.26, ratio: 0.62 },
     Asia: { x: 0.74, y: 0.45, width: 0.36, height: 0.5, ratio: 1.65 },
     Oceania: { x: 0.51, y: 0.75, width: 0.1, height: 0.2, ratio: 1.47 },
-    Canada: { x: 0.5, y: 0.5, width: 0.9, height: 0.9, ratio: 1.5 },
+    Canada: { x: 0.5, y: 0.5, width: 1, height: 1.05, ratio: 1.5 },
 }
 
 // Custom viewport for faceted world map, which zooms in a little bit to make best use of the available space

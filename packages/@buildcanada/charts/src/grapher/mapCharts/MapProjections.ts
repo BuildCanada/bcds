@@ -1,4 +1,9 @@
-import { geoConicConformal, geoAzimuthalEqualArea, GeoProjection } from "d3-geo"
+import {
+    geoAlbers,
+    geoConicConformal,
+    geoAzimuthalEqualArea,
+    GeoProjection,
+} from "d3-geo"
 import { geoRobinson, geoPatterson } from "./d3-geo-projection.js"
 import { MapRegionName } from "../../types/index.js"
 
@@ -40,8 +45,5 @@ export const MAP_PROJECTIONS: Record<MapRegionName, GeoProjection> = {
         .parallels([-10, -30]),
 
     // Lambert Conformal Conic - standard for Canadian government maps
-    Canada: geoConicConformal()
-        .rotate([95, 0])
-        .center([0, 60])
-        .parallels([49, 77]),
+    Canada: geoAlbers().rotate([95, 0, 10]).center([0, 60]).parallels([50, 70]),
 } as const

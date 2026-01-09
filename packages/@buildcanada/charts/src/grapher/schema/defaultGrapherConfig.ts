@@ -61,7 +61,7 @@ export const defaultGrapherConfig = {
     invertColorScheme: false,
     hideRelativeToggle: true,
     comparisonLines: [],
-    logo: "owid",
+    logo: "buildcanada-wide",
     entityType: "country or region",
     facettingLabelByYVariables: "metric",
     addCountryMode: "add-country",

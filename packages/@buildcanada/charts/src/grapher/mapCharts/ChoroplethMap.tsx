@@ -175,6 +175,9 @@ export class ChoroplethMap extends React.Component<{
 
         if (mapConfig.region === MapRegionName.World) return features
 
+        // For Canada, all features from getGeoFeaturesForMap are provinces to display
+        if (mapConfig.region === MapRegionName.Canada) return features
+
         const countriesByProjection = getCountriesByRegion(
             MAP_REGION_LABELS[mapConfig.region]
         )
