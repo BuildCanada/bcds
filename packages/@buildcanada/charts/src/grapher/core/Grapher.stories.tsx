@@ -18,7 +18,7 @@ const meta: Meta<typeof Grapher> = {
     },
     decorators: [
         (Story) => (
-            <div style={{ width: "800px", height: "600px" }}>
+            <div style={{ width: "1100px", height: "660px" }}>
                 <Story />
             </div>
         ),

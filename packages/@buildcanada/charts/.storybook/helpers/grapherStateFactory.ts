@@ -2,7 +2,7 @@ import { Bounds } from "../../src/utils/index.js"
 import { GrapherState } from "../../src/grapher/core/GrapherState.js"
 import { LifeExpectancyGrapher } from "../../src/grapher/testData/OwidTestData.sample.js"
 import type { GrapherProgrammaticInterface } from "../../src/grapher/core/Grapher.js"
-import { GRAPHER_CHART_TYPES } from "../../src/types/index.js"
+import { ColorSchemeName, GRAPHER_CHART_TYPES } from "../../src/types/index.js"
 
 /**
  * Create a GrapherState configured for Storybook stories.
@@ -12,7 +12,7 @@ export function createStorybookGrapherState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         ...overrides,
     })
 }
@@ -24,7 +24,7 @@ export function createLineChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.LineChart],
         ...overrides,
     })
@@ -37,7 +37,7 @@ export function createDiscreteBarChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.DiscreteBar],
         ...overrides,
     })
@@ -50,7 +50,7 @@ export function createStackedAreaChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.StackedArea],
         ...overrides,
     })
@@ -63,7 +63,7 @@ export function createStackedBarChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.StackedBar],
         ...overrides,
     })
@@ -76,7 +76,7 @@ export function createSlopeChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.SlopeChart],
         ...overrides,
     })
@@ -89,7 +89,7 @@ export function createScatterPlotState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.ScatterPlot],
         ...overrides,
     })
@@ -97,14 +97,20 @@ export function createScatterPlotState(
 
 /**
  * Create a GrapherState for a WorldMap story
+ * Uses Blues color scheme to match OWID production styling
  */
 export function createMapChartState(
     overrides: Partial<GrapherProgrammaticInterface> = {}
 ): GrapherState {
     return LifeExpectancyGrapher({
-        bounds: new Bounds(0, 0, 800, 600),
+        bounds: new Bounds(0, 0, 1100, 660),
         hasMapTab: true,
         tab: "map",
+        map: {
+            colorScale: {
+                baseColorScheme: ColorSchemeName.Blues,
+            },
+        },
         ...overrides,
     })
 }
