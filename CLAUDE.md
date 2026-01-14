@@ -9,7 +9,7 @@ A configurable data visualization library for creating interactive charts. Extra
 ```bash
 bun install              # Install dependencies
 bun run storybook        # Run Storybook on port 6006
-bun run build-storybook  # Build Storybook for production
+bun run build            # Build Storybook for production
 bun run serve-storybook  # Serve production build on port 6006
 bun test                 # Run tests
 bun run typecheck        # TypeScript check

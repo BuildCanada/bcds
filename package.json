@@ -21,12 +21,11 @@
     "node": ">=22.0"
   },
   "scripts": {
-    "build": "",
+    "build": "storybook build -o storybook-static",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook-static",
     "serve-storybook": "serve storybook-static -p 6006"
   },
   "keywords": [
