@@ -1,9 +1,0 @@
-.wrapper {
-    max-width: $wrapper-max-width;
-    @include wrapper-x-spacing;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}

@@ -1,7 +1,0 @@
-{
-    "extends": "../../../devTools/tsconfigs/tsconfig.base.json",
-    "compilerOptions": {
-        "module": "es2022",
-        "outDir": "./dist"
-    }
-}

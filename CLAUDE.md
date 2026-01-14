@@ -1,55 +1,75 @@
-# Bash commands
+# CLAUDE.md
 
-- yarn typecheck: runs the typescript typechecker across all files
-- yarn testLintChanged: run eslint on changed files
-- yarn testPrettierChanged: run prettier on changed files
-- yarn fixPrettierChanged: attempt to fix prettier issues on changed files
-- yarn test run --reporter dot: run unit tests. Uses vitest, can take one or more test filenames to only run a subset.
-- make migrate: apply migrations
-- make dbtest: run database and api tests
+## Project: @buildcanada/charts (Standalone)
 
-When you have completed implementing a big set of changes, run `yarn typecheck` and fix any errors you have.
+A configurable data visualization library for creating interactive charts. Extracted from Our World in Data's Grapher.
 
-When you want to create a git commit, refer to docs/agent-guidelines/commit-messages.md for instructions.
+## Commands
 
-## Code style
+```bash
+yarn install        # Install dependencies
+yarn storybook      # Run Storybook on port 6006
+yarn test           # Run tests
+yarn typecheck      # TypeScript check
+```
 
-- We use double quotes for string literals instead of single quotes
-- Use type definitions for function params and return values. Reuse existing shared type definitions where possible.
-- Avoid the use of the `any` type. Only use it if you have to and ask for permission.
-- In Grapher and the admin, where we use MobX 6, we use a somewhat nonstandard setup. We use class based components with TC-39 stage 3 decorators, but only for @computed and @action properties. The observable props are not marked with @observable, but are instead listed in the constructor in a `makeObservable` call. The `makeObservable` call must mention all obserable props, but none of the @computed or @action ones.
-- For CSS, we mostly use named style classes following the BEM conventions in separate .scss files. We usually avoid inline styles - only use those if the component you are working on already makes use of them for a similar use case. Components usually have a companion scss file with the same name. The entry point for our site styles is /site/owid.scss, the entry point for grapher styles is /packages/@ourworldindata/grapher/src/core/grapher.scss
+## Architecture
 
-# Codebase overview
+- **React 19** with **MobX 6** for state management
+- Uses TC-39 stage 3 decorators for `@computed` and `@action`
+- Observable props are listed in `makeObservable()` calls, not decorated with `@observable`
 
-This is a sort of monorepo for the Our World In Data website, including our custom data viz react component, Grapher. The codebase is in typescript, uses React 19 and Node 22.
+## File Structure
 
-Some key directories, going roughly along the dependency chain from the most standalone pieces to the one with the most dependencies:
+```
+src/
+├── components/     # Reusable UI components
+├── config/         # ChartsProvider context
+├── core-table/     # Data table handling (OwidTable)
+├── explorer/       # Explorer component (data explorer UI)
+├── grapher/        # Main charting components
+├── styles/         # Global SCSS styles
+├── types/          # TypeScript types
+└── utils/          # Utility functions
+```
 
-- ./packages/types - shared type definitions
-- ./packages/utils - utility functions
-- ./packages/core-table - our custom dataframe classes used by Grapher
-- ./packages/components - shared React components
-- ./packages/grapher - our data viz component. Written using MobX 6 for state management
-- ./packages/explorer - our data explorer that wraps grapher and adds additional drop-downs to explore more complex datasets
-- ./db - code to access our MySQL 8 database as well as a substantial amount of business logic around reading ArchieML written in Google Docs
-- ./site - code for our website (React rendering ArchieML). This part of the codebase does not use MobX but instead uses React hooks
-- ./baker - code that "bakes" our website by rendering React to static HTML
-- ./adminSiteServer - internal API for our admin
-- ./adminSiteClient - client UI of the admin
-- ./devTools - various utilities
-- ./functions - CloudFlare Functions. Most of our website is static but all our charts under https://ourworldindata.org/grapher/* are behind CF functions. These handle dynamic thumbnail generation, data downloads for end users etc.
+## Key Components
 
-# Database documentation
+- **Grapher**: Main charting component with multiple visualization types
+- **Explorer**: Data explorer that wraps Grapher and adds additional controls
 
-Our main datastore is a mysql 8 database. The documentation for this lives in db/docs - there is README.md file which is a good overview and starting point, then one TABLE-NAME.yml file per table describing the table in more detail. ALWAYS list the directory db/docs/ to understand which tables are available and read the relevant table description files before constructing a query or writing a migration.
+## Code Style
 
-You can run (read only) queries against the database with `yarn query "QUERY TEXT"` - e.g. if you need to understand the contents of a table of the cardinality of various tables.
+- Double quotes for string literals
+- Use type definitions for function params and return values
+- Avoid the `any` type
+- BEM conventions for CSS in separate .scss files
+- Entry point for styles: `src/styles/charts.scss`
 
-# Additional documentation
+## MobX Pattern
 
-More details of our gdocs pipeline are described in these files:
+```typescript
+class MyComponent {
+    someObservable = "value"
 
-- ./docs/agent-guidelines/gdocs-cms-pipeline.md - detailed overview of our archieml pipeline from gdocs to our database. Read this before you work on gdocs related things.
-- ./docs/agent-guidelines/gdocs-class-hierarchy.md - overview of the different types of gdocs and how they differ and how to create new types.
-- ./docs/agent-guidelines/gdocs-attachments.md - outlines the attachments mechanism and how we use it to give the react components that ultimately render our site the necessary context
+    constructor() {
+        makeObservable(this, {
+            someObservable: observable,
+        })
+    }
+
+    @computed get derivedValue() {
+        return this.someObservable.toUpperCase()
+    }
+}
+```
+
+**Important**: Don't use `@computed` on getters that access `this.props` - props aren't observable in mobx-react.
+
+## Peer Dependencies
+
+This package expects the following to be provided by the consuming application:
+- `react` ^19.0.0
+- `react-dom` ^19.0.0
+- `mobx` ^6.13.0
+- `mobx-react` ^7.6.0

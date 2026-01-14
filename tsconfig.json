@@ -1,29 +1,25 @@
 {
-    "extends": "./devTools/tsconfigs/tsconfig.base.json",
-    "compilerOptions": {
-        "outDir": "./itsJustJavascript",
-        "composite": false,
-        "baseUrl": "./"
-    },
-    "files": [],
-    "references": [
-        { "path": "./packages/@ourworldindata/components" },
-        { "path": "./packages/@ourworldindata/core-table" },
-        { "path": "./packages/@ourworldindata/explorer" },
-        { "path": "./packages/@ourworldindata/grapher" },
-        { "path": "./packages/@ourworldindata/types" },
-        { "path": "./packages/@ourworldindata/utils" },
-        { "path": "./functions" },
-
-        { "path": "./adminShared" },
-        { "path": "./adminSiteClient" },
-        { "path": "./adminSiteServer" },
-        { "path": "./devTools/markdownTest" },
-        { "path": "./devTools/regionsUpdater" },
-        { "path": "./devTools/schema" },
-        { "path": "./devTools/svgTester" },
-        { "path": "./devTools/syncGraphersToR2" },
-        { "path": "./settings" },
-        { "path": "./site" }
-    ]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "dom.iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "strict": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "useDefineForClassFields": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
