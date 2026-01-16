@@ -1,0 +1,297 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Docs/Data Loading" />
+
+# Data Loading Guide
+
+This guide explains how to use `@buildcanada/charts` with your own CSV or JSON data.
+
+## Data Format Requirements
+
+All charts require data with these mandatory columns:
+- **Entity Name**: The name of the data series (e.g., country, category)
+- **Year**: The time dimension
+- **Value column(s)**: Your numeric data
+
+## Method 1: Using TestData Format (Recommended)
+
+The simplest approach uses the `createOwidTestDataset` helper with a structured array:
+
+```tsx
+import {
+  Grapher,
+  GrapherState,
+  createOwidTestDataset,
+  legacyToOwidTableAndDimensionsWithMandatorySlug,
+  GRAPHER_CHART_TYPES,
+  DimensionProperty,
+} from "@buildcanada/charts"
+import type { TestData, TestMetadata } from "@buildcanada/charts"
+
+// Step 1: Define your data as TestData array
+const myData: TestData = [
+  { year: 2020, entity: { id: 1, name: "Canada", code: "CAN" }, value: 100 },
+  { year: 2021, entity: { id: 1, name: "Canada", code: "CAN" }, value: 120 },
+  { year: 2020, entity: { id: 2, name: "USA", code: "USA" }, value: 200 },
+  { year: 2021, entity: { id: 2, name: "USA", code: "USA" }, value: 220 },
+]
+
+// Step 2: Define metadata for your indicator
+const myMetadata: TestMetadata = {
+  id: 1, // unique identifier for this variable
+  display: {
+    name: "GDP Growth",
+    unit: "%",
+    shortUnit: "%",
+    numDecimalPlaces: 1,
+  },
+}
+
+// Step 3: Create the dataset and table
+const variableId = myMetadata.id
+const dimensions = [
+  { variableId, property: DimensionProperty.y },
+]
+
+const dataset = createOwidTestDataset([
+  { data: myData, metadata: myMetadata },
+])
+
+const table = legacyToOwidTableAndDimensionsWithMandatorySlug(
+  dataset,
+  dimensions,
+  {} // optional: color mapping for entities
+)
+
+// Step 4: Create GrapherState
+const grapherState = new GrapherState({
+  title: "GDP Growth by Country",
+  dimensions,
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+})
+grapherState.inputTable = table
+```
+
+## Method 2: Loading from JSON
+
+If you have JSON data from an API or file:
+
+```tsx
+import {
+  Grapher,
+  GrapherState,
+  createOwidTestDataset,
+  legacyToOwidTableAndDimensionsWithMandatorySlug,
+  GRAPHER_CHART_TYPES,
+  DimensionProperty,
+} from "@buildcanada/charts"
+
+// Your JSON data
+const jsonData = [
+  { country: "Canada", year: 2020, gdp: 1.8 },
+  { country: "Canada", year: 2021, gdp: 5.0 },
+  { country: "USA", year: 2020, gdp: -3.4 },
+  { country: "USA", year: 2021, gdp: 5.7 },
+]
+
+// Create entity mapping (id must be unique per entity)
+const entityMap = new Map<string, { id: number; name: string }>()
+let entityId = 1
+jsonData.forEach((row) => {
+  if (!entityMap.has(row.country)) {
+    entityMap.set(row.country, { id: entityId++, name: row.country })
+  }
+})
+
+// Transform to TestData format
+const testData = jsonData.map((row) => ({
+  year: row.year,
+  entity: entityMap.get(row.country)!,
+  value: row.gdp,
+}))
+
+// Create metadata
+const metadata = {
+  id: 1,
+  display: {
+    name: "GDP Growth Rate",
+    unit: "%",
+    numDecimalPlaces: 1,
+  },
+}
+
+// Build chart
+const dimensions = [{ variableId: 1, property: DimensionProperty.y }]
+const dataset = createOwidTestDataset([{ data: testData, metadata }])
+const table = legacyToOwidTableAndDimensionsWithMandatorySlug(dataset, dimensions, {})
+
+const grapherState = new GrapherState({
+  title: "GDP Growth Rate",
+  dimensions,
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+})
+grapherState.inputTable = table
+```
+
+## Method 3: Loading from CSV
+
+For CSV data, parse it first then convert to the TestData format:
+
+```tsx
+import { parseDelimited } from "@buildcanada/charts"
+
+// CSV string (could be from file or fetch)
+const csvString = `country,year,value
+Canada,2020,100
+Canada,2021,120
+USA,2020,200
+USA,2021,220`
+
+// Parse CSV to rows
+const rows = parseDelimited(csvString) as Array<{
+  country: string
+  year: string
+  value: string
+}>
+
+// Create entity mapping
+const entityMap = new Map<string, { id: number; name: string }>()
+let entityId = 1
+rows.forEach((row) => {
+  if (!entityMap.has(row.country)) {
+    entityMap.set(row.country, { id: entityId++, name: row.country })
+  }
+})
+
+// Convert to TestData format
+const testData = rows.map((row) => ({
+  year: parseInt(row.year, 10),
+  entity: entityMap.get(row.country)!,
+  value: parseFloat(row.value),
+}))
+
+// Then create the chart as shown above...
+```
+
+### Loading CSV from a File (Browser)
+
+```tsx
+async function loadCSVFile(file: File) {
+  const text = await file.text()
+  const rows = parseDelimited(text)
+  // Transform to TestData format...
+}
+
+// Usage with file input
+<input type="file" accept=".csv" onChange={(e) => {
+  if (e.target.files?.[0]) {
+    loadCSVFile(e.target.files[0])
+  }
+}} />
+```
+
+### Loading CSV from URL
+
+```tsx
+async function loadCSVFromUrl(url: string) {
+  const response = await fetch(url)
+  const text = await response.text()
+  const rows = parseDelimited(text)
+  // Transform to TestData format...
+}
+```
+
+## Using fakeEntities for Common Countries
+
+The library provides pre-defined entity mappings for ~200 countries and regions:
+
+```tsx
+import { fakeEntities } from "@buildcanada/charts"
+
+// fakeEntities contains countries and regions with pre-assigned IDs
+const canadaEntity = fakeEntities["Canada"]
+const usaEntity = fakeEntities["United States"]
+
+// Use in your data
+const testData = [
+  { year: 2020, entity: fakeEntities["Canada"], value: 100 },
+  { year: 2020, entity: fakeEntities["United States"], value: 200 },
+]
+```
+
+## Pre-selecting Entities
+
+To show specific entities by default:
+
+```tsx
+const grapherState = new GrapherState({
+  // ...
+  selectedEntityNames: ["Canada", "USA", "Germany"],
+})
+```
+
+## Entity Colors
+
+Assign custom colors to entities:
+
+```tsx
+const entityColors = {
+  "Canada": "#ff0000",
+  "USA": "#0000ff",
+  "Germany": "#ffcc00",
+}
+
+const table = legacyToOwidTableAndDimensionsWithMandatorySlug(
+  dataset,
+  dimensions,
+  entityColors // Pass colors here
+)
+```
+
+## TypeScript Types
+
+Key types for working with data:
+
+```tsx
+import type {
+  TestData,        // Array of { year, entity, value }
+  TestMetadata,    // Variable metadata with display options
+  EntityName,      // string
+  EntityId,        // number
+  EntityCode,      // string
+} from "@buildcanada/charts"
+
+// TestData structure
+type TestData = Array<{
+  year: number
+  entity: { id: EntityId; code?: EntityCode; name?: EntityName }
+  value: string | number
+}>
+
+// TestMetadata structure
+type TestMetadata = {
+  id: number
+  display?: {
+    name?: string
+    unit?: string
+    shortUnit?: string
+    numDecimalPlaces?: number
+  }
+}
+```
+
+## Troubleshooting
+
+### Chart shows no data
+- Ensure entity names match between your data and the chart
+- Verify the year values are numbers, not strings
+- Check that `dimensions` includes the correct `variableId`
+
+### Colors not applying
+- Pass the color map to `legacyToOwidTableAndDimensionsWithMandatorySlug`
+- Entity names in the color map must exactly match data entity names
+
+## Next Steps
+
+- [Chart Types](/docs/docs-chart-types--docs) - Configure different visualizations
+- [Map Charts](/docs/docs-map-charts--docs) - Create geographic visualizations

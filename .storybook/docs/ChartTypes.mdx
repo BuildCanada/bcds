@@ -1,0 +1,185 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Docs/Chart Types" />
+
+# Chart Types
+
+Configure the chart type using the `chartTypes` property on `GrapherState`.
+
+## Available Chart Types
+
+```tsx
+import { GRAPHER_CHART_TYPES } from "@buildcanada/charts"
+
+// All available chart types:
+GRAPHER_CHART_TYPES.LineChart      // Time series line chart
+GRAPHER_CHART_TYPES.DiscreteBar    // Horizontal bar chart (single time point)
+GRAPHER_CHART_TYPES.StackedArea    // Stacked area chart
+GRAPHER_CHART_TYPES.StackedBar     // Vertical stacked bar chart
+GRAPHER_CHART_TYPES.SlopeChart     // Slope chart (two time points)
+GRAPHER_CHART_TYPES.ScatterPlot    // Scatter plot (requires x and y)
+GRAPHER_CHART_TYPES.Marimekko      // Marimekko chart
+```
+
+## Line Chart
+
+Best for showing trends over time for one or more entities.
+
+```tsx
+import { GrapherState, GRAPHER_CHART_TYPES, DimensionProperty } from "@buildcanada/charts"
+
+const grapherState = new GrapherState({
+  title: "Life Expectancy Over Time",
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+  selectedEntityNames: ["Canada", "United States", "Germany"],
+})
+grapherState.inputTable = table
+```
+
+## Discrete Bar Chart
+
+Best for comparing values across entities at a single point in time.
+
+```tsx
+const grapherState = new GrapherState({
+  title: "GDP by Country (2023)",
+  chartTypes: [GRAPHER_CHART_TYPES.DiscreteBar],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+})
+```
+
+## Stacked Area Chart
+
+Best for showing how parts contribute to a whole over time.
+
+```tsx
+const grapherState = new GrapherState({
+  title: "Energy Sources Over Time",
+  chartTypes: [GRAPHER_CHART_TYPES.StackedArea],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+})
+```
+
+## Stacked Bar Chart
+
+Best for comparing composition across categories.
+
+```tsx
+const grapherState = new GrapherState({
+  title: "Population by Age Group",
+  chartTypes: [GRAPHER_CHART_TYPES.StackedBar],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+})
+```
+
+## Slope Chart
+
+Best for showing change between two specific time points.
+
+```tsx
+const grapherState = new GrapherState({
+  title: "Life Expectancy: 2000 vs 2020",
+  chartTypes: [GRAPHER_CHART_TYPES.SlopeChart],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+})
+```
+
+## Scatter Plot
+
+Best for showing relationships between two variables. Requires both X and Y dimensions.
+
+```tsx
+import { createOwidTestDataset, legacyToOwidTableAndDimensionsWithMandatorySlug } from "@buildcanada/charts"
+
+// Define two variables
+const gdpData = [
+  { year: 2020, entity: { id: 1, name: "Canada" }, value: 45000 },
+  { year: 2020, entity: { id: 2, name: "USA" }, value: 63000 },
+]
+
+const lifeExpData = [
+  { year: 2020, entity: { id: 1, name: "Canada" }, value: 82 },
+  { year: 2020, entity: { id: 2, name: "USA" }, value: 78 },
+]
+
+const dimensions = [
+  { variableId: 1, property: DimensionProperty.x },
+  { variableId: 2, property: DimensionProperty.y },
+]
+
+const dataset = createOwidTestDataset([
+  { data: gdpData, metadata: { id: 1, display: { name: "GDP per capita" } } },
+  { data: lifeExpData, metadata: { id: 2, display: { name: "Life expectancy" } } },
+])
+
+const table = legacyToOwidTableAndDimensionsWithMandatorySlug(dataset, dimensions, {})
+
+const grapherState = new GrapherState({
+  title: "GDP vs Life Expectancy",
+  chartTypes: [GRAPHER_CHART_TYPES.ScatterPlot],
+  dimensions,
+})
+grapherState.inputTable = table
+```
+
+## Multiple Chart Types
+
+You can enable multiple chart types to let users switch between views:
+
+```tsx
+const grapherState = new GrapherState({
+  title: "Flexible Chart",
+  chartTypes: [
+    GRAPHER_CHART_TYPES.LineChart,
+    GRAPHER_CHART_TYPES.DiscreteBar,
+    GRAPHER_CHART_TYPES.StackedArea,
+  ],
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+})
+```
+
+## Chart Configuration Options
+
+### Time Range
+
+```tsx
+const grapherState = new GrapherState({
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+  minTime: 2000,  // Start year
+  maxTime: 2020,  // End year
+  // ...
+})
+```
+
+### Axis Configuration
+
+```tsx
+const grapherState = new GrapherState({
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+  yAxis: {
+    min: 0,
+    max: 100,
+    scaleType: "linear", // or "log"
+  },
+  // ...
+})
+```
+
+### Hide Controls
+
+```tsx
+const grapherState = new GrapherState({
+  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+  hideEntityControls: true,   // Hide entity picker
+  hideTimeline: true,         // Hide time slider
+  hideRelativeToggle: true,   // Hide relative/absolute toggle
+  // ...
+})
+```
+
+## Next Steps
+
+- [Map Charts](/docs/docs-map-charts--docs) - Geographic visualizations
+- [Data Loading](/docs/docs-data-loading--docs) - Load your own data
+- [Charts/Grapher](/docs/charts-grapher--docs) - Interactive examples

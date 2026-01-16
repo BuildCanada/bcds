@@ -60,13 +60,12 @@ function App() {
 Use the `Grapher` component with a `GrapherState`:
 
 ```tsx
-import { Grapher, GrapherState } from "@buildcanada/charts"
-import { Bounds } from "@buildcanada/charts/src/utils"
+import { Grapher, GrapherState, Bounds, GRAPHER_CHART_TYPES } from "@buildcanada/charts"
 
 function MyChart() {
   const grapherState = new GrapherState({
     bounds: new Bounds(0, 0, 800, 600),
-    chartTypes: ["LineChart"],
+    chartTypes: [GRAPHER_CHART_TYPES.LineChart],
     title: "My Chart",
     // ... chart configuration
   })
@@ -80,13 +79,12 @@ function MyChart() {
 For development and testing, you can use the included sample data:
 
 ```tsx
-import { LifeExpectancyGrapher } from "@buildcanada/charts"
-import { Bounds } from "@buildcanada/charts/src/utils"
+import { Grapher, LifeExpectancyGrapher, Bounds, GRAPHER_CHART_TYPES } from "@buildcanada/charts"
 
 function DemoChart() {
   const grapherState = LifeExpectancyGrapher({
     bounds: new Bounds(0, 0, 1100, 660),
-    chartTypes: ["LineChart"],
+    chartTypes: [GRAPHER_CHART_TYPES.LineChart],
   })
 
   return <Grapher grapherState={grapherState} />
@@ -119,5 +117,8 @@ Charts automatically resize to fit their container. Wrap them in a sized contain
 
 ## Next Steps
 
+- [Data Loading](/docs/docs-data-loading--docs) - Load your own CSV/JSON data
+- [Chart Types](/docs/docs-chart-types--docs) - Configure different visualizations
+- [Map Charts](/docs/docs-map-charts--docs) - Geographic visualizations
 - [Configuration](/docs/docs-configuration--docs) - Customize branding and data sources
 - [Charts/Grapher](/docs/charts-grapher--docs) - View chart type examples

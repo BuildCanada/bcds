@@ -208,3 +208,19 @@ export {
     type TestMetadata,
 } from "./grapher/testData/OwidTestData.js"
 export { LifeExpectancyGrapher } from "./grapher/testData/OwidTestData.sample.js"
+
+// Types commonly needed for data loading
+export {
+    DimensionProperty,
+    GRAPHER_CHART_TYPES,
+    ALL_GRAPHER_CHART_TYPES,
+    ColorSchemeName,
+    MapRegionName,
+    type EntityName,
+    type EntityId,
+    type EntityCode,
+} from "./types/index.js"
+
+// Utilities for data loading
+export { Bounds } from "./utils/index.js"
+export { parseDelimited, OwidTable, BlankOwidTable } from "./core-table/index.js"

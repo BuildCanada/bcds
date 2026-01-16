@@ -14,8 +14,23 @@
     "./src/styles/charts.scss": "./src/styles/charts.scss",
     "./src/*": "./src/*"
   },
-  "directories": {
-    "lib": "src"
+  "files": [
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "!src/**/*.stories.tsx"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuildCanada/bcds.git",
+    "directory": "packages/charts"
+  },
+  "bugs": {
+    "url": "https://github.com/BuildCanada/bcds/issues"
+  },
+  "homepage": "https://github.com/BuildCanada/bcds#readme",
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=22.0"

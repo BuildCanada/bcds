@@ -1,0 +1,288 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Docs/Map Charts" />
+
+# Map Charts
+
+Create geographic visualizations with choropleth maps.
+
+## Basic World Map
+
+To display a world map, set `hasMapTab: true` and `tab: "map"`:
+
+```tsx
+import {
+  GrapherState,
+  DimensionProperty,
+  MapRegionName,
+  ColorSchemeName,
+} from "@buildcanada/charts"
+
+const grapherState = new GrapherState({
+  title: "Life Expectancy by Country",
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+  hasMapTab: true,
+  tab: "map",
+  map: {
+    region: MapRegionName.World,
+    colorScale: {
+      baseColorScheme: ColorSchemeName.Blues,
+    },
+  },
+})
+grapherState.inputTable = table
+```
+
+## Map Regions
+
+The library supports several map regions:
+
+```tsx
+import { MapRegionName } from "@buildcanada/charts"
+
+MapRegionName.World          // Global map
+MapRegionName.Africa         // African continent
+MapRegionName.Asia           // Asian continent
+MapRegionName.Europe         // European continent
+MapRegionName.NorthAmerica   // North America
+MapRegionName.SouthAmerica   // South America
+MapRegionName.Oceania        // Oceania region
+MapRegionName.Canada         // Canadian provinces/territories
+```
+
+## Canada Provincial Map
+
+For Canadian provincial/territorial data:
+
+```tsx
+const grapherState = new GrapherState({
+  title: "Population by Province",
+  dimensions: [{ variableId: 1, property: DimensionProperty.y }],
+  hasMapTab: true,
+  tab: "map",
+  map: {
+    region: MapRegionName.Canada,
+    colorScale: {
+      baseColorScheme: ColorSchemeName.Reds,
+    },
+  },
+})
+grapherState.inputTable = table
+```
+
+**Important**: For Canada maps, entity names must match province/territory names exactly:
+- Ontario
+- Quebec
+- British Columbia
+- Alberta
+- Manitoba
+- Saskatchewan
+- Nova Scotia
+- New Brunswick
+- Newfoundland and Labrador
+- Prince Edward Island
+- Northwest Territories
+- Yukon
+- Nunavut
+
+## Color Schemes
+
+Available color schemes for maps:
+
+```tsx
+import { ColorSchemeName } from "@buildcanada/charts"
+
+// Sequential (single hue)
+ColorSchemeName.Blues
+ColorSchemeName.Greens
+ColorSchemeName.Reds
+ColorSchemeName.Oranges
+ColorSchemeName.Purples
+ColorSchemeName.Greys
+
+// Sequential (multi-hue)
+ColorSchemeName.YlGn        // Yellow-Green
+ColorSchemeName.YlGnBu      // Yellow-Green-Blue
+ColorSchemeName.GnBu        // Green-Blue
+ColorSchemeName.BuGn        // Blue-Green
+ColorSchemeName.PuBuGn      // Purple-Blue-Green
+ColorSchemeName.PuBu        // Purple-Blue
+ColorSchemeName.BuPu        // Blue-Purple
+ColorSchemeName.RdPu        // Red-Purple
+ColorSchemeName.PuRd        // Purple-Red
+ColorSchemeName.OrRd        // Orange-Red
+ColorSchemeName.YlOrRd      // Yellow-Orange-Red
+ColorSchemeName.YlOrBr      // Yellow-Orange-Brown
+
+// Diverging
+ColorSchemeName.RdYlBu      // Red-Yellow-Blue
+ColorSchemeName.RdYlGn      // Red-Yellow-Green
+ColorSchemeName.BrBG        // Brown-Blue-Green
+ColorSchemeName.PRGn        // Purple-Green
+ColorSchemeName.PiYG        // Pink-Yellow-Green
+ColorSchemeName.RdBu        // Red-Blue
+ColorSchemeName.RdGy        // Red-Grey
+ColorSchemeName.PuOr        // Purple-Orange
+```
+
+## Map Configuration Options
+
+### Color Scale
+
+```tsx
+const grapherState = new GrapherState({
+  // ...
+  map: {
+    region: MapRegionName.World,
+    colorScale: {
+      baseColorScheme: ColorSchemeName.Blues,
+      binningStrategy: "manual",  // or "equalInterval", "quantile"
+      customNumericValues: [10, 25, 50, 75, 100],  // Custom bin boundaries
+      customNumericLabels: ["Low", "Medium-Low", "Medium", "Medium-High", "High"],
+    },
+  },
+})
+```
+
+### Time Configuration
+
+```tsx
+const grapherState = new GrapherState({
+  // ...
+  map: {
+    region: MapRegionName.World,
+    time: 2020,  // Show data for specific year
+    // Or use timeTolerance to show nearest available data
+    timeTolerance: 5,
+  },
+})
+```
+
+### Projection
+
+```tsx
+const grapherState = new GrapherState({
+  // ...
+  map: {
+    region: MapRegionName.World,
+    projection: "Robinson",  // Default world projection
+  },
+})
+```
+
+## Entity Name Requirements
+
+For maps to display correctly, entity names in your data must match the geographic names expected by the map:
+
+### World Map Entity Names
+
+Use standard country names:
+- "United States" (not "USA")
+- "United Kingdom" (not "UK")
+- "South Korea" (not "Korea")
+- "Democratic Republic of Congo" (full name)
+
+### Example: Creating Map Data
+
+```tsx
+import { fakeEntities } from "@buildcanada/charts"
+
+// Use fakeEntities for correct country names and IDs
+const mapData = [
+  { year: 2020, entity: fakeEntities["Canada"], value: 82 },
+  { year: 2020, entity: fakeEntities["United States"], value: 78 },
+  { year: 2020, entity: fakeEntities["Germany"], value: 81 },
+  { year: 2020, entity: fakeEntities["Japan"], value: 84 },
+]
+```
+
+## Complete Map Example
+
+```tsx
+import {
+  ChartsProvider,
+  Grapher,
+  GrapherState,
+  createOwidTestDataset,
+  legacyToOwidTableAndDimensionsWithMandatorySlug,
+  fakeEntities,
+  DimensionProperty,
+  MapRegionName,
+  ColorSchemeName,
+  Bounds,
+} from "@buildcanada/charts"
+import "@buildcanada/charts/styles.css"
+
+// Sample data for a few countries
+const lifeExpData = [
+  { year: 2020, entity: fakeEntities["Canada"], value: 82.2 },
+  { year: 2020, entity: fakeEntities["United States"], value: 78.9 },
+  { year: 2020, entity: fakeEntities["Germany"], value: 81.3 },
+  { year: 2020, entity: fakeEntities["Japan"], value: 84.6 },
+  { year: 2020, entity: fakeEntities["Brazil"], value: 75.9 },
+  { year: 2020, entity: fakeEntities["India"], value: 70.4 },
+  { year: 2020, entity: fakeEntities["China"], value: 77.1 },
+  { year: 2020, entity: fakeEntities["Nigeria"], value: 54.7 },
+]
+
+const metadata = {
+  id: 1,
+  display: {
+    name: "Life expectancy at birth",
+    unit: "years",
+    numDecimalPlaces: 1,
+  },
+}
+
+const dimensions = [{ variableId: 1, property: DimensionProperty.y }]
+const dataset = createOwidTestDataset([{ data: lifeExpData, metadata }])
+const table = legacyToOwidTableAndDimensionsWithMandatorySlug(dataset, dimensions, {})
+
+const grapherState = new GrapherState({
+  title: "Life Expectancy by Country (2020)",
+  dimensions,
+  bounds: new Bounds(0, 0, 800, 600),
+  hasMapTab: true,
+  tab: "map",
+  map: {
+    region: MapRegionName.World,
+    colorScale: {
+      baseColorScheme: ColorSchemeName.YlGnBu,
+    },
+  },
+})
+grapherState.inputTable = table
+
+function WorldMapChart() {
+  return (
+    <ChartsProvider>
+      <div style={{ width: "800px", height: "600px" }}>
+        <Grapher grapherState={grapherState} />
+      </div>
+    </ChartsProvider>
+  )
+}
+```
+
+## Troubleshooting
+
+### Map shows blank regions
+- Entity names must exactly match geographic region names
+- Check for typos or alternative spellings
+- Use `fakeEntities` to ensure correct names
+
+### Colors not showing
+- Ensure data values are numeric
+- Check that the year in your data matches the map's time setting
+- Verify the color scale configuration
+
+### Wrong projection
+- Different regions use different default projections
+- World maps use Robinson projection
+- Continental maps use appropriate regional projections
+
+## Next Steps
+
+- [Data Loading](/docs/docs-data-loading--docs) - Load your own data
+- [Chart Types](/docs/docs-chart-types--docs) - Other visualization options
+- [Charts/Grapher](/docs/charts-grapher--docs) - Interactive examples
