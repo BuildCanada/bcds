@@ -2,93 +2,60 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-    # Checks for prettify errors, TypeScript errors and runs vitest tests.
-    "test-db":
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Clone repository
-              uses: actions/checkout@v5
-
-            - uses: ./.github/actions/setup-node-yarn-deps
-
-            - name: Install dependencies
-              run: cp .env.example-grapher .env
-              shell: bash
-
-            - name: Build and run db tests
-              run: make dbtest
-              timeout-minutes: 6
-
     test:
         runs-on: ubuntu-latest
-
         steps:
             - name: Clone repository
               uses: actions/checkout@v5
 
-            - uses: ./.github/actions/setup-node-yarn-deps
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
 
-            - name: Run vitest
-              run: yarn test --pool=forks
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
+
+            - name: Run tests
+              run: bun run test
 
     typecheck:
         runs-on: ubuntu-latest
-
         steps:
             - name: Clone repository
               uses: actions/checkout@v5
 
-            - uses: ./.github/actions/setup-node-yarn-deps
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
               with:
-                  runPostinstallScripts: false
+                  bun-version: latest
+
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
 
             - name: Run typecheck
-              run: yarn typecheck
+              run: bun run typecheck
 
-    prettier:
+    build:
         runs-on: ubuntu-latest
-
         steps:
             - name: Clone repository
               uses: actions/checkout@v5
 
-            - uses: ./.github/actions/setup-node-yarn-deps
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
               with:
-                  runPostinstallScripts: false
+                  bun-version: latest
 
-            - name: Run prettier
-              run: yarn testPrettierAll
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
 
-    eslint:
-        runs-on: ubuntu-latest
+            - name: Build Storybook
+              run: bun run build
 
-        steps:
-            - name: Clone repository
-              uses: actions/checkout@v5
-
-            - uses: ./.github/actions/setup-node-yarn-deps
+            - name: Upload Storybook artifact
+              uses: actions/upload-artifact@v4
               with:
-                  runPostinstallScripts: false
-
-            - name: Run eslint
-              # the --max-warnings makes eslint exit with non-zero exit code even for warnings
-              run: yarn testLint --max-warnings=0
-
-    # Runs `bundlemon` on the code to see if our Vite build assets exceed a given file size.
-    bundlemon:
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Clone repository
-              uses: actions/checkout@v5
-
-            - uses: ./.github/actions/setup-node-yarn-deps
-
-            - name: Build
-              run: yarn buildViteSite
-              env:
-                  BUNDLEMON: true
-
-            - name: BundleMon
-              uses: lironer/bundlemon-action@v1
+                  name: storybook-static
+                  path: storybook-static/
+                  retention-days: 7

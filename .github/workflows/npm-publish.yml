@@ -1,50 +1,95 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
-  workflow_dispatch:
-    inputs:
-      dry-run:
-        description: 'Run in dry-run mode (no actual publish)'
-        required: false
-        default: 'false'
-        type: boolean
+    release:
+        types: [published]
+    workflow_dispatch:
+        inputs:
+            dry-run:
+                description: "Run in dry-run mode (no actual publish)"
+                required: false
+                default: "false"
+                type: boolean
+            package:
+                description: "Package to publish (charts, colours, or all)"
+                required: false
+                default: "all"
+                type: choice
+                options:
+                    - all
+                    - charts
+                    - colours
+
+env:
+    DRY_RUN: ${{ github.event.inputs.dry-run == 'true' && '--dry-run' || '' }}
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write  # Required for npm provenance
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+    publish-charts:
+        if: github.event.inputs.package == 'all' || github.event.inputs.package == 'charts' || github.event_name == 'release'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            id-token: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22"
+                  registry-url: "https://registry.npmjs.org"
 
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
 
-      - name: Run tests
-        run: bun test
+            - name: Run tests
+              run: bun run test
 
-      - name: Verify package can be packed
-        run: npm pack --dry-run
+            - name: Verify charts package can be packed
+              run: cd packages/charts && npm pack --dry-run
 
-      - name: Publish to npm (dry-run)
-        if: github.event.inputs.dry-run == 'true'
-        run: npm publish --access public --dry-run
+            - name: Publish @buildcanada/charts
+              run: cd packages/charts && npm publish --access public --provenance ${{ env.DRY_RUN }}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm with provenance
-        if: github.event.inputs.dry-run != 'true'
-        run: npm publish --access public --provenance
+    publish-colours:
+        if: github.event.inputs.package == 'all' || github.event.inputs.package == 'colours' || github.event_name == 'release'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            id-token: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v5
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22"
+                  registry-url: "https://registry.npmjs.org"
+
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
+
+            - name: Build colours package
+              run: cd packages/colours && bun run build
+
+            - name: Verify colours package can be packed
+              run: cd packages/colours && npm pack --dry-run
+
+            - name: Publish @buildcanada/colours
+              run: cd packages/colours && npm publish --access public --provenance ${{ env.DRY_RUN }}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
