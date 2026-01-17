@@ -45,16 +45,6 @@ jobs:
                   node-version: "22"
                   registry-url: "https://registry.npmjs.org"
 
-            - name: Clear auth token for OIDC
-              run: |
-                  # Remove the _authToken line so npm uses OIDC instead
-                  NPMRC="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
-                  echo "npmrc location: $NPMRC"
-                  cat "$NPMRC" || echo "No .npmrc found"
-                  sed -i '/_authToken/d' "$NPMRC" 2>/dev/null || true
-                  echo "After removing _authToken:"
-                  cat "$NPMRC" || echo "No .npmrc found"
-
             - name: Install dependencies
               run: bun install --frozen-lockfile
 
@@ -66,6 +56,8 @@ jobs:
 
             - name: Publish @buildcanada/charts
               run: cd packages/charts && npm publish --access public --provenance ${{ env.DRY_RUN }}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     publish-colours:
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'colours' || github.event_name == 'release'
@@ -88,16 +80,6 @@ jobs:
                   node-version: "22"
                   registry-url: "https://registry.npmjs.org"
 
-            - name: Clear auth token for OIDC
-              run: |
-                  # Remove the _authToken line so npm uses OIDC instead
-                  NPMRC="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
-                  echo "npmrc location: $NPMRC"
-                  cat "$NPMRC" || echo "No .npmrc found"
-                  sed -i '/_authToken/d' "$NPMRC" 2>/dev/null || true
-                  echo "After removing _authToken:"
-                  cat "$NPMRC" || echo "No .npmrc found"
-
             - name: Install dependencies
               run: bun install --frozen-lockfile
 
@@ -109,3 +91,5 @@ jobs:
 
             - name: Publish @buildcanada/colours
               run: cd packages/colours && npm publish --access public --provenance ${{ env.DRY_RUN }}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
