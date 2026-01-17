@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/charts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A configurable data visualization library for creating interactive charts. Extracted from Our World in Data's Grapher.",
   "type": "module",
   "main": "src/index.ts",
