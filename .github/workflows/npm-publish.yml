@@ -11,7 +11,7 @@ on:
                 default: "false"
                 type: boolean
             package:
-                description: "Package to publish (charts, colours, or all)"
+                description: "Package to publish (charts, colours, components, or all)"
                 required: false
                 default: "all"
                 type: choice
@@ -19,6 +19,7 @@ on:
                     - all
                     - charts
                     - colours
+                    - components
 
 permissions:
     id-token: write
@@ -66,3 +67,21 @@ jobs:
 
             - run: bunx npm publish --access public --provenance ${{ env.DRY_RUN }}
               working-directory: packages/colours
+
+    publish-components:
+        if: github.event.inputs.package == 'all' || github.event.inputs.package == 'components' || github.event_name == 'release'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "24"
+                  registry-url: "https://registry.npmjs.org"
+
+            - uses: oven-sh/setup-bun@v2
+
+            - run: bun install --frozen-lockfile
+
+            - run: bunx npm publish --access public --provenance ${{ env.DRY_RUN }}
+              working-directory: packages/components
