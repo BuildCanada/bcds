@@ -1,0 +1,34 @@
+/*******************************************************************************
+ * Build Canada Components - Main Stylesheet
+ *
+ * All @use statements must come first before any other rules
+ ******************************************************************************/
+
+@use "fonts";
+@use "tokens";
+@use "typography";
+
+// Component stylesheets (using @use to include their CSS output)
+@use "../primitives/Button/Button.scss";
+@use "../primitives/TextField/TextField.scss";
+@use "../primitives/Checkbox/Checkbox.scss";
+@use "../layout/Container/Container.scss";
+@use "../layout/Section/Section.scss";
+@use "../layout/Grid/Grid.scss";
+@use "../layout/Stack/Stack.scss";
+@use "../layout/Divider/Divider.scss";
+@use "../content/Card/Card.scss";
+@use "../content/Hero/Hero.scss";
+@use "../content/StatBlock/StatBlock.scss";
+@use "../navigation/Header/Header.scss";
+@use "../navigation/Footer/Footer.scss";
+
+/*******************************************************************************
+ * Base Styles
+ ******************************************************************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

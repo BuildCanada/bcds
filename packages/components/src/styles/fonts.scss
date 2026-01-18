@@ -1,0 +1,27 @@
+/*******************************************************************************
+ * Build Canada Font Definitions
+ ******************************************************************************/
+
+@font-face {
+  font-family: 'Soehne Kraftig';
+  src: url('/assets/fonts/soehne-kraftig.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Financier Text';
+  src: url('/assets/fonts/financier-text-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Mono';
+  src: url('/assets/fonts/founders-grotesk-mono-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

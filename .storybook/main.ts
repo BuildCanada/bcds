@@ -6,12 +6,19 @@ const config: StorybookConfig = {
         "./docs/**/*.mdx",
         "../packages/charts/src/**/*.stories.@(ts|tsx)",
         "../packages/colours/src/**/*.stories.@(ts|tsx)",
+        "../packages/components/src/**/*.stories.@(ts|tsx)",
     ],
-    addons: ["@storybook/addon-docs"],
+    addons: ["@storybook/addon-docs", "@storybook/addon-interactions"],
     framework: {
         name: "@storybook/react-vite",
         options: {},
     },
+    staticDirs: [
+        {
+            from: "../packages/components/src/assets",
+            to: "/assets",
+        },
+    ],
     typescript: {
         // Disable react-docgen because the codebase uses MobX decorators
         // (@observer before export) which aren't compatible with react-docgen
@@ -75,7 +82,10 @@ const config: StorybookConfig = {
             css: {
                 preprocessorOptions: {
                     scss: {
-                        includePaths: ["./packages/charts/src"],
+                        includePaths: [
+                            "./packages/charts/src",
+                            "./packages/components/src",
+                        ],
                         silenceDeprecations: ["import"],
                     },
                 },

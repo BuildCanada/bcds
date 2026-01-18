@@ -536,7 +536,8 @@ export async function fetchWithTimeout(
 // Country detection service URL - can be configured for custom deployments
 // This service should return JSON with a "country" object containing "code" and "name"
 const COUNTRY_DETECTION_URL =
-    process.env.COUNTRY_DETECTION_URL ?? "https://detect-country.example.com"
+    (typeof process !== "undefined" && process.env?.COUNTRY_DETECTION_URL) ||
+    "https://detect-country.example.com"
 
 const _getUserCountryInformation = async (): Promise<
     UserCountryInformation | undefined

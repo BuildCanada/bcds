@@ -1,0 +1,93 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * TextField Component
+ ******************************************************************************/
+
+.bc-textfield {
+  display: flex;
+  flex-direction: column;
+  gap: calc($space-1 / 2);
+
+  /***************************************************************************
+   * Label
+   ***************************************************************************/
+
+  &__label {
+    @include label;
+    color: $text-primary;
+  }
+
+  &__required {
+    color: $auburn;
+    margin-left: 2px;
+  }
+
+  /***************************************************************************
+   * Input
+   ***************************************************************************/
+
+  &__input {
+    @include body-2;
+    width: 100%;
+    padding: calc($space-1 + 4px) $space-2;
+    border: 2px solid $border-default;
+    border-radius: $radius-none;
+    background-color: $white;
+    color: $text-primary;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &::placeholder {
+      color: $text-muted;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $gray-400;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $auburn;
+      box-shadow: 0 0 0 3px rgba($auburn, 0.1);
+    }
+
+    &:disabled {
+      background-color: $gray-100;
+      color: $text-muted;
+      cursor: not-allowed;
+    }
+  }
+
+  /***************************************************************************
+   * Hint & Error
+   ***************************************************************************/
+
+  &__hint {
+    @include body-3;
+    color: $text-secondary;
+    margin: 0;
+  }
+
+  &__error {
+    @include body-3;
+    color: $auburn;
+    margin: 0;
+  }
+
+  /***************************************************************************
+   * States
+   ***************************************************************************/
+
+  &--error &__input {
+    border-color: $auburn;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($auburn, 0.15);
+    }
+  }
+
+  &--disabled &__label {
+    color: $text-muted;
+  }
+}

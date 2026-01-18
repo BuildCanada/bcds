@@ -1,0 +1,218 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * Button Component
+ *
+ * Design notes:
+ * - Square corners (border-radius: 0) per brand motif "Huge Square Buttons"
+ * - Uppercase text with letter-spacing
+ * - Three sizes: sm (36px), md (44px), lg (56px)
+ ******************************************************************************/
+
+.bc-btn {
+  @include button-text-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
+  border: 2px solid transparent;
+  border-radius: $radius-none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid $auburn;
+    outline-offset: 2px;
+  }
+
+  /***************************************************************************
+   * Size Variants
+   ***************************************************************************/
+
+  &--sm {
+    @include button-text-sm;
+    padding: $space-1 $space-2;
+    min-height: 36px;
+  }
+
+  &--md {
+    @include button-text-md;
+    padding: calc($space-1 + 4px) $space-3;
+    min-height: 44px;
+  }
+
+  &--lg {
+    @include button-text-lg;
+    padding: $space-2 $space-4;
+    min-height: 56px;
+  }
+
+  /***************************************************************************
+   * Solid Variants
+   ***************************************************************************/
+
+  &--solid-auburn {
+    background-color: $auburn;
+    border-color: $auburn;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $auburn-600;
+      border-color: $auburn-600;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $auburn-700;
+      border-color: $auburn-700;
+    }
+  }
+
+  &--solid-charcoal {
+    background-color: $charcoal;
+    border-color: $charcoal;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-700;
+      border-color: $gray-700;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-600;
+      border-color: $gray-600;
+    }
+  }
+
+  &--solid-linen {
+    background-color: $linen;
+    border-color: $linen;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+      background-color: darken($linen, 5%);
+      border-color: darken($linen, 5%);
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($linen, 8%);
+      border-color: darken($linen, 8%);
+    }
+  }
+
+  /***************************************************************************
+   * Outline Variants
+   ***************************************************************************/
+
+  &--outline-auburn {
+    background-color: transparent;
+    border-color: $auburn;
+    color: $auburn;
+
+    &:hover:not(:disabled) {
+      background-color: $auburn;
+      color: $white;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $auburn-600;
+      border-color: $auburn-600;
+      color: $white;
+    }
+  }
+
+  &--outline-charcoal {
+    background-color: transparent;
+    border-color: $charcoal;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+      background-color: $charcoal;
+      color: $white;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-700;
+      border-color: $gray-700;
+      color: $white;
+    }
+  }
+
+  &--outline-white {
+    background-color: transparent;
+    border-color: $white;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $white;
+      color: $charcoal;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-100;
+      border-color: $gray-100;
+      color: $charcoal;
+    }
+  }
+
+  /***************************************************************************
+   * State Modifiers
+   ***************************************************************************/
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--icon-only {
+    padding: $space-1;
+
+    &.bc-btn--sm {
+      padding: calc($space-1 - 2px);
+      min-width: 36px;
+    }
+
+    &.bc-btn--md {
+      padding: calc($space-1 + 2px);
+      min-width: 44px;
+    }
+
+    &.bc-btn--lg {
+      padding: $space-2;
+      min-width: 56px;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  /***************************************************************************
+   * Icon Styles
+   ***************************************************************************/
+
+  &__icon {
+    font-size: 0.875em;
+    transition: transform $transition-fast;
+
+    &--left {
+      margin-right: $space-1;
+    }
+
+    &--right {
+      margin-left: $space-1;
+    }
+  }
+
+  // Animated arrow on hover (buildcanada.com style)
+  &:hover:not(:disabled) &__icon--right {
+    transform: translateX(4px);
+  }
+
+  &__text {
+    // Ensure text is vertically centered
+    line-height: 1;
+  }
+}

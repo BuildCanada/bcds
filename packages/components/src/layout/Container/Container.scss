@@ -1,0 +1,40 @@
+@use "../../styles/tokens" as *;
+
+/*******************************************************************************
+ * Container Component
+ *
+ * Max-width container with responsive padding
+ ******************************************************************************/
+
+.bc-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-3;
+  padding-right: $space-3;
+
+  @include md-up {
+    padding-left: $space-5;
+    padding-right: $space-5;
+  }
+
+  &--sm {
+    max-width: 640px;
+  }
+
+  &--md {
+    max-width: 768px;
+  }
+
+  &--lg {
+    max-width: 1024px;
+  }
+
+  &--xl {
+    max-width: 1280px;
+  }
+
+  &--full {
+    max-width: none;
+  }
+}

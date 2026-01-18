@@ -1,0 +1,301 @@
+/*******************************************************************************
+ * Build Canada Design Tokens
+ ******************************************************************************/
+
+@use "sass:color";
+
+/*******************************************************************************
+ * Brand Colors
+ ******************************************************************************/
+
+$linen: #F6ECE3;
+$charcoal: #272727;
+$auburn: #932F2F;
+$white: #FFFFFF;
+
+/*******************************************************************************
+ * Auburn Scale (Primary - Red)
+ ******************************************************************************/
+
+$auburn-50: #fef2f2;
+$auburn-100: #fee2e2;
+$auburn-200: #fecaca;
+$auburn-300: #fca5a5;
+$auburn-400: #f87171;
+$auburn-500: #932F2F;
+$auburn-600: #7f2828;
+$auburn-700: #6b2121;
+$auburn-800: #571a1a;
+$auburn-900: #431414;
+$auburn-950: #2f0e0e;
+
+/*******************************************************************************
+ * Cerulean Scale (Secondary - Blue)
+ ******************************************************************************/
+
+$cerulean-50: #effafc;
+$cerulean-100: #d5f1f8;
+$cerulean-200: #b1e3f0;
+$cerulean-300: #7bcde5;
+$cerulean-400: #3daed3;
+$cerulean-500: #2397c0;
+$cerulean-600: #1f759b;
+$cerulean-700: #1f5f7f;
+$cerulean-800: #224f68;
+$cerulean-900: #204259;
+$cerulean-950: #102b3c;
+
+/*******************************************************************************
+ * Sienna Scale (Tertiary - Orange)
+ ******************************************************************************/
+
+$sienna-50: #fffbeb;
+$sienna-100: #fef3c7;
+$sienna-200: #fde68a;
+$sienna-300: #fcd34d;
+$sienna-400: #f5872c;
+$sienna-500: #AF5D16;
+$sienna-600: #92400e;
+$sienna-700: #7f4a1f;
+$sienna-800: #6b3a14;
+$sienna-900: #5a2d0e;
+$sienna-950: #451a0a;
+
+/*******************************************************************************
+ * Fantasia Scale (Supporting - Purple)
+ ******************************************************************************/
+
+$fantasia-50: #faf5ff;
+$fantasia-100: #f3e8ff;
+$fantasia-200: #e9d5ff;
+$fantasia-300: #d8b4fe;
+$fantasia-400: #c084fc;
+$fantasia-500: #653399;
+$fantasia-600: #7c3aed;
+$fantasia-700: #6d28d9;
+$fantasia-800: #5b21b6;
+$fantasia-900: #4c1d95;
+$fantasia-950: #2e1065;
+
+/*******************************************************************************
+ * Emerald Scale (Supporting - Green)
+ ******************************************************************************/
+
+$emerald-50: #ecfdf5;
+$emerald-100: #d1fae5;
+$emerald-200: #a7f3d0;
+$emerald-300: #6ee7b7;
+$emerald-400: #34d399;
+$emerald-500: #2AB34B;
+$emerald-600: #059669;
+$emerald-700: #047857;
+$emerald-800: #065f46;
+$emerald-900: #064e3b;
+$emerald-950: #022c22;
+
+/*******************************************************************************
+ * Gray Scale (Neutrals)
+ ******************************************************************************/
+
+$gray-50: #fafafa;
+$gray-100: #f5f5f5;
+$gray-200: #e5e5e5;
+$gray-300: #d4d4d4;
+$gray-400: #a3a3a3;
+$gray-500: #737373;
+$gray-600: #525252;
+$gray-700: #404040;
+$gray-800: #272727;
+$gray-900: #171717;
+$gray-950: #0a0a0a;
+
+/*******************************************************************************
+ * Semantic Colors
+ ******************************************************************************/
+
+$text-primary: $charcoal;
+$text-secondary: $gray-600;
+$text-muted: $gray-500;
+$text-inverse: $white;
+
+$bg-primary: $white;
+$bg-secondary: $linen;
+$bg-inverse: $charcoal;
+
+$border-default: $gray-300;
+$border-muted: $gray-200;
+
+$accent-primary: $auburn;
+$accent-secondary: $cerulean-500;
+
+/*******************************************************************************
+ * Spacing (8px grid)
+ ******************************************************************************/
+
+$space-0: 0;
+$space-1: 8px;
+$space-2: 16px;
+$space-3: 24px;
+$space-4: 32px;
+$space-5: 40px;
+$space-6: 48px;
+$space-8: 64px;
+$space-10: 80px;
+$space-12: 96px;
+$space-16: 128px;
+
+/*******************************************************************************
+ * Border Radius
+ ******************************************************************************/
+
+$radius-none: 0;
+$radius-sm: 2px;
+$radius-md: 4px;
+$radius-lg: 8px;
+$radius-full: 9999px;
+
+/*******************************************************************************
+ * Shadows
+ ******************************************************************************/
+
+$shadow-sm: 0 1px 2px rgba(39, 39, 39, 0.05);
+$shadow-md: 0 4px 6px rgba(39, 39, 39, 0.1);
+$shadow-lg: 0 10px 15px rgba(39, 39, 39, 0.1);
+$shadow-xl: 0 20px 25px rgba(39, 39, 39, 0.1);
+
+/*******************************************************************************
+ * Breakpoints
+ ******************************************************************************/
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+/*******************************************************************************
+ * Breakpoint Mixins
+ ******************************************************************************/
+
+@mixin sm-up {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: #{$breakpoint-sm - 1}) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: #{$breakpoint-md - 1}) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+/*******************************************************************************
+ * Z-Index Scale
+ ******************************************************************************/
+
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+/*******************************************************************************
+ * Transitions
+ ******************************************************************************/
+
+$transition-fast: 150ms ease;
+$transition-base: 200ms ease;
+$transition-slow: 300ms ease;
+
+/*******************************************************************************
+ * CSS Custom Properties Export
+ ******************************************************************************/
+
+:root {
+  // Brand
+  --bc-linen: #{$linen};
+  --bc-charcoal: #{$charcoal};
+  --bc-auburn: #{$auburn};
+  --bc-white: #{$white};
+
+  // Auburn scale
+  --bc-auburn-50: #{$auburn-50};
+  --bc-auburn-100: #{$auburn-100};
+  --bc-auburn-200: #{$auburn-200};
+  --bc-auburn-300: #{$auburn-300};
+  --bc-auburn-400: #{$auburn-400};
+  --bc-auburn-500: #{$auburn-500};
+  --bc-auburn-600: #{$auburn-600};
+  --bc-auburn-700: #{$auburn-700};
+  --bc-auburn-800: #{$auburn-800};
+  --bc-auburn-900: #{$auburn-900};
+  --bc-auburn-950: #{$auburn-950};
+
+  // Cerulean scale
+  --bc-cerulean-50: #{$cerulean-50};
+  --bc-cerulean-100: #{$cerulean-100};
+  --bc-cerulean-200: #{$cerulean-200};
+  --bc-cerulean-300: #{$cerulean-300};
+  --bc-cerulean-400: #{$cerulean-400};
+  --bc-cerulean-500: #{$cerulean-500};
+  --bc-cerulean-600: #{$cerulean-600};
+  --bc-cerulean-700: #{$cerulean-700};
+  --bc-cerulean-800: #{$cerulean-800};
+  --bc-cerulean-900: #{$cerulean-900};
+  --bc-cerulean-950: #{$cerulean-950};
+
+  // Gray scale
+  --bc-gray-50: #{$gray-50};
+  --bc-gray-100: #{$gray-100};
+  --bc-gray-200: #{$gray-200};
+  --bc-gray-300: #{$gray-300};
+  --bc-gray-400: #{$gray-400};
+  --bc-gray-500: #{$gray-500};
+  --bc-gray-600: #{$gray-600};
+  --bc-gray-700: #{$gray-700};
+  --bc-gray-800: #{$gray-800};
+  --bc-gray-900: #{$gray-900};
+  --bc-gray-950: #{$gray-950};
+
+  // Spacing
+  --bc-space-1: #{$space-1};
+  --bc-space-2: #{$space-2};
+  --bc-space-3: #{$space-3};
+  --bc-space-4: #{$space-4};
+  --bc-space-5: #{$space-5};
+  --bc-space-6: #{$space-6};
+  --bc-space-8: #{$space-8};
+  --bc-space-10: #{$space-10};
+}

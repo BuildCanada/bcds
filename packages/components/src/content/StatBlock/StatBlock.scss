@@ -1,0 +1,83 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * StatBlock Component
+ *
+ * Large formatted number with label, used for data display (canadaspends.com)
+ ******************************************************************************/
+
+.bc-stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: calc($space-1 / 2);
+
+  /***************************************************************************
+   * Size Variants
+   ***************************************************************************/
+
+  &--sm {
+    .bc-stat-block__value {
+      @include h2;
+    }
+
+    .bc-stat-block__label {
+      @include label-sm;
+    }
+  }
+
+  &--md {
+    .bc-stat-block__value {
+      @include display-2;
+    }
+
+    .bc-stat-block__label {
+      @include label;
+    }
+  }
+
+  &--lg {
+    .bc-stat-block__value {
+      @include display-1;
+    }
+
+    .bc-stat-block__label {
+      @include h4;
+    }
+  }
+
+  /***************************************************************************
+   * Elements
+   ***************************************************************************/
+
+  &__value {
+    color: $charcoal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__label {
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__description {
+    @include body-3;
+    color: $text-muted;
+    margin-top: calc($space-1 / 2);
+  }
+
+  &__change {
+    @include mono-sm;
+    color: $text-secondary;
+    margin-top: calc($space-1 / 2);
+
+    &--up {
+      color: $emerald-600;
+    }
+
+    &--down {
+      color: $auburn;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * Hero Component
+ ******************************************************************************/
+
+.bc-hero {
+  width: 100%;
+  padding: $space-8 0;
+
+  @include md-up {
+    padding: $space-10 0;
+  }
+
+  /***************************************************************************
+   * Background Variants
+   ***************************************************************************/
+
+  &--bg-white {
+    background-color: $white;
+    color: $text-primary;
+  }
+
+  &--bg-linen {
+    background-color: $linen;
+    color: $text-primary;
+  }
+
+  &--bg-charcoal {
+    background-color: $charcoal;
+    color: $text-inverse;
+
+    .bc-hero__subtitle {
+      color: rgba($white, 0.8);
+    }
+  }
+
+  /***************************************************************************
+   * Inner Container
+   ***************************************************************************/
+
+  &__inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 $space-3;
+
+    @include md-up {
+      padding: 0 $space-5;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Home (large, centered)
+   ***************************************************************************/
+
+  &--home {
+    padding: $space-10 0;
+
+    @include md-up {
+      padding: $space-16 0;
+    }
+
+    .bc-hero__inner {
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .bc-hero__title {
+      @include display-1;
+      margin: 0 0 $space-3;
+    }
+
+    .bc-hero__subtitle {
+      @include body-lg;
+      max-width: 640px;
+      margin: 0 auto $space-4;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Page (standard page header)
+   ***************************************************************************/
+
+  &--page {
+    padding: $space-6 0;
+
+    @include md-up {
+      padding: $space-8 0;
+    }
+
+    .bc-hero__title {
+      @include display-2;
+      margin: 0 0 $space-2;
+    }
+
+    .bc-hero__subtitle {
+      @include body-1;
+      color: $text-secondary;
+      margin: 0;
+      max-width: 640px;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Centered
+   ***************************************************************************/
+
+  &--centered {
+    .bc-hero__inner {
+      text-align: center;
+    }
+
+    .bc-hero__title {
+      @include display-2;
+      margin: 0 0 $space-2;
+    }
+
+    .bc-hero__subtitle {
+      @include body-1;
+      color: $text-secondary;
+      margin: 0 auto;
+      max-width: 640px;
+    }
+  }
+
+  /***************************************************************************
+   * Subcomponents
+   ***************************************************************************/
+
+  &__title {
+    color: inherit;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-top: $space-4;
+
+    .bc-hero--home &,
+    .bc-hero--centered & {
+      justify-content: center;
+    }
+  }
+}

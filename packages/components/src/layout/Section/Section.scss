@@ -1,0 +1,74 @@
+@use "../../styles/tokens" as *;
+
+/*******************************************************************************
+ * Section Component
+ *
+ * Full-width section with background color variants
+ ******************************************************************************/
+
+.bc-section {
+  width: 100%;
+
+  /***************************************************************************
+   * Background Variants
+   ***************************************************************************/
+
+  &--bg-white {
+    background-color: $white;
+    color: $text-primary;
+  }
+
+  &--bg-linen {
+    background-color: $linen;
+    color: $text-primary;
+  }
+
+  &--bg-charcoal {
+    background-color: $charcoal;
+    color: $text-inverse;
+  }
+
+  /***************************************************************************
+   * Spacing Variants
+   ***************************************************************************/
+
+  &--spacing-none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &--spacing-sm {
+    padding-top: $space-4;
+    padding-bottom: $space-4;
+  }
+
+  &--spacing-md {
+    padding-top: $space-6;
+    padding-bottom: $space-6;
+
+    @include md-up {
+      padding-top: $space-8;
+      padding-bottom: $space-8;
+    }
+  }
+
+  &--spacing-lg {
+    padding-top: $space-8;
+    padding-bottom: $space-8;
+
+    @include md-up {
+      padding-top: $space-10;
+      padding-bottom: $space-10;
+    }
+  }
+
+  &--spacing-xl {
+    padding-top: $space-10;
+    padding-bottom: $space-10;
+
+    @include md-up {
+      padding-top: $space-12;
+      padding-bottom: $space-12;
+    }
+  }
+}

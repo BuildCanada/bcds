@@ -1,0 +1,117 @@
+@use "../../styles/tokens" as *;
+
+/*******************************************************************************
+ * Divider Component
+ *
+ * Construction line motif - blueprint/draft aesthetic
+ ******************************************************************************/
+
+.bc-divider {
+  border: none;
+  background-color: $border-default;
+
+  /***************************************************************************
+   * Orientation Variants
+   ***************************************************************************/
+
+  &--horizontal {
+    width: 100%;
+    height: 1px;
+  }
+
+  &--vertical {
+    width: 1px;
+    height: 100%;
+    min-height: 24px;
+  }
+
+  /***************************************************************************
+   * Style Variants
+   ***************************************************************************/
+
+  &--solid {
+    background-color: $border-default;
+  }
+
+  &--dashed {
+    background-color: transparent;
+
+    &.bc-divider--horizontal {
+      background-image: linear-gradient(
+        to right,
+        $border-default 50%,
+        transparent 50%
+      );
+      background-size: 8px 1px;
+      background-repeat: repeat-x;
+    }
+
+    &.bc-divider--vertical {
+      background-image: linear-gradient(
+        to bottom,
+        $border-default 50%,
+        transparent 50%
+      );
+      background-size: 1px 8px;
+      background-repeat: repeat-y;
+    }
+  }
+
+  // Construction line motif - blueprint aesthetic
+  &--construction {
+    background-color: $charcoal;
+    opacity: 0.15;
+
+    &.bc-divider--horizontal {
+      height: 1px;
+    }
+
+    &.bc-divider--vertical {
+      width: 1px;
+    }
+  }
+
+  /***************************************************************************
+   * Spacing Variants
+   ***************************************************************************/
+
+  &--spacing-none {
+    margin: 0;
+  }
+
+  &--spacing-sm {
+    &.bc-divider--horizontal {
+      margin-top: $space-2;
+      margin-bottom: $space-2;
+    }
+
+    &.bc-divider--vertical {
+      margin-left: $space-2;
+      margin-right: $space-2;
+    }
+  }
+
+  &--spacing-md {
+    &.bc-divider--horizontal {
+      margin-top: $space-4;
+      margin-bottom: $space-4;
+    }
+
+    &.bc-divider--vertical {
+      margin-left: $space-4;
+      margin-right: $space-4;
+    }
+  }
+
+  &--spacing-lg {
+    &.bc-divider--horizontal {
+      margin-top: $space-6;
+      margin-bottom: $space-6;
+    }
+
+    &.bc-divider--vertical {
+      margin-left: $space-6;
+      margin-right: $space-6;
+    }
+  }
+}

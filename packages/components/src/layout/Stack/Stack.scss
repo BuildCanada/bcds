@@ -1,0 +1,61 @@
+@use "../../styles/tokens" as *;
+
+/*******************************************************************************
+ * Stack Component
+ *
+ * Flexbox-based layout for consistent spacing
+ ******************************************************************************/
+
+.bc-stack {
+  display: flex;
+
+  /***************************************************************************
+   * Direction Variants
+   ***************************************************************************/
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  /***************************************************************************
+   * Spacing Variants
+   ***************************************************************************/
+
+  &--spacing-none { gap: 0; }
+  &--spacing-xs { gap: calc($space-1 / 2); }
+  &--spacing-sm { gap: $space-1; }
+  &--spacing-md { gap: $space-2; }
+  &--spacing-lg { gap: $space-3; }
+  &--spacing-xl { gap: $space-4; }
+
+  /***************************************************************************
+   * Alignment Variants
+   ***************************************************************************/
+
+  &--align-start { align-items: flex-start; }
+  &--align-center { align-items: center; }
+  &--align-end { align-items: flex-end; }
+  &--align-stretch { align-items: stretch; }
+
+  /***************************************************************************
+   * Justify Variants
+   ***************************************************************************/
+
+  &--justify-start { justify-content: flex-start; }
+  &--justify-center { justify-content: center; }
+  &--justify-end { justify-content: flex-end; }
+  &--justify-between { justify-content: space-between; }
+  &--justify-around { justify-content: space-around; }
+
+  /***************************************************************************
+   * Wrap
+   ***************************************************************************/
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+}

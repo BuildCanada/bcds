@@ -11,7 +11,9 @@
     "typecheck": "bun run --filter '*' typecheck",
     "test": "bun run --filter '*' test",
     "storybook": "storybook dev -p 6006",
-    "serve-storybook": "serve storybook-static -p 6006"
+    "serve-storybook": "serve storybook-static -p 6006",
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "test:visual": "chromatic --only-changed"
   },
   "devDependencies": {
     "@babel/runtime": "^7.28.6",
@@ -128,9 +130,12 @@
     "@react-stately/virtualizer": "^4.4.4",
     "@react-types/shared": "^3.32.1",
     "@storybook/addon-docs": "^10.1.11",
+    "@storybook/addon-interactions": "^8.6.14",
     "@storybook/icons": "^1.4.0",
+    "@storybook/instrumenter": "^8.6.14",
     "@storybook/react": "^10.1.11",
     "@storybook/react-vite": "^10.1.11",
+    "@storybook/test": "^8.6.15",
     "@swc/helpers": "^0.5.18",
     "@tippyjs/react": "^4.2.6",
     "@turf/bbox": "^7.3.2",
@@ -160,6 +165,7 @@
     "bail": "^2.0.2",
     "ccount": "^2.0.1",
     "character-entities": "^2.0.2",
+    "chromatic": "^13.3.5",
     "classnames": "^2.5.1",
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
