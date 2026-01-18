@@ -1,0 +1,325 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * Header Component
+ ******************************************************************************/
+
+.bc-header {
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  background-color: $white;
+  border-bottom: 1px solid $border-muted;
+
+  /***************************************************************************
+   * Announcement Banner
+   ***************************************************************************/
+
+  &__announcement {
+    background-color: $charcoal;
+    color: $white;
+    text-align: center;
+    padding: calc($space-1 / 2) $space-2;
+    @include body-3;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &--auburn {
+      background-color: $auburn;
+    }
+  }
+
+  /***************************************************************************
+   * Main Header Row
+   ***************************************************************************/
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-2 $space-3;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    @include md-up {
+      padding: $space-2 $space-5;
+    }
+  }
+
+  /***************************************************************************
+   * Logo
+   ***************************************************************************/
+
+  &__logo {
+    flex-shrink: 0;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    img {
+      height: 32px;
+      width: auto;
+
+      @include md-up {
+        height: 40px;
+      }
+    }
+  }
+
+  /***************************************************************************
+   * Desktop Navigation
+   ***************************************************************************/
+
+  &__nav {
+    display: none;
+
+    @include md-up {
+      display: block;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-item {
+    position: relative;
+
+    &--has-dropdown {
+      // Keep dropdown open when hovering over it
+      &:hover .bc-header__dropdown {
+        display: block;
+      }
+    }
+  }
+
+  &__nav-link {
+    @include label;
+    display: inline-flex;
+    align-items: center;
+    gap: calc($space-1 / 2);
+    padding: $space-1 $space-2;
+    color: $text-primary;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $auburn;
+    }
+
+    &--dropdown {
+      // Visual indicator for dropdown
+    }
+  }
+
+  &__dropdown-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform $transition-fast;
+
+    .bc-header__nav-item:hover & {
+      transform: rotate(180deg);
+    }
+  }
+
+  /***************************************************************************
+   * Dropdown Menu
+   ***************************************************************************/
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: $white;
+    border: 1px solid $border-muted;
+    box-shadow: $shadow-md;
+    list-style: none;
+    margin: 0;
+    padding: $space-1 0;
+    z-index: $z-dropdown;
+  }
+
+  &__dropdown-link {
+    @include body-2;
+    display: block;
+    padding: $space-1 $space-2;
+    color: $text-primary;
+    text-decoration: none;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $linen;
+      color: $auburn;
+    }
+  }
+
+  /***************************************************************************
+   * CTA Button
+   ***************************************************************************/
+
+  &__cta {
+    @include button-text-sm;
+    display: none;
+    padding: $space-1 $space-2;
+    background-color: $auburn;
+    color: $white;
+    text-decoration: none;
+    border-radius: $radius-none;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $auburn-600;
+    }
+
+    @include md-up {
+      display: inline-block;
+    }
+  }
+
+  /***************************************************************************
+   * Mobile Toggle
+   ***************************************************************************/
+
+  &__mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    @include md-up {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: $charcoal;
+    transition: background-color $transition-fast;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $charcoal;
+      transition: transform $transition-fast;
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+  }
+
+  &__mobile-toggle[aria-expanded="true"] &__hamburger {
+    background-color: transparent;
+
+    &::before {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+
+  /***************************************************************************
+   * Mobile Menu
+   ***************************************************************************/
+
+  &__mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    border-bottom: 1px solid $border-muted;
+    padding: $space-3;
+    box-shadow: $shadow-lg;
+
+    &--open {
+      display: block;
+    }
+
+    @include md-up {
+      display: none !important;
+    }
+  }
+
+  &__mobile-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__mobile-link {
+    @include label;
+    display: block;
+    padding: $space-2 0;
+    color: $text-primary;
+    text-decoration: none;
+    border-bottom: 1px solid $border-muted;
+
+    &:hover {
+      color: $auburn;
+    }
+
+    &--sub {
+      @include body-2;
+      padding-left: $space-3;
+      font-weight: 400;
+    }
+  }
+
+  &__mobile-subnav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__mobile-cta {
+    @include button-text-md;
+    display: block;
+    width: 100%;
+    margin-top: $space-3;
+    padding: $space-2;
+    background-color: $auburn;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: $radius-none;
+  }
+}

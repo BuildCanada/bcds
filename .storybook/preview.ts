@@ -3,6 +3,7 @@ import type { Preview } from "@storybook/react"
 import { ChartsDecorator } from "./decorators/ChartsDecorator"
 
 import "../packages/charts/src/styles/charts.scss"
+import "../packages/components/src/styles/main.scss"
 
 const preview: Preview = {
     decorators: [ChartsDecorator],
@@ -14,10 +15,12 @@ const preview: Preview = {
             },
         },
         backgrounds: {
-            default: "light",
+            default: "linen",
             values: [
-                { name: "light", value: "#ffffff" },
+                { name: "linen", value: "#F6ECE3" },
+                { name: "white", value: "#ffffff" },
                 { name: "gray", value: "#f5f5f5" },
+                { name: "charcoal", value: "#272727" },
                 { name: "dark", value: "#1a1a1a" },
             ],
         },

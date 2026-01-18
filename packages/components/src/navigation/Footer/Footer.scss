@@ -1,0 +1,233 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * Footer Component
+ ******************************************************************************/
+
+.bc-footer {
+  background-color: $charcoal;
+  color: $white;
+  padding: $space-8 0;
+
+  /***************************************************************************
+   * Inner Container
+   ***************************************************************************/
+
+  &__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 $space-3;
+
+    @include md-up {
+      padding: 0 $space-5;
+    }
+  }
+
+  /***************************************************************************
+   * Main Section
+   ***************************************************************************/
+
+  &__main {
+    display: grid;
+    gap: $space-6;
+
+    @include md-up {
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+    }
+  }
+
+  /***************************************************************************
+   * Logo
+   ***************************************************************************/
+
+  &__logo {
+    img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  /***************************************************************************
+   * Navigation
+   ***************************************************************************/
+
+  &__nav {
+    @include md-up {
+      justify-self: center;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-1 $space-3;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-link {
+    @include label;
+    color: rgba($white, 0.8);
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  /***************************************************************************
+   * Newsletter
+   ***************************************************************************/
+
+  &__newsletter {
+    @include md-up {
+      text-align: right;
+      max-width: 320px;
+    }
+  }
+
+  &__newsletter-heading {
+    @include h4;
+    color: $white;
+    margin: 0 0 calc($space-1 / 2);
+  }
+
+  &__newsletter-description {
+    @include body-3;
+    color: rgba($white, 0.7);
+    margin: 0 0 $space-2;
+  }
+
+  &__newsletter-form {
+    display: flex;
+    gap: calc($space-1 / 2);
+  }
+
+  &__newsletter-input {
+    @include body-3;
+    flex: 1;
+    min-width: 0;
+    padding: $space-1 $space-2;
+    border: none;
+    border-radius: $radius-none;
+    background-color: rgba($white, 0.1);
+    color: $white;
+
+    &::placeholder {
+      color: rgba($white, 0.5);
+    }
+
+    &:focus {
+      outline: 2px solid $auburn;
+      outline-offset: -2px;
+    }
+  }
+
+  &__newsletter-button {
+    @include button-text-sm;
+    padding: $space-1 $space-2;
+    background-color: $auburn;
+    color: $white;
+    border: none;
+    border-radius: $radius-none;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $auburn-600;
+    }
+  }
+
+  /***************************************************************************
+   * Bottom Section
+   ***************************************************************************/
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    margin-top: $space-6;
+    padding-top: $space-4;
+    border-top: 1px solid rgba($white, 0.1);
+  }
+
+  /***************************************************************************
+   * Social Links
+   ***************************************************************************/
+
+  &__social {
+    display: flex;
+    gap: $space-2;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: rgba($white, 0.7);
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /***************************************************************************
+   * Copyright
+   ***************************************************************************/
+
+  &__copyright {
+    @include body-3;
+    color: rgba($white, 0.5);
+    margin: 0;
+  }
+
+  /***************************************************************************
+   * Quote
+   ***************************************************************************/
+
+  &__quote {
+    margin-top: $space-6;
+    padding-top: $space-4;
+    border-top: 1px solid rgba($white, 0.1);
+    text-align: center;
+  }
+
+  &__quote-text {
+    @include body-1;
+    font-style: italic;
+    color: rgba($white, 0.8);
+    margin: 0 0 $space-1;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &::before {
+      content: '"';
+    }
+
+    &::after {
+      content: '"';
+    }
+  }
+
+  &__quote-attribution {
+    @include micro;
+    color: rgba($white, 0.5);
+    font-style: normal;
+  }
+}

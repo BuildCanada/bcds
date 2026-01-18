@@ -1,0 +1,232 @@
+/*******************************************************************************
+ * Build Canada Typography System
+ ******************************************************************************/
+
+@use "tokens" as *;
+
+/*******************************************************************************
+ * Font Stacks
+ ******************************************************************************/
+
+$font-headline: 'Soehne Kraftig', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-body: 'Financier Text', Georgia, 'Times New Roman', serif;
+$font-mono: 'Founders Grotesk Mono', 'Courier New', Courier, monospace;
+
+/*******************************************************************************
+ * Display Styles (Large Headlines)
+ ******************************************************************************/
+
+@mixin display-1 {
+  font-family: $font-headline;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: $text-primary;
+
+  @include md-down {
+    font-size: 2.5rem;
+  }
+}
+
+@mixin display-2 {
+  font-family: $font-headline;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: $text-primary;
+
+  @include md-down {
+    font-size: 2rem;
+  }
+}
+
+/*******************************************************************************
+ * Heading Styles
+ ******************************************************************************/
+
+@mixin h1 {
+  font-family: $font-headline;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: $text-primary;
+
+  @include md-down {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-headline;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 500;
+  color: $text-primary;
+
+  @include md-down {
+    font-size: 1.25rem;
+  }
+}
+
+@mixin h3 {
+  font-family: $font-headline;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+@mixin h4 {
+  font-family: $font-headline;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+@mixin h5 {
+  font-family: $font-headline;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+@mixin h6 {
+  font-family: $font-headline;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $text-primary;
+}
+
+/*******************************************************************************
+ * Body Styles
+ ******************************************************************************/
+
+@mixin body-lg {
+  font-family: $font-body;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: $text-primary;
+}
+
+@mixin body-1 {
+  font-family: $font-body;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: $text-primary;
+}
+
+@mixin body-2 {
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $text-primary;
+}
+
+@mixin body-3 {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $text-primary;
+}
+
+/*******************************************************************************
+ * Mono/Code Styles
+ ******************************************************************************/
+
+@mixin mono {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+@mixin mono-sm {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/*******************************************************************************
+ * Micro/Label Styles (For data labels, axis ticks, etc.)
+ ******************************************************************************/
+
+@mixin micro {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@mixin label {
+  font-family: $font-headline;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+@mixin label-sm {
+  font-family: $font-headline;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+/*******************************************************************************
+ * Button Text Style
+ ******************************************************************************/
+
+@mixin button-text {
+  font-family: $font-headline;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@mixin button-text-sm {
+  @include button-text;
+  font-size: 0.75rem;
+}
+
+@mixin button-text-md {
+  @include button-text;
+  font-size: 0.875rem;
+}
+
+@mixin button-text-lg {
+  @include button-text;
+  font-size: 1rem;
+}
+
+/*******************************************************************************
+ * Utility Classes
+ ******************************************************************************/
+
+.bc-display-1 { @include display-1; }
+.bc-display-2 { @include display-2; }
+.bc-h1 { @include h1; }
+.bc-h2 { @include h2; }
+.bc-h3 { @include h3; }
+.bc-h4 { @include h4; }
+.bc-h5 { @include h5; }
+.bc-h6 { @include h6; }
+.bc-body-lg { @include body-lg; }
+.bc-body-1 { @include body-1; }
+.bc-body-2 { @include body-2; }
+.bc-body-3 { @include body-3; }
+.bc-mono { @include mono; }
+.bc-micro { @include micro; }
+.bc-label { @include label; }

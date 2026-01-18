@@ -1,0 +1,67 @@
+{
+  "name": "@buildcanada/components",
+  "version": "0.1.0",
+  "description": "Build Canada design system components",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./styles.css": "./src/styles/main.scss",
+    "./src/styles/main.scss": "./src/styles/main.scss",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "!src/**/*.stories.tsx"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuildCanada/bcds.git",
+    "directory": "packages/components"
+  },
+  "bugs": {
+    "url": "https://github.com/BuildCanada/bcds/issues"
+  },
+  "homepage": "https://github.com/BuildCanada/bcds#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "components",
+    "design-system",
+    "react",
+    "build-canada"
+  ],
+  "author": "Build Canada",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "classnames": "^2.5.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "eslint": "^9.37.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "happy-dom": "^20.1.0",
+    "vitest": "^4.0.15"
+  }
+}

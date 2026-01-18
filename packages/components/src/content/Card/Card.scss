@@ -1,0 +1,281 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+/*******************************************************************************
+ * Card Component
+ ******************************************************************************/
+
+.bc-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border: 1px solid $border-muted;
+  border-radius: $radius-none;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow $transition-fast, transform $transition-fast;
+
+  /***************************************************************************
+   * Variant: Default Card
+   ***************************************************************************/
+
+  &--default {
+    .bc-card__content {
+      padding: $space-3;
+    }
+
+    .bc-card__title {
+      @include h3;
+      margin: 0 0 $space-1;
+    }
+
+    .bc-card__description {
+      @include body-2;
+      color: $text-secondary;
+      margin: 0;
+    }
+
+    .bc-card__meta {
+      @include micro;
+      color: $text-muted;
+      margin-top: $space-2;
+    }
+  }
+
+  // Interactive cards (when rendered as a or button)
+  &--interactive {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $auburn;
+      outline-offset: 2px;
+    }
+  }
+
+  // Button-specific styles
+  &--button {
+    border: 1px solid $border-muted;
+    text-align: left;
+    width: 100%;
+  }
+
+  /***************************************************************************
+   * Variant: Project Card
+   ***************************************************************************/
+
+  &--project {
+    .bc-card__image {
+      aspect-ratio: 16 / 9;
+    }
+
+    .bc-card__content {
+      padding: $space-3;
+    }
+
+    .bc-card__title {
+      @include h3;
+      margin: 0 0 $space-1;
+    }
+
+    .bc-card__description {
+      @include body-3;
+      color: $text-secondary;
+      margin: 0;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Memo Card
+   ***************************************************************************/
+
+  &--memo {
+    .bc-card__content {
+      padding: $space-3;
+    }
+
+    .bc-card__title {
+      @include h3;
+      margin: 0 0 $space-1;
+    }
+
+    .bc-card__description {
+      @include body-2;
+      color: $text-secondary;
+      margin: 0 0 $space-2;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Feature Card
+   ***************************************************************************/
+
+  &--feature {
+    text-align: center;
+    padding: $space-4;
+
+    .bc-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto $space-2;
+      background-color: $linen;
+      border-radius: $radius-none;
+      color: $auburn;
+      font-size: 1.5rem;
+    }
+
+    .bc-card__title {
+      @include h4;
+      margin: 0 0 $space-1;
+    }
+
+    .bc-card__description {
+      @include body-3;
+      color: $text-secondary;
+      margin: 0;
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Stat Card
+   ***************************************************************************/
+
+  &--stat {
+    padding: $space-3;
+    background-color: $linen;
+    border: none;
+
+    .bc-card__stat {
+      display: flex;
+      flex-direction: column;
+      gap: calc($space-1 / 2);
+    }
+
+    .bc-card__stat-value {
+      @include display-2;
+      color: $charcoal;
+    }
+
+    .bc-card__stat-label {
+      @include label;
+      color: $text-secondary;
+    }
+
+    .bc-card__stat-change {
+      @include mono-sm;
+      color: $text-secondary;
+
+      &--up {
+        color: $emerald-600;
+      }
+
+      &--down {
+        color: $auburn;
+      }
+    }
+  }
+
+  /***************************************************************************
+   * Variant: Profile Card
+   ***************************************************************************/
+
+  &--profile {
+    text-align: center;
+    padding: $space-4;
+
+    .bc-card__image {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto $space-2;
+      border-radius: $radius-full;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .bc-card__title {
+      @include h4;
+      margin: 0 0 calc($space-1 / 2);
+    }
+
+    .bc-card__description {
+      @include body-3;
+      color: $text-secondary;
+      margin: 0;
+    }
+
+    .bc-card__meta {
+      display: flex;
+      justify-content: center;
+      gap: $space-1;
+      margin-top: $space-2;
+    }
+  }
+
+  /***************************************************************************
+   * Subcomponents
+   ***************************************************************************/
+
+  &__image {
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-top: auto;
+    padding-top: $space-2;
+  }
+
+  &__author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-full;
+    object-fit: cover;
+  }
+
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__author-name {
+    @include label-sm;
+    color: $text-primary;
+  }
+
+  &__author-role {
+    @include body-3;
+    color: $text-secondary;
+  }
+}

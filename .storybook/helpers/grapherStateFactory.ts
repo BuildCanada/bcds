@@ -20,6 +20,7 @@ export function createStorybookGrapherState(
 ): GrapherState {
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan"],
         ...overrides,
     })
 }
@@ -33,6 +34,7 @@ export function createLineChartState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.LineChart],
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan"],
         ...overrides,
     })
 }
@@ -46,6 +48,16 @@ export function createDiscreteBarChartState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.DiscreteBar],
+        selectedEntityNames: [
+            "Japan",
+            "Canada",
+            "Germany",
+            "United States",
+            "Brazil",
+            "China",
+            "India",
+            "Nigeria",
+        ],
         ...overrides,
     })
 }
@@ -59,6 +71,7 @@ export function createStackedAreaChartState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.StackedArea],
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan", "Brazil"],
         ...overrides,
     })
 }
@@ -72,6 +85,7 @@ export function createStackedBarChartState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.StackedBar],
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan", "Brazil"],
         ...overrides,
     })
 }
@@ -85,6 +99,7 @@ export function createSlopeChartState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.SlopeChart],
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan", "Brazil", "China"],
         ...overrides,
     })
 }
@@ -98,6 +113,7 @@ export function createScatterPlotState(
     return LifeExpectancyGrapher({
         bounds: new Bounds(0, 0, 1100, 660),
         chartTypes: [GRAPHER_CHART_TYPES.ScatterPlot],
+        selectedEntityNames: ["Canada", "United States", "Germany", "Japan", "Brazil", "China", "India"],
         ...overrides,
     })
 }
