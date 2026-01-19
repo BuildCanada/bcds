@@ -9,6 +9,7 @@ on:
 
 permissions:
     contents: write
+    actions: write
 
 jobs:
     check-and-release:
@@ -112,5 +113,14 @@ jobs:
                   gh release create "$VERSION" \
                       --title "$VERSION" \
                       --notes-file release_notes.md
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Trigger npm publish
+              if: steps.version-check.outputs.changed == 'true' && steps.release-check.outputs.exists == 'false'
+              run: |
+                  gh workflow run npm-publish.yml \
+                      --field package=all \
+                      --field dry-run=false
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
