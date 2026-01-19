@@ -1,6 +1,5 @@
 import { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { useArgs } from "storybook/preview-api"
 
 import { PopupForm } from "./PopupForm"
 import { Button } from "../../primitives/Button"
@@ -145,7 +144,7 @@ function PageContent() {
             <h1>Page Content</h1>
             <p>This content remains interactive when the form is open.</p>
             <p>
-                <button onClick={() => alert("Button clicked!")} style={{ padding: "8px 16px" }}>
+                <button onClick={() => console.log("Button clicked!")} style={{ padding: "8px 16px" }}>
                     Clickable Button
                 </button>
             </p>
@@ -160,18 +159,13 @@ function PageContent() {
     )
 }
 
-// Template that syncs with Storybook args
+// Template that renders the form with args
 function PopupFormTemplate(args: React.ComponentProps<typeof PopupForm> & { children?: React.ReactNode }) {
-    const [, setArgs] = useArgs()
-
     return (
         <PopupForm
             {...args}
-            onClose={() => setArgs({ open: false })}
-            onSubmit={() => {
-                console.log("Form submitted")
-                setArgs({ open: false })
-            }}
+            onClose={() => console.log("Form closed")}
+            onSubmit={() => console.log("Form submitted")}
         >
             {args.children || (
                 <>

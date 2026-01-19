@@ -1,6 +1,5 @@
 import { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { useArgs } from "storybook/preview-api"
 
 import { Dialog, type DialogPosition } from "./Dialog"
 import { Button } from "../../primitives/Button"
@@ -121,7 +120,7 @@ function PageContent() {
             <h1>Page Content</h1>
             <p>This content remains interactive when the dialog is open.</p>
             <p>
-                <button onClick={() => alert("Button clicked!")} style={{ padding: "8px 16px" }}>
+                <button onClick={() => console.log("Button clicked!")} style={{ padding: "8px 16px" }}>
                     Clickable Button
                 </button>
             </p>
@@ -136,14 +135,12 @@ function PageContent() {
     )
 }
 
-// Template that syncs with Storybook args
+// Simple template that renders the dialog with args
 function DialogTemplate(args: React.ComponentProps<typeof Dialog>) {
-    const [, setArgs] = useArgs()
-
     return (
         <Dialog
             {...args}
-            onClose={() => setArgs({ open: false })}
+            onClose={() => console.log("Dialog closed")}
         >
             <p style={{ fontFamily: "sans-serif", margin: 0, maxWidth: "280px" }}>
                 This dialog doesn't block interaction with the page behind it.
@@ -225,17 +222,14 @@ export const WideContent: Story = {
     args: {
         title: "Wide Content",
     },
-    render: (args) => {
-        const [, setArgs] = useArgs()
-        return (
-            <Dialog {...args} onClose={() => setArgs({ open: false })}>
-                <div style={{ fontFamily: "sans-serif", width: "400px" }}>
-                    <p>This dialog has wider content and will size accordingly.</p>
-                    <p>The dialog always sizes to fit its contents.</p>
-                </div>
-            </Dialog>
-        )
-    },
+    render: (args) => (
+        <Dialog {...args} onClose={() => console.log("Dialog closed")}>
+            <div style={{ fontFamily: "sans-serif", width: "400px" }}>
+                <p>This dialog has wider content and will size accordingly.</p>
+                <p>The dialog always sizes to fit its contents.</p>
+            </div>
+        </Dialog>
+    ),
 }
 
 export const AllPositions: Story = {
