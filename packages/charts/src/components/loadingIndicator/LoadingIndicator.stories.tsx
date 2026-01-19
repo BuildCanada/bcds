@@ -6,7 +6,50 @@ import { Bounds } from "../../utils/index.js"
 const meta: Meta<typeof LoadingIndicator> = {
     title: "Components/LoadingIndicator",
     component: LoadingIndicator,
-    tags: ["autodocs"],
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A loading spinner component displayed while charts are fetching data.
+
+## Usage
+
+\`\`\`tsx
+import { LoadingIndicator } from "@buildcanada/charts"
+
+<LoadingIndicator title="Loading chart data..." />
+\`\`\`
+
+## Customization
+
+\`\`\`tsx
+<LoadingIndicator
+  title="Loading..."
+  color="#e63946"
+  backgroundColor="rgba(255, 255, 255, 0.8)"
+/>
+\`\`\`
+
+## With Bounds
+
+Use the \`bounds\` prop to constrain the indicator to a specific area:
+
+\`\`\`tsx
+<LoadingIndicator
+  bounds={new Bounds(10, 10, 180, 180)}
+  title="Loading..."
+/>
+\`\`\`
+                `,
+            },
+        },
+    },
+    argTypes: {
+        title: { description: "Loading message displayed below the spinner" },
+        color: { description: "Color of the spinner" },
+        backgroundColor: { description: "Background overlay color" },
+        bounds: { description: "Constrain indicator to specific bounds" },
+    },
     decorators: [
         (Story) => (
             <div style={{ position: "relative", width: "200px", height: "200px" }}>

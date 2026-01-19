@@ -5,17 +5,55 @@ import { Container } from "./Container"
 const meta: Meta<typeof Container> = {
     title: "Components/Layout/Container",
     component: Container,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A centered container component with configurable max-width breakpoints.
+
+## Usage
+
+\`\`\`tsx
+import { Container } from "@buildcanada/components"
+
+<Container size="lg">
+  <p>Content is centered with max-width</p>
+</Container>
+\`\`\`
+
+## Sizes
+
+- **sm**: 640px max-width
+- **md**: 768px max-width
+- **lg**: 1024px max-width (default)
+- **xl**: 1280px max-width
+- **full**: No max-width
+
+## Semantic HTML
+
+Use the \`as\` prop for semantic HTML elements:
+
+\`\`\`tsx
+<Container as="main" size="lg">
+  <article>Page content</article>
+</Container>
+\`\`\`
+                `,
+            },
+        },
+    },
     argTypes: {
         size: {
             control: "select",
             options: ["sm", "md", "lg", "xl", "full"],
+            description: "Maximum width of the container",
         },
         as: {
             control: "select",
             options: ["div", "main", "article", "section"],
+            description: "HTML element to render as",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

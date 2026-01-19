@@ -1,0 +1,158 @@
+@use "../../styles/tokens" as *;
+
+/*******************************************************************************
+ * Dialog Component
+ *
+ * A non-modal floating panel that doesn't block interaction with the UI.
+ * Sizes to its contents and can be positioned in corners.
+ ******************************************************************************/
+
+.bc-dialog {
+    position: fixed;
+    z-index: $z-popover;
+    background: $white;
+    border: 1px solid $border-default;
+    box-shadow: $shadow-lg;
+    max-width: calc(100vw - var(--bc-dialog-offset, 16px) * 2);
+    max-height: calc(100dvh - var(--bc-dialog-offset, 16px) * 2);
+
+    // Animation
+    animation: bc-dialog-enter $transition-base;
+}
+
+@keyframes bc-dialog-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*******************************************************************************
+ * Dialog Positions
+ ******************************************************************************/
+
+.bc-dialog--top-left {
+    top: var(--bc-dialog-offset, 16px);
+    left: var(--bc-dialog-offset, 16px);
+}
+
+.bc-dialog--top-right {
+    top: var(--bc-dialog-offset, 16px);
+    right: var(--bc-dialog-offset, 16px);
+}
+
+.bc-dialog--bottom-left {
+    bottom: var(--bc-dialog-offset, 16px);
+    left: var(--bc-dialog-offset, 16px);
+}
+
+.bc-dialog--bottom-right {
+    bottom: var(--bc-dialog-offset, 16px);
+    right: var(--bc-dialog-offset, 16px);
+}
+
+.bc-dialog--center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: bc-dialog-enter-center $transition-base;
+}
+
+@keyframes bc-dialog-enter-center {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/*******************************************************************************
+ * Dialog Container
+ ******************************************************************************/
+
+.bc-dialog__container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/*******************************************************************************
+ * Dialog Header
+ ******************************************************************************/
+
+.bc-dialog__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    padding: $space-2 $space-2 0 $space-3;
+    flex-shrink: 0;
+}
+
+.bc-dialog__title {
+    font-family: "Soehne Kraftig", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $charcoal;
+    margin: 0;
+}
+
+.bc-dialog__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $gray-600;
+    cursor: pointer;
+    transition: background-color $transition-fast, color $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+        background-color: $gray-100;
+        color: $charcoal;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $auburn;
+        outline-offset: 2px;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/*******************************************************************************
+ * Dialog Description
+ ******************************************************************************/
+
+.bc-dialog__description {
+    font-family: "Financier Text Regular", Georgia, "Times New Roman", serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: $gray-600;
+    margin: 0;
+    padding: $space-1 $space-3 0;
+}
+
+/*******************************************************************************
+ * Dialog Content
+ ******************************************************************************/
+
+.bc-dialog__content {
+    overflow-y: auto;
+    padding: $space-3;
+}

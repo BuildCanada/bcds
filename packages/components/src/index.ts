@@ -55,3 +55,7 @@ export { StatBlock, type StatBlockProps, type StatBlockSize, type StatBlockTrend
 // Navigation
 export { Header, type HeaderProps, type NavItem } from "./navigation/Header"
 export { Footer, type FooterProps, type FooterLink, type SocialLink } from "./navigation/Footer"
+
+// Feedback
+export { Dialog, type DialogProps, type DialogPosition } from "./feedback/Dialog"
+export { PopupForm, type PopupFormProps } from "./feedback/PopupForm"

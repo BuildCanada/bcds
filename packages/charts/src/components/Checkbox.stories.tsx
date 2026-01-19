@@ -7,7 +7,49 @@ import { Checkbox } from "./Checkbox"
 const meta: Meta<typeof Checkbox> = {
     title: "Components/Checkbox",
     component: Checkbox,
-    tags: ["autodocs"],
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A checkbox component for the charts library.
+
+## Usage
+
+\`\`\`tsx
+import { Checkbox } from "@buildcanada/charts"
+
+<Checkbox
+  checked={isChecked}
+  label="Enable option"
+  onChange={(e) => setIsChecked(e.target.checked)}
+/>
+\`\`\`
+
+## Rich Labels
+
+Labels can include React nodes for links or formatting:
+
+\`\`\`tsx
+<Checkbox
+  checked={agreed}
+  label={<span>I agree to the <a href="#">terms</a></span>}
+  onChange={handleChange}
+/>
+\`\`\`
+
+## Controlled Component
+
+This is a controlled component - manage the \`checked\` state externally.
+                `,
+            },
+        },
+    },
+    argTypes: {
+        checked: { description: "Whether the checkbox is checked" },
+        label: { description: "Label text or React node" },
+        disabled: { description: "Whether the checkbox is disabled" },
+        onChange: { description: "Callback when checkbox state changes" },
+    },
     decorators: [
         (Story) => (
             <div style={{ maxWidth: "300px" }}>

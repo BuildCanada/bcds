@@ -8,8 +8,67 @@ const meta: Meta<typeof Header> = {
     component: Header,
     parameters: {
         layout: "fullscreen",
+        docs: {
+            description: {
+                component: `
+A responsive site header with navigation, logo, CTA button, and optional announcement banner.
+
+## Usage
+
+\`\`\`tsx
+import { Header } from "@buildcanada/components"
+
+<Header
+  logo={<Logo />}
+  navItems={[
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+  ]}
+  cta={{ label: "Get Started", href: "/start" }}
+/>
+\`\`\`
+
+## With Dropdowns
+
+\`\`\`tsx
+<Header
+  logo={<Logo />}
+  navItems={[
+    { label: "Home", href: "/" },
+    {
+      label: "Projects",
+      href: "/projects",
+      dropdown: [
+        { label: "Project A", href: "/projects/a" },
+        { label: "Project B", href: "/projects/b" },
+      ],
     },
-    tags: ["autodocs"],
+  ]}
+/>
+\`\`\`
+
+## Announcement Banner
+
+\`\`\`tsx
+<Header
+  logo={<Logo />}
+  navItems={navItems}
+  announcement={{
+    text: "New feature available!",
+    href: "/new-feature",
+    variant: "auburn", // or "default"
+  }}
+/>
+\`\`\`
+
+## Responsive
+
+On mobile, navigation collapses into a hamburger menu.
+                `,
+            },
+        },
+    },
 }
 
 export default meta

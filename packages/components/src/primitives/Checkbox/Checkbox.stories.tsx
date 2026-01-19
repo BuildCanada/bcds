@@ -7,7 +7,46 @@ import { Checkbox } from "./Checkbox"
 const meta: Meta<typeof Checkbox> = {
     title: "Components/Primitives/Checkbox",
     component: Checkbox,
-    tags: ["autodocs"],
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A styled checkbox component with label support.
+
+## Usage
+
+\`\`\`tsx
+import { Checkbox } from "@buildcanada/components"
+
+<Checkbox label="I agree to the terms" />
+\`\`\`
+
+## Controlled vs Uncontrolled
+
+Use \`defaultChecked\` for uncontrolled or \`checked\` with \`onChange\` for controlled:
+
+\`\`\`tsx
+// Uncontrolled
+<Checkbox label="Option" defaultChecked />
+
+// Controlled
+<Checkbox
+  label="Option"
+  checked={isChecked}
+  onChange={(e) => setIsChecked(e.target.checked)}
+/>
+\`\`\`
+                `,
+            },
+        },
+    },
+    argTypes: {
+        label: { description: "The label text displayed next to the checkbox" },
+        disabled: { description: "Whether the checkbox is disabled" },
+        defaultChecked: { description: "Initial checked state (uncontrolled)" },
+        checked: { description: "Controlled checked state" },
+        onChange: { description: "Callback when checkbox state changes" },
+    },
 }
 
 export default meta

@@ -18,13 +18,55 @@ import {
 const meta: Meta<typeof Card> = {
     title: "Components/Content/Card",
     component: Card,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A composable card component with multiple variants for different content types.
+
+## Usage
+
+\`\`\`tsx
+import { Card, CardContent, CardTitle, CardDescription } from "@buildcanada/components"
+
+<Card variant="default">
+  <CardContent>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description text.</CardDescription>
+  </CardContent>
+</Card>
+\`\`\`
+
+## Variants
+
+- **default**: Basic card for general content
+- **project**: Card with image for project showcases
+- **memo**: Card for articles/memos with author info
+- **feature**: Card with icon for feature highlights
+- **stat**: Card for displaying statistics
+- **profile**: Card for team member profiles
+
+## Sub-components
+
+- \`CardImage\`: Image header for the card
+- \`CardIcon\`: Icon container for feature cards
+- \`CardContent\`: Main content wrapper
+- \`CardTitle\`: Card heading
+- \`CardDescription\`: Card body text
+- \`CardMeta\`: Metadata like dates
+- \`CardStat\`: Statistics display with change indicators
+- \`CardAuthor\`: Author info with avatar
+                `,
+            },
+        },
+    },
     argTypes: {
         variant: {
             control: "select",
             options: ["default", "project", "memo", "feature", "stat", "profile"],
+            description: "The visual style variant of the card",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

@@ -5,17 +5,63 @@ import { StatBlock } from "./StatBlock"
 const meta: Meta<typeof StatBlock> = {
     title: "Components/Content/StatBlock",
     component: StatBlock,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A component for displaying key statistics with optional trend indicators.
+
+## Usage
+
+\`\`\`tsx
+import { StatBlock } from "@buildcanada/components"
+
+<StatBlock
+  value="$456.2B"
+  label="Federal Spending"
+  change="+8.3%"
+  trend="up"
+/>
+\`\`\`
+
+## With Description
+
+\`\`\`tsx
+<StatBlock
+  value="$1.2T"
+  label="Total Revenue"
+  description="Combined federal and provincial revenues"
+  change="+7.8%"
+  trend="up"
+  size="lg"
+/>
+\`\`\`
+
+## Trend Indicators
+
+- **up**: Green indicator for positive trends
+- **down**: Red indicator for negative trends
+- **neutral**: Gray indicator for no change
+                `,
+            },
+        },
+    },
     argTypes: {
         size: {
             control: "select",
             options: ["sm", "md", "lg"],
+            description: "Size of the stat display",
         },
         trend: {
             control: "select",
             options: [undefined, "up", "down", "neutral"],
+            description: "Trend direction for the change indicator",
         },
+        value: { description: "The main statistic value to display" },
+        label: { description: "Label describing the statistic" },
+        description: { description: "Additional context or description" },
+        change: { description: "Change value (e.g., '+8.3%', '-2.1%')" },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

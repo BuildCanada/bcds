@@ -7,17 +7,57 @@ import { Button } from "../../primitives/Button"
 const meta: Meta<typeof Hero> = {
     title: "Components/Content/Hero",
     component: Hero,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A hero section component for page headers with title, subtitle, and call-to-action buttons.
+
+## Usage
+
+\`\`\`tsx
+import { Hero, HeroTitle, HeroSubtitle, HeroActions } from "@buildcanada/components"
+import { Button } from "@buildcanada/components"
+
+<Hero variant="home" background="linen">
+  <HeroTitle>Welcome to Build Canada</HeroTitle>
+  <HeroSubtitle>
+    Making government data accessible for all Canadians.
+  </HeroSubtitle>
+  <HeroActions>
+    <Button text="Get Started" variant="solid-auburn" />
+    <Button text="Learn More" variant="outline-charcoal" icon={null} />
+  </HeroActions>
+</Hero>
+\`\`\`
+
+## Variants
+
+- **home**: Large, impactful hero for homepages
+- **page**: Standard page header with title and description
+- **centered**: Center-aligned for special sections or CTAs
+
+## Sub-components
+
+- \`HeroTitle\`: Main heading (h1)
+- \`HeroSubtitle\`: Supporting text
+- \`HeroActions\`: Container for CTA buttons
+                `,
+            },
+        },
+    },
     argTypes: {
         variant: {
             control: "select",
             options: ["home", "page", "centered"],
+            description: "Layout variant of the hero",
         },
         background: {
             control: "select",
             options: ["white", "linen", "charcoal"],
+            description: "Background color",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

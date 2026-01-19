@@ -12,6 +12,43 @@ const meta: Meta<typeof Explorer> = {
     component: Explorer,
     parameters: {
         layout: "centered",
+        docs: {
+            description: {
+                component: `
+A data exploration interface that wraps the Grapher with additional controls for filtering, selecting entities, and switching between chart types.
+
+## Usage
+
+\`\`\`tsx
+import { Explorer } from "@buildcanada/charts"
+
+<Explorer
+  program={explorerProgram}
+  grapherConfigs={grapherConfigs}
+  bounds={bounds}
+/>
+\`\`\`
+
+## Features
+
+- **Entity Selection**: Filter data by countries, provinces, or other entities
+- **Time Controls**: Adjust the time range being displayed
+- **Chart Type Switching**: Toggle between different visualization types
+- **Data Filtering**: Apply filters to narrow down the dataset
+
+## Configuration
+
+The Explorer is configured using an Explorer Program that defines:
+- Available graphers and their configurations
+- Entity selection options
+- Default views and filters
+
+## Embedding
+
+Use \`isEmbeddedInPage\` prop when embedding in a page context for optimized display.
+                `,
+            },
+        },
     },
     decorators: [
         (Story) => (

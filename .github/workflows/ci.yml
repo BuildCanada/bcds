@@ -61,6 +61,7 @@ jobs:
                   retention-days: 7
 
     chromatic:
+        if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         needs: build
         steps:

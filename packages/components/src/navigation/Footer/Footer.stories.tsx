@@ -8,8 +8,55 @@ const meta: Meta<typeof Footer> = {
     component: Footer,
     parameters: {
         layout: "fullscreen",
+        docs: {
+            description: {
+                component: `
+A site footer component with logo, navigation links, social links, newsletter signup, and optional quote.
+
+## Usage
+
+\`\`\`tsx
+import { Footer } from "@buildcanada/components"
+
+<Footer
+  logo={<Logo />}
+  links={[
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Privacy", href: "/privacy" },
+  ]}
+  socialLinks={[
+    { platform: "twitter", href: "https://twitter.com/..." },
+    { platform: "github", href: "https://github.com/..." },
+  ]}
+  copyright="© 2024 Company Name"
+/>
+\`\`\`
+
+## With Newsletter
+
+\`\`\`tsx
+<Footer
+  logo={<Logo />}
+  links={links}
+  newsletter={{
+    heading: "Stay Updated",
+    description: "Get the latest news delivered to your inbox.",
+    placeholder: "Enter your email",
+    buttonText: "Subscribe",
+    onSubmit: (email) => console.log(email),
+  }}
+  copyright="© 2024 Company Name"
+/>
+\`\`\`
+
+## Social Platforms
+
+Supported platforms: twitter, linkedin, github, email, bluesky
+                `,
+            },
+        },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

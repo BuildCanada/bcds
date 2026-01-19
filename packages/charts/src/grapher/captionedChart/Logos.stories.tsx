@@ -9,6 +9,42 @@ const meta: Meta<typeof Grapher> = {
     component: Grapher,
     parameters: {
         layout: "centered",
+        docs: {
+            description: {
+                component: `
+Configure the logo displayed on charts. Multiple logo options are available for different branding needs.
+
+## Usage
+
+\`\`\`tsx
+import { Grapher, GrapherState, LogoOption } from "@buildcanada/charts"
+
+const grapherState = new GrapherState({
+  logo: LogoOption["buildcanada-wide"],
+  // ... other options
+})
+
+<Grapher grapherState={grapherState} />
+\`\`\`
+
+## Available Logos
+
+- **buildcanada-wide**: Wide Build Canada logo (default, recommended)
+- **buildcanada**: Square Build Canada logo (compact)
+- **canadaspends**: Canada Spends branded logo
+- **legacy**: Legacy logo for backwards compatibility
+
+## Hiding the Logo
+
+\`\`\`tsx
+const grapherState = new GrapherState({
+  hideLogo: true,
+  // ... other options
+})
+\`\`\`
+                `,
+            },
+        },
     },
     decorators: [
         (Story) => (

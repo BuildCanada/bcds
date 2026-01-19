@@ -5,25 +5,70 @@ import { Grid, GridItem } from "./Grid"
 const meta: Meta<typeof Grid> = {
     title: "Components/Layout/Grid",
     component: Grid,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A responsive CSS grid layout component with customizable columns and gaps.
+
+## Usage
+
+\`\`\`tsx
+import { Grid, GridItem } from "@buildcanada/components"
+
+<Grid columns={3} gap="md">
+  <GridItem>Item 1</GridItem>
+  <GridItem>Item 2</GridItem>
+  <GridItem span={2}>Wide Item</GridItem>
+</Grid>
+\`\`\`
+
+## Responsive Columns
+
+Use \`columnsMd\` and \`columnsLg\` props for responsive layouts:
+
+\`\`\`tsx
+<Grid columns={1} columnsMd={2} columnsLg={4} gap="md">
+  {/* 1 column on mobile, 2 on tablet, 4 on desktop */}
+</Grid>
+\`\`\`
+
+## GridItem Spanning
+
+Use \`GridItem\` with the \`span\` prop to make items span multiple columns:
+
+\`\`\`tsx
+<Grid columns={12} gap="sm">
+  <GridItem span={4}>4 columns</GridItem>
+  <GridItem span={8}>8 columns</GridItem>
+</Grid>
+\`\`\`
+                `,
+            },
+        },
+    },
     argTypes: {
         columns: {
             control: "select",
             options: [1, 2, 3, 4, 6, 12],
+            description: "Number of columns (base/mobile)",
         },
         columnsMd: {
             control: "select",
             options: [undefined, 1, 2, 3, 4, 6, 12],
+            description: "Number of columns at medium breakpoint",
         },
         columnsLg: {
             control: "select",
             options: [undefined, 1, 2, 3, 4, 6, 12],
+            description: "Number of columns at large breakpoint",
         },
         gap: {
             control: "select",
             options: ["none", "sm", "md", "lg"],
+            description: "Gap size between grid items",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

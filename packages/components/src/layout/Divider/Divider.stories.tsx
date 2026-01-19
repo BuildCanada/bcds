@@ -5,21 +5,58 @@ import { Divider } from "./Divider"
 const meta: Meta<typeof Divider> = {
     title: "Components/Layout/Divider",
     component: Divider,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A visual separator for dividing content sections.
+
+## Usage
+
+\`\`\`tsx
+import { Divider } from "@buildcanada/components"
+
+<Divider variant="solid" spacing="md" />
+\`\`\`
+
+## Variants
+
+- **solid**: Standard solid line
+- **dashed**: Dashed line for lighter separation
+- **construction**: Blueprint-style pattern (Build Canada brand)
+
+## Vertical Orientation
+
+Use \`orientation="vertical"\` for horizontal layouts:
+
+\`\`\`tsx
+<div style={{ display: "flex" }}>
+  <div>Left</div>
+  <Divider orientation="vertical" />
+  <div>Right</div>
+</div>
+\`\`\`
+                `,
+            },
+        },
+    },
     argTypes: {
         orientation: {
             control: "radio",
             options: ["horizontal", "vertical"],
+            description: "Direction of the divider",
         },
         variant: {
             control: "select",
             options: ["solid", "dashed", "construction"],
+            description: "Visual style of the divider",
         },
         spacing: {
             control: "select",
             options: ["none", "sm", "md", "lg"],
+            description: "Margin around the divider",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

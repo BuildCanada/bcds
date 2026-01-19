@@ -7,6 +7,31 @@ import { Button } from "./Button"
 const meta: Meta<typeof Button> = {
     title: "Components/Primitives/Button",
     component: Button,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A versatile button component that supports multiple variants, sizes, and icon configurations.
+
+## Usage
+
+\`\`\`tsx
+import { Button } from "@buildcanada/components"
+
+<Button text="Click me" variant="solid-auburn" />
+\`\`\`
+
+## Features
+
+- **6 variants**: solid-auburn, solid-charcoal, solid-linen, outline-auburn, outline-charcoal, outline-white
+- **3 sizes**: sm, md, lg
+- **Icon support**: Left or right positioned icons using FontAwesome
+- **Link mode**: Can render as an anchor tag with \`href\` prop
+- **Full width**: Expand to container width with \`fullWidth\` prop
+                `,
+            },
+        },
+    },
     argTypes: {
         variant: {
             control: "select",
@@ -18,17 +43,34 @@ const meta: Meta<typeof Button> = {
                 "outline-charcoal",
                 "outline-white",
             ],
+            description: "The visual style variant of the button",
         },
         size: {
             control: "radio",
             options: ["sm", "md", "lg"],
+            description: "The size of the button",
         },
         iconPosition: {
             control: "radio",
             options: ["left", "right"],
+            description: "Position of the icon relative to the text",
+        },
+        text: {
+            description: "The button label text",
+        },
+        icon: {
+            description: "FontAwesome icon definition. Defaults to arrow-right.",
+        },
+        disabled: {
+            description: "Whether the button is disabled",
+        },
+        fullWidth: {
+            description: "Whether the button should expand to full container width",
+        },
+        href: {
+            description: "If provided, renders as an anchor tag instead of button",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

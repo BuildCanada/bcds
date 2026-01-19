@@ -14,6 +14,37 @@ const meta: Meta<typeof Grapher> = {
     component: Grapher,
     parameters: {
         layout: "centered",
+        docs: {
+            description: {
+                component: `
+The DataTable view displays chart data in a tabular format, allowing users to inspect the underlying values.
+
+## Usage
+
+\`\`\`tsx
+import { Grapher, GrapherState, GRAPHER_TAB_CONFIG_OPTIONS } from "@buildcanada/charts"
+
+const grapherState = new GrapherState({
+  tab: GRAPHER_TAB_CONFIG_OPTIONS.table,
+  // ... other configuration
+})
+
+<Grapher grapherState={grapherState} />
+\`\`\`
+
+## Features
+
+- **Sortable Columns**: Click column headers to sort
+- **Entity Filtering**: Filter by selected entities
+- **Data Export**: Download data in various formats
+- **Incomplete Data Handling**: Gracefully handles missing values
+
+## Switching to Table View
+
+Users can switch to the table view using the tab controls on the chart, or you can set it as the default view.
+                `,
+            },
+        },
     },
     decorators: [
         (Story) => (

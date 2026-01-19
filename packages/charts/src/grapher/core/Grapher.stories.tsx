@@ -16,6 +16,40 @@ const meta: Meta<typeof Grapher> = {
     component: Grapher,
     parameters: {
         layout: "centered",
+        docs: {
+            description: {
+                component: `
+The main charting component that renders interactive data visualizations.
+
+## Usage
+
+\`\`\`tsx
+import { Grapher, GrapherState } from "@buildcanada/charts"
+
+const grapherState = new GrapherState({
+  type: "LineChart",
+  data: yourData,
+  // ... configuration options
+})
+
+<Grapher grapherState={grapherState} />
+\`\`\`
+
+## Chart Types
+
+- **LineChart**: Time series and trend data
+- **DiscreteBarChart**: Categorical comparisons
+- **StackedAreaChart**: Part-to-whole over time
+- **StackedBarChart**: Part-to-whole comparisons
+- **SlopeChart**: Change between two points
+- **MapChart**: Geographic data visualization
+
+## Responsive
+
+The Grapher automatically adapts to its container size. Wrap it in a sized container for best results.
+                `,
+            },
+        },
     },
     decorators: [
         (Story) => (

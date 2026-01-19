@@ -6,13 +6,57 @@ import { TextField } from "./TextField"
 const meta: Meta<typeof TextField> = {
     title: "Components/Primitives/TextField",
     component: TextField,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A form text input component with label, hint, and error states.
+
+## Usage
+
+\`\`\`tsx
+import { TextField } from "@buildcanada/components"
+
+<TextField
+  label="Email Address"
+  type="email"
+  placeholder="you@example.com"
+/>
+\`\`\`
+
+## Input Types
+
+Supports standard HTML input types: text, email, password, number, tel, url.
+
+## Validation States
+
+\`\`\`tsx
+// With hint text
+<TextField label="Password" hint="Must be 8+ characters" />
+
+// With error
+<TextField label="Email" error="Invalid email format" />
+
+// Required field
+<TextField label="Name" required />
+\`\`\`
+                `,
+            },
+        },
+    },
     argTypes: {
         type: {
             control: "select",
             options: ["text", "email", "password", "number", "tel", "url"],
+            description: "HTML input type",
         },
+        label: { description: "Label text above the input" },
+        placeholder: { description: "Placeholder text" },
+        hint: { description: "Helper text below the input" },
+        error: { description: "Error message (shows error state when set)" },
+        required: { description: "Whether the field is required" },
+        disabled: { description: "Whether the input is disabled" },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

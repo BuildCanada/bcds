@@ -6,17 +6,61 @@ import { Container } from "../Container"
 const meta: Meta<typeof Section> = {
     title: "Components/Layout/Section",
     component: Section,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A full-width section component with background colors and vertical padding.
+
+## Usage
+
+\`\`\`tsx
+import { Section, Container } from "@buildcanada/components"
+
+<Section background="linen" spacing="lg">
+  <Container>
+    <h2>Section Title</h2>
+    <p>Section content goes here.</p>
+  </Container>
+</Section>
+\`\`\`
+
+## Backgrounds
+
+- **white**: #FFFFFF
+- **linen**: #F6ECE3 (Build Canada brand)
+- **charcoal**: #272727 (dark mode)
+
+## Building Page Layouts
+
+Stack sections to create full page layouts:
+
+\`\`\`tsx
+<>
+  <Section background="linen" spacing="xl">
+    <Container><Hero /></Container>
+  </Section>
+  <Section background="white" spacing="lg">
+    <Container><Content /></Container>
+  </Section>
+</>
+\`\`\`
+                `,
+            },
+        },
+    },
     argTypes: {
         background: {
             control: "select",
             options: ["white", "linen", "charcoal"],
+            description: "Background color of the section",
         },
         spacing: {
             control: "select",
             options: ["none", "sm", "md", "lg", "xl"],
+            description: "Vertical padding (top and bottom)",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

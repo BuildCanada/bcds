@@ -5,25 +5,70 @@ import { Stack } from "./Stack"
 const meta: Meta<typeof Stack> = {
     title: "Components/Layout/Stack",
     component: Stack,
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A flexbox layout component for arranging items in a row or column with consistent spacing.
+
+## Usage
+
+\`\`\`tsx
+import { Stack } from "@buildcanada/components"
+
+<Stack direction="vertical" spacing="md">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+\`\`\`
+
+## Horizontal Layout
+
+\`\`\`tsx
+<Stack direction="horizontal" spacing="lg" align="center">
+  <Button>Action 1</Button>
+  <Button>Action 2</Button>
+</Stack>
+\`\`\`
+
+## Spacing Options
+
+- **none**: 0px
+- **xs**: 4px
+- **sm**: 8px
+- **md**: 16px
+- **lg**: 24px
+- **xl**: 32px
+                `,
+            },
+        },
+    },
     argTypes: {
         direction: {
             control: "radio",
             options: ["vertical", "horizontal"],
+            description: "Stack direction (column or row)",
         },
         spacing: {
             control: "select",
             options: ["none", "xs", "sm", "md", "lg", "xl"],
+            description: "Gap between items",
         },
         align: {
             control: "select",
             options: ["start", "center", "end", "stretch"],
+            description: "Cross-axis alignment (align-items)",
         },
         justify: {
             control: "select",
             options: ["start", "center", "end", "between", "around"],
+            description: "Main-axis alignment (justify-content)",
+        },
+        wrap: {
+            description: "Whether items should wrap to next line",
         },
     },
-    tags: ["autodocs"],
 }
 
 export default meta

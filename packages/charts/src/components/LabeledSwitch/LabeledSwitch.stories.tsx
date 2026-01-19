@@ -7,7 +7,49 @@ import { LabeledSwitch } from "./LabeledSwitch"
 const meta: Meta<typeof LabeledSwitch> = {
     title: "Components/LabeledSwitch",
     component: LabeledSwitch,
-    tags: ["autodocs"],
+    parameters: {
+        docs: {
+            description: {
+                component: `
+A toggle switch component with a label and optional tooltip.
+
+## Usage
+
+\`\`\`tsx
+import { LabeledSwitch } from "@buildcanada/charts"
+
+<LabeledSwitch
+  value={isEnabled}
+  label="Enable feature"
+  onToggle={() => setIsEnabled(!isEnabled)}
+/>
+\`\`\`
+
+## With Tooltip
+
+\`\`\`tsx
+<LabeledSwitch
+  value={value}
+  label="Advanced mode"
+  tooltip="Shows additional configuration options"
+  onToggle={handleToggle}
+/>
+\`\`\`
+
+## Controlled Component
+
+This is a controlled component - you must manage the \`value\` state and handle \`onToggle\`.
+                `,
+            },
+        },
+    },
+    argTypes: {
+        value: { description: "Current toggle state (on/off)" },
+        label: { description: "Label text displayed next to the switch" },
+        tooltip: { description: "Optional tooltip text on hover" },
+        disabled: { description: "Whether the switch is disabled" },
+        onToggle: { description: "Callback when switch is toggled" },
+    },
     decorators: [
         (Story) => (
             <div style={{ maxWidth: "400px" }}>
