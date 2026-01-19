@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { useArgs } from "@storybook/preview-api"
+import { useArgs } from "storybook/preview-api"
 
 import { PopupForm } from "./PopupForm"
 import { Button } from "../../primitives/Button"
