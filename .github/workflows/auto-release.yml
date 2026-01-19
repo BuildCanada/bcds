@@ -1,0 +1,116 @@
+name: Auto Release
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - "packages/*/package.json"
+
+permissions:
+    contents: write
+
+jobs:
+    check-and-release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 2
+
+            - name: Check for version changes
+              id: version-check
+              run: |
+                  # Get changed packages and their versions
+                  CHANGED_PACKAGES=""
+                  NEW_VERSION=""
+
+                  for pkg in charts colours components; do
+                      PKG_FILE="packages/$pkg/package.json"
+
+                      # Check if this file changed in this commit
+                      if git diff HEAD~1 --name-only | grep -q "$PKG_FILE"; then
+                          # Get old and new versions
+                          OLD_VERSION=$(git show HEAD~1:$PKG_FILE 2>/dev/null | jq -r '.version' || echo "0.0.0")
+                          NEW_VERSION=$(jq -r '.version' $PKG_FILE)
+
+                          if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
+                              echo "Package $pkg version changed: $OLD_VERSION -> $NEW_VERSION"
+                              if [ -z "$CHANGED_PACKAGES" ]; then
+                                  CHANGED_PACKAGES="$pkg"
+                              else
+                                  CHANGED_PACKAGES="$CHANGED_PACKAGES, $pkg"
+                              fi
+                          fi
+                      fi
+                  done
+
+                  if [ -n "$CHANGED_PACKAGES" ]; then
+                      echo "changed=true" >> $GITHUB_OUTPUT
+                      echo "packages=$CHANGED_PACKAGES" >> $GITHUB_OUTPUT
+                      echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+                  else
+                      echo "changed=false" >> $GITHUB_OUTPUT
+                  fi
+
+            - name: Check if release already exists
+              id: release-check
+              if: steps.version-check.outputs.changed == 'true'
+              run: |
+                  VERSION="v${{ steps.version-check.outputs.version }}"
+                  if gh release view "$VERSION" &>/dev/null; then
+                      echo "Release $VERSION already exists"
+                      echo "exists=true" >> $GITHUB_OUTPUT
+                  else
+                      echo "Release $VERSION does not exist"
+                      echo "exists=false" >> $GITHUB_OUTPUT
+                  fi
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Generate release notes
+              id: release-notes
+              if: steps.version-check.outputs.changed == 'true' && steps.release-check.outputs.exists == 'false'
+              run: |
+                  VERSION="${{ steps.version-check.outputs.version }}"
+                  PACKAGES="${{ steps.version-check.outputs.packages }}"
+
+                  # Get commit messages since last tag
+                  LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+                  if [ -n "$LAST_TAG" ]; then
+                      COMMITS=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD --no-merges | head -20)
+                      COMPARE_URL="https://github.com/${{ github.repository }}/compare/$LAST_TAG...v$VERSION"
+                  else
+                      COMMITS=$(git log --pretty=format:"- %s" -20 --no-merges)
+                      COMPARE_URL=""
+                  fi
+
+                  # Build release notes
+                  NOTES="## Packages Updated
+
+                  The following packages have been updated to v$VERSION:
+                  - $PACKAGES
+
+                  ## Changes
+
+                  $COMMITS"
+
+                  if [ -n "$COMPARE_URL" ]; then
+                      NOTES="$NOTES
+
+                  **Full Changelog**: $COMPARE_URL"
+                  fi
+
+                  # Write to file to preserve newlines
+                  echo "$NOTES" > release_notes.md
+
+            - name: Create Release
+              if: steps.version-check.outputs.changed == 'true' && steps.release-check.outputs.exists == 'false'
+              run: |
+                  VERSION="v${{ steps.version-check.outputs.version }}"
+                  gh release create "$VERSION" \
+                      --title "$VERSION" \
+                      --notes-file release_notes.md
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
