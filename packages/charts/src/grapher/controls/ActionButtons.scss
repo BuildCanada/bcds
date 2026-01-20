@@ -1,57 +1,63 @@
-// keep in sync with constant values in ActionButtons.tsx
-$actionButtonHeight: 32px; // keep in sync with BUTTON_HEIGHT
-$paddingBetweenActionButtons: 8px; // keep in sync with PADDING_BETWEEN_BUTTONS
-$paddingBetweenIconAndLabel: 8px; // keep in sync with PADDING_BETWEEN_ICON_AND_LABEL
-$paddingX: 12px; // keep in sync with PADDING_X
+/*******************************************************************************
+ * Action Buttons
+ *
+ * Row of action buttons in the grapher (download, share, etc.)
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
+// Keep in sync with constant values in ActionButtons.tsx
+$actionButtonHeight: 32px;
+$paddingBetweenActionButtons: 8px;
+$paddingBetweenIconAndLabel: 8px;
+$paddingX: 12px;
 
 .ActionButtons {
     margin: 0;
     padding: 0;
-    white-space: nowrap;
+    height: $actionButtonHeight;
 
     ul {
         display: flex;
         list-style: none;
-        height: $actionButtonHeight;
+        height: 100%;
         padding: 0;
+        margin: 0;
+        gap: $paddingBetweenActionButtons;
     }
 
     li {
         height: 100%;
-        display: inline-block;
+        display: flex;
         position: relative;
-    }
-
-    li + li {
-        margin-left: $paddingBetweenActionButtons;
     }
 }
 
 div.ActionButton {
-    --light-fill: #{$gray-10};
-    --hover-fill: #{$gray-20};
-    --active-fill: #{$blue-20};
-    --text-color: #{$dark-text};
+    --light-fill: #{$white};
+    --hover-fill: #{$gray-10};
+    --active-fill: #{$cerulean-100};
+    --text-color: #{$charcoal};
+    --border-color: #{$gray-20};
 
     &.ActionButton--exploreData {
-        --light-fill: #{$blue-20};
-        --hover-fill: #{$blue-20};
-        --active-fill: #{$blue-10};
-        --text-color: #{$blue-90};
-
+        --light-fill: #{$cerulean-100};
+        --hover-fill: #{$cerulean-200};
+        --active-fill: #{$cerulean-100};
+        --text-color: #{$cerulean-900};
         --hover-decoration: underline;
     }
 
     &.ActionButton--donate {
-        --light-fill: #{rgba($vermillion, 0.15)};
-        --hover-fill: #{rgba(#f4a39f, 0.15)};
-        --active-fill: var(--hover-fill);
-        --text-color: #{$vermillion};
+        --light-fill: #{$auburn-100};
+        --hover-fill: #{$auburn-200};
+        --active-fill: #{$auburn-100};
+        --text-color: #{$auburn};
     }
 
     height: 100%;
-    border-radius: 4px;
+    border-radius: 0;
     position: relative;
+    transition: all 150ms ease;
 
     button,
     a {
@@ -59,24 +65,32 @@ div.ActionButton {
         align-items: center;
         gap: $paddingBetweenIconAndLabel;
         height: 100%;
-        width: 100%;
+        box-sizing: border-box;
         cursor: pointer;
         color: var(--text-color);
+        font-family: $sans-serif-font-stack;
         font-size: 13px;
         font-weight: 500;
+        line-height: 1;
         padding: 0 $paddingX;
         border-radius: inherit;
         background-color: var(--light-fill);
-        position: relative;
         letter-spacing: 0.01em;
+        text-transform: uppercase;
+        transition: all 150ms ease;
+        border: none;
+        outline: none;
+        text-decoration: none;
+        white-space: nowrap;
 
         svg {
             font-size: 12px;
+            transition: transform 150ms ease;
         }
 
         &.icon-only {
             justify-content: center;
-            padding: 0;
+            padding: 0 8px;
         }
 
         &:visited {
@@ -85,13 +99,18 @@ div.ActionButton {
 
         &:hover {
             background-color: var(--hover-fill);
-            text-decoration: var(--hover-decoration);
+            text-decoration: var(--hover-decoration, none);
         }
 
         &:active,
         &.active {
-            color: $active-text;
+            color: $cerulean-900;
             background-color: var(--active-fill);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $auburn;
+            outline-offset: 2px;
         }
     }
 }

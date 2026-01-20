@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/charts",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A configurable data visualization library for creating interactive charts.",
   "type": "module",
   "main": "src/index.ts",
@@ -54,6 +54,8 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@buildcanada/colours": "workspace:*",
+    "@buildcanada/components": "workspace:*",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",

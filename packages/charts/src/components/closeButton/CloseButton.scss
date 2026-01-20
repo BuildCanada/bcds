@@ -1,10 +1,16 @@
+/*******************************************************************************
+ * Close Button
+ *
+ * Circular close/dismiss button.
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
 .close-button {
-    // keep in sync with CLOSE_BUTTON_SIZE in CloseButton.tsx
+    // Keep in sync with CLOSE_BUTTON_SIZE in CloseButton.tsx
     $size: 32px;
 
     $light-stroke: $gray-20;
-
-    $active-fill: #dbe5f0;
+    $active-fill: $cerulean-100;
     $hover-fill: $gray-10;
 
     display: flex;
@@ -14,23 +20,30 @@
     position: relative;
     height: $size;
     width: $size;
-    padding: 7px;
+    padding: 0;
 
-    color: $light-text;
-    background: white;
+    color: $gray-60;
+    background: $white;
     border: 1px solid $light-stroke;
-    border-radius: 50%;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 150ms ease;
 
     &:hover {
         background: $hover-fill;
-        border-color: $hover-fill;
-        cursor: pointer;
-        color: $dark-text;
+        border-color: $gray-30;
+        color: $charcoal;
     }
 
     &:active {
         background: $active-fill;
-        border: 1px solid $active-fill;
+        border-color: $cerulean-500;
+        color: $cerulean-900;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $auburn;
+        outline-offset: 2px;
     }
 
     svg {

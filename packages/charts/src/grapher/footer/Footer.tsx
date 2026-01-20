@@ -22,7 +22,12 @@ import {
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     GrapherModal,
 } from "../core/GrapherConstants"
+
 import { GRAPHER_LIGHT_TEXT } from "../color/ColorConstants"
+
+// Estimated dimensions of action buttons for layout calculations
+const ESTIMATED_ACTION_BUTTONS_WIDTH = 400
+const ACTION_BUTTONS_HEIGHT = 32
 
 /*
 
@@ -168,13 +173,7 @@ abstract class AbstractFooter<
     }
 
     @computed protected get finalUrlText(): string | undefined {
-        const {
-            correctedUrlText,
-            licenseText,
-            fontSize,
-            maxWidth,
-            actionButtons,
-        } = this
+        const { correctedUrlText, licenseText, fontSize, maxWidth } = this
 
         if (this.hideOriginUrl) return undefined
 
@@ -193,7 +192,7 @@ abstract class AbstractFooter<
         // If the URL is too long, don't show it
         if (
             licenseAndOriginUrlWidth + HORIZONTAL_PADDING >
-            maxWidth - actionButtons.width
+            maxWidth - ESTIMATED_ACTION_BUTTONS_WIDTH
         )
             return undefined
 
@@ -230,47 +229,35 @@ abstract class AbstractFooter<
         return !this.manager.hideNote && !!this.noteText
     }
 
-    @computed private get actionButtonsWidthWithIconsOnly(): number {
-        return new ActionButtons({
-            manager: this.manager,
-            maxWidth: this.maxWidth,
-        }).widthWithIconsOnly
-    }
-
     @computed private get useFullWidthSources(): boolean {
-        const {
-            showNote,
-            sourcesFontSize,
-            maxWidth,
-            sourcesText,
-            actionButtonsWidthWithIconsOnly,
-        } = this
+        const { showNote, sourcesFontSize, maxWidth, sourcesText } = this
         if (showNote) return true
         const sourcesWidth = Bounds.forText(sourcesText, {
             fontSize: sourcesFontSize,
         }).width
-        return sourcesWidth > 2 * (maxWidth - actionButtonsWidthWithIconsOnly)
+        return (
+            sourcesWidth > 2 * (maxWidth - ESTIMATED_ACTION_BUTTONS_WIDTH)
+        )
     }
 
     @computed private get useFullWidthNote(): boolean {
-        const {
-            fontSize,
-            maxWidth,
-            noteText,
-            actionButtonsWidthWithIconsOnly,
-        } = this
+        const { fontSize, maxWidth, noteText } = this
         const noteWidth = Bounds.forText(noteText, { fontSize }).width
-        return noteWidth > 2 * (maxWidth - actionButtonsWidthWithIconsOnly)
+        return noteWidth > 2 * (maxWidth - ESTIMATED_ACTION_BUTTONS_WIDTH)
     }
 
     @computed protected get sourcesMaxWidth(): number {
         if (this.useFullWidthSources) return this.maxWidth
-        return this.maxWidth - this.actionButtons.width - HORIZONTAL_PADDING
+        return (
+            this.maxWidth - ESTIMATED_ACTION_BUTTONS_WIDTH - HORIZONTAL_PADDING
+        )
     }
 
     @computed protected get noteMaxWidth(): number {
         if (this.useFullWidthNote) return this.maxWidth
-        return this.maxWidth - this.actionButtons.width - HORIZONTAL_PADDING
+        return (
+            this.maxWidth - ESTIMATED_ACTION_BUTTONS_WIDTH - HORIZONTAL_PADDING
+        )
     }
 
     @computed protected get licenseAndOriginUrlMaxWidth(): number {
@@ -323,60 +310,6 @@ abstract class AbstractFooter<
             rawHtml: true,
             fontSize,
             lineHeight,
-        })
-    }
-
-    @computed private get actionButtonsMaxWidth(): number {
-        const {
-            correctedUrlText,
-            licenseText,
-            maxWidth,
-            fontSize,
-            sourcesFontSize,
-            useFullWidthSources,
-            sourcesText,
-            noteText,
-            showNote,
-            useFullWidthNote,
-        } = this
-
-        const sourcesWidth = Bounds.forText(sourcesText, {
-            fontSize: sourcesFontSize,
-        }).width
-        const noteWidth = Bounds.forText(noteText, { fontSize }).width
-
-        // text next to the action buttons
-        const leftTextWidth = !useFullWidthSources
-            ? sourcesWidth
-            : showNote && !useFullWidthNote
-              ? noteWidth
-              : 0
-        // text above the action buttons
-        // (taken into account to ensure the action buttons are not too close to clickable text)
-        const topTextWidth = useFullWidthSources
-            ? useFullWidthNote
-                ? noteWidth
-                : sourcesWidth
-            : 0
-        const licenseAndOriginUrlWidth = Bounds.forText(
-            AbstractFooter.constructLicenseAndOriginUrlText(
-                correctedUrlText,
-                licenseText
-            ),
-            { fontSize }
-        ).width
-
-        return (
-            maxWidth -
-            Math.max(topTextWidth, leftTextWidth, licenseAndOriginUrlWidth) -
-            HORIZONTAL_PADDING
-        )
-    }
-
-    @computed private get actionButtons(): ActionButtons {
-        return new ActionButtons({
-            manager: this.manager,
-            maxWidth: this.actionButtonsMaxWidth,
         })
     }
 
@@ -555,7 +488,7 @@ abstract class AbstractFooter<
     }
 
     @computed private get bottomContentHeight(): number {
-        const { actionButtons, sources, note } = this
+        const { sources, note } = this
 
         const renderSources = !this.useFullWidthSources
         const renderNote = this.showNote && !this.useFullWidthNote
@@ -567,7 +500,7 @@ abstract class AbstractFooter<
             (renderPadding ? this.verticalPadding : 0) +
             (renderLicense ? this.licenseAndOriginUrl.height : 0)
 
-        return Math.max(textHeight, actionButtons.height)
+        return Math.max(textHeight, ACTION_BUTTONS_HEIGHT)
     }
 
     // renders the action buttons and the content next to it
@@ -600,10 +533,7 @@ abstract class AbstractFooter<
                     {renderPadding && this.renderVerticalSpace()}
                     {renderLicense && this.renderLicense()}
                 </div>
-                <ActionButtons
-                    manager={this.manager}
-                    maxWidth={this.actionButtonsMaxWidth}
-                />
+                <ActionButtons manager={this.manager} />
             </div>
         )
     }

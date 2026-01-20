@@ -1,16 +1,25 @@
+/*******************************************************************************
+ * Radio Button
+ *
+ * Custom radio button styling.
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
 @use "sass:math";
 
 .radio {
-    $radio-size: 16px;
+    $radio-size: 18px;
 
     $light-stroke: $gray-30;
-    $hover-stroke: $blue-30;
-    $active-fill: $blue-50;
+    $hover-stroke: $cerulean-500;
+    $active-fill: $cerulean-500;
 
     position: relative;
+    display: flex;
+    align-items: flex-start;
 
     label {
-        margin: 0; // style leak in admin
+        margin: 0;
         cursor: pointer;
     }
 
@@ -28,37 +37,48 @@
         width: $radio-size;
         height: $radio-size;
 
-        background: white;
+        background: $white;
         pointer-events: none;
         border-radius: 50%;
-        border: 1px solid $light-stroke;
+        border: 2px solid $light-stroke;
 
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 150ms ease;
 
         .inner {
             width: math.div($radio-size, 2);
             height: math.div($radio-size, 2);
             background-color: $active-fill;
             border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 150ms ease;
         }
     }
 
     input:focus-visible + .outer {
-        outline: 2px solid $controls-color;
+        outline: 2px solid $auburn;
+        outline-offset: 2px;
     }
 
     input:checked + .outer {
         border-color: $hover-stroke;
+
+        .inner {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .label {
         @include grapher_label-2-regular;
-        padding-left: $radio-size + 8px;
+        padding-left: $radio-size + 10px;
         cursor: pointer;
         user-select: none;
-        color: $dark-text;
+        color: $charcoal;
+        line-height: $radio-size;
     }
 
     &:hover {

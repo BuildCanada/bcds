@@ -18,8 +18,9 @@
 
         .modal-content {
             position: absolute;
-            border-radius: 4px;
+            border-radius: 0;
             background: #fff;
+            border: 1px solid $gray-20;
             box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.15);
             min-height: 150px;
         }

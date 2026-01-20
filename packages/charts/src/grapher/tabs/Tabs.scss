@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Tabs
+ *
+ * Tab component styling for chart/table switchers.
+ * Uses Build Canada design system colors - no rounded edges.
+ ******************************************************************************/
+
 .Tabs {
     position: relative;
 
@@ -16,23 +23,30 @@
             flex-shrink: 0;
             display: inline-block;
             margin: 0 8px 8px 0;
-            padding: 8px;
-            border: 1px solid $blue-10;
-            background: #fff;
-            color: $dark-text;
+            padding: 10px 16px;
+            border: 1px solid $gray-20;
+            border-radius: 0;
+            background: $white;
+            color: $charcoal;
             white-space: normal;
             cursor: pointer;
             text-wrap: balance;
+            transition: all 150ms ease;
 
             &[data-hovered] {
                 background-color: $gray-10;
-                border-color: $gray-10;
+                border-color: $gray-30;
             }
 
             &[data-selected] {
-                background: $accent-pale-blue;
-                border-color: $accent-pale-blue;
-                color: $blue-90;
+                background: $cerulean-100;
+                border-color: $cerulean-500;
+                color: $cerulean-900;
+            }
+
+            &:focus-visible {
+                outline: 2px solid $auburn;
+                outline-offset: 2px;
             }
         }
     }
@@ -58,73 +72,79 @@
         );
     }
 
-    // Variant: slim
+    // Variant: slim (for Chart/Table switcher)
     &.Tabs--variant-slim {
         $font-size: var(--tabs-font-size, 13px);
         --tab-padding: 16px;
 
         $light-stroke: $gray-20;
-
         $hover-fill: $gray-10;
-        $active-fill: $blue-20;
-
-        $border-radius: 4px;
-        $visual-gap: 2px;
+        $active-fill: $auburn-500;
+        $visual-gap: 0;
 
         display: flex;
         height: $controlRowHeight;
         margin: 0;
-        padding: $visual-gap;
-        // using a box-shadow instead of a border fixes a bug
-        // where the tab items weren't centered when zoomed in or out
+        padding: 0;
         box-shadow: inset 0 0 0 1px $light-stroke;
-        border-radius: $border-radius;
+        border-radius: 0;
 
         .Tabs__Tab {
             position: relative;
 
-            $height: $controlRowHeight - 2 * $visual-gap;
+            $height: $controlRowHeight;
 
             display: block;
-            text-transform: capitalize;
-            color: $light-text;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: $charcoal;
             font-size: $font-size;
             font-weight: 500;
             height: $height;
             line-height: $height;
-            border-radius: $border-radius - $visual-gap;
+            border-radius: 0;
             padding: 0 var(--tab-padding);
             cursor: pointer;
-            letter-spacing: 0.01em;
             white-space: nowrap;
             user-select: none;
             text-align: center;
             text-overflow: ellipsis;
             overflow: hidden;
+            transition: all 150ms ease;
+            background-color: $white;
 
             &[data-hovered] {
                 background-color: $hover-fill;
             }
 
             &[data-selected] {
-                color: $active-text;
+                color: $white;
                 background-color: $active-fill;
+
+                svg {
+                    color: $white;
+                }
+            }
+
+            &:focus-visible {
+                outline: 2px solid $auburn;
+                outline-offset: -2px;
             }
         }
 
-        // separators between tabs
+        // Separators between tabs
         .Tabs__Tab + .Tabs__Tab::before {
             content: "";
             display: block;
             width: 1px;
-            height: calc(100% - 12px);
+            height: calc(100% - 8px);
             position: absolute;
-            top: 6px;
+            top: 4px;
             background-color: $light-stroke;
             left: -0.5px;
         }
 
-        // hide separators when a tab is hovered over or when a tab is active
+        // Hide separators when a tab is hovered over or when a tab is active
         .Tabs__Tab[data-selected]::before,
         .Tabs__Tab[data-hovered]::before,
         .Tabs__Tab[data-selected] + .Tabs__Tab::before,
@@ -139,7 +159,7 @@
         gap: 8px;
 
         $hover-fill: $gray-10;
-        $active-fill: $accent-pale-blue;
+        $active-fill: $cerulean-100;
 
         .Tabs__Tab {
             flex-grow: 1;
@@ -147,22 +167,29 @@
 
             @include grapher_label-2-medium;
             display: inline-block;
-            padding: 8px;
-            border: 1px solid $blue-10;
-            background: #fff;
-            color: $dark-text;
+            padding: 10px 16px;
+            border: 1px solid $gray-20;
+            border-radius: 0;
+            background: $white;
+            color: $charcoal;
             cursor: pointer;
             text-wrap: balance;
+            transition: all 150ms ease;
 
             &[data-hovered] {
                 background-color: $hover-fill;
-                border-color: $hover-fill;
+                border-color: $gray-30;
             }
 
             &[data-selected] {
                 background: $active-fill;
-                border-color: $active-fill;
-                color: $blue-90;
+                border-color: $cerulean-500;
+                color: $cerulean-900;
+            }
+
+            &:focus-visible {
+                outline: 2px solid $auburn;
+                outline-offset: 2px;
             }
         }
     }
