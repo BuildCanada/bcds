@@ -1,0 +1,154 @@
+# Publishing to npm
+
+This document explains how to publish `@BuildCanada/bcds` to the npm registry using trusted publishing (OIDC/provenance).
+
+## Prerequisites
+
+1. **npm Account**: You need an npm account with publish access to the `@buildcanada` scope
+2. **Link GitHub to npm**: Configure trusted publishing on npm
+
+## Setting up Trusted Publishing
+
+Trusted publishing uses GitHub's OIDC provider to authenticate with npm without storing tokens. This is more secure than using access tokens.
+
+### Step 1: Link your package to GitHub
+
+1. Go to [npmjs.com](https://www.npmjs.com/) and log in
+2. Navigate to your package settings 
+  1. or create the package first with `npm publish --access public` locally
+3. Go to the package's "Settings" tab
+4. Scroll to "Publishing access"
+5. Click "Link repository" or "Add new repository"
+6. Enter your GitHub repository: `BuildCanada/bcds` 
+  1. or your actual repo
+7. Save the settings
+
+### Step 2: Configure the workflow environment (optional)
+
+If you want to restrict publishing to a specific GitHub environment:
+
+1. In npm package settings, under "Publishing access", specify an environment name (e.g., `production`)
+2. In your GitHub repo, go to Settings → Environments → New environment
+3. Create an environment with the same name
+4. Add protection rules (e.g., required reviewers)
+
+## Publishing Methods
+
+### Method 1: Create a GitHub Release (Recommended)
+
+1. Update the version in `package.json`:
+   ```bash
+   npm version patch  # or minor, major
+   ```
+
+2. Push the changes and tags:
+   ```bash
+   git push && git push --tags
+   ```
+
+3. Create a GitHub Release:
+   - Go to the repository on GitHub
+   - Click "Releases" → "Create a new release"
+   - Select the tag you just created
+   - Add release notes
+   - Click "Publish release"
+
+The workflow will automatically run and publish to npm with provenance.
+
+### Method 2: Manual Trigger
+
+1. Go to the repository on GitHub
+2. Click "Actions" → "Publish to npm"
+3. Click "Run workflow"
+4. Optionally enable "dry-run" to test without publishing
+5. Click "Run workflow"
+
+## Dry Run
+
+To test the publishing process without actually publishing:
+
+1. Use the manual trigger with "dry-run" enabled, OR
+2. Run locally:
+   ```bash
+   npm pack --dry-run
+   npm publish --access public --dry-run
+   ```
+
+## Version Management
+
+Follow semantic versioning:
+- **patch** (0.1.0 → 0.1.1): Bug fixes, documentation updates
+- **minor** (0.1.0 → 0.2.0): New features, backward compatible
+- **major** (0.1.0 → 1.0.0): Breaking changes
+
+```bash
+# Bump version
+npm version patch   # 0.1.0 → 0.1.1
+npm version minor   # 0.1.0 → 0.2.0
+npm version major   # 0.1.0 → 1.0.0
+
+# Or set specific version
+npm version 1.0.0
+```
+
+## Package Contents
+
+The following files are included in the published package:
+- `src/` - All source files (TypeScript, SCSS)
+- `README.md` - Package documentation
+- `LICENSE.md` - License file
+- `package.json` - Package metadata
+
+Excluded from the package:
+- Test files (`*.test.ts`, `*.test.tsx`)
+- Storybook stories (`*.stories.tsx`)
+- `.storybook/` directory
+- `docs/` directory
+- `node_modules/`
+- Build artifacts
+
+## Provenance
+
+Published packages include provenance attestation, which:
+- Proves the package was built from the linked GitHub repository
+- Shows the exact commit and workflow that produced the package
+- Appears as a "Provenance" badge on npmjs.com
+
+## Troubleshooting
+
+### "Provenance generation failed"
+- Ensure `id-token: write` permission is set in the workflow
+- Verify the repository is linked in npm package settings
+- Check that the package name matches exactly
+
+### "403 Forbidden - You do not have permission"
+- Verify your npm account has access to the `@buildcanada` scope
+- Ensure the GitHub repository is linked in npm package settings
+- Check that trusted publishing is configured correctly
+
+### "Package name already exists"
+The package `@BuildCanada/bcds` may already exist. Either:
+- Get publish access to the existing package
+- Change the package name in `package.json`
+
+### "Version already exists"
+Bump the version in `package.json` before publishing:
+```bash
+npm version patch
+```
+
+## First-time Publishing
+
+For the initial publish (before trusted publishing can be configured):
+
+1. Log in to npm locally:
+   ```bash
+   npm login
+   ```
+
+2. Publish the first version:
+   ```bash
+   npm publish --access public
+   ```
+
+3. Then configure trusted publishing in npm settings as described above

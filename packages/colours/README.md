@@ -46,7 +46,7 @@ import * as styles from "colour-tokens/styles";
 ## Downloading
 
 ```bash
-npm install colour-tokens
+npm install @buildcanada/colours
 ```
 
 ## Contributing
