@@ -69,14 +69,12 @@ export class NoDataModal extends React.Component<NoDataModalProps> {
         const helpText = this.props.helpText ?? defaultHelpText
 
         const center = bounds.centerPos
-        const padding = 0.75 * this.fontSize
+        const padding = 1.25 * this.fontSize
         const showHelpText = !isStatic && !!helpText
-        const helpTextFontSize = 0.9 * this.fontSize
+        const helpTextFontSize = 0.85 * this.fontSize
 
         return (
             <g className="no-data">
-                <rect {...bounds.toProps()} fill="#fff" opacity={0.6} />
-
                 <Halo
                     id="no-data-message"
                     outlineWidth={GRAPHER_TEXT_OUTLINE_FACTOR * this.fontSize}
@@ -85,11 +83,7 @@ export class NoDataModal extends React.Component<NoDataModalProps> {
                     <text
                         x={center.x}
                         y={center.y}
-                        dy={
-                            showHelpText
-                                ? -padding / 2
-                                : dyFromAlign(VerticalAlign.middle)
-                        }
+                        dy={showHelpText ? -padding / 4 : 4}
                         textAnchor="middle"
                         fontSize={this.fontSize}
                         fontWeight={500}

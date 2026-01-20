@@ -1,32 +1,41 @@
-$active-icon: $blue-50;
+/*******************************************************************************
+ * Content Switchers
+ *
+ * Chart type switcher tabs (Line, Bar, Map, etc.)
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
+$active-icon: $white;
 
 @at-root {
     .ContentSwitchers__OverflowMenu {
-        border-radius: 4px;
-        background-color: #fff;
-        box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.06);
+        border-radius: 0;
+        background-color: $white;
+        box-shadow: 0px 4px 20px 0px rgba(39, 39, 39, 0.15);
+        border: 1px solid $gray-20;
     }
 
     .ContentSwitchers__OverflowMenuItem {
         @include grapher_label-2-medium;
 
-        margin: 4px 0;
+        margin: 0;
         padding: 0 16px;
         height: $controlRowHeight;
         display: flex;
         align-items: center;
-        color: $light-text;
+        color: $charcoal;
         cursor: pointer;
         width: 100%;
-        background-color: #fff;
+        background-color: $white;
+        transition: all 150ms ease;
 
         &:hover {
             background-color: $gray-10;
         }
 
         &:focus-visible {
-            color: $active-text;
-            background-color: $active-fill;
+            color: $white;
+            background-color: $auburn-500;
 
             svg {
                 color: $active-icon;
@@ -44,7 +53,7 @@ $active-icon: $blue-50;
         }
 
         svg {
-            color: $gray-60;
+            color: $gray-50;
 
             &.custom-icon {
                 --size: $icon-width;
@@ -77,14 +86,14 @@ $active-icon: $blue-50;
 
         // Don't show as 'active' when clicked
         &[data-selected] {
-            background: #fff;
-            color: $light-text;
+            background: $white;
+            color: $charcoal;
         }
     }
 
     .Tabs__Tab.active {
-        color: $active-text;
-        background-color: $active-fill;
+        color: $white;
+        background-color: $auburn-500;
 
         svg {
             color: $active-icon;

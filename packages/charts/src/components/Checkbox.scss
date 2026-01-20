@@ -1,14 +1,23 @@
+/*******************************************************************************
+ * Checkbox
+ *
+ * Custom checkbox styling.
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
 .checkbox {
-    $checkbox-size: 16px;
+    $checkbox-size: 18px;
 
     $light-stroke: $gray-30;
-    $hover-stroke: $blue-30;
-    $active-fill: $blue-30;
+    $hover-stroke: $auburn-500;
+    $active-fill: $auburn-500;
 
     position: relative;
+    display: flex;
+    align-items: flex-start;
 
     label {
-        margin: 0; // style leak in admin
+        margin: 0;
     }
 
     input {
@@ -27,28 +36,29 @@
         width: $checkbox-size;
         height: $checkbox-size;
 
-        background: white;
+        background: $white;
         pointer-events: none;
-        border-radius: 2px;
-        border: 1px solid $light-stroke;
-        color: #fff;
+        border-radius: 0;
+        border: 2px solid $light-stroke;
+        color: $white;
 
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 150ms ease;
 
         svg {
             font-size: 10px;
-            padding-left: 0.75px;
         }
     }
 
     input:focus-visible + .custom {
-        outline: 2px solid $controls-color;
+        outline: 2px solid $auburn;
+        outline-offset: 2px;
     }
 
     input:active + .custom {
-        background: $active-fill;
+        background: $auburn-100;
     }
 
     input:checked + .custom {
@@ -57,36 +67,38 @@
     }
 
     input:checked:active + .custom {
-        background: white;
+        background: $auburn-600;
+        border-color: $auburn-600;
     }
 
     input:disabled {
         + .custom {
-            background: $blue-10;
-            border-color: $blue-20;
-            color: $blue-50;
+            background: $gray-10;
+            border-color: $gray-20;
+            color: $gray-50;
         }
 
         &:active + .custom {
-            background: $blue-10;
+            background: $gray-10;
         }
 
         ~ .label {
-            color: $blue-50;
+            color: $gray-50;
             cursor: not-allowed;
         }
     }
 
     .label {
         @include grapher_label-2-regular;
-        padding-left: $checkbox-size + 8px;
+        padding-left: $checkbox-size + 10px;
         cursor: pointer;
         user-select: none;
-        color: $dark-text;
+        color: $charcoal;
+        line-height: $checkbox-size;
     }
 
     &:hover {
-        input:not(:checked) + .custom {
+        input:not(:checked):not(:disabled) + .custom {
             border-color: $hover-stroke;
         }
     }

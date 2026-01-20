@@ -1,20 +1,34 @@
-// gray shades
-export const GRAY_100 = "#2d2e2d"
-export const GRAY_90 = "#4e4e4e"
-export const GRAY_80 = "#5b5b5b"
-export const GRAY_70 = "#767676"
-export const GRAY_60 = "#a1a1a1"
-export const GRAY_50 = "#c6c6c6"
-export const GRAY_30 = "#dadada"
-export const GRAY_20 = "#e7e7e7"
-export const GRAY_10 = "#f2f2f2"
-export const GRAY_5 = "#f7f7f7"
+/*******************************************************************************
+ * Color Constants
+ *
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
 
-export const GRAPHER_BACKGROUND_DEFAULT = "#ffffff"
-export const GRAPHER_BACKGROUND_BEIGE = "#fbf9f3"
+// Build Canada brand colors
+export const LINEN = "#F6ECE3"
+export const CHARCOAL = "#272727"
+export const AUBURN = "#932F2F"
 
-export const GRAPHER_DARK_TEXT = GRAY_80
-export const GRAPHER_LIGHT_TEXT = GRAY_70
+// Gray shades
+export const GRAY_100 = "#171717"
+export const GRAY_90 = "#272727"
+export const GRAY_80 = "#404040"
+export const GRAY_70 = "#525252"
+export const GRAY_60 = "#737373"
+export const GRAY_50 = "#a3a3a3"
+export const GRAY_30 = "#d4d4d4"
+export const GRAY_20 = "#e5e5e5"
+export const GRAY_10 = "#f5f5f5"
+export const GRAY_5 = "#fafafa"
 
+// Grapher backgrounds - using Build Canada linen
+export const GRAPHER_BACKGROUND_DEFAULT = LINEN
+export const GRAPHER_BACKGROUND_BEIGE = LINEN
+
+// Text colors
+export const GRAPHER_DARK_TEXT = CHARCOAL
+export const GRAPHER_LIGHT_TEXT = GRAY_60
+
+// Other
 export const NO_DATA_GRAY = "#6e7581"
 export const ERROR_COLOR = "ff0002"

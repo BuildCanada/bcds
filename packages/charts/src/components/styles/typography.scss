@@ -1,9 +1,15 @@
-$sans-serif-font-stack:
-    Lato, "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
-$serif-font-stack:
-    "Playfair Display", Georgia, "Times New Roman", "Liberation Serif", serif;
-$monospace-font-stack:
-    "Menlo", "Courier New", Courier, monospace; // only to be used for code blocks
+// Build Canada brand fonts
+// Headlines: Söhne Kraftig - modern neo-grotesque
+// Body: Financier Text - serif for readability
+// Mono: Founder's Grotesk Mono - for data/code
+$font-headline: "Soehne Kraftig", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-body: "Financier Text", Georgia, "Times New Roman", serif;
+$font-mono: "Founders Grotesk Mono", "Menlo", "Courier New", monospace;
+
+// Legacy aliases for backwards compatibility
+$sans-serif-font-stack: $font-headline;
+$serif-font-stack: $font-body;
+$monospace-font-stack: $font-mono;
 $default-font-features: "liga", "kern", "calt", "lnum";
 
 //

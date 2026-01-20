@@ -1,13 +1,20 @@
+/*******************************************************************************
+ * Controls
+ *
+ * Menu toggle buttons and control row styling.
+ * Uses Build Canada design system colors.
+ ******************************************************************************/
+
 $light-stroke: $gray-20;
-$dark-stroke: #2d2d2d;
-$active-stroke: $blue-30;
+$dark-stroke: $charcoal;
+$active-stroke: $cerulean-500;
 
-$light-fill: $gray-30;
-$active-fill: $blue-20;
+$light-fill: $white;
+$active-fill: $cerulean-100;
 $hover-fill: $gray-10;
-$selected-fill: #c7ced7;
+$selected-fill: $cerulean-200;
 
-$active-switch: $blue-50;
+$active-switch: $cerulean-500;
 
 $medium: 400;
 $bold: 700;
@@ -24,14 +31,16 @@ nav.controlsRow .controls {
 
     button.menu-toggle {
         font: $medium 13px/16px $lato;
-        letter-spacing: 0.01em;
+        letter-spacing: 0.02em;
         display: flex;
         align-items: center;
         border: 1px solid $light-stroke;
-        border-radius: 4px;
-        padding: 7px;
-        color: $dark-text;
+        border-radius: 0;
+        padding: 7px 12px;
+        color: $charcoal;
         white-space: nowrap;
+        background-color: $white;
+        transition: all 150ms ease;
 
         &:hover {
             background: $hover-fill;
@@ -40,14 +49,19 @@ nav.controlsRow .controls {
 
         &.active,
         &:active {
-            color: $active-text;
+            color: $cerulean-900;
             background: $active-fill;
-            border: 1px solid $active-fill;
+            border-color: $active-stroke;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $auburn;
+            outline-offset: 2px;
         }
 
         svg {
             height: 12px;
-            margin-right: 5px;
+            margin-right: 6px;
             vertical-align: bottom;
         }
 
@@ -57,17 +71,15 @@ nav.controlsRow .controls {
     }
 }
 
-//
-// Make buttons narrower by omitting their text labels as the viewport gets narrower
-// use the .GrapherComponentSemiNarrow if necessary but allow container queries to
-// collapse labels in two steps on browsers that support them
-//
-// TODO: the measurement and label-hiding logic will have to move to js anyway once the
-//       number of chart buttons becomes variable and the settings button can be replaced
-//       by a single control widget ‘promoted’ from within the drawer
-//
+/*******************************************************************************
+ * Responsive Label Hiding
+ *
+ * Make buttons narrower by omitting their text labels as the viewport
+ * gets narrower.
+ ******************************************************************************/
+
 @at-root {
-    // collapse both the settings and entity selector labels down at the semi-narrow breakpoint
+    // Collapse both settings and entity selector labels at semi-narrow breakpoint
     .GrapherComponentSemiNarrow {
         nav.controlsRow .settings-menu button.menu-toggle {
             min-height: $control-row-height;
@@ -86,8 +98,8 @@ nav.controlsRow .controls {
     }
 }
 
-@container grapher (max-width:575px) {
-    // collapse the Settings toggle down to just an icon on small screens
+@container grapher (max-width: 575px) {
+    // Collapse Settings toggle to just an icon on small screens
     nav.controlsRow .settings-menu button.menu-toggle {
         min-height: $control-row-height;
         svg {
@@ -98,7 +110,7 @@ nav.controlsRow .controls {
         }
     }
 
-    // undo the .GrapherComponentSemiNarrow hiding until next container query
+    // Undo the .GrapherComponentSemiNarrow hiding until next container query
     nav.controlsRow .entity-selection-menu button.menu-toggle {
         label span {
             display: inline;
@@ -106,8 +118,8 @@ nav.controlsRow .controls {
     }
 }
 
-@container grapher (max-width:675px) {
-    // hide the entity name in the Edit/Select/Switch button
+@container grapher (max-width: 675px) {
+    // Hide entity name in Edit/Select/Switch button (chart controls)
     nav.controlsRow .chart-controls .entity-selection-menu button.menu-toggle {
         label span {
             display: none;
@@ -115,8 +127,8 @@ nav.controlsRow .controls {
     }
 }
 
-@container grapher (max-width:725px) {
-    // hide the entity name in the Edit/Select/Switch button
+@container grapher (max-width: 725px) {
+    // Hide entity name in Edit/Select/Switch button (map controls)
     nav.controlsRow .map-controls .entity-selection-menu button.menu-toggle {
         label span {
             display: none;
@@ -124,28 +136,30 @@ nav.controlsRow .controls {
     }
 }
 
-@container grapher (max-width:500px) {
-    // hide labels on smaller screens
+@container grapher (max-width: 500px) {
+    // Hide labels on smaller screens
     .ContentSwitchers .Tabs__Tab .label {
         display: none;
     }
 }
 
-// reduce the horizontal padding of a content switcher tab based on grapher's size
-@container grapher (max-width:725px) {
+// Reduce horizontal padding of content switcher tab based on grapher's size
+@container grapher (max-width: 725px) {
     .ContentSwitchers .Tabs__Tab {
         --tab-padding: 12px;
     }
 }
-@container grapher (max-width:335px) {
+
+@container grapher (max-width: 335px) {
     .ContentSwitchers .Tabs__Tab {
         --tab-padding: 8px;
     }
 }
 
-//
-// correct for style bleeds in admin
-//
+/*******************************************************************************
+ * Admin Style Corrections
+ ******************************************************************************/
+
 @at-root {
     .AdminApp {
         nav.controlsRow .controls button.menu-toggle label {

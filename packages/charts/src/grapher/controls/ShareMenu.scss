@@ -8,7 +8,7 @@ $zindex-ControlsFooter: 2;
 
 .ShareMenu {
     $hover-fill: $gray-10;
-    $active-fill: $blue-20;
+    $active-fill: $cerulean-100;
 
     position: absolute;
     bottom: $timelineHeight + 8px;
@@ -17,7 +17,8 @@ $zindex-ControlsFooter: 2;
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.06);
     padding: 4px 0;
     z-index: $zindex-ControlsFooterMenu;
-    border-radius: 4px;
+    border-radius: 0;
+    border: 1px solid $gray-20;
 
     h2 {
         font-family: $sans-serif-font-stack;

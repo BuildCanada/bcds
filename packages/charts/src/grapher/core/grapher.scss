@@ -17,12 +17,12 @@
 @import "./typography.scss";
 
 // grapher frame
-$frame-color: $gray-10;
+$frame-color: $gray-20;
 
 // text
-$dark-text: $gray-80;
-$light-text: $gray-70;
-$active-text: $blue-90;
+$dark-text: $charcoal;
+$light-text: $gray-60;
+$active-text: $cerulean-900;
 
 // These should be between 0–100 in order to avoid conflicting with
 // site dropdowns, search overlays, etc.
@@ -119,8 +119,8 @@ $zindex-controls-drawer: 150;
 
     line-height: 1em;
 
-    background: white;
-    color: $gray-80;
+    background: $linen;
+    color: $charcoal;
 
     position: relative;
     container-type: size;
@@ -212,9 +212,9 @@ $zindex-controls-drawer: 150;
 }
 
 .tippy-box[data-theme="grapher-dark"] {
-    background-color: $gray-90;
+    background-color: $charcoal;
     color: white;
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 12px;
     line-height: 16px;
     padding: 8px;
@@ -224,7 +224,7 @@ $zindex-controls-drawer: 150;
     }
 
     .tippy-arrow {
-        color: $gray-90;
+        color: $charcoal;
     }
 }
 
