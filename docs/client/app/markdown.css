@@ -1,0 +1,72 @@
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+    margin: 0.5ch 0 !important;
+}
+
+.markdown h1 {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.05ch;
+}
+
+.markdown h2 {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.05ch;
+}
+
+.markdown h3 {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.05ch;
+}
+
+.markdown code {
+    padding: 3px 6px; /* Adds space around the text */
+    font-size: 80%; /* Slightly increases the font size */
+    border-radius: 3px; /* Rounds the corners of the background */
+    break-inside: avoid;
+    word-break: keep-all;
+    transform: translateY(-4px);
+}
+
+.markdown pre {
+    padding: 12px 12px 12px 16px;
+    overflow-x: scroll;
+    scrollbar-width: none !important;
+}
+
+.markdown > ol > li {
+    list-style-type: decimal;
+    padding-left: 0.5ch;
+    padding-top: 0.25ch;
+    padding-bottom: 0.25ch;
+    margin-left: 2ch;
+}
+
+.markdown > ol > li:first-of-type {
+    padding-top: 0.5rem;
+}
+
+.markdown > ol > li:last-of-type {
+    padding-bottom: 0.5rem;
+}
+
+.markdown ul > li {
+    list-style-type: disc;
+    padding-left: 0.5ch;
+    padding-top: 0.25ch;
+    padding-bottom: 0.25ch;
+    margin-left: 2ch;
+}
+
+.markdown > p {
+    line-height: 150%;
+    /*letter-spacing: -0.15rem;*/
+    margin-bottom: 0.75rem;
+}
