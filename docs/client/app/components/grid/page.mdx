@@ -1,0 +1,36 @@
+# Grid
+
+A responsive CSS grid layout component with customizable columns and gaps.
+
+## Usage
+
+```tsx
+import { Grid, GridItem } from "@buildcanada/components"
+
+<Grid columns={3} gap="md">
+  <GridItem>Item 1</GridItem>
+  <GridItem>Item 2</GridItem>
+  <GridItem span={2}>Wide Item</GridItem>
+</Grid>
+```
+
+## Responsive Columns
+
+Use `columnsMd` and `columnsLg` props for responsive layouts:
+
+```tsx
+<Grid columns={1} columnsMd={2} columnsLg={4} gap="md">
+  {/* 1 column on mobile, 2 on tablet, 4 on desktop */}
+</Grid>
+```
+
+## GridItem Spanning
+
+Use `GridItem` with the `span` prop to make items span multiple columns:
+
+```tsx
+<Grid columns={12} gap="sm">
+  <GridItem span={4}>4 columns</GridItem>
+  <GridItem span={8}>8 columns</GridItem>
+</Grid>
+```

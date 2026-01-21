@@ -1,0 +1,35 @@
+# Stat Block
+
+A component for displaying key statistics with optional trend indicators.
+
+## Usage
+
+```tsx
+import { StatBlock } from "@buildcanada/components"
+
+<StatBlock
+  value="$456.2B"
+  label="Federal Spending"
+  change="+8.3%"
+  trend="up"
+/>
+```
+
+## With Description
+
+```tsx
+<StatBlock
+  value="$1.2T"
+  label="Total Revenue"
+  description="Combined federal and provincial revenues"
+  change="+7.8%"
+  trend="up"
+  size="lg"
+/>
+```
+
+## Trend Indicators
+
+- **up**: Green indicator for positive trends
+- **down**: Red indicator for negative trends
+- **neutral**: Gray indicator for no change

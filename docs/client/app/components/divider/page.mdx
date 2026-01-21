@@ -1,0 +1,29 @@
+# Divider
+
+A visual separator for dividing content sections.
+
+## Usage
+
+```tsx
+import { Divider } from "@buildcanada/components"
+
+<Divider variant="solid" spacing="md" />
+```
+
+## Variants
+
+- **solid**: Standard solid line
+- **dashed**: Dashed line for lighter separation
+- **construction**: Blueprint-style pattern (Build Canada brand)
+
+## Vertical Orientation
+
+Use `orientation="vertical"` for horizontal layouts:
+
+```tsx
+<div style={{ display: "flex" }}>
+  <div>Left</div>
+  <Divider orientation="vertical" />
+  <div>Right</div>
+</div>
+```

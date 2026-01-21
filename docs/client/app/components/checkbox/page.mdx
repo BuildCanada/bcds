@@ -1,0 +1,25 @@
+A styled checkbox component with label support.
+
+## Usage
+
+```tsx
+import { Checkbox } from "@buildcanada/components"
+
+<Checkbox label="I agree to the terms" />
+```
+
+## Controlled vs Uncontrolled
+
+Use `defaultChecked` for uncontrolled or `checked` with `onChange` for controlled:
+
+```tsx
+// Uncontrolled
+<Checkbox label="Option" defaultChecked />
+
+// Controlled
+<Checkbox
+  label="Option"
+  checked={isChecked}
+  onChange={(e) => setIsChecked(e.target.checked)}
+/>
+```

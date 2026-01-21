@@ -1,0 +1,52 @@
+# Popup Form
+
+A non-modal form panel that composes Dialog with form elements and action buttons.
+
+## Usage
+
+```tsx
+import { 
+  PopupForm, 
+  TextField, 
+  Checkbox 
+} from "@buildcanada/components"
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    console.log("Form submitted")
+    setOpen(false)
+  }
+
+  return (
+    <>
+      <Button text="Open Form" onClick={() => setOpen(true)} />
+      <PopupForm
+        open={open}
+        onClose={() => setOpen(false)}
+        onSubmit={handleSubmit}
+        title="Contact Us"
+        position="bottom-right"
+      >
+        <TextField label="Name" required />
+        <TextField label="Email" type="email" required />
+        <Checkbox label="Subscribe to newsletter" />
+      </PopupForm>
+    </>
+  )
+}
+```
+
+## Key Features
+
+- **Non-blocking**: Users can still interact with the page
+- **Corner positioning**: Place in any corner of the screen
+- **Composable**: Works with TextField, Checkbox, and other form primitives
+
+## Props
+
+- **position**: Where to place the form (default: "bottom-right")
+- **offset**: Distance from screen edges (default: 16px)
+- **submitText** / **cancelText**: Button labels
+- **isSubmitting**: Shows loading state on submit button

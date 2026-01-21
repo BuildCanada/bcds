@@ -1,0 +1,31 @@
+# TextField
+
+A form text input component with label, hint, and error states.
+
+## Usage
+
+```tsx
+import { TextField } from "@buildcanada/components"
+
+<TextField
+  label="Email Address"
+  type="email"
+  placeholder="you@example.com"
+/>
+```
+
+## Input Types
+
+Supports standard HTML input types: text, email, password, number, tel, url.
+
+## Validation States
+
+```tsx
+// With hint text
+<TextField label="Password" hint="Must be 8+ characters" />
+
+// With error
+<TextField label="Email" error="Invalid email format" />
+
+// Required field
+<TextField label="Name" required />

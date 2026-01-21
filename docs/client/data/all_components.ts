@@ -1,0 +1,17 @@
+export const all_components = [
+	"components/card",
+	"components/hero",
+	"components/stat-block",
+	"components/dialogue",
+	"components/popup-form",
+	"components/container",
+	"components/divider",
+	"components/grid",
+	"components/section",
+	"components/stack",
+	"components/footer",
+	"components/header",
+	"components/button",
+	"components/checkbox",
+	"components/textfield",
+];

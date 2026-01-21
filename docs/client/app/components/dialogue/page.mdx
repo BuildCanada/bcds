@@ -1,0 +1,46 @@
+# Dialogue
+
+A non-modal floating panel that doesn't block interaction with the rest of the UI.
+
+## Usage
+
+```tsx
+import { Dialog } from "@buildcanada/components"
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button text="Open Dialog" onClick={() => setOpen(true)} />
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Dialog Title"
+        position="bottom-right"
+      >
+        <p>Dialog content goes here.</p>
+      </Dialog>
+    </>
+  )
+}
+```
+
+## Key Features
+
+- **Non-modal**: Does not block interaction with the rest of the UI
+- **Content-sized**: Automatically sizes to fit its contents
+- **Corner positioning**: Place in any corner or center of the screen
+- **No rounded corners**: Sharp edges for a clean, modern look
+
+## Positions
+
+- `top-left`
+- `top-right`
+- `bottom-left`
+- `bottom-right` (default)
+- `center`
+
+## Offset
+
+Use the `offset` prop to control distance from screen edges (default: 16px).

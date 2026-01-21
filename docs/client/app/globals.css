@@ -2,6 +2,10 @@
 @plugin "@tailwindcss/typography";
 @import "@buildcanada/colours/styles/main.css";
 
+@utility full-height {
+    --full-height: calc(100dvh - 1rem);
+}
+
 @utility prose-charcoal {
     --tw-prose-body: var(--color-charcoal-800);
     --tw-prose-headings: var(--color-charcoal-900);
@@ -39,6 +43,10 @@
 
 .prose-charcoal {
     @apply prose-charcoal;
+}
+
+.min-h-fill {
+    min-height: calc(100dvh - 14ch);
 }
 
 .docs-pattern {

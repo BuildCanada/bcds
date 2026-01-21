@@ -1,4 +1,5 @@
 import { all_guides } from "@/data/all_guides";
+import { all_components } from "@/data/all_components";
 import Link from "next/link";
 
 const kebabToTitle = (name: string) => {
@@ -16,6 +17,23 @@ export default function GuideNav() {
       </div>
       <nav className="flex flex-col gap-2 py-[5ch] px-[2.5ch] pt-0 border-b-[1.5px] border-b-charcoal-700">
         {all_guides.map((doc, idx) => {
+          const label = kebabToTitle(doc.split("/").pop()!);
+          return (
+            <Link
+              key={`${doc}-${idx}`}
+              href={`/${doc}`}
+              className=" hover:text-maritime-600 hover:visited:text-aurora-600"
+            >
+              {label}
+            </Link>
+          );
+        })}
+      </nav>
+      <div className="px-[2.5ch] pt-[1ch]">
+        <h3>Components</h3>
+      </div>
+      <nav className="flex flex-col gap-2 py-[5ch] px-[2.5ch] pt-0 border-b-[1.5px] border-b-charcoal-700">
+        {all_components.map((doc, idx) => {
           const label = kebabToTitle(doc.split("/").pop()!);
           return (
             <Link
