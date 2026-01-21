@@ -14,7 +14,7 @@ export async function walkDirectory(target: string): Promise<string[]> {
 
   async function traverse(dir: string) {
     const entries = await readdir(dir, { withFileTypes: true });
-
+    console.log({ entries });
     for (const entry of entries) {
       const fullPath = join(dir, entry.name);
       const entryStat = await stat(fullPath);
@@ -51,11 +51,14 @@ const COMPONENT_OUT = join(cwd(), "../", "client/data/all_components.ts");
 
 async function processComponents() {
   const files = await walkDirectory(COMPONENT_FOLDER);
+  console.log({ files });
   let payload = `export const all_components = [\n`;
   files.forEach((file) => {
     payload += `\t"${file}",\n`;
   });
   payload += "];";
+  console.log({ payload });
+  console.log({ COMPONENT_OUT });
   await Bun.write(COMPONENT_OUT, payload);
 }
 
