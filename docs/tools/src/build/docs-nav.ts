@@ -2,10 +2,6 @@ import { cwd } from "node:process";
 import { join, dirname } from "node:path";
 import { readdir, stat } from "node:fs/promises";
 
-const IN_FOLDER = join(cwd(), "../", "client", "app", "guides");
-
-const OUT_FILE = join(cwd(), "../", "client/data/all_docs.ts");
-
 const extractRoute = (path: string) => {
   const parts = path.split("/");
   const appIndex = parts.findIndex((part) => part === "app");
@@ -37,14 +33,35 @@ export async function walkDirectory(target: string): Promise<string[]> {
   return files;
 }
 
-async function main() {
-  const files = await walkDirectory(IN_FOLDER);
-  let payload = `export const all_docs = [\n`;
+const GUIDE_FOLDER = join(cwd(), "../", "client", "app", "guides");
+const GUIDE_OUT = join(cwd(), "../", "client/data/all_guides.ts");
+
+async function processGuides() {
+  const files = await walkDirectory(GUIDE_FOLDER);
+  let payload = `export const all_guides = [\n`;
   files.forEach((file) => {
     payload += `\t"${file}",\n`;
   });
   payload += "];";
-  await Bun.write(OUT_FILE, payload);
+  await Bun.write(GUIDE_OUT, payload);
+}
+
+const COMPONENT_FOLDER = join(cwd(), "../", "client", "app", "components");
+const COMPONENT_OUT = join(cwd(), "../", "client/data/all_components.ts");
+
+async function processComponents() {
+  const files = await walkDirectory(COMPONENT_FOLDER);
+  let payload = `export const all_components = [\n`;
+  files.forEach((file) => {
+    payload += `\t"${file}",\n`;
+  });
+  payload += "];";
+  await Bun.write(COMPONENT_OUT, payload);
+}
+
+async function main() {
+  await processGuides();
+  await processComponents();
 }
 
 main();

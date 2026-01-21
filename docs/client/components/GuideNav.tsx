@@ -1,4 +1,4 @@
-import { all_docs } from "@/data/all_docs";
+import { all_guides } from "@/data/all_guides";
 import Link from "next/link";
 
 const kebabToTitle = (name: string) => {
@@ -15,7 +15,7 @@ export default function GuideNav() {
         <h2>Documentation</h2>
       </div>
       <nav className="flex flex-col gap-2 py-[5ch] px-[2.5ch] pt-0 border-b-[1.5px] border-b-charcoal-700">
-        {all_docs.map((doc, idx) => {
+        {all_guides.map((doc, idx) => {
           const label = kebabToTitle(doc.split("/").pop()!);
           return (
             <Link
