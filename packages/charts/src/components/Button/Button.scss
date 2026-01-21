@@ -1,90 +1,188 @@
+/*******************************************************************************
+ * Charts Button Component
+ *
+ * Uses Build Canada design system styling with square corners and brand colors.
+ ******************************************************************************/
+
 .charts-btn {
     @include body-3-medium;
-    padding: 8.5px 24px;
-    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border: 2px solid transparent;
     border-radius: 0;
     text-align: center;
-    display: block;
     cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
 
-    &.charts-btn--icon-only {
-        padding: 4.5px 9px;
+    &:focus-visible {
+        outline: 2px solid $auburn;
+        outline-offset: 2px;
     }
 
-    &:disabled {
-        cursor: default;
-
-        &.charts-btn--solid-blue,
-        &.charts-btn--solid-dark-blue,
-        &.charts-btn--solid-light-blue,
-        &.charts-btn--solid-vermillion {
-            color: $blue-50;
-            background-color: $blue-10;
-        }
-
-        &.charts-btn--outline-vermillion,
-        &.charts-btn--outline-white {
-            color: $blue-40;
-            border-color: $blue-40;
-        }
+    &.charts-btn--icon-only {
+        padding: 8px;
+        min-width: 40px;
+        min-height: 40px;
     }
 
     svg {
-        font-size: 0.75rem;
+        font-size: 0.875em;
+        transition: transform 150ms ease;
+    }
+
+    // Animated arrow on hover
+    &:hover:not(:disabled) svg.icon-right {
+        transform: translateX(4px);
     }
 }
 
+/*******************************************************************************
+ * Icon Position Modifiers
+ ******************************************************************************/
+
 .charts-btn--icon-right {
-    margin-left: 0.5rem;
+    margin-left: 8px;
 }
 
 .charts-btn--icon-left {
-    margin-right: 0.5rem;
+    margin-right: 8px;
 }
 
+/*******************************************************************************
+ * Solid Variants
+ ******************************************************************************/
+
+.charts-btn--solid-auburn,
 .charts-btn--solid-vermillion {
-    background-color: $vermillion;
-    color: #fff;
+    background-color: $auburn;
+    border-color: $auburn;
+    color: $white;
 
-    &:hover {
-        background-color: $accent-vermillion;
+    &:hover:not(:disabled) {
+        background-color: $auburn-600;
+        border-color: $auburn-600;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $auburn-700;
+        border-color: $auburn-700;
     }
 }
 
-.charts-btn--outline-vermillion {
-    border-color: $vermillion;
-    color: $vermillion;
+.charts-btn--solid-charcoal {
+    background-color: $charcoal;
+    border-color: $charcoal;
+    color: $white;
 
-    &:hover {
-        border-color: $accent-vermillion;
-        color: $accent-vermillion;
+    &:hover:not(:disabled) {
+        background-color: $gray-70;
+        border-color: $gray-70;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $gray-60;
+        border-color: $gray-60;
     }
 }
 
+.charts-btn--solid-cerulean,
 .charts-btn--solid-blue {
-    background-color: $blue-60;
-    color: #fff;
+    background-color: $cerulean-500;
+    border-color: $cerulean-500;
+    color: $white;
 
-    &:hover {
-        background-color: $blue-90;
+    &:hover:not(:disabled) {
+        background-color: $cerulean-600;
+        border-color: $cerulean-600;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $cerulean-700;
+        border-color: $cerulean-700;
     }
 }
 
 .charts-btn--solid-dark-blue {
-    background-color: $blue-95;
-    color: #fff;
+    background-color: $cerulean-900;
+    border-color: $cerulean-900;
+    color: $white;
 
-    &:hover {
-        background-color: #164377;
+    &:hover:not(:disabled) {
+        background-color: $cerulean-950;
+        border-color: $cerulean-950;
     }
 }
 
 .charts-btn--solid-light-blue {
-    background-color: $blue-20;
-    color: $blue-90;
+    background-color: $cerulean-100;
+    border-color: $cerulean-100;
+    color: $cerulean-900;
 
-    &:hover {
-        background-color: $blue-10;
+    &:hover:not(:disabled) {
+        background-color: $cerulean-200;
+        border-color: $cerulean-200;
+    }
+}
+
+.charts-btn--solid-linen {
+    background-color: $linen;
+    border-color: $linen;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+        background-color: $gray-20;
+        border-color: $gray-20;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $gray-30;
+        border-color: $gray-30;
+    }
+}
+
+/*******************************************************************************
+ * Outline Variants
+ ******************************************************************************/
+
+.charts-btn--outline-auburn,
+.charts-btn--outline-vermillion {
+    background-color: transparent;
+    border-color: $auburn;
+    color: $auburn;
+
+    &:hover:not(:disabled) {
+        background-color: $auburn;
+        color: $white;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $auburn-600;
+        border-color: $auburn-600;
+        color: $white;
+    }
+}
+
+.charts-btn--outline-charcoal {
+    background-color: transparent;
+    border-color: $charcoal;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+        background-color: $charcoal;
+        color: $white;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $gray-70;
+        border-color: $gray-70;
+        color: $white;
     }
 }
 
@@ -93,18 +191,41 @@
     border-color: $white;
     color: $white;
 
-    &:hover {
+    &:hover:not(:disabled) {
         background-color: $white;
-        color: $blue-90;
+        color: $charcoal;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $gray-10;
+        border-color: $gray-10;
+        color: $charcoal;
     }
 }
 
+.charts-btn--outline-cerulean,
 .charts-btn--outline-light-blue {
-    border-color: $blue-20;
-    color: $blue-90;
+    background-color: transparent;
+    border-color: $cerulean-500;
+    color: $cerulean-700;
 
-    &:hover {
-        background-color: $white;
-        color: $blue-90;
+    &:hover:not(:disabled) {
+        background-color: $cerulean-500;
+        color: $white;
     }
+
+    &:active:not(:disabled) {
+        background-color: $cerulean-600;
+        border-color: $cerulean-600;
+        color: $white;
+    }
+}
+
+/*******************************************************************************
+ * Disabled State
+ ******************************************************************************/
+
+.charts-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

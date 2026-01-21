@@ -34,7 +34,7 @@
         }
 
         > .Tooltip {
-            border-radius: 4px;
+            border-radius: 0;
             border: 1px solid $background-stroke;
             box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
             background: white;
@@ -57,7 +57,7 @@
                 background: $background-fill;
                 color: black;
                 padding: 8px 12px;
-                border-radius: 3px 3px 0 0;
+                border-radius: 0;
 
                 .title,
                 .subtitle {
@@ -93,7 +93,7 @@
             }
 
             &.plain header {
-                border-radius: 3px;
+                border-radius: 0;
                 background: white;
             }
 
@@ -383,7 +383,7 @@
                 position: relative;
                 color: $grey;
                 padding: 4px 12px;
-                border-radius: 0 0 3px 3px;
+                border-radius: 0;
                 border-top: 1px solid $light-grey;
 
                 .line {

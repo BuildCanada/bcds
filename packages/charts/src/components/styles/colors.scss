@@ -1,89 +1,208 @@
 /*******************************************************************************
- * Colors
- */
+ * Colors - Build Canada Design System
+ *
+ * This file imports and extends the Build Canada color tokens for use in charts.
+ ******************************************************************************/
 
 @use "sass:color";
 
-// Brand colors
-$oxford-blue: #002147;
-$vermillion: #ce261e;
-$amber: #f7c020;
+/*******************************************************************************
+ * Import Build Canada Design Tokens
+ ******************************************************************************/
 
-// Blue shades
-$blue-100: #002147;
-$blue-95: #112e4f;
-$blue-90: #1d3d63;
-$blue-60: #577291;
-$blue-65: #46688f;
-$blue-50: #6e87a2;
-$blue-40: #98a9bd;
-$blue-30: #a4b6ca;
-$blue-20: #dbe5f0;
-$blue-10: #ebeef2;
-$blue-5: #f0f4fa;
+@use "@buildcanada/components/src/styles/tokens" as bc;
 
-// Gray shades
-$gray-100: #2d2e2d;
-$gray-90: #4e4e4e;
-$gray-80: #5b5b5b;
-$gray-70: #767676;
-$gray-60: #a1a1a1;
-$gray-50: #c6c6c6;
-$gray-30: #dadada;
-$gray-20: #e7e7e7;
-$gray-10: #f2f2f2;
+/*******************************************************************************
+ * Brand Colors (from Build Canada design system)
+ ******************************************************************************/
+
+$linen: bc.$linen;
+$charcoal: bc.$charcoal;
+$auburn: bc.$auburn;
+$white: bc.$white;
+
+/*******************************************************************************
+ * Primary Color Scale - Auburn (Red)
+ ******************************************************************************/
+
+$auburn-50: bc.$auburn-50;
+$auburn-100: bc.$auburn-100;
+$auburn-200: bc.$auburn-200;
+$auburn-300: bc.$auburn-300;
+$auburn-400: bc.$auburn-400;
+$auburn-500: bc.$auburn-500;
+$auburn-600: bc.$auburn-600;
+$auburn-700: bc.$auburn-700;
+$auburn-800: bc.$auburn-800;
+$auburn-900: bc.$auburn-900;
+$auburn-950: bc.$auburn-950;
+
+/*******************************************************************************
+ * Secondary Color Scale - Cerulean (Blue)
+ ******************************************************************************/
+
+$cerulean-50: bc.$cerulean-50;
+$cerulean-100: bc.$cerulean-100;
+$cerulean-200: bc.$cerulean-200;
+$cerulean-300: bc.$cerulean-300;
+$cerulean-400: bc.$cerulean-400;
+$cerulean-500: bc.$cerulean-500;
+$cerulean-600: bc.$cerulean-600;
+$cerulean-700: bc.$cerulean-700;
+$cerulean-800: bc.$cerulean-800;
+$cerulean-900: bc.$cerulean-900;
+$cerulean-950: bc.$cerulean-950;
+
+/*******************************************************************************
+ * Tertiary Color Scale - Sienna (Orange)
+ ******************************************************************************/
+
+$sienna-50: bc.$sienna-50;
+$sienna-100: bc.$sienna-100;
+$sienna-200: bc.$sienna-200;
+$sienna-300: bc.$sienna-300;
+$sienna-400: bc.$sienna-400;
+$sienna-500: bc.$sienna-500;
+$sienna-600: bc.$sienna-600;
+$sienna-700: bc.$sienna-700;
+$sienna-800: bc.$sienna-800;
+$sienna-900: bc.$sienna-900;
+$sienna-950: bc.$sienna-950;
+
+/*******************************************************************************
+ * Supporting Color Scale - Fantasia (Purple)
+ ******************************************************************************/
+
+$fantasia-50: bc.$fantasia-50;
+$fantasia-100: bc.$fantasia-100;
+$fantasia-200: bc.$fantasia-200;
+$fantasia-300: bc.$fantasia-300;
+$fantasia-400: bc.$fantasia-400;
+$fantasia-500: bc.$fantasia-500;
+$fantasia-600: bc.$fantasia-600;
+$fantasia-700: bc.$fantasia-700;
+$fantasia-800: bc.$fantasia-800;
+$fantasia-900: bc.$fantasia-900;
+$fantasia-950: bc.$fantasia-950;
+
+/*******************************************************************************
+ * Supporting Color Scale - Emerald (Green)
+ ******************************************************************************/
+
+$emerald-50: bc.$emerald-50;
+$emerald-100: bc.$emerald-100;
+$emerald-200: bc.$emerald-200;
+$emerald-300: bc.$emerald-300;
+$emerald-400: bc.$emerald-400;
+$emerald-500: bc.$emerald-500;
+$emerald-600: bc.$emerald-600;
+$emerald-700: bc.$emerald-700;
+$emerald-800: bc.$emerald-800;
+$emerald-900: bc.$emerald-900;
+$emerald-950: bc.$emerald-950;
+
+/*******************************************************************************
+ * Gray Scale
+ ******************************************************************************/
+
 $gray-5: #f7f7f7;
+$gray-10: bc.$gray-100;
+$gray-20: bc.$gray-200;
+$gray-30: bc.$gray-300;
+$gray-50: bc.$gray-400;
+$gray-60: bc.$gray-500;
+$gray-70: bc.$gray-600;
+$gray-80: bc.$gray-700;
+$gray-90: bc.$gray-800;
+$gray-100: bc.$gray-900;
 
-// Amber shades
-$amber-110: #f9cf44;
-$amber-10: #f4eddb;
+/*******************************************************************************
+ * Legacy Brand Colors (backwards compatibility)
+ * Maps old OWID colors to Build Canada equivalents
+ ******************************************************************************/
 
-$beige: #fbf9f3;
-$white: #ffffff;
+$oxford-blue: $charcoal;
+$vermillion: $auburn;
+$amber: $sienna-400;
 
-// Accent colors
-$accent-electric-blue: #2162e6;
-$accent-pale-blue: #e7f2ff;
-$accent-vermillion: #b40000;
+// Legacy blue shades mapped to cerulean
+$blue-100: $cerulean-950;
+$blue-95: $cerulean-900;
+$blue-90: $cerulean-800;
+$blue-65: $cerulean-700;
+$blue-60: $cerulean-600;
+$blue-50: $cerulean-500;
+$blue-40: $cerulean-400;
+$blue-30: $cerulean-300;
+$blue-20: $cerulean-200;
+$blue-10: $cerulean-100;
+$blue-5: $cerulean-50;
 
-// Visited
-$purple-90: #631d49;
-$purple-60: #91577c;
-$visited-light: #b398a9;
+// Legacy amber shades mapped to sienna
+$amber-110: $sienna-300;
+$amber-10: $sienna-50;
 
-/* Text colors */
-$tertiary-text-color: $amber;
-$grey-text-color: #616161;
-$text-color: $blue-90;
-$secondary-text-color: $blue-60;
-$bluish-grey-text-color: $blue-50;
-$error-text-color: $vermillion;
+$beige: $linen;
 
-/* Category colors */
-$population-color: #2082a2;
-$health-color: #bf1b1b;
-$food-color: #588a0f;
-$energy-color: #ca6f34;
-$environment-color: #0c6947;
-$technology-color: #2774c6;
-$growth-inequality-color: #009655;
-$work-life-color: #ab348a;
-$public-sector-color: #eb6400;
-$global-connections-color: #17393d;
-$war-peace-color: #660000;
-$politics-color: #1b0655;
-$violence-rights-color: #cc235c;
-$education-color: #253f77;
-$media-color: #0089be;
-$culture-color: #af488f;
+/*******************************************************************************
+ * Accent Colors
+ ******************************************************************************/
 
-/* Controls color */
-$controls-color: #0073e6;
+$accent-electric-blue: $cerulean-500;
+$accent-pale-blue: $cerulean-50;
+$accent-vermillion: $auburn-700;
+
+// Visited link colors mapped to fantasia (purple)
+$purple-90: $fantasia-800;
+$purple-60: $fantasia-600;
+$visited-light: $fantasia-300;
+
+/*******************************************************************************
+ * Text Colors
+ ******************************************************************************/
+
+$text-color: $charcoal;
+$secondary-text-color: bc.$gray-600;
+$tertiary-text-color: $sienna-500;
+$grey-text-color: bc.$gray-500;
+$bluish-grey-text-color: $cerulean-600;
+$error-text-color: $auburn;
+
+/*******************************************************************************
+ * Category Colors (for data visualization)
+ * Using Build Canada palette
+ ******************************************************************************/
+
+$population-color: $cerulean-500;
+$health-color: $auburn-500;
+$food-color: $emerald-600;
+$energy-color: $sienna-500;
+$environment-color: $emerald-800;
+$technology-color: $cerulean-600;
+$growth-inequality-color: $emerald-500;
+$work-life-color: $fantasia-500;
+$public-sector-color: $sienna-400;
+$global-connections-color: $cerulean-900;
+$war-peace-color: $auburn-900;
+$politics-color: $fantasia-900;
+$violence-rights-color: $auburn-400;
+$education-color: $cerulean-800;
+$media-color: $cerulean-400;
+$culture-color: $fantasia-600;
+
+/*******************************************************************************
+ * Controls & UI Colors
+ ******************************************************************************/
+
+$controls-color: $cerulean-500;
 $light-shadow:
-    rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.08) 0px 2px 2px;
+    rgba(39, 39, 39, 0.1) 0px 0px 0px 1px,
+    rgba(39, 39, 39, 0.08) 0px 2px 2px;
 
-/* SDG colors */
+/*******************************************************************************
+ * SDG Colors (UN Sustainable Development Goals)
+ ******************************************************************************/
+
 $sdgColors: (
     1: color.scale(#e5243b, $lightness: -15%),
     2: #dda63a,
@@ -104,9 +223,20 @@ $sdgColors: (
     17: color.scale(#19486a, $lightness: -15%),
 );
 
+/*******************************************************************************
+ * CSS Custom Properties Export
+ ******************************************************************************/
+
 :root {
-    // See also gdocTypes/Gdoc.ts > GdocPostContent > cover-color
+    // Brand colors
+    --bc-linen: #{$linen};
+    --bc-charcoal: #{$charcoal};
+    --bc-auburn: #{$auburn};
+
+    // Legacy variables for backwards compatibility
     --amber: #{$amber};
+
+    // SDG colors
     @each $i, $sdgColor in $sdgColors {
         --sdg-color-#{$i}: #{$sdgColor};
     }
