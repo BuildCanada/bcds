@@ -7,9 +7,9 @@ import type { MDXComponents } from "mdx/types";
 
 export const mdTypeComponents = {
   // Allows customizing built-in components, e.g. to add styling.
-  // h1: ({ children }) => <h1 className="text-3xl mt-6 mb-3">{children}</h1>,
-  // h2: ({ children }) => <h2 className="text-2xl mt-4 mb-2">{children}</h2>,
-  // h3: ({ children }) => <h3 className="text-xl mt-3 mb-1.5">{children}</h3>,
+  h1: ({ children }) => <h1 id={`${children}`}>{children}</h1>,
+  h2: ({ children }) => <h2 id={`${children}`}>{children}</h2>,
+  h3: ({ children }) => <h3 id={`${children}`}>{children}</h3>,
 } satisfies MDXComponents;
 
 // template

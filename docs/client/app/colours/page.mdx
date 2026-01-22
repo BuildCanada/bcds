@@ -1,0 +1,97 @@
+import CoreSwatches from "./_components/CoreSwatches";
+import MutedSwatches from "./_components/MutedSwatches";
+
+import VibrantSwatches from "./_components/VibrantSwatches";
+
+# Colours
+
+The Build Canada Design System makes use of tailwind-style colour systems and several themes for compatability with various front end systems for purposes like:
+- AI Front End Creation
+- Consistent Charts
+- Graphic Design
+
+There are two key categories for colour:
+1. **Swatches:** for building custom components, graphics, or themes
+2. **Themes:** for building entire applications, charts, and graphs.
+
+## Usage
+
+#### CSS Usage
+
+```css
+@import "@buildcanada/colours/main.css";
+
+.custom-style {
+    background-color: var(--color-linen-100);
+    color: var(--color-charcoal-900);
+};
+```
+
+#### Tailwind Usage
+
+First, import the main.css file to your globals.css or similar.
+
+Then, you have convenient access to tailwind and shadcn styles as needed:
+```tsx
+export default function Example() {
+  return <div className="bg-background"> {/* ShadCN style aliases */}
+    <p className="text-charcoal-900">Example</p> {/* Tailwind style aliases */}
+  </div>
+}
+```
+
+#### Typescript Usage
+
+```tsx
+import { linen, charcoal, auburn } from "@buildcanada/colours";
+
+const red = auburn[800];
+const background = linen[100];
+const foreground = charcoal[900];
+
+export default function ExampleChart() {
+  return <div style={{backgroundColor: background}}></div>
+}
+```
+
+
+## Swatches
+
+There are 3 categories of colours in the tailwind-style colour system:
+- Core
+- Muted
+- Vibrant
+
+All swatches are accessible as both CSS and Typescript objects. 
+
+
+### Core
+
+The two properly Tailwind-style colour systems are Linen and Auburn.
+
+There is also a third key core colour, Charcoal, that uses an extended palette.
+
+<CoreSwatches />
+
+
+### Muted
+
+The Muted set is designed to work closely with the Core colour system, modelling similar saturation levels across gradients to create a cohesive look.
+
+<MutedSwatches />
+
+### Vibrant
+
+The vibrant set is designed to contrast in the saturation dimension from the Core and Muted sets - use as needed for charts, graphs, graphics, etc as needed to prioritize key information. Use sparingly.
+
+<VibrantSwatches />
+
+## Themes
+
+**Themes** are aliases and collections of specific colours for use in specific applications.
+
+### Charts
+
+Charts are themed collections of colours for use in, well, charting.
+
+Currently, there is only one chart type - 12-tones - which were created for a specific, niche stacked-bar-chart idea.

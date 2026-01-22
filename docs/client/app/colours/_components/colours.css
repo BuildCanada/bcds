@@ -1,0 +1,7 @@
+.grid-cols-15 {
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+}
+
+.grid-cols-15 {
+    grid-template-columns: repeat(17, minmax(0, 1fr));
+}
