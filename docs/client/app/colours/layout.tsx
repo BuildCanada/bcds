@@ -1,6 +1,7 @@
 import ColourSidebar from "./_components/ColourSidebar";
 import Nav from "@/components/Nav";
 import DocsPattern from "@/components/patterns/DocsPatternRight";
+
 export default function GuideLayout({
   children,
 }: Readonly<{

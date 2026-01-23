@@ -82,9 +82,24 @@ async function processGuides() {
   console.log(`Wrote to ${GUIDE_OUT}`);
 }
 
+const COLOUR_FOLDER = join(cwd(), "../", "client", "app", "colours");
+const COLOUR_OUT = join(cwd(), "../", "client/data/all_colours.ts");
+
+async function processColours() {
+  console.log("Walking colours...");
+  const files = await walkDirectory(COLOUR_FOLDER);
+
+  const tree = buildTree(files);
+
+  const payload = `export const all_colours = ${JSON.stringify(tree, null, 2)};`;
+  await Bun.write(COLOUR_OUT, payload);
+  console.log(`Wrote to ${COLOUR_OUT}`);
+}
+
 async function main() {
   await processGuides();
   await processComponents();
+  await processColours();
 }
 
 main();
