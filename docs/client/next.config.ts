@@ -89,6 +89,10 @@ const build_canada_theme = {
 const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    deviceSizes: [480, 1024, 1600], // Only generate these specific widths
+    imageSizes: [16, 64, 128], // For tiny thumbnails
+  },
 };
 
 const withMDX = createMDX({

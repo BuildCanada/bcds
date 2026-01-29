@@ -10,7 +10,7 @@ const NavLink = (args: NavLinkArgs) => {
   return (
     <Link
       href={args.href}
-      className="h-full w-full border-r-[1.5px] border-charcoal-900 place-items-center grid hover:bg-linen-200/25"
+      className="h-full w-full not-last:border-r-[1.5px] border-charcoal-900 place-items-center grid hover:bg-linen-200/25"
     >
       <span>{args.label}</span>
     </Link>

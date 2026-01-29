@@ -13,7 +13,7 @@ export default function DocsPattern() {
   return (
     <div
       aria-hidden
-      className="w-full h-full overflow-x-hidden"
+      className="w-full h-full overflow-x-hidden max-lg:hidden"
       dangerouslySetInnerHTML={{ __html: svg }}
     ></div>
   );

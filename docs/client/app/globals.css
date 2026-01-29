@@ -9,6 +9,10 @@
     --full-height: calc(100dvh - 1rem);
 }
 
+@theme {
+    --breakpoint-lg: 70rem;
+}
+
 @utility prose-charcoal {
     --tw-prose-body: var(--color-charcoal-800);
     --tw-prose-headings: var(--color-charcoal-900);
