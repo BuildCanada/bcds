@@ -19,6 +19,30 @@ const MIN_TO_GENERATE = 3;
 
 type BCDSPalette = typeof auburn;
 
+async function oneColor(a: BCDSPalette, aName: string) {
+  const scale = chroma.scale([a["100"], a["500"], a["950"]]);
+  const testPalette = scale.colors(MAX_TO_GENERATE);
+  const results = sequentialAudit(testPalette);
+  let issueCount = 0;
+  for (const result of results) {
+    issueCount += result.conflicts.length;
+  }
+  if (issueCount > 3) {
+    console.dir({ results }, { depth: null });
+    return;
+  }
+  const fb = new FileBuilder();
+  fb.addLine("export const charts = {");
+  for (let i = MIN_TO_GENERATE; i <= MAX_TO_GENERATE; i++) {
+    const pal = scale.colors(i);
+    fb.addLine(`"${i}": ${JSON.stringify(pal)},`, 1);
+  }
+  fb.addLine("};");
+  const out = fb.build();
+  console.log({ out });
+  await Bun.write(join(cwd(), `src/out/charts/sequential/${aName}.ts`), out);
+}
+
 async function twoColor(
   a: BCDSPalette,
   aName: string,
@@ -26,8 +50,8 @@ async function twoColor(
   bName: string,
 ) {
   const scale = chroma.scale([
-    a["50"],
-    chroma.mix(a["500"], b["500"], 0.5, "oklab"),
+    a["200"],
+    chroma.mix(a["400"], b["600"], 0.5, "oklab"),
     b["950"],
   ]);
   const testPalette = scale.colors(MAX_TO_GENERATE);
@@ -56,6 +80,14 @@ async function twoColor(
 }
 
 async function main() {
+  await oneColor(linen, "linen");
+  await oneColor(auburn, "auburn");
+  await oneColor(pine, "pine");
+  await oneColor(lake, "lake");
+  await oneColor(aurora, "aurora");
+  await oneColor(copper, "copper");
+  await oneColor(nickel, "nickel");
+  await oneColor(steel, "steel");
   await twoColor(linen, "linen", auburn, "auburn");
   await twoColor(linen, "linen", pine, "pine");
   await twoColor(linen, "linen", lake, "lake");

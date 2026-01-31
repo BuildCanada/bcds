@@ -25,7 +25,11 @@ async function twoColor(
   b: BCDSPalette,
   bName: string,
 ) {
-  const scale = chroma.scale([a["700"], "white", b["700"]]);
+  const scale = chroma.scale([
+    a["700"],
+    chroma.mix(a["100"], b["100"]),
+    b["700"],
+  ]);
   const testPalette = scale.colors(MAX_TO_GENERATE);
   const results = divergingAudit(testPalette);
   let issueCount = 0;
