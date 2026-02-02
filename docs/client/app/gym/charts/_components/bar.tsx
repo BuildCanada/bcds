@@ -5,6 +5,7 @@ import { scaleBand, scaleLinear } from "@visx/scale";
 import { charts } from "../_data/charts/sequential/linen-pine";
 import { diverging } from "../_data/charts/diverging";
 import { sequential } from "../_data/charts/sequential";
+import { ColorIssues, min, max, simulatorMap } from "./utils";
 
 // --- DUMMY DATA ---
 // const data = [
@@ -20,10 +21,10 @@ import { sequential } from "../_data/charts/sequential";
 // ];
 
 const randomAmount = () => {
-  return Math.floor((Math.random() + 0.05) * 100);
+  return min(95, max(5, Math.floor(Math.random() * 100)));
 };
 
-const getData = () => {
+const getData = (count: number) => {
   return [
     { category: "A", value: randomAmount() },
     { category: "B", value: randomAmount() },
@@ -34,22 +35,39 @@ const getData = () => {
     { category: "G", value: randomAmount() },
     { category: "H", value: randomAmount() },
     { category: "I", value: randomAmount() },
-  ];
+    { category: "J", value: randomAmount() },
+    { category: "K", value: randomAmount() },
+    { category: "L", value: randomAmount() },
+  ].slice(0, count);
 };
 
 const steps = 9;
 const palette = charts[steps]; // Grab the 5-step generated palette
 
-const getDivergingPalette = (chartIdx: number) => {
+const getDivergingPalette = (chartIdx: number, mode: ColorIssues) => {
   const values = Object.values(diverging);
-  if (values[chartIdx]) return values[chartIdx][steps];
+  const basePalette = values[chartIdx]?.[steps];
+
+  if (!basePalette) return [];
+  if (mode === "default") return basePalette;
+
+  return basePalette.map(simulatorMap[mode]);
 };
 
 // --- 1. BAR CHART (Sequential Stress Test) ---
 export const DivergingBars = (args: {
+  paletteIdx: number;
+  simulationMode:
+    | "protanopia"
+    | "protanomaly"
+    | "deuteranopia"
+    | "deuteranomaly"
+    | "tritanopia"
+    | "tritanomaly"
+    | "default";
+  count?: number;
   width?: number;
   height?: number;
-  paletteIdx: number;
 }) => {
   let width = 400;
   if (args.width) {
@@ -60,7 +78,7 @@ export const DivergingBars = (args: {
     height = args.height;
   }
 
-  const data = getData();
+  const data = getData(args.count ?? 9);
 
   const xScale = scaleBand({
     range: [0, width],
@@ -72,7 +90,9 @@ export const DivergingBars = (args: {
     domain: [0, 100],
   });
 
-  const palette = getDivergingPalette(args.paletteIdx);
+  const palette = getDivergingPalette(args.paletteIdx, args.simulationMode);
+  console.log({ palette });
+
   return (
     <svg width={width} height={height}>
       <Group>
@@ -91,15 +111,31 @@ export const DivergingBars = (args: {
   );
 };
 
-const getSequentialPalette = (chartIdx: number) => {
+const getSequentialPalette = (chartIdx: number, mode: ColorIssues) => {
   const values = Object.values(sequential);
-  if (values[chartIdx]) return values[chartIdx][steps];
+  const basePalette = values[chartIdx]?.[steps];
+
+  if (!basePalette) return [];
+  if (mode === "default") return basePalette;
+
+  const simulator = simulatorMap[mode];
+
+  return basePalette.map(simulator);
 };
 
 export const SequentialBars = (args: {
+  paletteIdx: number;
+  simulationMode:
+    | "protanopia"
+    | "protanomaly"
+    | "deuteranopia"
+    | "deuteranomaly"
+    | "tritanopia"
+    | "tritanomaly"
+    | "default";
+  count?: number;
   width?: number;
   height?: number;
-  paletteIdx: number;
 }) => {
   let width = 400;
   if (args.width) {
@@ -110,7 +146,7 @@ export const SequentialBars = (args: {
     height = args.height;
   }
 
-  const data = getData();
+  const data = getData(args?.count ?? 9);
 
   const xScale = scaleBand({
     range: [0, width],
@@ -122,7 +158,8 @@ export const SequentialBars = (args: {
     domain: [0, 100],
   });
 
-  const palette = getSequentialPalette(args.paletteIdx);
+  const palette = getSequentialPalette(args.paletteIdx, args.simulationMode);
+
   return (
     <svg width={width} height={height}>
       <Group>

@@ -5,11 +5,16 @@ import { useState } from "react";
 import { sequential } from "../_data/charts/sequential";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
+import { type ColorIssues } from "./utils";
 
-export default function SequentialBarController() {
+export default function SequentialBarController(args: {
+  simulationMode: ColorIssues;
+  count: number;
+}) {
   const [idx, setIdx] = useState(0);
   const sequentialValues = Object.values(sequential);
   const sequentialKeys = Object.keys(sequential);
+
   const incrementPalette = () => {
     if (idx + 1 >= sequentialValues.length - 1) {
       setIdx(0);
@@ -36,7 +41,11 @@ export default function SequentialBarController() {
           Next
         </Button>
       </ButtonGroup>
-      <SequentialBars paletteIdx={idx} />
+      <SequentialBars
+        paletteIdx={idx}
+        simulationMode={args.simulationMode}
+        count={args.count}
+      />
     </>
   );
 }

@@ -5,8 +5,12 @@ import { useState } from "react";
 import { diverging } from "../_data/charts/diverging";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
+import { type ColorIssues } from "./utils";
 
-export default function DivergingBarController() {
+export default function DivergingBarController(args: {
+  simulationMode: ColorIssues;
+  count: number;
+}) {
   const [idx, setIdx] = useState(0);
   const divergingValues = Object.values(diverging);
   const divergingKeys = Object.keys(diverging);
@@ -36,7 +40,11 @@ export default function DivergingBarController() {
           Next
         </Button>
       </ButtonGroup>
-      <DivergingBars paletteIdx={idx} />
+      <DivergingBars
+        paletteIdx={idx}
+        simulationMode={args.simulationMode}
+        count={args.count}
+      />
     </>
   );
 }
