@@ -1,5 +1,5 @@
-import { SequentialBars, QualitativeLines } from "./_components/bar";
 import BarController from "./_components/BarController";
+
 export default function ChartGym() {
   return (
     <div className="flex h-svh w-svw overflow-clip items-center justify-center">

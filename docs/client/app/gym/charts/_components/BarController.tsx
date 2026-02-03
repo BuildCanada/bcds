@@ -5,7 +5,8 @@ import SequentialBarController from "./SequentialBarController";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { colorIssues, ColorIssues, min, max } from "./utils";
+import { colorIssues } from "./utils";
+import { type ColorIssues } from "./types";
 
 type ViewOptions = "divergent_bar" | "sequential_bar";
 
@@ -16,13 +17,13 @@ export default function BarController() {
 
   const increaseCount = () => {
     setCount((v) => {
-      return min(v + 1, 9);
+      return Math.min(v + 1, 9);
     });
   };
 
   const decreaseCount = () => {
     setCount((v) => {
-      return max(v - 1, 3);
+      return Math.max(v - 1, 3);
     });
   };
   return (
