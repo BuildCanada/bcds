@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/charts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A configurable data visualization library for creating interactive charts.",
   "type": "module",
   "main": "src/index.ts",
@@ -32,8 +32,8 @@
   "publishConfig": {
     "access": "public",
     "dependencies": {
-      "@buildcanada/colours": "^0.3.1",
-      "@buildcanada/components": "^0.3.1"
+      "@buildcanada/colours": "^0.3.2",
+      "@buildcanada/components": "^0.3.2"
     }
   },
   "scripts": {
