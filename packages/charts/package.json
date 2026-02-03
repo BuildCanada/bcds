@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/charts",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A configurable data visualization library for creating interactive charts.",
   "type": "module",
   "main": "src/index.ts",
@@ -30,7 +30,11 @@
   },
   "homepage": "https://github.com/BuildCanada/bcds#readme",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "dependencies": {
+      "@buildcanada/colours": "^0.3.1",
+      "@buildcanada/components": "^0.3.1"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
