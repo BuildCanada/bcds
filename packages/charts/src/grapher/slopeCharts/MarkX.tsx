@@ -2,7 +2,7 @@ import {
     dyFromAlign,
     makeIdForHumanConsumption,
     VerticalAlign,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
 
 export function MarkX({

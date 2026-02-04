@@ -6,12 +6,12 @@ import {
     getRelativeMouse,
     makeIdForHumanConsumption,
     Url,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     DATAPAGE_ABOUT_THIS_DATA_SECTION_ID,
     MarkdownTextWrap,
     TextWrap,
-} from "../../components/index.ts"
+} from "../../components/index"
 import { Tooltip } from "../tooltip/Tooltip"
 import { FooterManager } from "./FooterManager"
 import { ActionButtons } from "../controls/ActionButtons"

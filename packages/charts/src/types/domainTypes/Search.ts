@@ -4,8 +4,8 @@ import type {
     Hit,
     HitHighlightResult,
 } from "instantsearch.js"
-import { GdocType } from "../gdocTypes/Gdoc.ts"
-import { GrapherTabName } from "../grapherTypes/GrapherTypes.ts"
+import { GdocType } from "../gdocTypes/Gdoc"
+import { GrapherTabName } from "../grapherTypes/GrapherTypes"
 import * as z from "zod/mini"
 
 export const PagesIndexRecordSchema = z.object({

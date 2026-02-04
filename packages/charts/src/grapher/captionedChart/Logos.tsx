@@ -8,8 +8,8 @@ import {
     LEGACY_LOGO_SVG,
     SMALL_LEGACY_LOGO_SVG,
 } from "./LogosSVG"
-import { LogoOption } from "../../types/index.ts"
-import { makeIdForHumanConsumption } from "../../utils/index.ts"
+import { LogoOption } from "../../types/index"
+import { makeIdForHumanConsumption } from "../../utils/index"
 
 interface LogoAttributes {
     svg: string

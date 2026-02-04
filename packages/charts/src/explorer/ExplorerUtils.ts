@@ -1,13 +1,13 @@
 import * as _ from "lodash-es"
-import { SelectionArray } from "../grapher/index.ts"
-import { Bounds, deserializeJSONFromHTML } from "../utils/index.ts"
+import { SelectionArray } from "../grapher/index"
+import { Bounds, deserializeJSONFromHTML } from "../utils/index"
 import {
     EMBEDDED_EXPLORER_DELIMITER,
     EMBEDDED_EXPLORER_GRAPHER_CONFIGS,
     EMBEDDED_EXPLORER_PARTIAL_GRAPHER_CONFIGS,
     EXPLORER_CONSTANTS_DELIMITER,
-} from "./ExplorerConstants.ts"
-import { ExplorerProps } from "./Explorer.tsx"
+} from "./ExplorerConstants"
+import { ExplorerProps } from "./Explorer"
 
 export async function buildExplorerProps(
     html: string,

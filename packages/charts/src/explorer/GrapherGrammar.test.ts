@@ -2,7 +2,7 @@ import { expect, it, describe } from "vitest"
 import {
     omitEmptyStringValues,
     omitEmptyObjectValues,
-} from "./GrapherGrammar.ts"
+} from "./GrapherGrammar"
 describe("GrapherGrammar helper functions", () => {
     describe("omitEmptyStringValues", () => {
         it("should remove properties with empty string values", () => {

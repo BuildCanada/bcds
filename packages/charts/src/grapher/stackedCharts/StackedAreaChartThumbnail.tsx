@@ -3,9 +3,9 @@ import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { ChartInterface } from "../chart/ChartInterface"
-import { StackedAreaChartState } from "./StackedAreaChartState.ts"
-import { type StackedAreaChartProps } from "./StackedAreaChart.tsx"
-import { Bounds, excludeUndefined } from "../../utils/index.ts"
+import { StackedAreaChartState } from "./StackedAreaChartState"
+import { type StackedAreaChartProps } from "./StackedAreaChart"
+import { Bounds, excludeUndefined } from "../../utils/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,

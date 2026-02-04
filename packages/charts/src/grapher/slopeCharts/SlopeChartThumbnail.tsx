@@ -4,8 +4,8 @@ import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { scaleLinear, ScaleLinear } from "d3-scale"
 import { ChartInterface } from "../chart/ChartInterface"
-import { SlopeChartState } from "./SlopeChartState.ts"
-import { type SlopeChartProps } from "./SlopeChart.tsx"
+import { SlopeChartState } from "./SlopeChartState"
+import { type SlopeChartProps } from "./SlopeChart"
 import {
     PlacedSlopeChartSeries,
     RenderSlopeChartSeries,
@@ -23,7 +23,7 @@ import {
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
 } from "../core/GrapherConstants"
-import { Bounds, SeriesName } from "../../utils/index.ts"
+import { Bounds, SeriesName } from "../../utils/index"
 import { VerticalAxis } from "../axis/Axis"
 import { Slope } from "./Slope"
 import {

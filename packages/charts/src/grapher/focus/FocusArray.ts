@@ -1,6 +1,6 @@
 import { action, computed, observable, makeObservable } from "mobx"
-import { SeriesName } from "../../types/index.ts"
-import { InteractionState } from "../interaction/InteractionState.ts"
+import { SeriesName } from "../../types/index"
+import { InteractionState } from "../interaction/InteractionState"
 
 export class FocusArray {
     constructor() {

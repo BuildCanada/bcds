@@ -2,8 +2,8 @@
 import * as _ from "lodash-es"
 import { rgb } from "d3-color"
 import { interpolate } from "d3-interpolate"
-import { lastOfNonEmptyArray, Color } from "../../utils/index.ts"
-import { ColorSchemeInterface } from "../../types/index.ts"
+import { lastOfNonEmptyArray, Color } from "../../utils/index"
+import { ColorSchemeInterface } from "../../types/index"
 import { interpolateArray } from "./ColorUtils"
 
 export class ColorScheme implements ColorSchemeInterface {

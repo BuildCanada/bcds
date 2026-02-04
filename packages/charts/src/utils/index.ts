@@ -8,13 +8,13 @@ export {
     type SplitBoundsPadding,
     FontFamily,
     Bounds,
-} from "./Bounds.ts"
+} from "./Bounds"
 
 // Browser utilities
-export { isAndroid, isIOS } from "./BrowserUtils.ts"
+export { isAndroid, isIOS } from "./BrowserUtils"
 
 // Dayjs
-import dayjs from "./dayjs.ts"
+import dayjs from "./dayjs"
 export { dayjs }
 export type {
     Dayjs,
@@ -23,19 +23,19 @@ export type {
     isYesterdayType,
     relativeTimeType,
     utcType,
-} from "./dayjs.ts"
+} from "./dayjs"
 
 // Format value
-export { formatValue, checkIsVeryShortUnit } from "./formatValue.ts"
+export { formatValue, checkIsVeryShortUnit } from "./formatValue"
 
 // Fuzzy search
-export { FuzzySearch, type FuzzySearchResult } from "./FuzzySearch.ts"
+export { FuzzySearch, type FuzzySearchResult } from "./FuzzySearch"
 
 // Grapher config utilities
 export {
     diffGrapherConfigs,
     mergeGrapherConfigs,
-} from "./grapherConfigUtils.ts"
+} from "./grapherConfigUtils"
 
 // Image utilities
 export {
@@ -52,10 +52,10 @@ export {
     type SourceProps,
     generateSourceProps,
     getFeaturedImageFilename,
-} from "./image.ts"
+} from "./image"
 
 // isPresent utility
-export { isPresent } from "./isPresent.ts"
+export { isPresent } from "./isPresent"
 
 // Metadata helpers
 export {
@@ -74,10 +74,10 @@ export {
     getCitationLong,
     getCitationShort,
     getPhraseForArchivalDate,
-} from "./metadataHelpers.ts"
+} from "./metadataHelpers"
 
 // Variable display config
-export { VariableDisplayConfig } from "./Variable.ts"
+export { VariableDisplayConfig } from "./Variable"
 
 // Persistable
 export {
@@ -85,16 +85,16 @@ export {
     objectWithPersistablesToObject,
     updatePersistables,
     deleteRuntimeAndUnchangedProps,
-} from "./persistable/Persistable.ts"
+} from "./persistable/Persistable"
 
 // PointVector
-export { PointVector } from "./PointVector.ts"
+export { PointVector } from "./PointVector"
 
 // PromiseCache
-export { PromiseCache } from "./PromiseCache.ts"
+export { PromiseCache } from "./PromiseCache"
 
 // PromiseSwitcher
-export { PromiseSwitcher } from "./PromiseSwitcher.ts"
+export { PromiseSwitcher } from "./PromiseSwitcher"
 
 // Regions
 export {
@@ -133,10 +133,10 @@ export {
     getParentRegions,
     getSiblingRegions,
     articulateEntity,
-} from "./regions.ts"
+} from "./regions"
 
 // Serializers
-export { serializeJSONForHTML, deserializeJSONFromHTML } from "./serializers.ts"
+export { serializeJSONForHTML, deserializeJSONFromHTML } from "./serializers"
 
 // String utilities
 export {
@@ -144,7 +144,7 @@ export {
     titleCase,
     toAsciiQuotes,
     removeDiacritics,
-} from "./string.ts"
+} from "./string"
 
 // TimeBounds
 export {
@@ -155,10 +155,10 @@ export {
     maxTimeToJSON,
     timeBoundToTimeBoundString,
     getTimeDomainFromQueryString,
-} from "./TimeBounds.ts"
+} from "./TimeBounds"
 
 // Tippy tooltip component
-export { Tippy, TippyIfInteractive, LazyTippy } from "./Tippy.tsx"
+export { Tippy, TippyIfInteractive, LazyTippy } from "./Tippy"
 
 // URL utilities
 export {
@@ -166,11 +166,11 @@ export {
     queryParamsToStr,
     getWindowQueryStr,
     setWindowQueryStr,
-} from "./urls/UrlUtils.ts"
+} from "./urls/UrlUtils"
 
-export { Url, setWindowUrl, getWindowUrl } from "./urls/Url.ts"
+export { Url, setWindowUrl, getWindowUrl } from "./urls/Url"
 
-export { type UrlMigration, performUrlMigrations } from "./urls/UrlMigration.ts"
+export { type UrlMigration, performUrlMigrations } from "./urls/UrlMigration"
 
 // Main utility exports (from Util.ts)
 export {
@@ -294,7 +294,7 @@ export {
     getDisplayUnit,
     stripOuterParentheses,
     dimensionsToViewId,
-} from "./Util.ts"
+} from "./Util"
 
 // Archival date utilities
 export {
@@ -304,15 +304,15 @@ export {
     formatAsArchivalDate,
     convertToArchivalDateStringIfNecessary,
     getDateForArchival,
-} from "./archival/archivalDate.ts"
+} from "./archival/archivalDate"
 
 // Multi-dimensional data page config (stub)
 export {
     MultiDimDataPageConfig,
     extractMultiDimChoicesFromSearchParams,
     searchParamsToMultiDimView,
-} from "./MultiDimDataPageConfig.ts"
+} from "./MultiDimDataPageConfig"
 
 // Re-export all types from the types package for convenience
 // This matches the pattern in @ourworldindata/utils
-export * from "../types/index.ts"
+export * from "../types/index"

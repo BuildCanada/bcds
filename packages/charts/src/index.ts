@@ -41,49 +41,49 @@ export {
     createFallbackConfig,
     reportError,
     trackEvent,
-} from "./config/index.ts"
+} from "./config/index"
 
 // Re-export grapher components
 export {
     Grapher,
     type GrapherProgrammaticInterface,
     type GrapherManager,
-} from "./grapher/core/Grapher.tsx"
+} from "./grapher/core/Grapher"
 
-export { GrapherState } from "./grapher/core/GrapherState.ts"
-export { FetchingGrapher } from "./grapher/core/FetchingGrapher.tsx"
+export { GrapherState } from "./grapher/core/GrapherState"
+export { FetchingGrapher } from "./grapher/core/FetchingGrapher"
 
 // Explorer
-export { Explorer } from "./explorer/Explorer.tsx"
-export type { ExplorerProps } from "./explorer/Explorer.tsx"
+export { Explorer } from "./explorer/Explorer"
+export type { ExplorerProps } from "./explorer/Explorer"
 
 // Chart State types
-export type { ChartState, ChartSeries } from "./grapher/chart/ChartInterface.ts"
-export type { LineChartState } from "./grapher/lineCharts/LineChartState.ts"
-export type { SlopeChartState } from "./grapher/slopeCharts/SlopeChartState.ts"
-export type { DiscreteBarChartState } from "./grapher/barCharts/DiscreteBarChartState.ts"
-export type { StackedAreaChartState } from "./grapher/stackedCharts/StackedAreaChartState.ts"
-export type { StackedBarChartState } from "./grapher/stackedCharts/StackedBarChartState.ts"
-export type { StackedDiscreteBarChartState } from "./grapher/stackedCharts/StackedDiscreteBarChartState.ts"
-export type { ScatterPlotChartState } from "./grapher/scatterCharts/ScatterPlotChartState.ts"
-export type { MarimekkoChartState } from "./grapher/stackedCharts/MarimekkoChartState.ts"
-export { MapChartState } from "./grapher/mapCharts/MapChartState.ts"
-export { MapConfig } from "./grapher/mapCharts/MapConfig.ts"
+export type { ChartState, ChartSeries } from "./grapher/chart/ChartInterface"
+export type { LineChartState } from "./grapher/lineCharts/LineChartState"
+export type { SlopeChartState } from "./grapher/slopeCharts/SlopeChartState"
+export type { DiscreteBarChartState } from "./grapher/barCharts/DiscreteBarChartState"
+export type { StackedAreaChartState } from "./grapher/stackedCharts/StackedAreaChartState"
+export type { StackedBarChartState } from "./grapher/stackedCharts/StackedBarChartState"
+export type { StackedDiscreteBarChartState } from "./grapher/stackedCharts/StackedDiscreteBarChartState"
+export type { ScatterPlotChartState } from "./grapher/scatterCharts/ScatterPlotChartState"
+export type { MarimekkoChartState } from "./grapher/stackedCharts/MarimekkoChartState"
+export { MapChartState } from "./grapher/mapCharts/MapChartState"
+export { MapConfig } from "./grapher/mapCharts/MapConfig"
 
 // Data loading
 export {
     fetchInputTableForConfig,
     getCachingInputTableFetcher,
     type FetchInputTableForConfigFn,
-} from "./grapher/core/loadGrapherTableHelpers.ts"
+} from "./grapher/core/loadGrapherTableHelpers"
 
-export { loadVariableDataAndMetadata } from "./grapher/core/loadVariable.ts"
+export { loadVariableDataAndMetadata } from "./grapher/core/loadVariable"
 
 // Color system
-export { ColorScale } from "./grapher/color/ColorScale.ts"
-export { ColorScaleConfig } from "./grapher/color/ColorScaleConfig.ts"
-export { ColorScheme } from "./grapher/color/ColorScheme.ts"
-export { ColorSchemes, getColorSchemeForChartType } from "./grapher/color/ColorSchemes.ts"
+export { ColorScale } from "./grapher/color/ColorScale"
+export { ColorScaleConfig } from "./grapher/color/ColorScaleConfig"
+export { ColorScheme } from "./grapher/color/ColorScheme"
+export { ColorSchemes, getColorSchemeForChartType } from "./grapher/color/ColorSchemes"
 export {
     NumericBin,
     CategoricalBin,
@@ -92,11 +92,11 @@ export {
     isNumericBin,
     isNoDataBin,
     isProjectedDataBin,
-} from "./grapher/color/ColorScaleBin.ts"
+} from "./grapher/color/ColorScaleBin"
 
 // Selection and Focus
-export { SelectionArray } from "./grapher/selection/SelectionArray.ts"
-export { FocusArray } from "./grapher/focus/FocusArray.ts"
+export { SelectionArray } from "./grapher/selection/SelectionArray"
+export { FocusArray } from "./grapher/focus/FocusArray"
 
 // Constants
 export {
@@ -108,20 +108,20 @@ export {
     BASE_FONT_SIZE,
     Patterns,
     latestGrapherConfigSchema,
-} from "./grapher/core/GrapherConstants.ts"
+} from "./grapher/core/GrapherConstants"
 
 // Controls
-export { EntityPicker } from "./grapher/controls/entityPicker/EntityPicker.tsx"
-export type { EntityPickerManager } from "./grapher/controls/entityPicker/EntityPickerConstants.ts"
-export { GlobalEntitySelector } from "./grapher/controls/globalEntitySelector/GlobalEntitySelector.tsx"
-export { Dropdown } from "./grapher/controls/Dropdown.tsx"
+export { EntityPicker } from "./grapher/controls/entityPicker/EntityPicker"
+export type { EntityPickerManager } from "./grapher/controls/entityPicker/EntityPickerConstants"
+export { GlobalEntitySelector } from "./grapher/controls/globalEntitySelector/GlobalEntitySelector"
+export { Dropdown } from "./grapher/controls/Dropdown"
 
 // Schema and migrations
-export { defaultGrapherConfig } from "./grapher/schema/defaultGrapherConfig.ts"
+export { defaultGrapherConfig } from "./grapher/schema/defaultGrapherConfig"
 export {
     migrateGrapherConfigToLatestVersion,
     migrateGrapherConfigToLatestVersionAndFailOnError,
-} from "./grapher/schema/migrations/migrate.ts"
+} from "./grapher/schema/migrations/migrate"
 
 // URL utilities
 export {
@@ -131,46 +131,46 @@ export {
     generateSelectedEntityNamesParam,
     generateFocusedSeriesNamesParam,
     getEntityNamesParam,
-} from "./grapher/core/EntityUrlBuilder.ts"
+} from "./grapher/core/EntityUrlBuilder"
 
-export { grapherConfigToQueryParams } from "./grapher/core/GrapherUrl.ts"
+export { grapherConfigToQueryParams } from "./grapher/core/GrapherUrl"
 
 // Chart utilities
-export { ChartDimension } from "./grapher/chart/ChartDimension.ts"
-export { DimensionSlot } from "./grapher/chart/DimensionSlot.ts"
-export { makeChartState } from "./grapher/chart/ChartTypeMap.tsx"
-export { generateGrapherImageSrcSet } from "./grapher/chart/ChartUtils.tsx"
+export { ChartDimension } from "./grapher/chart/ChartDimension"
+export { DimensionSlot } from "./grapher/chart/DimensionSlot"
+export { makeChartState } from "./grapher/chart/ChartTypeMap"
+export { generateGrapherImageSrcSet } from "./grapher/chart/ChartUtils"
 
 // Slideshow
 export {
     type SlideShowManager,
     SlideShowController,
-} from "./grapher/slideshowController/SlideShowController.tsx"
+} from "./grapher/slideshowController/SlideShowController"
 
 // Analytics
-export { GrapherAnalytics } from "./grapher/core/GrapherAnalytics.ts"
+export { GrapherAnalytics } from "./grapher/core/GrapherAnalytics"
 
 // Rendering helpers
 export {
     renderGrapherIntoContainer,
     renderSingleGrapherOnGrapherPage,
-} from "./grapher/core/GrapherUseHelpers.tsx"
+} from "./grapher/core/GrapherUseHelpers"
 
 // Map features
-export { GeoFeatures } from "./grapher/mapCharts/GeoFeatures.ts"
+export { GeoFeatures } from "./grapher/mapCharts/GeoFeatures"
 export {
     MAP_REGION_LABELS,
     type GeoFeature,
     type Direction,
     type Ellipse,
     type EllipseCoords,
-} from "./grapher/mapCharts/MapChartConstants.ts"
+} from "./grapher/mapCharts/MapChartConstants"
 
 // Comparison lines
-export { isValidVerticalComparisonLineConfig } from "./grapher/comparisonLine/ComparisonLineHelpers.ts"
+export { isValidVerticalComparisonLineConfig } from "./grapher/comparisonLine/ComparisonLineHelpers"
 
 // Binning strategies
-export { hasValidConfigForBinningStrategy } from "./grapher/color/BinningStrategies.ts"
+export { hasValidConfigForBinningStrategy } from "./grapher/color/BinningStrategies"
 
 // Chart tabs
 export {
@@ -180,7 +180,7 @@ export {
     mapGrapherTabNameToQueryParam,
     mapGrapherTabNameToConfigOption,
     makeLabelForGrapherTab,
-} from "./grapher/chart/ChartTabs.ts"
+} from "./grapher/chart/ChartTabs"
 
 // Guided chart utilities
 export {
@@ -190,15 +190,15 @@ export {
     type GuidedChartContextValue,
     type ArchiveGuidedChartRegistration,
     buildArchiveGuidedChartSrc,
-} from "./grapher/chart/guidedChartUtils.ts"
+} from "./grapher/chart/guidedChartUtils"
 
 // Legacy conversion
 export {
     legacyToChartsTableAndDimensions,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "./grapher/core/LegacyToChartsTable.ts"
+} from "./grapher/core/LegacyToChartsTable"
 
-export { legacyToCurrentGrapherUrl } from "./grapher/core/GrapherUrlMigrations.ts"
+export { legacyToCurrentGrapherUrl } from "./grapher/core/GrapherUrlMigrations"
 
 // Test data helpers (useful for demos and testing)
 export {
@@ -206,8 +206,8 @@ export {
     createTestDataset,
     type TestData,
     type TestMetadata,
-} from "./grapher/testData/TestData.ts"
-export { LifeExpectancyGrapher } from "./grapher/testData/TestData.sample.ts"
+} from "./grapher/testData/TestData"
+export { LifeExpectancyGrapher } from "./grapher/testData/TestData.sample"
 
 // Types commonly needed for data loading
 export {
@@ -219,8 +219,8 @@ export {
     type EntityName,
     type EntityId,
     type EntityCode,
-} from "./types/index.ts"
+} from "./types/index"
 
 // Utilities for data loading
-export { Bounds } from "./utils/index.ts"
-export { parseDelimited, ChartsTable, BlankChartsTable } from "./core-table/index.ts"
+export { Bounds } from "./utils/index"
+export { parseDelimited, ChartsTable, BlankChartsTable } from "./core-table/index"

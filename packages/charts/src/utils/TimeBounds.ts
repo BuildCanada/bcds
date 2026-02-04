@@ -4,14 +4,14 @@ import {
     TimeBound,
     TimeBoundValue,
     TimeBoundValueStr,
-} from "../types/index.ts"
+} from "../types/index"
 import {
     parseIntOrUndefined,
     diffDateISOStringInDays,
     formatDay,
     isNegativeInfinity,
     isPositiveInfinity,
-} from "./Util.ts"
+} from "./Util"
 import * as R from "remeda"
 
 export const timeFromTimebounds = (

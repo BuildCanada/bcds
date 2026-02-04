@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
 import entities from "./regions.json"
-import { lazy } from "./Util.ts"
-import { EntityName } from "../types/index.ts"
+import { lazy } from "./Util"
+import { EntityName } from "../types/index"
 
 export enum RegionType {
     Country = "country",

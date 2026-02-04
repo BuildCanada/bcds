@@ -1,4 +1,4 @@
-import { PrimitiveType } from "../types/index.ts"
+import { PrimitiveType } from "../types/index"
 import * as _ from "lodash-es"
 import fuzzysort from "fuzzysort"
 

@@ -6,10 +6,10 @@ import {
     guid,
     PointVector,
     makeIdForHumanConsumption,
-} from "../../utils/index.ts"
-import { CustomComparisonLineConfig } from "../../types/index.ts"
+} from "../../utils/index"
+import { CustomComparisonLineConfig } from "../../types/index"
 import { generateComparisonLinePoints } from "./ComparisonLineGenerator"
-import { Halo } from "../../components/index.ts"
+import { Halo } from "../../components/index"
 import { GRAPHER_TEXT_OUTLINE_FACTOR } from "../core/GrapherConstants"
 import { ClipPath, makeClipPath } from "../chart/ChartUtils"
 import {

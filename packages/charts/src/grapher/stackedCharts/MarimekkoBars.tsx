@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as _ from "lodash-es"
 import * as R from "remeda"
-import { Bounds, dyFromAlign, VerticalAlign } from "../../utils/index.ts"
+import { Bounds, dyFromAlign, VerticalAlign } from "../../utils/index"
 import { DualAxis } from "../axis/Axis"
 import { ColorScaleBin } from "../color/ColorScaleBin"
 import { TooltipState } from "../tooltip/Tooltip"

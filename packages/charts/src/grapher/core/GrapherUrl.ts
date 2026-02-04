@@ -3,18 +3,18 @@ import {
     GrapherInterface,
     GrapherQueryParams,
     TimeBoundValueStr,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     generateFocusedSeriesNamesParam,
     generateSelectedEntityNamesParam,
-} from "./EntityUrlBuilder.ts"
+} from "./EntityUrlBuilder"
 import { match } from "ts-pattern"
-import { GrapherState } from "./GrapherState.tsx"
+import { GrapherState } from "./GrapherState"
 import * as R from "remeda"
 import {
     DEFAULT_GLOBE_ROTATION,
     DEFAULT_GLOBE_ZOOM,
-} from "../mapCharts/MapChartConstants.ts"
+} from "../mapCharts/MapChartConstants"
 
 // This function converts a (potentially partial) GrapherInterface to the query params this translates to.
 // This is helpful for when we have a patch config to a parent chart, and we want to know which query params we need to get the parent chart as close as possible to the patched child chart.

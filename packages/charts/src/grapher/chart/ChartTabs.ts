@@ -8,7 +8,7 @@ import {
     GrapherTabName,
     GrapherTabConfigOption,
     GrapherTabQueryParam,
-} from "../../types/index.ts"
+} from "../../types/index"
 import * as R from "remeda"
 import { match } from "ts-pattern"
 

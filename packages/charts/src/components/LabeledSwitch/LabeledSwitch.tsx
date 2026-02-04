@@ -2,7 +2,7 @@ import * as React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import cx from "classnames"
-import { Tippy } from "../../utils/index.ts"
+import { Tippy } from "../../utils/index"
 
 export const LabeledSwitch = ({
     className,

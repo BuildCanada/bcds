@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
 import * as React from "react"
-import { makeIdForHumanConsumption } from "../../utils/index.ts"
-import { TextWrap } from "../../components/index.ts"
+import { makeIdForHumanConsumption } from "../../utils/index"
+import { TextWrap } from "../../components/index"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import {

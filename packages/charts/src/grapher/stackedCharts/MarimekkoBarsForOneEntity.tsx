@@ -1,4 +1,4 @@
-import { makeIdForHumanConsumption } from "../../utils/index.ts"
+import { makeIdForHumanConsumption } from "../../utils/index"
 import { DualAxis } from "../axis/Axis"
 import {
     Bar,
@@ -6,7 +6,7 @@ import {
     EntityColorData,
     MarimekkoBarProps,
 } from "./MarimekkoChartConstants"
-import { InteractionState } from "../interaction/InteractionState.ts"
+import { InteractionState } from "../interaction/InteractionState"
 import { BAR_OPACITY } from "./StackedConstants"
 
 interface MarimekkoBarsProps {

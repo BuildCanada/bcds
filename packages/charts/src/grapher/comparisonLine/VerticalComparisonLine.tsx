@@ -7,13 +7,13 @@ import {
     dyFromAlign,
     makeIdForHumanConsumption,
     VerticalAlign,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     COMPARISON_LINE_STYLE,
     COMPARISON_LINE_LABEL_STYLE,
 } from "./ComparisonLineConstants"
 import { ComparisonLineProps } from "./ComparisonLine"
-import { VerticalComparisonLineConfig } from "../../types/index.ts"
+import { VerticalComparisonLineConfig } from "../../types/index"
 import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers"
 
 @observer

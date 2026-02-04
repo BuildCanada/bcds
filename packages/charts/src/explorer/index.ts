@@ -1,6 +1,6 @@
-export { Explorer, type ExplorerProps } from "./Explorer.tsx"
+export { Explorer, type ExplorerProps } from "./Explorer"
 
-export { buildExplorerProps } from "./ExplorerUtils.ts"
+export { buildExplorerProps } from "./ExplorerUtils"
 
 export {
     DefaultNewExplorerSlug,
@@ -29,7 +29,7 @@ export {
     type ExplorerStandardQueryParams,
     UNSAVED_EXPLORER_DRAFT,
     UNSAVED_EXPLORER_PREVIEW_QUERYPARAMS,
-} from "./ExplorerConstants.ts"
+} from "./ExplorerConstants"
 
 export {
     type TableDef,
@@ -37,33 +37,33 @@ export {
     EXPLORER_FILE_SUFFIX,
     makeFullPath,
     type ExplorerGrapherInterface,
-} from "./ExplorerProgram.ts"
+} from "./ExplorerProgram"
 
-export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.ts"
+export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec"
 
 export {
     explorerUrlMigrationsById,
     migrateExplorerUrl,
-} from "./urlMigrations/ExplorerUrlMigrations.ts"
+} from "./urlMigrations/ExplorerUrlMigrations"
 
-export { isEmpty } from "./gridLang/GrammarUtils.ts"
+export { isEmpty } from "./gridLang/GrammarUtils"
 
-export { ColumnGrammar } from "./ColumnGrammar.ts"
+export { ColumnGrammar } from "./ColumnGrammar"
 
-export { GridCell } from "./gridLang/GridCell.ts"
+export { GridCell } from "./gridLang/GridCell"
 
-export { GridProgram } from "./gridLang/GridProgram.ts"
+export { GridProgram } from "./gridLang/GridProgram"
 
-export { ExplorerGrammar } from "./ExplorerGrammar.ts"
+export { ExplorerGrammar } from "./ExplorerGrammar"
 
-export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations.ts"
+export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations"
 
-export { DecisionMatrix } from "./ExplorerDecisionMatrix.ts"
+export { DecisionMatrix } from "./ExplorerDecisionMatrix"
 
 export {
     GridBoolean,
     type CellPosition,
     type ParsedCell,
-} from "./gridLang/GridLangConstants.ts"
+} from "./gridLang/GridLangConstants"
 
-export { GrapherGrammar } from "./GrapherGrammar.ts"
+export { GrapherGrammar } from "./GrapherGrammar"

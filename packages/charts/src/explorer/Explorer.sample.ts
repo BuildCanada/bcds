@@ -1,10 +1,10 @@
-import { DimensionProperty } from "../utils/index.ts"
-import { GRAPHER_TAB_CONFIG_OPTIONS } from "../types/index.ts"
+import { DimensionProperty } from "../utils/index"
+import { GRAPHER_TAB_CONFIG_OPTIONS } from "../types/index"
 import {
     GrapherProgrammaticInterface,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "../grapher/index.ts"
-import { Explorer, ExplorerProps } from "./Explorer.tsx"
+} from "../grapher/index"
+import { Explorer, ExplorerProps } from "./Explorer"
 
 const SampleExplorerOfGraphersProgram = `explorerTitle	CO₂ Data Explorer
 isPublished	false

@@ -1,4 +1,4 @@
-import { Color, CoreValueType } from "../../types/index.ts"
+import { Color, CoreValueType } from "../../types/index"
 import { NO_DATA_LABEL, PROJECTED_DATA_LABEL } from "./ColorScale"
 
 interface BinProps {

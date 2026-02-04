@@ -6,7 +6,7 @@ import {
     FooterItem,
     TooltipFadeMode,
     TooltipFooterIcon,
-} from "../tooltip/TooltipProps.ts"
+} from "../tooltip/TooltipProps"
 import {
     Tooltip,
     TooltipValue,
@@ -24,17 +24,17 @@ import {
     AxisConfigInterface,
     ColumnSlug,
     PrimitiveType,
-} from "../../types/index.ts"
-import { CoreColumn, ChartsTable } from "../../core-table/index.ts"
+} from "../../types/index"
+import { CoreColumn, ChartsTable } from "../../core-table/index"
 import {
     calculateTrendDirection,
     excludeUndefined,
     PointVector,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { darkenColorForHighContrastText } from "../color/ColorUtils"
-import { MapSparkline, MapSparklineManager } from "./MapSparkline.tsx"
+import { MapSparkline, MapSparklineManager } from "./MapSparkline"
 import { match } from "ts-pattern"
-import { MapFormatValueForTooltip } from "./MapChartState.ts"
+import { MapFormatValueForTooltip } from "./MapChartState"
 
 interface MapTooltipProps {
     entityName: EntityName

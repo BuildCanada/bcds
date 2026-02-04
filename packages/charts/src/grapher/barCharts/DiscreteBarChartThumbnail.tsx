@@ -6,9 +6,9 @@ import { DiscreteBarChartState } from "./DiscreteBarChartState"
 import {
     DiscreteBarChart,
     type DiscreteBarChartProps,
-} from "./DiscreteBarChart.tsx"
+} from "./DiscreteBarChart"
 
-import { DiscreteBarChartManager } from "./DiscreteBarChartConstants.ts"
+import { DiscreteBarChartManager } from "./DiscreteBarChartConstants"
 
 @observer
 export class DiscreteBarChartThumbnail

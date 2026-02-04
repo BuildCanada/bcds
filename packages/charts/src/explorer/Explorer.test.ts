@@ -1,12 +1,12 @@
 import { expect, it, describe } from "vitest"
 
-import { Explorer } from "./Explorer.tsx"
+import { Explorer } from "./Explorer"
 import {
     SampleExplorerOfGraphers,
     SampleInlineDataExplorer,
-} from "./Explorer.sample.ts"
+} from "./Explorer.sample"
 
-import { GRAPHER_TAB_CONFIG_OPTIONS } from "../types/index.ts"
+import { GRAPHER_TAB_CONFIG_OPTIONS } from "../types/index"
 
 describe(Explorer, () => {
     it("preserves the current tab between explorer views", async () => {

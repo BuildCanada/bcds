@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { Color } from "../../types/index.ts"
+import { Color } from "../../types/index"
 import { rgb, color, RGBColor } from "d3-color"
 import { interpolate } from "d3-interpolate"
 

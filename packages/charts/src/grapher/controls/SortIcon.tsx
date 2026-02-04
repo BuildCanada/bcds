@@ -8,7 +8,7 @@ import {
     faSortAmountDown,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { SortOrder } from "../../types/index.ts"
+import { SortOrder } from "../../types/index"
 
 export function SortIcon(props: {
     type?: "text" | "numeric"

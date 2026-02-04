@@ -8,8 +8,8 @@ import {
     ColorSchemeName,
     GRAPHER_MAP_TYPE,
     GrapherChartOrMapType,
-} from "../../types/index.ts"
-import { getColorBrewerScheme } from "./ColorBrewerSchemes.ts"
+} from "../../types/index"
+import { getColorBrewerScheme } from "./ColorBrewerSchemes"
 
 function getPreferredSchemesByType(
     type: GrapherChartOrMapType

@@ -2,14 +2,14 @@ import { expect, it, describe } from "vitest"
 
 import * as _ from "lodash-es"
 import { FacetChart } from "./FacetChart"
-import { SynthesizeGDPTable, ChartsTable } from "../../core-table/index.ts"
+import { SynthesizeGDPTable, ChartsTable } from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import {
     GRAPHER_CHART_TYPES,
     FacetAxisDomain,
     FacetStrategy,
     ColumnTypeNames,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { LineChart } from "../lineCharts/LineChart"
 
 const allElementsAreEqual = (array: any[]): boolean => {

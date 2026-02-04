@@ -8,8 +8,8 @@ import {
     GrapherChartType,
     MissingDataStrategy,
     StackMode,
-} from "../types/index.ts"
-import { SortBy, SortOrder } from "../utils/index.ts"
+} from "../types/index"
+import { SortBy, SortOrder } from "../utils/index"
 import {
     GridBoolean,
     BooleanCellDef,
@@ -26,7 +26,7 @@ import {
     IndicatorIdOrEtlPathCellDef,
     SlugOrIndicatorIdOrEtlPathCellDef,
     GrapherCellDef,
-} from "./gridLang/GridLangConstants.ts"
+} from "./gridLang/GridLangConstants"
 import * as R from "remeda"
 const toTerminalOptions = (keywords: string[]): CellDef[] => {
     return keywords.map((keyword) => ({

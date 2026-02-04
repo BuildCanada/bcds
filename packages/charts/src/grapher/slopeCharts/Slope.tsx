@@ -1,4 +1,4 @@
-import { makeIdForHumanConsumption, PointVector } from "../../utils/index.ts"
+import { makeIdForHumanConsumption, PointVector } from "../../utils/index"
 import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants"
 import { RenderSlopeChartSeries } from "./SlopeChartConstants"
 

@@ -10,14 +10,14 @@ import {
     SynthesizeFruitTableWithNonPositives,
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import {
     ColumnTypeNames,
     FacetStrategy,
     ScaleType,
     SeriesStrategy,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { SelectionArray } from "../selection/SelectionArray"
 import { SlopeChartState } from "./SlopeChartState"
 

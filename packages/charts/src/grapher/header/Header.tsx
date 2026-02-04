@@ -4,8 +4,8 @@ import {
     LogoOption,
     makeIdForHumanConsumption,
     Bounds,
-} from "../../utils/index.ts"
-import { MarkdownTextWrap, TextWrap } from "../../components/index.ts"
+} from "../../utils/index"
+import { MarkdownTextWrap, TextWrap } from "../../components/index"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { Logo } from "../captionedChart/Logos"

@@ -9,8 +9,8 @@ export {
     fetchInputTableForConfig,
     getCachingInputTableFetcher,
     type FetchInputTableForConfigFn,
-} from "./core/loadGrapherTableHelpers.ts"
-export { loadVariableDataAndMetadata } from "./core/loadVariable.ts"
+} from "./core/loadGrapherTableHelpers"
+export { loadVariableDataAndMetadata } from "./core/loadVariable"
 export {
     GRAPHER_ROUTE_FOLDER,
     GRAPHER_EMBEDDED_FIGURE_ATTR,
@@ -98,7 +98,7 @@ export {
     generateFocusedSeriesNamesParam,
     getEntityNamesParam,
 } from "./core/EntityUrlBuilder"
-export { grapherConfigToQueryParams } from "./core/GrapherUrl.ts"
+export { grapherConfigToQueryParams } from "./core/GrapherUrl"
 export {
     type SlideShowManager,
     SlideShowController,
@@ -128,7 +128,7 @@ export {
 export {
     renderGrapherIntoContainer,
     renderSingleGrapherOnGrapherPage,
-} from "./core/GrapherUseHelpers.tsx"
+} from "./core/GrapherUseHelpers"
 export { GeoFeatures } from "./mapCharts/GeoFeatures"
 export { isValidVerticalComparisonLineConfig } from "./comparisonLine/ComparisonLineHelpers"
 export { hasValidConfigForBinningStrategy } from "./color/BinningStrategies"
@@ -147,11 +147,11 @@ export {
     type TestMetadata,
 } from "./testData/TestData"
 export { LifeExpectancyGrapher } from "./testData/TestData.sample"
-export type { LineChartState } from "./lineCharts/LineChartState.ts"
+export type { LineChartState } from "./lineCharts/LineChartState"
 export type { SlopeChartState } from "./slopeCharts/SlopeChartState"
-export type { DiscreteBarChartState } from "./barCharts/DiscreteBarChartState.ts"
-export type { StackedAreaChartState } from "./stackedCharts/StackedAreaChartState.ts"
-export type { StackedBarChartState } from "./stackedCharts/StackedBarChartState.ts"
+export type { DiscreteBarChartState } from "./barCharts/DiscreteBarChartState"
+export type { StackedAreaChartState } from "./stackedCharts/StackedAreaChartState"
+export type { StackedBarChartState } from "./stackedCharts/StackedBarChartState"
 export type { StackedDiscreteBarChartState } from "./stackedCharts/StackedDiscreteBarChartState"
 export type { ScatterPlotChartState } from "./scatterCharts/ScatterPlotChartState"
 export type { MarimekkoChartState } from "./stackedCharts/MarimekkoChartState"

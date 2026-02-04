@@ -1,4 +1,4 @@
-import { GrapherInterface } from "../types/index.ts"
+import { GrapherInterface } from "../types/index"
 import * as _ from "lodash-es"
 import {
     excludeUndefined,

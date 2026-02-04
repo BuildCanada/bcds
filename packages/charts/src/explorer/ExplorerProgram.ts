@@ -11,19 +11,19 @@ import {
     GrapherInterface,
     AxisMinMaxValueStr,
     GrapherChartType,
-} from "../types/index.ts"
+} from "../types/index"
 import {
     CoreTable,
     ChartsTable,
     isNotErrorValue,
-} from "../core-table/index.ts"
+} from "../core-table/index"
 import {
     GitCommit,
     PromiseCache,
     SerializedGridProgram,
     trimObject,
     fetchWithRetry,
-} from "../utils/index.ts"
+} from "../utils/index"
 import {
     CellDef,
     Grammar,
@@ -31,19 +31,19 @@ import {
     GRID_CELL_DELIMITER,
     GRID_NODE_DELIMITER,
     RootKeywordCellDef,
-} from "./gridLang/GridLangConstants.ts"
-import { GridProgram } from "./gridLang/GridProgram.ts"
-import { ColumnGrammar } from "./ColumnGrammar.ts"
+} from "./gridLang/GridLangConstants"
+import { GridProgram } from "./gridLang/GridProgram"
+import { ColumnGrammar } from "./ColumnGrammar"
 import {
     DefaultNewExplorerSlug,
     ExplorerChartCreationMode,
     ExplorerChoiceParams,
     EXPLORERS_ROUTE_FOLDER,
-} from "./ExplorerConstants.ts"
-import { DecisionMatrix } from "./ExplorerDecisionMatrix.ts"
-import { ExplorerGrammar } from "./ExplorerGrammar.ts"
-import { GrapherGrammar } from "./GrapherGrammar.ts"
-import { latestGrapherConfigSchema } from "../grapher/index.ts"
+} from "./ExplorerConstants"
+import { DecisionMatrix } from "./ExplorerDecisionMatrix"
+import { ExplorerGrammar } from "./ExplorerGrammar"
+import { GrapherGrammar } from "./GrapherGrammar"
+import { latestGrapherConfigSchema } from "../grapher/index"
 
 export const EXPLORER_FILE_SUFFIX = ".explorer.tsv"
 

@@ -6,12 +6,12 @@ import {
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
     ChartsTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import { SelectionArray } from "../selection/SelectionArray"
-import { ColumnTypeNames } from "../../utils/index.ts"
+import { ColumnTypeNames } from "../../utils/index"
 import { StackedBarChart } from "./StackedBarChart"
-import { StackedBarChartState } from "./StackedBarChartState.ts"
+import { StackedBarChartState } from "./StackedBarChartState"
 
 it("can create a chart", () => {
     const table = SynthesizeGDPTable({ timeRange: [2000, 2010] })

@@ -14,8 +14,8 @@ import {
     ChartDimensionInterface,
     Time,
     ChartDimensionInterfaceWithMandatorySlug,
-} from "../../utils/index.ts"
-import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
+} from "../../utils/index"
+import { ChartsTable, CoreColumn } from "../../core-table/index"
 
 // A chart "dimension" represents a binding between a chart
 // and a particular variable that it requests as data

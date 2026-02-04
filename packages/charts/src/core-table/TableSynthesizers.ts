@@ -5,14 +5,14 @@ import {
     countries,
     VariableDisplayConfigInterface,
     ColumnSlug,
-} from "../utils/index.ts"
+} from "../utils/index"
 import {
     TimeRange,
     ColumnTypeNames,
     ColumnDef,
     ChartsTableSlugs,
-} from "../types/index.ts"
-import { ChartsTable } from "./ChartsTable.ts"
+} from "../types/index"
+import { ChartsTable } from "./ChartsTable"
 
 interface SynthOptions {
     entityCount: number

@@ -1,14 +1,14 @@
 import urlParseLib from "url-parse"
-import { gdocUrlRegex, QueryParams } from "../../types/index.ts"
+import { gdocUrlRegex, QueryParams } from "../../types/index"
 
 import {
     detailOnDemandRegex,
     guidedChartRegex,
     excludeUndefined,
     omitUndefinedValues,
-} from "../Util.ts"
+} from "../Util"
 
-import { queryParamsToStr, strToQueryParams } from "./UrlUtils.ts"
+import { queryParamsToStr, strToQueryParams } from "./UrlUtils"
 import * as R from "remeda"
 
 const parseUrl = (url: string): urlParseLib<string> => urlParseLib(url, {})

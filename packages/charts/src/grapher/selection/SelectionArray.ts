@@ -1,4 +1,4 @@
-import { EntityName } from "../../types/index.ts"
+import { EntityName } from "../../types/index"
 import { action, computed, observable, makeObservable } from "mobx"
 
 export class SelectionArray {

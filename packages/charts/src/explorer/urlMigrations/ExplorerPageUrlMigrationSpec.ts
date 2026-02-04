@@ -1,4 +1,4 @@
-import { ExplorerUrlMigrationId } from "./ExplorerUrlMigrations.ts"
+import { ExplorerUrlMigrationId } from "./ExplorerUrlMigrations"
 
 /**
  * An object spec that gets encoded into pages that redirect to an explorer.

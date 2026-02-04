@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 import { findValidChartTypeCombination } from "./ChartTabs"
-import { GRAPHER_CHART_TYPES } from "../../types/index.ts"
+import { GRAPHER_CHART_TYPES } from "../../types/index"
 
 const { LineChart, SlopeChart, ScatterPlot, StackedArea } = GRAPHER_CHART_TYPES
 

@@ -16,11 +16,11 @@ import {
     ShareMenuManager,
     shareUsingShareApi,
     shouldShareUsingShareApi,
-} from "./ShareMenu.tsx"
-import { Tippy } from "../../utils/index.ts"
+} from "./ShareMenu"
+import { Tippy } from "../../utils/index"
 import classNames from "classnames"
-import { GrapherModal } from "../core/GrapherConstants.ts"
-import { DownloadModalTabName } from "../modal/DownloadModal.tsx"
+import { GrapherModal } from "../core/GrapherConstants"
+import { DownloadModalTabName } from "../modal/DownloadModal"
 
 export interface ActionButtonsManager extends ShareMenuManager {
     isAdmin?: boolean

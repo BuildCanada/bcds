@@ -1,12 +1,12 @@
 import * as React from "react"
-import { GrapherProgrammaticInterface } from "../core/Grapher.tsx"
-import { GrapherState } from "../core/GrapherState.tsx"
-import { MultiDimDataPageConfig, Url } from "../../utils/index.ts"
+import { GrapherProgrammaticInterface } from "../core/Grapher"
+import { GrapherState } from "../core/GrapherState"
+import { MultiDimDataPageConfig, Url } from "../../utils/index"
 import {
     GrapherQueryParams,
     MultiDimDimensionChoices,
     ChartConfigType,
-} from "../../types/index.ts"
+} from "../../types/index"
 
 export interface ArchiveGuidedChartRegistration {
     iframeRef: React.RefObject<HTMLIFrameElement | null>

@@ -8,9 +8,9 @@ import {
     Bounds,
     guid,
     exposeInstanceOnWindow,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { computed, action, observable, makeObservable } from "mobx"
-import { SeriesName, SeriesStrategy } from "../../types/index.ts"
+import { SeriesName, SeriesStrategy } from "../../types/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -20,7 +20,7 @@ import { DualAxisComponent } from "../axis/AxisViews"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
 import { LineLegend } from "../lineLegend/LineLegend"
 import { NoDataModal } from "../noDataModal/NoDataModal"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps"
 import {
     Tooltip,
     TooltipState,
@@ -28,14 +28,14 @@ import {
     makeTooltipRoundingNotice,
     toTooltipTableColumns,
 } from "../tooltip/Tooltip"
-import { StackedAreaChartState } from "./StackedAreaChartState.ts"
+import { StackedAreaChartState } from "./StackedAreaChartState"
 import { AREA_OPACITY, StackedSeries } from "./StackedConstants"
 import {
     makeClipPath,
     isTargetOutsideElement,
     getHoverStateForSeries,
 } from "../chart/ChartUtils"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig.ts"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig"
 import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
 import { easeLinear } from "d3-ease"
 import { select, type BaseType, type Selection } from "d3-selection"
@@ -44,7 +44,7 @@ import { ChartManager } from "../chart/ChartManager"
 import { StackedAreas } from "./StackedAreas"
 import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"
 import { CategoricalBin } from "../color/ColorScaleBin"
-import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
+import { ChartComponentProps } from "../chart/ChartTypeMap"
 import { InteractionState } from "../interaction/InteractionState"
 import { resolveCollision } from "./StackedUtils"
 

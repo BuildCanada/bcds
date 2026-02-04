@@ -1,7 +1,7 @@
 import { expect, it, describe } from "vitest"
 
 import { TextWrap, shortenForTargetWidth } from "./TextWrap"
-import { Bounds } from "../../utils/index.ts"
+import { Bounds } from "../../utils/index"
 
 const FONT_SIZE = 14
 

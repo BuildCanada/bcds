@@ -11,7 +11,7 @@ import {
     Bounds,
     HorizontalAlign,
     isTouchDevice,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { select, type Selection, type BaseType } from "d3-selection"
@@ -19,7 +19,7 @@ import { easeLinear } from "d3-ease"
 import { DualAxisComponent } from "../axis/AxisViews"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
 import { LineLegend } from "../lineLegend/LineLegend"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps"
 import {
     Tooltip,
     TooltipState,
@@ -29,7 +29,7 @@ import {
 } from "../tooltip/Tooltip"
 import { NoDataModal } from "../noDataModal/NoDataModal"
 import { extent } from "d3-array"
-import { SeriesName, VerticalAlign, Time } from "../../types/index.ts"
+import { SeriesName, VerticalAlign, Time } from "../../types/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -55,7 +55,7 @@ import {
     DEFAULT_MARKER_RADIUS,
     LINE_CHART_CLASS_NAME,
 } from "./LineChartConstants"
-import { CoreColumn } from "../../core-table/index.ts"
+import { CoreColumn } from "../../core-table/index"
 import {
     ClipPath,
     getHoverStateForSeries,
@@ -81,9 +81,9 @@ import {
 } from "./LineChartHelpers"
 import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
 import { Lines } from "./Lines"
-import { LineChartState } from "./LineChartState.ts"
+import { LineChartState } from "./LineChartState"
 import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
+import { ChartComponentProps } from "../chart/ChartTypeMap"
 import { InteractionState } from "../interaction/InteractionState"
 import { LegendStyleConfig } from "../legend/LegendInteractionState"
 

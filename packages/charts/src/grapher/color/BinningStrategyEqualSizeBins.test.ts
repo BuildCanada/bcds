@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest"
 import {
     createEqualSizeBins,
     runEqualSizeBinningStrategy,
-} from "./BinningStrategyEqualSizeBins.ts"
+} from "./BinningStrategyEqualSizeBins"
 
 describe(runEqualSizeBinningStrategy, () => {
     describe("few-bins strategy", () => {

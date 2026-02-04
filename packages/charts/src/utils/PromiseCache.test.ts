@@ -1,6 +1,6 @@
 import { expect, it, assert } from "vitest"
 
-import { PromiseCache } from "./PromiseCache.ts"
+import { PromiseCache } from "./PromiseCache"
 
 const wait = (ms: number): Promise<void> =>
     new Promise((resolve) => {

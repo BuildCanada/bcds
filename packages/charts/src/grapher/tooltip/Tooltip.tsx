@@ -9,7 +9,7 @@ import {
     Bounds,
     GrapherTooltipAnchor,
     stripOuterParentheses,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     TooltipProps,
     TooltipManager,
@@ -17,10 +17,10 @@ import {
     TooltipContext,
     TooltipFooterIcon,
 } from "./TooltipProps"
-import { SignificanceIcon } from "./TooltipContents.tsx"
+import { SignificanceIcon } from "./TooltipContents"
 
-export * from "./TooltipContents.tsx"
-export { TooltipState } from "./TooltipState.ts"
+export * from "./TooltipContents"
+export { TooltipState } from "./TooltipState"
 
 export class TooltipCard extends React.Component<
     TooltipProps & TooltipContainerProps

@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
-import { Url, QueryParams } from "../../utils/index.ts"
+import { Url, QueryParams } from "../../utils/index"
 
-import { EXPLORERS_ROUTE_FOLDER } from "../ExplorerConstants.ts"
+import { EXPLORERS_ROUTE_FOLDER } from "../ExplorerConstants"
 
 export const decodeURIComponentOrUndefined = (value: string | undefined) =>
     value !== undefined

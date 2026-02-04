@@ -1,11 +1,11 @@
-import { legacyToCurrentGrapherUrl } from "../../grapher/index.ts"
-import { Url, UrlMigration } from "../../utils/index.ts"
+import { legacyToCurrentGrapherUrl } from "../../grapher/index"
+import { Url, UrlMigration } from "../../utils/index"
 import {
     decodeURIComponentOrUndefined,
     getExplorerSlugFromUrl,
     QueryParamTransformMap,
     transformQueryParams,
-} from "./ExplorerUrlMigrationUtils.ts"
+} from "./ExplorerUrlMigrationUtils"
 
 const EXPLORER_SLUG = "energy"
 

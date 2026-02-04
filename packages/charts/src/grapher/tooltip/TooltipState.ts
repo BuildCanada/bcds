@@ -1,5 +1,5 @@
 import { observable, computed, action, makeObservable } from "mobx"
-import { PointVector } from "../../utils/index.ts"
+import { PointVector } from "../../utils/index"
 import { TooltipFadeMode } from "./TooltipProps"
 
 const TOOLTIP_FADE_DURATION = 400 // $fade-time + $fade-delay in scss

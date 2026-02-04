@@ -8,7 +8,7 @@ import {
     Position,
     TickFormattingOptions,
     Bounds,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { observable, computed, makeObservable } from "mobx"
 import { HorizontalAxis, VerticalAxis } from "./Axis"
 import {
@@ -17,7 +17,7 @@ import {
     FacetAxisDomain,
     ScaleType,
     Tickmark,
-} from "../../types/index.ts"
+} from "../../types/index"
 
 export interface AxisManager {
     fontSize: number

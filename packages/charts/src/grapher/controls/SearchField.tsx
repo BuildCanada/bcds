@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import * as React from "react"
 import { forwardRef } from "react"
 import cx from "classnames"
-import { isTouchDevice } from "../../utils/index.ts"
+import { isTouchDevice } from "../../utils/index"
 
 export const SearchField = forwardRef<
     HTMLInputElement,

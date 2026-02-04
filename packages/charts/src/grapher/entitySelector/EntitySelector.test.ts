@@ -3,7 +3,7 @@ import { GrapherState } from "../core/GrapherState"
 import {
     SynthesizeFruitTable,
     SynthesizeGDPTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 
 it("updates the selection based on the active tab", () => {
     const grapher = new GrapherState({ hasMapTab: true })

@@ -8,7 +8,7 @@ import {
     makeIdForHumanConsumption,
     exposeInstanceOnWindow,
     SplitBoundsPadding,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { action, computed, makeObservable, observable } from "mobx"
 import {
     BASE_FONT_SIZE,
@@ -21,7 +21,7 @@ import {
     GrapherInteractionEvent,
     MapRegionName,
     Time,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     calculateAspectRatio,
     getFacetGridPadding,
@@ -33,7 +33,7 @@ import {
     FacetMapProps,
     PlacedMapFacetSeries,
 } from "./FacetMapConstants"
-import { ChartsTable } from "../../core-table/index.ts"
+import { ChartsTable } from "../../core-table/index"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
@@ -59,7 +59,7 @@ import {
     MapChartManager,
     MapViewport,
 } from "../mapCharts/MapChartConstants"
-import { ChartState } from "../chart/ChartInterface.ts"
+import { ChartState } from "../chart/ChartInterface"
 import { MapConfig } from "../mapCharts/MapConfig"
 
 @observer

@@ -3,52 +3,52 @@
  */
 
 // Text wrapping components
-export { TextWrap, shortenWithEllipsis } from "./TextWrap/TextWrap.tsx"
+export { TextWrap, shortenWithEllipsis } from "./TextWrap/TextWrap"
 
 export {
     MarkdownTextWrap,
     sumTextWrapHeights,
     toPlaintext,
-} from "./MarkdownTextWrap/MarkdownTextWrap.tsx"
+} from "./MarkdownTextWrap/MarkdownTextWrap"
 
 // Simple markdown text
 export {
     SimpleMarkdownText,
     HtmlOrSimpleMarkdownText,
-} from "./SimpleMarkdownText.tsx"
+} from "./SimpleMarkdownText"
 
 // Expandable toggle
-export { ExpandableToggle } from "./ExpandableToggle/ExpandableToggle.tsx"
+export { ExpandableToggle } from "./ExpandableToggle/ExpandableToggle"
 
 // Form components
-export { LabeledSwitch } from "./LabeledSwitch/LabeledSwitch.tsx"
-export { Checkbox } from "./Checkbox.tsx"
-export { RadioButton } from "./RadioButton.tsx"
-export { TextInput } from "./TextInput.tsx"
-export { Button } from "./Button/Button.tsx"
+export { LabeledSwitch } from "./LabeledSwitch/LabeledSwitch"
+export { Checkbox } from "./Checkbox"
+export { RadioButton } from "./RadioButton"
+export { TextInput } from "./TextInput"
+export { Button } from "./Button/Button"
 
 // Overlay components
 export {
     CloseButton,
     CLOSE_BUTTON_HEIGHT,
     CLOSE_BUTTON_WIDTH,
-} from "./closeButton/CloseButton.tsx"
-export { OverlayHeader } from "./OverlayHeader.tsx"
+} from "./closeButton/CloseButton"
+export { OverlayHeader } from "./OverlayHeader"
 
 // Visual components
-export { Halo } from "./Halo/Halo.tsx"
-export { BodyPortal } from "./BodyPortal/BodyPortal.tsx"
-export { LoadingIndicator } from "./loadingIndicator/LoadingIndicator.tsx"
+export { Halo } from "./Halo/Halo"
+export { BodyPortal } from "./BodyPortal/BodyPortal"
+export { LoadingIndicator } from "./loadingIndicator/LoadingIndicator"
 
 // React utilities
-export { reactRenderToStringClientOnly } from "./reactUtil.ts"
+export { reactRenderToStringClientOnly } from "./reactUtil"
 
 // Grapher-specific components
-export { GrapherTabIcon } from "./GrapherTabIcon.tsx"
-export { GrapherTrendArrow } from "./GrapherTrendArrow.tsx"
+export { GrapherTabIcon } from "./GrapherTabIcon"
+export { GrapherTrendArrow } from "./GrapherTrendArrow"
 
 // Stub components for data page features
-export { CodeSnippet } from "./stubs/CodeSnippet.tsx"
+export { CodeSnippet } from "./stubs/CodeSnippet"
 export {
     makeSource,
     makeLastUpdated,
@@ -57,14 +57,14 @@ export {
     makeUnit,
     makeUnitConversionFactor,
     makeLinks,
-} from "./stubs/IndicatorKeyData.tsx"
-export { IndicatorSources } from "./stubs/IndicatorSources.tsx"
-export { IndicatorProcessing } from "./stubs/IndicatorProcessing.tsx"
-export { DataCitation } from "./stubs/DataCitation.tsx"
+} from "./stubs/IndicatorKeyData"
+export { IndicatorSources } from "./stubs/IndicatorSources"
+export { IndicatorProcessing } from "./stubs/IndicatorProcessing"
+export { DataCitation } from "./stubs/DataCitation"
 
 // Site constants re-exported for convenience
 export {
     DATAPAGE_ABOUT_THIS_DATA_SECTION_ID,
     DATAPAGE_SOURCES_AND_PROCESSING_SECTION_ID,
     REUSE_THIS_WORK_SECTION_ID,
-} from "../types/index.ts"
+} from "../types/index"

@@ -6,7 +6,7 @@ import {
     GrapherWindowType,
     MapRegionName,
     TimeBound,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { GlobeController } from "../mapCharts/GlobeController"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons"

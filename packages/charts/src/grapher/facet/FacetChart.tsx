@@ -15,8 +15,8 @@ import {
     makeIdForHumanConsumption,
     exposeInstanceOnWindow,
     SplitBoundsPadding,
-} from "../../utils/index.ts"
-import { shortenWithEllipsis } from "../../components/index.ts"
+} from "../../utils/index"
+import { shortenWithEllipsis } from "../../components/index"
 import { action, computed, makeObservable, observable } from "mobx"
 import {
     BASE_FONT_SIZE,
@@ -31,7 +31,7 @@ import {
     SeriesStrategy,
     AxisConfigInterface,
     ChartErrorInfo,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { ChartComponent, makeChartInstance } from "../chart/ChartTypeMap"
 import { ChartManager } from "../chart/ChartManager"
 import { ChartInterface, ChartState } from "../chart/ChartInterface"
@@ -47,7 +47,7 @@ import {
     PlacedFacetSeries,
     FacetChartManager,
 } from "./FacetChartConstants"
-import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
+import { ChartsTable, CoreColumn } from "../../core-table/index"
 import { autoDetectYColumnSlugs, makeSelectionArray } from "../chart/ChartUtils"
 import { SelectionArray } from "../selection/SelectionArray"
 import { AxisConfig } from "../axis/AxisConfig"

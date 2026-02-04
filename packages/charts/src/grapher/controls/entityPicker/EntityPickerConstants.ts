@@ -1,7 +1,7 @@
-import { ColumnSlug } from "../../../utils/index.ts"
+import { ColumnSlug } from "../../../utils/index"
 import { GrapherAnalytics } from "../../core/GrapherAnalytics"
-import { ChartsTable } from "../../../core-table/index.ts"
-import { CoreColumnDef, EntityName, SortOrder } from "../../../types/index.ts"
+import { ChartsTable } from "../../../core-table/index"
+import { CoreColumnDef, EntityName, SortOrder } from "../../../types/index"
 import { MapConfig } from "../../mapCharts/MapConfig"
 
 export interface EntityPickerManager {

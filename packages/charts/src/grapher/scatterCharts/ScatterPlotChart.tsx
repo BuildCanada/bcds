@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
 import React from "react"
-import { EntitySelectionMode, SeriesName, Color } from "../../types/index.ts"
+import { EntitySelectionMode, SeriesName, Color } from "../../types/index"
 import { observable, computed, action, makeObservable } from "mobx"
 import { ScaleLinear, scaleSqrt } from "d3-scale"
 import { Quadtree, quadtree } from "d3-quadtree"
@@ -15,7 +15,7 @@ import {
     Bounds,
     isTouchDevice,
     makeIdForHumanConsumption,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { observer } from "mobx-react"
 import { NoDataModal } from "../noDataModal/NoDataModal"
 import {
@@ -26,7 +26,7 @@ import {
     ChartsTable,
     isNotErrorValue,
     CoreColumn,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import {
     ConnectedScatterLegend,
     ConnectedScatterLegendManager,
@@ -66,8 +66,8 @@ import {
 import { TooltipState } from "../tooltip/Tooltip"
 import { NoDataSection } from "./NoDataSection"
 import { ScatterPlotChartState } from "./ScatterPlotChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
-import { toSizeRange } from "./ScatterUtils.ts"
+import { ChartComponentProps } from "../chart/ChartTypeMap"
+import { toSizeRange } from "./ScatterUtils"
 import { ScatterPlotTooltip } from "./ScatterPlotTooltip"
 import { GRAY_100, GRAY_60 } from "../color/ColorConstants"
 import { INACTIVE_SCATTER_POINT_COLOR } from "./ScatterPoints"

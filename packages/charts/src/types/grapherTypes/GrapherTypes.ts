@@ -1,24 +1,24 @@
 import {
     ChartDimensionInterface,
     VariableRoundingMode,
-} from "../VariableDisplayConfigInterface.ts"
-import { ColumnSlugs, EntityName } from "../domainTypes/CoreTableTypes.ts"
-import { AxisAlign, Position } from "../domainTypes/Layout.ts"
-import { Integer, VariableId } from "../domainTypes/Various.ts"
-import { DetailDictionary } from "../gdocTypes/Gdoc.ts"
+} from "../VariableDisplayConfigInterface"
+import { ColumnSlugs, EntityName } from "../domainTypes/CoreTableTypes"
+import { AxisAlign, Position } from "../domainTypes/Layout"
+import { Integer, VariableId } from "../domainTypes/Various"
+import { DetailDictionary } from "../gdocTypes/Gdoc"
 import {
     GRAPHER_CHART_TYPES,
     GRAPHER_MAP_TYPE,
     GRAPHER_TAB_NAMES,
     GRAPHER_TAB_CONFIG_OPTIONS,
     GRAPHER_TAB_QUERY_PARAMS,
-} from "./GrapherConstants.ts"
-import { VariableDataMetadataDimensions } from "../Variable.ts"
-import { ArchiveContext } from "../domainTypes/Archive.ts"
+} from "./GrapherConstants"
+import { VariableDataMetadataDimensions } from "../Variable"
+import { ArchiveContext } from "../domainTypes/Archive"
 import {
     BinningStrategyIncludingManual,
     MidpointMode,
-} from "./BinningStrategyTypes.ts"
+} from "./BinningStrategyTypes"
 
 // Utility type that marks all properties of T that may be undefined as optional.
 export type UndefinedToOptional<T> = Partial<T> & {

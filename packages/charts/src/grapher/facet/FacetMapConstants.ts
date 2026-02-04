@@ -1,5 +1,5 @@
 import { ChartSeries } from "../chart/ChartInterface"
-import { Bounds, GrapherAnalyticsContext } from "../../utils/index.ts"
+import { Bounds, GrapherAnalyticsContext } from "../../utils/index"
 import { MapChartManager } from "../mapCharts/MapChartConstants"
 import { GrapherAnalytics } from "../core/GrapherAnalytics"
 

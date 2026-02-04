@@ -1,5 +1,5 @@
 import { ColorScaleBin } from "../color/ColorScaleBin"
-import { Bounds, ColumnSlug } from "../../utils/index.ts"
+import { Bounds, ColumnSlug } from "../../utils/index"
 import {
     MapRegionName,
     SeriesName,
@@ -7,13 +7,13 @@ import {
     ProjectionColumnInfo,
     type GrapherInteractionEvent,
     Time,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { ChartManager } from "../chart/ChartManager"
 import { MapConfig } from "./MapConfig"
 import { ChartSeries } from "../chart/ChartInterface"
 import { GlobeController } from "./GlobeController"
-import { MapSelectionArray } from "../selection/MapSelectionArray.ts"
-import { CoreColumn } from "../../core-table/index.ts"
+import { MapSelectionArray } from "../selection/MapSelectionArray"
+import { CoreColumn } from "../../core-table/index"
 import * as R from "remeda"
 import { InteractionState } from "../interaction/InteractionState"
 

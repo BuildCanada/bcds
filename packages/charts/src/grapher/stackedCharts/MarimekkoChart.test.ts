@@ -1,15 +1,15 @@
 import { expect, it, test } from "vitest"
 
 import * as _ from "lodash-es"
-import { Bounds, ColumnTypeNames } from "../../utils/index.ts"
+import { Bounds, ColumnTypeNames } from "../../utils/index"
 import {
     ChartsTable,
     SampleColumnSlugs,
     SynthesizeGDPTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { DefaultColorScheme } from "../color/CustomSchemes"
 import { GrapherState } from "../core/GrapherState"
-import { GRAPHER_CHART_TYPES, SortBy, SortOrder } from "../../types/index.ts"
+import { GRAPHER_CHART_TYPES, SortBy, SortOrder } from "../../types/index"
 import { MarimekkoChart } from "./MarimekkoChart"
 import {
     BarShape,
@@ -17,7 +17,7 @@ import {
     MarimekkoChartManager,
 } from "./MarimekkoChartConstants"
 import { MarimekkoChartState } from "./MarimekkoChartState"
-import { InteractionState } from "../interaction/InteractionState.ts"
+import { InteractionState } from "../interaction/InteractionState"
 
 it("can create a chart", () => {
     const table = SynthesizeGDPTable({

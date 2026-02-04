@@ -14,17 +14,17 @@ import {
     Tickmark,
     ValueRange,
     VariableRoundingMode,
-} from "../../utils/index.ts"
-import { ComparisonLineConfig } from "../../types/index.ts"
+} from "../../utils/index"
+import { ComparisonLineConfig } from "../../types/index"
 import { AxisConfig, AxisManager } from "./AxisConfig"
-import { MarkdownTextWrap } from "../../components/index.ts"
-import { CoreColumn } from "../../core-table/index.ts"
+import { MarkdownTextWrap } from "../../components/index"
+import { CoreColumn } from "../../core-table/index"
 import {
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_10_5,
     GRAPHER_FONT_SCALE_11,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants.ts"
+} from "../core/GrapherConstants"
 import { makeAxisLabel } from "../chart/ChartUtils"
 import * as R from "remeda"
 import { isValidVerticalComparisonLineConfig } from "../comparisonLine/ComparisonLineHelpers"

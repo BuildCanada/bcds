@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 import { LoadingIndicator } from "./LoadingIndicator"
-import { Bounds } from "../../utils/index.ts"
+import { Bounds } from "../../utils/index"
 
 const meta: Meta<typeof LoadingIndicator> = {
     title: "Components/LoadingIndicator",

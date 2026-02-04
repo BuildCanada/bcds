@@ -8,14 +8,14 @@ import {
     SynthesizeGDPTable,
     ChartsTable,
     ErrorValueTypes,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import {
     ColumnTypeNames,
     FacetStrategy,
     ScaleType,
     SeriesStrategy,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { SelectionArray } from "../selection/SelectionArray"
 import { LineChartManager } from "./LineChartConstants"
 import { NO_DATA_GRAY } from "../color/ColorConstants"

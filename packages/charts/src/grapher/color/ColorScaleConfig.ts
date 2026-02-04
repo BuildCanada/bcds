@@ -7,14 +7,14 @@ import {
     ColorSchemeName,
     ColorScaleConfigInterface,
     MidpointMode,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     trimObject,
     deleteRuntimeAndUnchangedProps,
     objectWithPersistablesToObject,
     Persistable,
     updatePersistables,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 
 import { NO_DATA_LABEL } from "./ColorScale"
 

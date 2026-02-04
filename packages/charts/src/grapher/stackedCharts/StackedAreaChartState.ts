@@ -1,10 +1,10 @@
 import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
-import { AbstractStackedChartState } from "./AbstractStackedChartState.ts"
-import { ChartState } from "../chart/ChartInterface.ts"
-import { StackedSeries } from "./StackedConstants.ts"
-import { stackSeries, withMissingValuesAsZeroes } from "./StackedUtils.ts"
-import { ChartManager } from "../chart/ChartManager.ts"
+import { AbstractStackedChartState } from "./AbstractStackedChartState"
+import { ChartState } from "../chart/ChartInterface"
+import { StackedSeries } from "./StackedConstants"
+import { stackSeries, withMissingValuesAsZeroes } from "./StackedUtils"
+import { ChartManager } from "../chart/ChartManager"
 
 export class StackedAreaChartState
     extends AbstractStackedChartState

@@ -6,11 +6,11 @@ import {
     GrapherInterface,
     MapRegionName,
     GRAPHER_TAB_CONFIG_OPTIONS,
-} from "../types/index.ts"
+} from "../types/index"
 import {
     mergeGrapherConfigs,
     diffGrapherConfigs,
-} from "./grapherConfigUtils.ts"
+} from "./grapherConfigUtils"
 
 describe(mergeGrapherConfigs, () => {
     it("merges empty configs", () => {

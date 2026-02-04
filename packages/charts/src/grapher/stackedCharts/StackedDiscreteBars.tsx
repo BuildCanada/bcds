@@ -11,10 +11,10 @@ import {
     dyFromAlign,
     exposeInstanceOnWindow,
     bind,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { action, computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType, SeriesName, VerticalAlign } from "../../types/index.ts"
+import { ScaleType, SeriesName, VerticalAlign } from "../../types/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -28,9 +28,9 @@ import {
 } from "../axis/AxisViews"
 import { AxisConfig } from "../axis/AxisConfig"
 import { ChartInterface } from "../chart/ChartInterface"
-import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
+import { ChartsTable, CoreColumn } from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps"
 import {
     Tooltip,
     TooltipState,
@@ -52,7 +52,7 @@ import { HorizontalAxis } from "../axis/Axis"
 import { HashMap, NodeGroup } from "react-move"
 import { easeQuadOut } from "d3-ease"
 import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
-import { enrichSeriesWithLabels } from "../barCharts/DiscreteBarChartHelpers.ts"
+import { enrichSeriesWithLabels } from "../barCharts/DiscreteBarChartHelpers"
 
 const BAR_SPACING_FACTOR = 0.35
 

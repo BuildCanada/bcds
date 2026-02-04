@@ -4,7 +4,7 @@ import {
     ExpandableToggle,
     HtmlOrSimpleMarkdownText,
     SimpleMarkdownText,
-} from "../../components/index.ts"
+} from "../../components/index"
 
 interface SourcesDescriptionsProps {
     descriptionShort?: string

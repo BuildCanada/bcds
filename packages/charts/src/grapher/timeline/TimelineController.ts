@@ -1,11 +1,11 @@
 import * as R from "remeda"
-import { Time } from "../../types/index.ts"
+import { Time } from "../../types/index"
 import {
     TimeBound,
     TimeBoundValue,
     sleep,
     findClosestTime,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { action } from "mobx"
 
 export type TimelineDragTarget = "start" | "end" | "both"

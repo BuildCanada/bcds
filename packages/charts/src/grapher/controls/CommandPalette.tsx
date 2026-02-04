@@ -1,6 +1,6 @@
 // @ts-nocheck
 import * as _ from "lodash-es"
-import { BodyPortal } from "../../components/index.ts"
+import { BodyPortal } from "../../components/index"
 import { observer } from "mobx-react"
 import * as React from "react"
 

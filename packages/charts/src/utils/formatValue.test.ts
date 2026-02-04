@@ -2,7 +2,7 @@ import { expect, it, describe } from "vitest"
 import {
     TickFormattingOptions,
     VariableRoundingMode,
-} from "../types/index.ts"
+} from "../types/index"
 import { formatValue } from "./formatValue"
 
 describe("rounding to a fixed number of decimals", () => {

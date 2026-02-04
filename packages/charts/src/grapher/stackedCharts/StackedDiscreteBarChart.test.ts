@@ -5,12 +5,12 @@ import {
     SortBy,
     ColumnTypeNames,
     MissingDataStrategy,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     ChartsTable,
     SampleColumnSlugs,
     SynthesizeFruitTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import { SelectionArray } from "../selection/SelectionArray"
 import { StackedDiscreteBarChart } from "./StackedDiscreteBarChart"

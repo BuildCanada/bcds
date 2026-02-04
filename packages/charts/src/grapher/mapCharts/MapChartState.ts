@@ -12,7 +12,7 @@ import {
     CoreColumn,
     ErrorValueTypes,
     ChartsTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { match, P } from "ts-pattern"
 import {
     ChartErrorInfo,
@@ -24,14 +24,14 @@ import {
     PrimitiveType,
     TickFormattingOptions,
     Time,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     anyToString,
     checkHasMembers,
     isPresent,
     mappableCountries,
     regions,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { MapConfig } from "./MapConfig"
 import { combineHistoricalAndProjectionColumns } from "../chart/ChartUtils"
 import {

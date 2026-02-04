@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { runLogBinningStrategy } from "./BinningStrategyLogarithmic.ts"
+import { runLogBinningStrategy } from "./BinningStrategyLogarithmic"
 
 describe(runLogBinningStrategy, () => {
     describe("log-auto strategy", () => {

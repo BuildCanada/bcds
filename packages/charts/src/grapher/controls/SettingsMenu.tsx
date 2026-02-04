@@ -16,11 +16,11 @@ import {
     GRAPHER_CHART_TYPES,
     FacetStrategy,
     GrapherChartType,
-} from "../../types/index.ts"
-import { OverlayHeader } from "../../components/index.ts"
+} from "../../types/index"
+import { OverlayHeader } from "../../components/index"
 import { SelectionArray } from "../selection/SelectionArray"
 import { ChartDimension } from "../chart/ChartDimension"
-import { makeSelectionArray } from "../chart/ChartUtils.tsx"
+import { makeSelectionArray } from "../chart/ChartUtils"
 import { AxisConfig } from "../axis/AxisConfig"
 
 import { AxisScaleToggle } from "./settings/AxisScaleToggle"

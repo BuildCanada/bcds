@@ -19,8 +19,8 @@ import {
     ChartsTableSlugs,
     VariableRoundingMode,
     VariableRow,
-} from "../../types/index.ts"
-import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
+} from "../../types/index"
+import { ChartsTable, CoreColumn } from "../../core-table/index"
 import {
     valuesByEntityAtTimes,
     es6mapValues,
@@ -32,7 +32,7 @@ import {
     excludeUndefined,
     joinTitleFragments,
     FuzzySearch,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { SelectionArray } from "../selection/SelectionArray"
 import {
     DEFAULT_GRAPHER_BOUNDS,

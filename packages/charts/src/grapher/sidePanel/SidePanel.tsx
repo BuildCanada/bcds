@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Bounds } from "../../utils/index.ts"
-import { GRAPHER_SIDE_PANEL_CLASS } from "../core/GrapherConstants.ts"
+import { Bounds } from "../../utils/index"
+import { GRAPHER_SIDE_PANEL_CLASS } from "../core/GrapherConstants"
 
 export const SidePanel = ({
     bounds,

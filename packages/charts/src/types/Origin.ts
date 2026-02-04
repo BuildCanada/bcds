@@ -1,4 +1,4 @@
-import { License } from "./Variable.ts"
+import { License } from "./Variable"
 export interface Origin {
     id?: number
     title?: string

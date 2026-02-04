@@ -7,7 +7,7 @@ import {
     excludeUndefined,
     EntityName,
     MapRegionName,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { Quadtree, quadtree } from "d3-quadtree"

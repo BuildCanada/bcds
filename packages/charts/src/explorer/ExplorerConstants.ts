@@ -1,5 +1,5 @@
-import { SortOrder, GrapherQueryParams } from "../types/index.ts"
-import { ColumnSlug, SerializedGridProgram } from "../utils/index.ts"
+import { SortOrder, GrapherQueryParams } from "../types/index"
+import { ColumnSlug, SerializedGridProgram } from "../utils/index"
 
 export enum ExplorerControlType {
     Radio = "Radio",

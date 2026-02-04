@@ -1,10 +1,10 @@
-import { AvailableTransforms } from "../core-table/index.ts"
+import { AvailableTransforms } from "../core-table/index"
 import {
     automaticBinningStrategies,
     ColorSchemeName,
     ColumnTypeNames,
-} from "../types/index.ts"
-import { ToleranceStrategy } from "../utils/index.ts"
+} from "../types/index"
+import { ToleranceStrategy } from "../utils/index"
 import {
     BooleanCellDef,
     ColumnCellDef,
@@ -16,7 +16,7 @@ import {
     SlugDeclarationCellDef,
     StringCellDef,
     UrlCellDef,
-} from "./gridLang/GridLangConstants.ts"
+} from "./gridLang/GridLangConstants"
 
 export const ColumnGrammar: Grammar<ColumnCellDef> = {
     variableId: {

@@ -1,4 +1,4 @@
-import { DimensionProperty } from "../../utils/index.ts"
+import { DimensionProperty } from "../../utils/index"
 import { GrapherProgrammaticInterface } from "../core/Grapher"
 import { GrapherState } from "../core/GrapherState"
 import {
@@ -7,7 +7,7 @@ import {
     createTestDataset,
     fakeEntities,
 } from "../testData/TestData"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable.ts"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable"
 
 /**
  * Comprehensive life expectancy test data covering:

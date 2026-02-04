@@ -1,5 +1,5 @@
-import { QueryParams } from "../../types/index.ts"
-import { omitUndefinedValues } from "../Util.ts"
+import { QueryParams } from "../../types/index"
+import { omitUndefinedValues } from "../Util"
 
 /**
  * Converts a query string into an object of key-value pairs.

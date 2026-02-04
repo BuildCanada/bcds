@@ -3,8 +3,8 @@ import { expect, it } from "vitest"
 // todo: remove this when we remove chartDimension
 
 import { ChartDimension } from "./ChartDimension"
-import { BlankChartsTable } from "../../core-table/index.ts"
-import { DimensionProperty } from "../../utils/index.ts"
+import { BlankChartsTable } from "../../core-table/index"
+import { DimensionProperty } from "../../utils/index"
 
 it("can serialize for saving", () => {
     expect(

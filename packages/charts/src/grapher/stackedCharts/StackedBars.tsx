@@ -1,15 +1,15 @@
 import * as React from "react"
 import { makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { SeriesName, Time } from "../../types/index.ts"
+import { SeriesName, Time } from "../../types/index"
 import { DualAxis } from "../axis/Axis"
 import { BAR_OPACITY, StackedPoint, StackedSeries } from "./StackedConstants"
 import {
     makeIdForHumanConsumption,
     makeSafeForCSS,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { StackedBarSegment } from "./StackedBarSegment"
-import { CoreColumn } from "../../core-table/index.ts"
+import { CoreColumn } from "../../core-table/index"
 
 interface StackedBarsProps {
     dualAxis: DualAxis

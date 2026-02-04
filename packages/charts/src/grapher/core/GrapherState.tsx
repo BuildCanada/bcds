@@ -2,13 +2,13 @@ import {
     MarkdownTextWrap,
     sumTextWrapHeights,
     reactRenderToStringClientOnly,
-} from "../../components/index.ts"
+} from "../../components/index"
 import {
     ChartsTable,
     BlankChartsTable,
     CoreColumn,
     ColumnTypeMap,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import {
     GrapherChartType,
     GRAPHER_CHART_TYPES,
@@ -63,7 +63,7 @@ import {
     GlobeRegionName,
     GrapherWindowType,
     MapRegionName,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     objectWithPersistablesToObject,
     deleteRuntimeAndUnchangedProps,
@@ -99,7 +99,7 @@ import {
     checkIsIncomeGroup,
     checkHasMembers,
     sortNumeric,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import Cookies from "js-cookie"
 import * as _ from "lodash-es"
 import {
@@ -113,14 +113,14 @@ import {
 import React from "react"
 import * as R from "remeda"
 import { match } from "ts-pattern"
-import { AxisConfig } from "../axis/AxisConfig.ts"
+import { AxisConfig } from "../axis/AxisConfig"
 import {
     GrapherRasterizeFn,
     StaticChartRasterizer,
-} from "../captionedChart/StaticChartRasterizer.tsx"
-import { Chart } from "../chart/Chart.tsx"
-import { ChartDimension } from "../chart/ChartDimension.ts"
-import { ChartState } from "../chart/ChartInterface.ts"
+} from "../captionedChart/StaticChartRasterizer"
+import { Chart } from "../chart/Chart"
+import { ChartDimension } from "../chart/ChartDimension"
+import { ChartState } from "../chart/ChartInterface"
 import {
     isChartTypeName,
     isChartTab,
@@ -129,70 +129,70 @@ import {
     isValidTabConfigOption,
     mapChartTypeNameToTabConfigOption,
     mapTabConfigOptionToChartTypeName,
-} from "../chart/ChartTabs.ts"
-import { makeChartState } from "../chart/ChartTypeMap.tsx"
+} from "../chart/ChartTabs"
+import { makeChartState } from "../chart/ChartTypeMap"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
-} from "../chart/ChartUtils.tsx"
-import { DimensionSlot } from "../chart/DimensionSlot.ts"
+} from "../chart/ChartUtils"
+import { DimensionSlot } from "../chart/DimensionSlot"
 import {
     GRAPHER_LIGHT_TEXT,
     GRAPHER_BACKGROUND_BEIGE,
     GRAPHER_BACKGROUND_DEFAULT,
-} from "../color/ColorConstants.ts"
-import { ColorScaleConfig } from "../color/ColorScaleConfig.ts"
-import { isValidDataTableFilter } from "../dataTable/DataTable.tsx"
-import { DataTableConfig } from "../dataTable/DataTableConstants.ts"
+} from "../color/ColorConstants"
+import { ColorScaleConfig } from "../color/ColorScaleConfig"
+import { isValidDataTableFilter } from "../dataTable/DataTable"
+import { DataTableConfig } from "../dataTable/DataTableConstants"
 import {
     type EntitySelectorState,
     EntitySelector,
-} from "../entitySelector/EntitySelector.tsx"
-import { FacetChart } from "../facet/FacetChart.tsx"
-import { FocusArray } from "../focus/FocusArray.ts"
-import { GlobeController } from "../mapCharts/GlobeController.ts"
+} from "../entitySelector/EntitySelector"
+import { FacetChart } from "../facet/FacetChart"
+import { FocusArray } from "../focus/FocusArray"
+import { GlobeController } from "../mapCharts/GlobeController"
 import {
     MAP_REGION_LABELS,
     MAP_REGION_NAMES,
-} from "../mapCharts/MapChartConstants.ts"
-import { MapConfig } from "../mapCharts/MapConfig.ts"
+} from "../mapCharts/MapChartConstants"
+import { MapConfig } from "../mapCharts/MapConfig"
 import {
     isValidMapRegionName,
     isOnTheMap,
     getCountriesByRegion,
-} from "../mapCharts/MapHelpers.ts"
-import { DownloadModalTabName } from "../modal/DownloadModal.tsx"
-import { SelectionArray } from "../selection/SelectionArray.ts"
-import { SlideShowController } from "../slideshowController/SlideShowController.tsx"
+} from "../mapCharts/MapHelpers"
+import { DownloadModalTabName } from "../modal/DownloadModal"
+import { SelectionArray } from "../selection/SelectionArray"
+import { SlideShowController } from "../slideshowController/SlideShowController"
 import {
     TimelineDragTarget,
     TimelineController,
-} from "../timeline/TimelineController.ts"
-import { TooltipManager } from "../tooltip/TooltipProps.ts"
+} from "../timeline/TimelineController"
+import { TooltipManager } from "../tooltip/TooltipProps"
 import {
     EntityRegionTypeGroup,
     groupEntityNamesByRegionType,
     EntityNamesByRegionType,
     isEntityRegionType,
-} from "./EntitiesByRegionType.ts"
+} from "./EntitiesByRegionType"
 import {
     getEntityNamesParam,
     getSelectedEntityNamesParam,
     getFocusedSeriesNamesParam,
-} from "./EntityUrlBuilder.ts"
+} from "./EntityUrlBuilder"
 import {
     MinimalNarrativeChartInfo,
     GrapherProgrammaticInterface,
     GrapherManager,
     DEFAULT_MS_PER_TICK,
-} from "./Grapher.tsx"
-import { GrapherAnalytics } from "./GrapherAnalytics.ts"
+} from "./Grapher"
+import { GrapherAnalytics } from "./GrapherAnalytics"
 import {
     type GrapherAnalyticsContext,
     type EntitySelectorEvent,
     type GrapherImageDownloadEvent,
     type GrapherInteractionEvent,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     latestGrapherConfigSchema,
     DEFAULT_GRAPHER_ENTITY_TYPE,
@@ -211,10 +211,10 @@ import {
     STATIC_EXPORT_DETAIL_SPACING,
     DEFAULT_GRAPHER_BOUNDS_SQUARE,
     CHART_TYPES_THAT_SHOW_ALL_ENTITIES,
-} from "./GrapherConstants.ts"
-import { parseGlobeRotation, grapherObjectToQueryParams } from "./GrapherUrl.ts"
-import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations.ts"
-import { getErrorMessageRelatedQuestionUrl } from "./relatedQuestion.ts"
+} from "./GrapherConstants"
+import { parseGlobeRotation, grapherObjectToQueryParams } from "./GrapherUrl"
+import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations"
+import { getErrorMessageRelatedQuestionUrl } from "./relatedQuestion"
 
 export class GrapherState {
     $schema = latestGrapherConfigSchema

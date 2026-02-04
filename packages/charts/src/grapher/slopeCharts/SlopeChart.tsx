@@ -13,7 +13,7 @@ import {
     isTouchDevice,
     domainExtent,
     calculateTrendDirection,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { NoDataModal } from "../noDataModal/NoDataModal"
@@ -31,7 +31,7 @@ import {
     SeriesStrategy,
     VerticalAlign,
     HorizontalAlign,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { ChartInterface } from "../chart/ChartInterface"
 import { scaleLinear, ScaleLinear } from "d3-scale"
 import { select, type BaseType, type Selection } from "d3-selection"
@@ -42,7 +42,7 @@ import {
     SlopeChartSeries,
     SlopeChartManager,
 } from "./SlopeChartConstants"
-import { CoreColumn } from "../../core-table/index.ts"
+import { CoreColumn } from "../../core-table/index"
 import { getHoverStateForSeries } from "../chart/ChartUtils"
 import { VerticalAxis } from "../axis/Axis"
 import { VerticalAxisZeroLine } from "../axis/AxisViews"
@@ -59,7 +59,7 @@ import {
 } from "../tooltip/Tooltip"
 import { TooltipFooterIcon } from "../tooltip/TooltipProps"
 
-import { Halo } from "../../components/index.ts"
+import { Halo } from "../../components/index"
 import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"
 import { CategoricalBin } from "../color/ColorScaleBin"
 import {
@@ -70,7 +70,7 @@ import { FocusArray } from "../focus/FocusArray"
 import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
 import { SlopeChartState } from "./SlopeChartState"
 import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
+import { ChartComponentProps } from "../chart/ChartTypeMap"
 import { InteractionState } from "../interaction/InteractionState"
 import {
     getYAxisConfigDefaults,

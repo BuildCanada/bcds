@@ -5,8 +5,8 @@ import {
     Bounds,
     makeIdForHumanConsumption,
     excludeUndefined,
-} from "../../utils/index.ts"
-import { TextWrap, Halo, MarkdownTextWrap } from "../../components/index.ts"
+} from "../../utils/index"
+import { TextWrap, Halo, MarkdownTextWrap } from "../../components/index"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { VerticalAxis } from "../axis/Axis"
@@ -15,7 +15,7 @@ import {
     EntityName,
     SeriesName,
     VerticalAlign,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     BASE_FONT_SIZE,
     GRAPHER_FONT_SCALE_12,
@@ -23,19 +23,19 @@ import {
     GRAPHER_TEXT_OUTLINE_FACTOR,
 } from "../core/GrapherConstants"
 import { darkenColorForText } from "../color/ColorUtils"
-import { AxisConfig } from "../axis/AxisConfig.ts"
+import { AxisConfig } from "../axis/AxisConfig"
 import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
 import {
     findImportantSeriesThatFitIntoTheAvailableSpace,
     findSeriesThatFitIntoTheAvailableSpace,
-} from "./LineLegendFilterAlgorithms.ts"
+} from "./LineLegendFilterAlgorithms"
 import {
     ANNOTATION_PADDING,
     DEFAULT_CONNECTOR_LINE_WIDTH,
     DEFAULT_FONT_WEIGHT,
     LEGEND_ITEM_MIN_SPACING,
     MARKER_MARGIN,
-} from "./LineLegendConstants.ts"
+} from "./LineLegendConstants"
 import { getSeriesKey } from "./LineLegendHelpers"
 import { LineLabelSeries, PlacedSeries, SizedSeries } from "./LineLegendTypes"
 

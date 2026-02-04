@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { SeriesName } from "../../utils/index.ts"
+import { SeriesName } from "../../utils/index"
 import { PlacedSeries } from "./LineLegendTypes"
 import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants"
 import * as R from "remeda"

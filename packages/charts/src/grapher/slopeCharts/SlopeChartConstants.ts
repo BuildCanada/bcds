@@ -1,7 +1,7 @@
-import { PartialBy, PointVector } from "../../utils/index.ts"
-import { EntityName, VariableRow } from "../../types/index.ts"
+import { PartialBy, PointVector } from "../../utils/index"
+import { EntityName, VariableRow } from "../../types/index"
 import { ChartSeries } from "../chart/ChartInterface"
-import { CoreColumn } from "../../core-table/index.ts"
+import { CoreColumn } from "../../core-table/index"
 import { ChartManager } from "../chart/ChartManager"
 import { InteractionState } from "../interaction/InteractionState"
 

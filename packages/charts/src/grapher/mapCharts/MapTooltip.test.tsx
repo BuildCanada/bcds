@@ -4,10 +4,10 @@
 
 import { afterAll, assert, beforeAll, expect, test, vi } from "vitest"
 import { render, fireEvent, screen } from "@testing-library/react"
-import { Grapher } from "../core/Grapher.tsx"
-import { GrapherState } from "../core/GrapherState.tsx"
-import { legacyMapGrapher, legacyMapGrapherData } from "./MapChart.sample.ts"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable.ts"
+import { Grapher } from "../core/Grapher"
+import { GrapherState } from "../core/GrapherState"
+import { legacyMapGrapher, legacyMapGrapherData } from "./MapChart.sample"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable"
 
 const state = new GrapherState({ ...legacyMapGrapher })
 state.inputTable = legacyToChartsTableAndDimensionsWithMandatorySlug(

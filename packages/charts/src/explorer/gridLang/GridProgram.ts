@@ -1,11 +1,11 @@
-import { trimMatrix } from "../../core-table/index.ts"
+import { trimMatrix } from "../../core-table/index"
 import {
     isPresent,
     GitCommit,
     SerializedGridProgram,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 
-import { GridCell } from "./GridCell.ts"
+import { GridCell } from "./GridCell"
 import {
     CellDef,
     CellPosition,
@@ -14,8 +14,8 @@ import {
     GRID_NODE_DELIMITER,
     Origin,
     ParsedCell,
-} from "./GridLangConstants.ts"
-import { tsvToMatrix } from "./GrammarUtils.ts"
+} from "./GridLangConstants"
+import { tsvToMatrix } from "./GrammarUtils"
 
 /**
  * Block location for the below would be like (numRows = 2)

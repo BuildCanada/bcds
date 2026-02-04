@@ -13,7 +13,7 @@ import {
     joinTitleFragments,
     getCitationShort,
     getCitationLong,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     IndicatorSources,
     IndicatorProcessing,
@@ -23,15 +23,15 @@ import {
     CLOSE_BUTTON_WIDTH,
     CloseButton,
     LoadingIndicator,
-} from "../../components/index.ts"
+} from "../../components/index"
 import * as React from "react"
 import cx from "classnames"
 import { action, computed, makeObservable, observable } from "mobx"
 import { observer } from "mobx-react"
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ColumnDef } from "../../types/index.ts"
-import { CoreColumn } from "../../core-table/index.ts"
+import { ColumnDef } from "../../types/index"
+import { CoreColumn } from "../../core-table/index"
 import { Modal } from "./Modal"
 import { SourcesKeyDataTable } from "./SourcesKeyDataTable"
 import { SourcesDescriptions } from "./SourcesDescriptions"

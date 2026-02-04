@@ -5,7 +5,7 @@ import {
     SampleExplorerOfGraphers,
     SampleInlineDataExplorer,
 } from "./Explorer.sample"
-import { Bounds } from "../utils/index.ts"
+import { Bounds } from "../utils/index"
 
 const meta: Meta<typeof Explorer> = {
     title: "Charts/Explorer",

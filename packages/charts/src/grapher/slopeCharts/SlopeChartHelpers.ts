@@ -4,7 +4,7 @@ import {
     PointVector,
     ScaleType,
     SeriesName,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { VerticalAxis } from "../axis/Axis"
 import {
     PlacedSlopeChartSeries,

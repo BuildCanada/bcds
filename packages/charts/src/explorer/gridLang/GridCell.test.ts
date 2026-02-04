@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { GridCell } from "./GridCell.ts"
+import { GridCell } from "./GridCell"
 import {
     CellDef,
     CellHasErrorsClass,
@@ -8,8 +8,8 @@ import {
     Grammar,
     RootKeywordCellDef,
     StringCellDef,
-} from "./GridLangConstants.ts"
-import { tsvToMatrix } from "./GrammarUtils.ts"
+} from "./GridLangConstants"
+import { tsvToMatrix } from "./GrammarUtils"
 
 const TestGrammar: Grammar = {
     title: {

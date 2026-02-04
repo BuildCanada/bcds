@@ -1,5 +1,5 @@
-import { DbPlainTag } from "../dbTypes/Tags.ts"
-import { GdocType } from "../gdocTypes/Gdoc.ts"
+import { DbPlainTag } from "../dbTypes/Tags"
+import { GdocType } from "../gdocTypes/Gdoc"
 
 export interface EntryMeta {
     slug: string

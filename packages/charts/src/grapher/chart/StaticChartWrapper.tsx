@@ -1,11 +1,11 @@
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { Bounds } from "../../utils/index.ts"
-import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants.ts"
-import { CaptionedChartManager } from "../captionedChart/CaptionedChart.tsx"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.ts"
-import { getChartSvgProps, NoDataPattern } from "./ChartUtils.tsx"
+import { Bounds } from "../../utils/index"
+import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants"
+import { CaptionedChartManager } from "../captionedChart/CaptionedChart"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
+import { getChartSvgProps, NoDataPattern } from "./ChartUtils"
 
 interface StaticChartWrapperProps {
     manager: CaptionedChartManager

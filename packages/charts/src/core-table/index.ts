@@ -1,4 +1,4 @@
-export { CoreTable, columnDefinitionsFromInput } from "./CoreTable.ts"
+export { CoreTable, columnDefinitionsFromInput } from "./CoreTable"
 export {
     SynthesizeNonCountryTable,
     SampleColumnSlugs,
@@ -7,7 +7,7 @@ export {
     SynthesizeFruitTableWithNonPositives,
     SynthesizeFruitTableWithStringValues,
     SynthesizeProjectedPopulationTable,
-} from "./TableSynthesizers.ts"
+} from "./TableSynthesizers"
 
 export {
     type CoreColumn,
@@ -15,9 +15,9 @@ export {
     ColumnTypeMap,
     AbstractCoreColumn,
     TimeColumn,
-} from "./CoreTableColumns.ts"
+} from "./CoreTableColumns"
 
-export { ChartsTable, BlankChartsTable } from "./ChartsTable.ts"
+export { ChartsTable, BlankChartsTable } from "./ChartsTable"
 
 export {
     DroppedForTesting,
@@ -28,7 +28,7 @@ export {
     isNotErrorValue,
     isNotErrorValueOrEmptyCell,
     defaultIfErrorValue,
-} from "./ErrorValues.ts"
+} from "./ErrorValues"
 
 export {
     columnStoreToRows,
@@ -63,7 +63,7 @@ export {
     trimArray,
     sortColumnStore,
     emptyColumnsInFirstRowInDelimited,
-} from "./CoreTableUtils.ts"
+} from "./CoreTableUtils"
 
 export {
     timeColumnSlugFromColumnDef,
@@ -71,7 +71,7 @@ export {
     makeOriginalValueSlugFromColumnSlug,
     getOriginalTimeColumnSlug,
     toPercentageColumnDef,
-} from "./TableUtil.ts"
+} from "./TableUtil"
 
 export {
     insertMissingValuePlaceholders,
@@ -79,4 +79,4 @@ export {
     AvailableTransforms,
     applyTransforms,
     extractPotentialDataSlugsFromTransform,
-} from "./Transforms.ts"
+} from "./Transforms"

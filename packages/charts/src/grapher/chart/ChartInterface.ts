@@ -1,11 +1,11 @@
-import { ChartsTable } from "../../core-table/index.ts"
+import { ChartsTable } from "../../core-table/index"
 import {
     FacetStrategy,
     SeriesName,
     SeriesStrategy,
     Color,
     ChartErrorInfo,
-} from "../../types/index.ts"
+} from "../../types/index"
 import { ColorScale } from "../color/ColorScale"
 import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
 import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"

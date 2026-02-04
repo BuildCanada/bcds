@@ -1,18 +1,18 @@
 import { expect, it, describe, test } from "vitest"
 
-import { DimensionProperty } from "../../utils/index.ts"
+import { DimensionProperty } from "../../utils/index"
 import {
     SynthesizeGDPTable,
     SampleColumnSlugs,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 import { GrapherProgrammaticInterface } from "../core/Grapher"
 import { GrapherState } from "./GrapherState"
 import {
     legacyMapGrapher,
     legacyMapGrapherData,
 } from "../mapCharts/MapChart.sample"
-import { GRAPHER_CHART_TYPES } from "../../types/index.ts"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.ts"
+import { GRAPHER_CHART_TYPES } from "../../types/index"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable"
 import { MapChartState } from "../mapCharts/MapChartState"
 
 describe("grapher and map charts", () => {

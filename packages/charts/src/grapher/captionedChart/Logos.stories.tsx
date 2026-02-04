@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import { Grapher } from "../core/Grapher"
 import { createLineChartState } from "../../../../../.storybook/helpers/grapherStateFactory"
-import { LogoOption } from "../../types/index.ts"
+import { LogoOption } from "../../types/index"
 
 const meta: Meta<typeof Grapher> = {
     title: "Charts/Logo Configuration",

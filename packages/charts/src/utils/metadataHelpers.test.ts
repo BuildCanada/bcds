@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { formatAuthors, formatAuthorsForBibtex } from "./metadataHelpers.ts"
+import { formatAuthors, formatAuthorsForBibtex } from "./metadataHelpers"
 
 describe(formatAuthors, () => {
     it("formats zero authors", () => {

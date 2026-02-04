@@ -8,7 +8,7 @@
  * For a good read on the "Errors are values" pattern: https://blog.golang.org/errors-are-values
  */
 
-import { ErrorValue } from "../types/index.ts"
+import { ErrorValue } from "../types/index"
 
 class NaNButShouldBeNumber extends ErrorValue {}
 export class DroppedForTesting extends ErrorValue {}

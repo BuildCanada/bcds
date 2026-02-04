@@ -2,10 +2,10 @@ import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import * as _ from "lodash-es"
-import { Bounds, SeriesName } from "../../utils/index.ts"
+import { Bounds, SeriesName } from "../../utils/index"
 import { ChartInterface } from "../chart/ChartInterface"
 import { LineChartState } from "./LineChartState"
-import { LineChartProps } from "./LineChart.tsx"
+import { LineChartProps } from "./LineChart"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
 import {
     LineChartManager,
@@ -34,7 +34,7 @@ import {
     VerticalLabelsState,
 } from "../verticalLabels/VerticalLabelsState"
 import { VerticalLabels } from "../verticalLabels/VerticalLabels"
-import { darkenColorForLine } from "../color/ColorUtils.ts"
+import { darkenColorForLine } from "../color/ColorUtils"
 import { NoDataModal } from "../noDataModal/NoDataModal"
 
 const DOT_RADIUS = 4

@@ -2,7 +2,7 @@ import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
 import { ChartState } from "../chart/ChartInterface"
 import { StackedDiscreteBarChartManager } from "./StackedDiscreteBarChart"
-import { CoreColumn, ChartsTable } from "../../core-table/index.ts"
+import { CoreColumn, ChartsTable } from "../../core-table/index"
 import {
     ChartErrorInfo,
     ColorSchemeName,
@@ -12,7 +12,7 @@ import {
     SortBy,
     SortConfig,
     SortOrder,
-} from "../../types/index.ts"
+} from "../../types/index"
 import {
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
@@ -28,7 +28,7 @@ import {
 import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner"
 import { ColorScheme } from "../color/ColorScheme"
 import { ColorSchemes } from "../color/ColorSchemes"
-import { excludeUndefined } from "../../utils/index.ts"
+import { excludeUndefined } from "../../utils/index"
 import { FocusArray } from "../focus/FocusArray"
 
 export class StackedDiscreteBarChartState implements ChartState {

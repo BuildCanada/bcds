@@ -2,7 +2,7 @@ import * as React from "react"
 import {
     GrapherTooltipAnchor,
     GrapherTrendArrowDirection,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { IObservableValue } from "mobx"
 
 export interface TooltipManager {

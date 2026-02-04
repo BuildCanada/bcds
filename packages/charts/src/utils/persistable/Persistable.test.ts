@@ -5,7 +5,7 @@ import {
     Persistable,
     updatePersistables,
     deleteRuntimeAndUnchangedProps,
-} from "./Persistable.ts"
+} from "./Persistable"
 import { observable, makeObservable } from "mobx"
 
 interface CharacterInterface {

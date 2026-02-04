@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { VariableDisplayConfig } from "./Variable.ts"
+import { VariableDisplayConfig } from "./Variable"
 
 it("can create and save display settings", () => {
     const settings = new VariableDisplayConfig()

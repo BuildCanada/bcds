@@ -8,13 +8,13 @@ import {
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
     ChartsTable,
-} from "../../core-table/index.ts"
+} from "../../core-table/index"
 
 import { makeObservable, observable } from "mobx"
 import { AxisConfig } from "../axis/AxisConfig"
 import { SelectionArray } from "../selection/SelectionArray"
-import { ColumnTypeNames, GRAPHER_CHART_TYPES } from "../../utils/index.ts"
-import { StackedAreaChartState } from "./StackedAreaChartState.ts"
+import { ColumnTypeNames, GRAPHER_CHART_TYPES } from "../../utils/index"
+import { StackedAreaChartState } from "./StackedAreaChartState"
 import { ChartManager } from "../chart/ChartManager"
 
 class MockManager implements ChartManager {

@@ -12,7 +12,7 @@ import {
     GRAPHER_TAB_NAMES,
     GrapherChartType,
     GrapherTabName,
-} from "../types/index.ts"
+} from "../types/index"
 
 export function GrapherTabIcon({
     tab,

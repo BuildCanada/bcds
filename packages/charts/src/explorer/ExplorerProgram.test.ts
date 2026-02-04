@@ -1,14 +1,14 @@
 import { expect, it, describe } from "vitest"
 
-import { ExplorerProgram } from "./ExplorerProgram.ts"
+import { ExplorerProgram } from "./ExplorerProgram"
 import {
     CommentCellDef,
     FrontierCellClass,
     GridBoolean,
-} from "./gridLang/GridLangConstants.ts"
-import { ExplorerGrammar } from "./ExplorerGrammar.ts"
-import { GrapherGrammar } from "./GrapherGrammar.ts"
-import { DecisionMatrix } from "./ExplorerDecisionMatrix.ts"
+} from "./gridLang/GridLangConstants"
+import { ExplorerGrammar } from "./ExplorerGrammar"
+import { GrapherGrammar } from "./GrapherGrammar"
+import { DecisionMatrix } from "./ExplorerDecisionMatrix"
 
 const grapherIdKeyword = GrapherGrammar.grapherId.keyword
 const tableSlugKeyword = GrapherGrammar.tableSlug.keyword

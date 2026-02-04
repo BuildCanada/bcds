@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Bounds, HorizontalAlign } from "../../utils/index.ts"
+import { Bounds, HorizontalAlign } from "../../utils/index"
 import {
     GRAPHER_FONT_SCALE_11,
     GRAPHER_FONT_SCALE_12,

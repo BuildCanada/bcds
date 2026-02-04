@@ -8,10 +8,10 @@ import {
     EntityName,
     getRelativeMouse,
     exposeInstanceOnWindow,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import { action, computed, makeObservable, observable } from "mobx"
 import { observer } from "mobx-react"
-import { SeriesName } from "../../types/index.ts"
+import { SeriesName } from "../../types/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -31,7 +31,7 @@ import {
 import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
 import { LegendInteractionState } from "../legend/LegendInteractionState"
 import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
+import { ChartComponentProps } from "../chart/ChartTypeMap"
 import { StackedDiscreteBars } from "./StackedDiscreteBars"
 
 export interface StackedDiscreteBarChartManager extends ChartManager {

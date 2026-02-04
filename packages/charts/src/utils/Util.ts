@@ -4,7 +4,7 @@
 import * as _ from "lodash-es"
 import * as R from "remeda"
 import { extent } from "d3-array"
-import dayjs from "./dayjs.ts"
+import dayjs from "./dayjs"
 import { formatLocale, FormatLocaleObject } from "d3-format"
 import striptags from "striptags"
 import {
@@ -49,8 +49,8 @@ import {
     FEATURED_DATA_INSIGHTS_ID,
     EXPLORE_DATA_SECTION_DEFAULT_TITLE,
     EXPLORE_DATA_SECTION_ID,
-} from "../types/index.ts"
-import { PointVector } from "./PointVector.ts"
+} from "../types/index"
+import { PointVector } from "./PointVector"
 import * as React from "react"
 import { match, P } from "ts-pattern"
 import urlSlug from "url-slug"

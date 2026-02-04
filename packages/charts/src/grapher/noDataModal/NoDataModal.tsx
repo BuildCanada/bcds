@@ -2,7 +2,7 @@ import * as React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import a from "indefinite"
-import { Bounds, VerticalAlign, dyFromAlign } from "../../utils/index.ts"
+import { Bounds, VerticalAlign, dyFromAlign } from "../../utils/index"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -10,7 +10,7 @@ import {
     DEFAULT_GRAPHER_ENTITY_TYPE_PLURAL,
     GRAPHER_TEXT_OUTLINE_FACTOR,
 } from "../core/GrapherConstants"
-import { Halo } from "../../components/index.ts"
+import { Halo } from "../../components/index"
 import { GRAPHER_DARK_TEXT, GRAPHER_LIGHT_TEXT } from "../color/ColorConstants"
 
 export interface NoDataModalManager {

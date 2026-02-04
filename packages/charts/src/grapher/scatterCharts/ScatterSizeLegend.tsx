@@ -2,19 +2,19 @@ import * as React from "react"
 import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
 import { scaleLinear, ScaleLinear } from "d3-scale"
-import { TextWrap, Halo } from "../../components/index.ts"
+import { TextWrap, Halo } from "../../components/index"
 import {
     Color,
     makeIdForHumanConsumption,
     VariableRoundingMode,
-} from "../../utils/index.ts"
+} from "../../utils/index"
 import {
     BASE_FONT_SIZE,
     GRAPHER_FONT_SCALE_10,
     GRAPHER_FONT_SCALE_11,
     GRAPHER_TEXT_OUTLINE_FACTOR,
 } from "../core/GrapherConstants"
-import { CoreColumn } from "../../core-table/index.ts"
+import { CoreColumn } from "../../core-table/index"
 import {
     ScatterSeries,
     SCATTER_POINT_MAX_RADIUS,

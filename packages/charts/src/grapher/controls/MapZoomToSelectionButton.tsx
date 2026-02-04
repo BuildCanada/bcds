@@ -3,7 +3,7 @@ import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { MapConfig } from "../mapCharts/MapConfig"
 import { GlobeController } from "../mapCharts/GlobeController"
-import { MapRegionName } from "../../types/index.ts"
+import { MapRegionName } from "../../types/index"
 
 export interface MapZoomToSelectionButtonManager {
     mapConfig?: MapConfig
