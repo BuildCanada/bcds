@@ -5,16 +5,16 @@
  ******************************************************************************/
 
 // Primitives
-export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./primitives/Button"
-export { TextField, type TextFieldProps, type TextFieldType } from "./primitives/TextField"
-export { Checkbox, type CheckboxProps } from "./primitives/Checkbox"
+export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./primitives/Button/index.js"
+export { TextField, type TextFieldProps, type TextFieldType } from "./primitives/TextField/index.js"
+export { Checkbox, type CheckboxProps } from "./primitives/Checkbox/index.js"
 
 // Layout
-export { Container, type ContainerProps, type ContainerSize } from "./layout/Container"
-export { Section, type SectionProps, type SectionBackground, type SectionSpacing } from "./layout/Section"
-export { Grid, GridItem, type GridProps, type GridItemProps, type GridColumns, type GridGap } from "./layout/Grid"
-export { Stack, type StackProps, type StackDirection, type StackSpacing, type StackAlign, type StackJustify } from "./layout/Stack"
-export { Divider, type DividerProps, type DividerOrientation, type DividerVariant } from "./layout/Divider"
+export { Container, type ContainerProps, type ContainerSize } from "./layout/Container/index.js"
+export { Section, type SectionProps, type SectionBackground, type SectionSpacing } from "./layout/Section/index.js"
+export { Grid, GridItem, type GridProps, type GridItemProps, type GridColumns, type GridGap } from "./layout/Grid/index.js"
+export { Stack, type StackProps, type StackDirection, type StackSpacing, type StackAlign, type StackJustify } from "./layout/Stack/index.js"
+export { Divider, type DividerProps, type DividerOrientation, type DividerVariant } from "./layout/Divider/index.js"
 
 // Content
 export {
@@ -37,7 +37,7 @@ export {
     type CardMetaProps,
     type CardStatProps,
     type CardAuthorProps,
-} from "./content/Card"
+} from "./content/Card/index.js"
 export {
     Hero,
     HeroTitle,
@@ -49,13 +49,13 @@ export {
     type HeroTitleProps,
     type HeroSubtitleProps,
     type HeroActionsProps,
-} from "./content/Hero"
-export { StatBlock, type StatBlockProps, type StatBlockSize, type StatBlockTrend } from "./content/StatBlock"
+} from "./content/Hero/index.js"
+export { StatBlock, type StatBlockProps, type StatBlockSize, type StatBlockTrend } from "./content/StatBlock/index.js"
 
 // Navigation
-export { Header, type HeaderProps, type NavItem } from "./navigation/Header"
-export { Footer, type FooterProps, type FooterLink, type SocialLink } from "./navigation/Footer"
+export { Header, type HeaderProps, type NavItem } from "./navigation/Header/index.js"
+export { Footer, type FooterProps, type FooterLink, type SocialLink } from "./navigation/Footer/index.js"
 
 // Feedback
-export { Dialog, type DialogProps, type DialogPosition } from "./feedback/Dialog"
-export { PopupForm, type PopupFormProps } from "./feedback/PopupForm"
+export { Dialog, type DialogProps, type DialogPosition } from "./feedback/Dialog/index.js"
+export { PopupForm, type PopupFormProps } from "./feedback/PopupForm/index.js"

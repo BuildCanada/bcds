@@ -8,6 +8,10 @@
   },
   "scripts": {
     "build": "storybook build -o storybook-static",
+    "build:packages": "bun run build:colours && bun run build:components && bun run build:charts",
+    "build:colours": "cd packages/colours && bun run build",
+    "build:components": "cd packages/components && bun run build",
+    "build:charts": "cd packages/charts && bun run build",
     "typecheck": "bun run --filter '*' typecheck",
     "test": "bun run --filter '*' test",
     "storybook": "storybook dev -p 6006",

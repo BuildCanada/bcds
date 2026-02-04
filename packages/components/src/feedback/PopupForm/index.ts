@@ -1,1 +1,1 @@
-export { PopupForm, type PopupFormProps } from "./PopupForm"
+export { PopupForm, type PopupFormProps } from "./PopupForm.js"

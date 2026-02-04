@@ -5,5 +5,5 @@ export {
     type StackSpacing,
     type StackAlign,
     type StackJustify,
-} from "./Stack"
-export { default } from "./Stack"
+} from "./Stack.js"
+export { default } from "./Stack.js"

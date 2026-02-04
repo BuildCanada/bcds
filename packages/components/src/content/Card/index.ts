@@ -18,5 +18,5 @@ export {
     type CardMetaProps,
     type CardStatProps,
     type CardAuthorProps,
-} from "./Card"
-export { default } from "./Card"
+} from "./Card.js"
+export { default } from "./Card.js"

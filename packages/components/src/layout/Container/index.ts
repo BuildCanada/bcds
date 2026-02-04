@@ -1,2 +1,2 @@
-export { Container, type ContainerProps, type ContainerSize } from "./Container"
-export { default } from "./Container"
+export { Container, type ContainerProps, type ContainerSize } from "./Container.js"
+export { default } from "./Container.js"

@@ -1,7 +1,7 @@
 import cx from "classnames"
 
-import { Dialog, type DialogPosition } from "../Dialog"
-import { Button, type ButtonVariant } from "../../primitives/Button"
+import { Dialog, type DialogPosition } from "../Dialog/index.js"
+import { Button, type ButtonVariant } from "../../primitives/Button/index.js"
 
 export interface PopupFormProps {
     open: boolean

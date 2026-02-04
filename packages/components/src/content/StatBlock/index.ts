@@ -1,2 +1,2 @@
-export { StatBlock, type StatBlockProps, type StatBlockSize, type StatBlockTrend } from "./StatBlock"
-export { default } from "./StatBlock"
+export { StatBlock, type StatBlockProps, type StatBlockSize, type StatBlockTrend } from "./StatBlock.js"
+export { default } from "./StatBlock.js"

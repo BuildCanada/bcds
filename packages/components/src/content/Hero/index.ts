@@ -9,5 +9,5 @@ export {
     type HeroTitleProps,
     type HeroSubtitleProps,
     type HeroActionsProps,
-} from "./Hero"
-export { default } from "./Hero"
+} from "./Hero.js"
+export { default } from "./Hero.js"

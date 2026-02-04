@@ -1,1 +1,1 @@
-export { Dialog, type DialogProps, type DialogPosition } from "./Dialog"
+export { Dialog, type DialogProps, type DialogPosition } from "./Dialog.js"

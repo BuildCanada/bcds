@@ -37,6 +37,7 @@ tmp-logs
 /data_files_checksums
 packages/@ourworldindata/*/dist/
 packages/@ourworldindata/*/node_modules
+packages/*/dist/
 wpmigration
 dist/
 .wrangler/
