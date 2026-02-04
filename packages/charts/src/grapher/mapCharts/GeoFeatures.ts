@@ -5,7 +5,7 @@ import {
     MapRenderFeature,
     RenderFeatureType,
 } from "./MapChartConstants"
-import { Bounds, lazy, MapRegionName, PointVector } from "../../utils/index.js"
+import { Bounds, lazy, MapRegionName, PointVector } from "../../utils/index.ts"
 import { CanadaTopology } from "./CanadaTopology"
 import { MapTopology } from "./MapTopology"
 import { geoBounds, geoCentroid, geoPath } from "d3-geo"

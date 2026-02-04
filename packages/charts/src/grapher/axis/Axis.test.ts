@@ -2,13 +2,13 @@ import { expect, it, describe } from "vitest"
 import * as R from "remeda"
 
 import { HorizontalAxis } from "../axis/Axis"
-import { ScaleType, AxisConfigInterface } from "../../types/index.js"
+import { ScaleType, AxisConfigInterface } from "../../types/index.ts"
 import {
     SynthesizeFruitTable,
     SynthesizeGDPTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { AxisConfig } from "./AxisConfig"
-import { AxisAlign } from "../../utils/index.js"
+import { AxisAlign } from "../../utils/index.ts"
 
 it("can create an axis", () => {
     const axisConfig = new AxisConfig({

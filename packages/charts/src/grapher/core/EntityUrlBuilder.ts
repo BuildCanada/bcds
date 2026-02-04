@@ -1,5 +1,5 @@
-import { EntityName, SeriesName } from "../../types/index.js"
-import { Url, performUrlMigrations, UrlMigration } from "../../utils/index.js"
+import { EntityName, SeriesName } from "../../types/index.ts"
+import { Url, performUrlMigrations, UrlMigration } from "../../utils/index.ts"
 import { codeToEntityName, entityNameToCode } from "./EntityCodes"
 
 /*

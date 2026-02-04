@@ -1,4 +1,4 @@
-import { SubNavId } from "../types/index.js"
+import { SubNavId } from "../types/index.ts"
 import {
     CellDef,
     BooleanCellDef,
@@ -11,9 +11,9 @@ import {
     Grammar,
     EnumCellDef,
     StringDeclarationDef,
-} from "./gridLang/GridLangConstants.js"
-import { GrapherGrammar } from "./GrapherGrammar.js"
-import { ColumnGrammar } from "./ColumnGrammar.js"
+} from "./gridLang/GridLangConstants.ts"
+import { GrapherGrammar } from "./GrapherGrammar.ts"
+import { ColumnGrammar } from "./ColumnGrammar.ts"
 
 const ExplorerFormControlCellDeff: CellDef = {
     ...StringDeclarationDef,

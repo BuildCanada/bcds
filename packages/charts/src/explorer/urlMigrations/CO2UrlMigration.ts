@@ -1,11 +1,11 @@
-import { legacyToCurrentGrapherUrl } from "../../grapher/index.js"
-import { Url, UrlMigration } from "../../utils/index.js"
+import { legacyToCurrentGrapherUrl } from "../../grapher/index.ts"
+import { Url, UrlMigration } from "../../utils/index.ts"
 import {
     decodeURIComponentOrUndefined,
     getExplorerSlugFromUrl,
     QueryParamTransformMap,
     transformQueryParams,
-} from "./ExplorerUrlMigrationUtils.js"
+} from "./ExplorerUrlMigrationUtils.ts"
 
 const EXPLORER_SLUG = "co2"
 

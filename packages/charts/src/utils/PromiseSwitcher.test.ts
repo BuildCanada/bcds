@@ -1,6 +1,6 @@
 import { expect, it, vi } from "vitest"
 
-import { PromiseSwitcher } from "./PromiseSwitcher.js"
+import { PromiseSwitcher } from "./PromiseSwitcher.ts"
 
 const delayResolve = (result: any, ms: number = 10): Promise<void> =>
     new Promise((resolve) => {

@@ -5,8 +5,8 @@
  * but the types are required for compilation.
  */
 
-import { QueryParams } from "../domainTypes/Various.js"
-import { ArchivedPageVersion } from "../domainTypes/Archive.js"
+import { QueryParams } from "../domainTypes/Various.ts"
+import { ArchivedPageVersion } from "../domainTypes/Archive.ts"
 
 /**
  * Document types in the CMS.

@@ -5,15 +5,15 @@ import {
     differenceObj,
     trimObject,
     parseIntOrUndefined,
-} from "../utils/index.js"
-import { ColumnTypeNames, CoreRow } from "../types/index.js"
+} from "../utils/index.ts"
+import { ColumnTypeNames, CoreRow } from "../types/index.ts"
 import {
     CoreTable,
     detectDelimiter,
     parseDelimited,
     isCellEmpty,
-} from "../core-table/index.js"
-import { GridBoolean } from "./gridLang/GridLangConstants.js"
+} from "../core-table/index.ts"
+import { GridBoolean } from "./gridLang/GridLangConstants.ts"
 import {
     ChoiceMap,
     ChoiceName,
@@ -23,9 +23,9 @@ import {
     ExplorerChoiceParams,
     ExplorerControlType,
     ExplorerControlTypeRegex,
-} from "./ExplorerConstants.js"
-import { trimAndParseObject } from "./ExplorerProgram.js"
-import { GrapherGrammar } from "./GrapherGrammar.js"
+} from "./ExplorerConstants.ts"
+import { trimAndParseObject } from "./ExplorerProgram.ts"
+import { GrapherGrammar } from "./GrapherGrammar.ts"
 
 function parseVariableIds(value: string): number[] {
     return value

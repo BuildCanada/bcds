@@ -1,7 +1,7 @@
 import React from "react"
 import { VerticalAxis } from "../axis/Axis"
 import { VerticalLabelsState } from "./VerticalLabelsState"
-import { darkenColorForText } from "../color/ColorUtils.js"
+import { darkenColorForText } from "../color/ColorUtils.ts"
 
 export function VerticalLabels({
     state,

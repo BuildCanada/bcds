@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { GrapherInterface } from "../../../types/index.js"
+import { GrapherInterface } from "../../../types/index.ts"
 
 import { defaultGrapherConfig } from "../defaultGrapherConfig"
 import {

@@ -1,5 +1,5 @@
 import * as R from "remeda"
-import { Color } from "../../utils/index.js"
+import { Color } from "../../utils/index.ts"
 import { ColorScheme } from "./ColorScheme"
 import { getLeastUsedColor } from "./ColorUtils"
 

@@ -10,7 +10,7 @@ import {
     IncomeGroup,
     Aggregate,
     articulateEntity,
-} from "./regions.js"
+} from "./regions.ts"
 
 it("isCountryName", () => {
     expect(isCountryName("United States")).toEqual(true)

@@ -4,7 +4,7 @@ import { forceSimulation, forceX, forceY, SimulationNodeDatum } from "d3-force"
 // no types available
 import bboxCollide from "./d3-bboxCollide"
 import { booleanIntersects } from "@turf/boolean-intersects"
-import { Bounds, excludeUndefined } from "../../utils/index.js"
+import { Bounds, excludeUndefined } from "../../utils/index.ts"
 import {
     Direction,
     Ellipse,

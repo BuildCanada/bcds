@@ -6,13 +6,13 @@ import {
     ColumnSlug,
     PrimitiveType,
     imemo,
-} from "../utils/index.js"
+} from "../utils/index.ts"
 import {
     CoreColumn,
     ColumnTypeMap,
     MissingColumn,
     TimeColumn,
-} from "./CoreTableColumns.js"
+} from "./CoreTableColumns.ts"
 import {
     CoreColumnStore,
     CoreRow,
@@ -30,7 +30,7 @@ import {
     JsTypes,
     ChartsTableSlugs,
     ColumnDef,
-} from "../types/index.js"
+} from "../types/index.ts"
 import {
     makeAutoTypeFn,
     columnStoreToRows,
@@ -47,13 +47,13 @@ import {
     sortColumnStore,
     emptyColumnsInFirstRowInDelimited,
     truncate,
-} from "./CoreTableUtils.js"
+} from "./CoreTableUtils.ts"
 import {
     ErrorValueTypes,
     isNotErrorValue,
     DroppedForTesting,
-} from "./ErrorValues.js"
-import { applyTransforms, extractTransformNameAndParams } from "./Transforms.js"
+} from "./ErrorValues.ts"
+import { applyTransforms, extractTransformNameAndParams } from "./Transforms.ts"
 
 interface AdvancedOptions {
     tableDescription?: string

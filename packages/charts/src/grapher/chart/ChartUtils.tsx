@@ -4,7 +4,7 @@ import {
     excludeUndefined,
     getRegionByName,
     Url,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     SeriesStrategy,
     EntityName,
@@ -17,7 +17,7 @@ import {
     PrimitiveType,
     ColumnTypeNames,
     Time,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { LineChartSeries } from "../lineCharts/LineChartConstants"
 import { SelectionArray } from "../selection/SelectionArray"
 import { ChartManager } from "./ChartManager"
@@ -36,7 +36,7 @@ import {
     ErrorValueTypes,
     isNotErrorValueOrEmptyCell,
     ChartsTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
 import { InteractionState } from "../interaction/InteractionState"
 

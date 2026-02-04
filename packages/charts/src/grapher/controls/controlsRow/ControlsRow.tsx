@@ -2,7 +2,7 @@ import { Component } from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 
-import { Bounds } from "../../../utils/index.js"
+import { Bounds } from "../../../utils/index.ts"
 
 import { ContentSwitchers, ContentSwitchersManager } from "../ContentSwitchers"
 import {

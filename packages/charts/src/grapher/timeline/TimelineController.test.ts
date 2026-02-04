@@ -1,7 +1,7 @@
 import { expect, it } from "vitest"
 
 import * as _ from "lodash-es"
-import { TimeBoundValue } from "../../utils/index.js"
+import { TimeBoundValue } from "../../utils/index.ts"
 import { TimelineController, TimelineManager } from "./TimelineController"
 
 it("can play a timeline", async () => {

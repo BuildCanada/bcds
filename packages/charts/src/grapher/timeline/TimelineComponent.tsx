@@ -8,7 +8,7 @@ import {
     Bounds,
     Time,
     Tippy,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons"
@@ -22,7 +22,7 @@ import {
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     GRAPHER_TIMELINE_CLASS,
-} from "../core/GrapherConstants.js"
+} from "../core/GrapherConstants.ts"
 
 export const TIMELINE_HEIGHT = 32 // Keep in sync with $timelineHeight in TimelineComponent.scss
 

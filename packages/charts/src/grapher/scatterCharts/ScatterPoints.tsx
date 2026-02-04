@@ -1,5 +1,5 @@
 import * as R from "remeda"
-import { PointVector, makeIdForHumanConsumption } from "../../utils/index.js"
+import { PointVector, makeIdForHumanConsumption } from "../../utils/index.ts"
 import { observer } from "mobx-react"
 import * as React from "react"
 import { MultiColorPolyline } from "./MultiColorPolyline"

@@ -5,8 +5,8 @@ import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
 import { Bar, BarShape, PlacedItem } from "./MarimekkoChartConstants"
 import { DualAxis } from "../axis/Axis"
-import { Bounds } from "../../utils/index.js"
-import { Halo } from "../../components/index.js"
+import { Bounds } from "../../utils/index.ts"
+import { Halo } from "../../components/index.ts"
 
 interface MarimekkoInternalLabelsProps {
     items: PlacedItem[]

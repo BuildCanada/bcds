@@ -1,4 +1,4 @@
-import { Color } from "../../types/index.js"
+import { Color } from "../../types/index.ts"
 
 /**
  * Represents the visual state of a legend item

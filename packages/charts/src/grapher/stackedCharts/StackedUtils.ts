@@ -7,9 +7,9 @@ import {
     rollingMap,
     omitUndefinedValues,
     AxisConfigInterface,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { StackedPointPositionType, StackedSeries } from "./StackedConstants"
-import { StackedBarChartState } from "./StackedBarChartState.js"
+import { StackedBarChartState } from "./StackedBarChartState.ts"
 
 // This method shift up the Y Values of a Series with Points in place.
 export const stackSeries = <PositionType extends StackedPointPositionType>(

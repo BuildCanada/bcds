@@ -13,12 +13,12 @@ import {
     GrapherQueryParams,
     EntityName,
     GRAPHER_TAB_QUERY_PARAMS,
-} from "../types/index.js"
+} from "../types/index.ts"
 import {
     ChartsTable,
     BlankChartsTable,
     extractPotentialDataSlugsFromTransform,
-} from "../core-table/index.js"
+} from "../core-table/index.ts"
 import {
     EntityPicker,
     EntityPickerManager,
@@ -35,7 +35,7 @@ import {
     fetchInputTableForConfig,
     loadVariableDataAndMetadata,
     FetchInputTableForConfigFn,
-} from "../grapher/index.js"
+} from "../grapher/index.ts"
 import {
     Bounds,
     ColumnSlug,
@@ -53,15 +53,15 @@ import {
     setWindowUrl,
     Tippy,
     Url,
-} from "../utils/index.js"
-import { MarkdownTextWrap } from "../components/index.js"
+} from "../utils/index.ts"
+import { MarkdownTextWrap } from "../components/index.ts"
 import classNames from "classnames"
 import { action, computed, makeObservable, observable, reaction } from "mobx"
 import { observer } from "mobx-react"
 import React, { useCallback, useEffect, useState } from "react"
 import { createRoot } from "react-dom/client"
-import { ExplorerControlBar, ExplorerControlPanel } from "./ExplorerControls.js"
-import { ExplorerProgram } from "./ExplorerProgram.js"
+import { ExplorerControlBar, ExplorerControlPanel } from "./ExplorerControls.tsx"
+import { ExplorerProgram } from "./ExplorerProgram.ts"
 import {
     ExplorerChartCreationMode,
     ExplorerChoiceParams,
@@ -71,12 +71,12 @@ import {
     EXPLORERS_ROUTE_FOLDER,
     UNSAVED_EXPLORER_DRAFT,
     UNSAVED_EXPLORER_PREVIEW_QUERYPARAMS,
-} from "./ExplorerConstants.js"
-import { ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.js"
+} from "./ExplorerConstants.ts"
+import { ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.ts"
 import {
     explorerUrlMigrationsById,
     migrateExplorerUrl,
-} from "./urlMigrations/ExplorerUrlMigrations.js"
+} from "./urlMigrations/ExplorerUrlMigrations.ts"
 
 export interface ExplorerProps extends SerializedGridProgram {
     grapherConfigs?: GrapherInterface[]

@@ -2,7 +2,7 @@ import * as _ from "lodash-es"
 import * as React from "react"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { Time } from "../../utils/index.js"
+import { Time } from "../../utils/index.ts"
 import { BAR_OPACITY, StackedPoint, StackedSeries } from "./StackedConstants"
 import { VerticalAxis } from "../axis/Axis"
 

@@ -3,7 +3,7 @@ import { geoInterpolate, geoOrthographic, geoPath } from "d3-geo"
 import { interpolateNumber } from "d3-interpolate"
 import { easeCubicOut } from "d3-ease"
 import * as R from "remeda"
-import { EntityName, GlobeConfig, GlobeRegionName } from "../../types/index.js"
+import { EntityName, GlobeConfig, GlobeRegionName } from "../../types/index.ts"
 import {
     Bounds,
     excludeUndefined,
@@ -13,7 +13,7 @@ import {
     getCountryNamesForRegion,
     getRegionByName,
     checkHasMembers,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { MapConfig } from "./MapConfig"
 import { getGeoFeaturesForGlobe } from "./GeoFeatures"
 import {

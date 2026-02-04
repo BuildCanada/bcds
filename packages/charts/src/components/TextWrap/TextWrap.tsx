@@ -5,7 +5,7 @@ import {
     Bounds,
     FontFamily,
     VerticalAlign,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { computed, makeObservable } from "mobx"
 import * as React from "react"
 import { Fragment, joinFragments, splitIntoFragments } from "./TextWrapUtils"

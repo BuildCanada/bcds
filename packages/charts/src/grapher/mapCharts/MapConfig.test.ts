@@ -1,7 +1,7 @@
 import { expect, it, describe } from "vitest"
 
 import { MapConfig } from "./MapConfig"
-import { MapRegionName } from "../../types/index.js"
+import { MapRegionName } from "../../types/index.ts"
 
 it("can serialize for saving", () => {
     expect(new MapConfig().toObject()).toEqual({})

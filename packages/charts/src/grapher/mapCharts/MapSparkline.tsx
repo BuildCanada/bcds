@@ -8,16 +8,16 @@ import {
     EntityName,
     VariableRoundingMode,
     Time,
-} from "../../types/index.js"
-import { ChartsTable } from "../../core-table/index.js"
+} from "../../types/index.ts"
+import { ChartsTable } from "../../core-table/index.ts"
 import { LineChart } from "../lineCharts/LineChart"
 import { LineChartState } from "../lineCharts/LineChartState"
-import { Bounds, checkIsVeryShortUnit } from "../../utils/index.js"
+import { Bounds, checkIsVeryShortUnit } from "../../utils/index.ts"
 import { LineChartManager } from "../lineCharts/LineChartConstants"
-import { ColorScale } from "../color/ColorScale.js"
+import { ColorScale } from "../color/ColorScale.ts"
 import * as R from "remeda"
 import { MapColumnInfo } from "./MapChartConstants"
-import type { MapFormatValueForTooltip } from "./MapChartState.js"
+import type { MapFormatValueForTooltip } from "./MapChartState.ts"
 
 const DEFAULT_SPARKLINE_WIDTH = 250
 const DEFAULT_SPARKLINE_HEIGHT = 87

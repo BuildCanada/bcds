@@ -14,8 +14,8 @@ import {
     ChartDimensionInterface,
     Time,
     ChartDimensionInterfaceWithMandatorySlug,
-} from "../../utils/index.js"
-import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+} from "../../utils/index.ts"
+import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
 
 // A chart "dimension" represents a binding between a chart
 // and a particular variable that it requests as data

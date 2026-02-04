@@ -1,9 +1,9 @@
-import { Origin } from "../Origin.js"
+import { Origin } from "../Origin.ts"
 import {
     ProcessingLevel,
     VariablePresentation,
-} from "../Variable.js"
-import { VariableDisplayConfigInterface } from "../VariableDisplayConfigInterface.js"
+} from "../Variable.ts"
+import { VariableDisplayConfigInterface } from "../VariableDisplayConfigInterface.ts"
 import {
     Color,
     ColumnSlug,
@@ -11,8 +11,8 @@ import {
     Time,
     ToleranceStrategy,
     Year,
-} from "../grapherTypes/GrapherTypes.js"
-import { Integer } from "./Various.js"
+} from "../grapherTypes/GrapherTypes.ts"
+import { Integer } from "./Various.ts"
 
 export type TableSlug = string // a url friendly name for a table
 export type ColumnSlugs = string // slugs cannot have spaces, so this is a space delimited array of ColumnSlugs

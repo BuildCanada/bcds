@@ -29,12 +29,12 @@ import {
     Region,
     getRegionByName,
     makeSafeForCSS,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     Checkbox,
     RadioButton,
     OverlayHeader,
-} from "../../components/index.js"
+} from "../../components/index.ts"
 import {
     faLocationArrow,
     faArrowRightArrowLeft,
@@ -46,7 +46,7 @@ import { Flipper, Flipped } from "react-flip-toolkit"
 import {
     combineHistoricalAndProjectionColumns,
     makeSelectionArray,
-} from "../chart/ChartUtils.js"
+} from "../chart/ChartUtils.tsx"
 import {
     DEFAULT_GRAPHER_ENTITY_TYPE,
     DEFAULT_GRAPHER_ENTITY_TYPE_PLURAL,
@@ -55,7 +55,7 @@ import {
     isPopulationVariableETLPath,
     isWorldEntityName,
 } from "../core/GrapherConstants"
-import { CoreColumn, ChartsTable } from "../../core-table/index.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.ts"
 import { SortIcon } from "../controls/SortIcon"
 import { Dropdown } from "../controls/Dropdown"
 import { scaleLinear, type ScaleLinear } from "d3-scale"
@@ -68,9 +68,9 @@ import {
     Time,
     ToleranceStrategy,
     type EntitySelectorEvent,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { buildVariableTable } from "../core/LegacyToChartsTable"
-import { DrawerContext } from "../slideInDrawer/SlideInDrawer.js"
+import { DrawerContext } from "../slideInDrawer/SlideInDrawer.tsx"
 import * as R from "remeda"
 import { MapConfig } from "../mapCharts/MapConfig"
 import { match } from "ts-pattern"
@@ -82,7 +82,7 @@ import {
     isAggregateSource,
 } from "../core/EntitiesByRegionType"
 import { SearchField } from "../controls/SearchField"
-import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants.js"
+import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants.ts"
 
 export type CoreColumnBySlug = Record<ColumnSlug, CoreColumn>
 

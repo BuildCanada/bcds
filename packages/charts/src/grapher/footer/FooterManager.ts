@@ -1,5 +1,5 @@
 import { TooltipManager } from "../tooltip/TooltipProps"
-import { DetailsMarker } from "../../types/index.js"
+import { DetailsMarker } from "../../types/index.ts"
 import { ActionButtonsManager } from "../controls/ActionButtons"
 import { GrapherModal } from "../core/GrapherConstants"
 

@@ -1,12 +1,12 @@
 import * as _ from "lodash-es"
-import { EntityName } from "../../types/index.js"
+import { EntityName } from "../../types/index.ts"
 import {
     AggregateSource,
     aggregateSources,
     Country,
     excludeUndefined,
     getRegionByName,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { CUSTOM_REGION_SOURCE_IDS, isWorldEntityName } from "./GrapherConstants"
 import * as R from "remeda"
 

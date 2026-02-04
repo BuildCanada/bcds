@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { PartialBy } from "../../utils/index.js"
+import { PartialBy } from "../../utils/index.ts"
 import { AxisConfig } from "../axis/AxisConfig"
 import { LineLegend } from "./LineLegend"
 import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants"

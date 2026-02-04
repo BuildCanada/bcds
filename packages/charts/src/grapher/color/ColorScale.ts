@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
 import { computed, toJS, makeObservable } from "mobx"
 import { ColorScaleConfig } from "./ColorScaleConfig"
-import { mapNullToUndefined, sortNumeric } from "../../utils/index.js"
+import { mapNullToUndefined, sortNumeric } from "../../utils/index.ts"
 import { pairs } from "d3-array"
 import { ColorSchemes } from "../color/ColorSchemes"
 import { ColorScheme } from "../color/ColorScheme"
@@ -13,10 +13,10 @@ import {
     Color,
     CoreValueType,
     VariableRoundingMode,
-} from "../../types/index.js"
-import { CoreColumn } from "../../core-table/index.js"
+} from "../../types/index.ts"
+import { CoreColumn } from "../../core-table/index.ts"
 import * as R from "remeda"
-import { runBinningStrategy } from "./BinningStrategies.js"
+import { runBinningStrategy } from "./BinningStrategies.ts"
 
 export const NO_DATA_LABEL = "No data"
 export const PROJECTED_DATA_LABEL = "Projected data"

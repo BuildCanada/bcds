@@ -5,8 +5,8 @@ import {
     GRAPHER_CHART_TYPES,
     GrapherChartType,
     StackMode,
-} from "../../../types/index.js"
-import { LabeledSwitch } from "../../../components/index.js"
+} from "../../../types/index.ts"
+import { LabeledSwitch } from "../../../components/index.ts"
 
 const { LineChart, ScatterPlot, SlopeChart } = GRAPHER_CHART_TYPES
 

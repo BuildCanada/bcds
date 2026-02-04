@@ -1,5 +1,5 @@
-import { Bounds } from "../../utils/index.js"
-import { DetailsMarker } from "../../types/index.js"
+import { Bounds } from "../../utils/index.ts"
+import { DetailsMarker } from "../../types/index.ts"
 
 export interface HeaderManager {
     currentTitle?: string

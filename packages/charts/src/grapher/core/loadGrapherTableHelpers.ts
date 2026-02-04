@@ -1,15 +1,15 @@
 import * as _ from "lodash-es"
-import { ChartsTable } from "../../core-table/index.js"
+import { ChartsTable } from "../../core-table/index.ts"
 import {
     ArchiveContext,
     ChartDimensionInterface,
     VariableDataMetadataDimensions,
-} from "../../utils/index.js"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.js"
+} from "../../utils/index.ts"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.ts"
 import {
     loadVariablesDataSite,
     loadVariableDataAndMetadata,
-} from "./loadVariable.js"
+} from "./loadVariable.ts"
 import { toJS } from "mobx"
 
 export type FetchInputTableForConfigFn = (args: {

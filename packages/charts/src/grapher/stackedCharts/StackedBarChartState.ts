@@ -1,19 +1,19 @@
 import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
-import { AbstractStackedChartState } from "./AbstractStackedChartState.js"
-import { ChartState } from "../chart/ChartInterface.js"
-import { StackedSeries } from "./StackedConstants.js"
-import { ColumnTypeMap } from "../../core-table/index.js"
+import { AbstractStackedChartState } from "./AbstractStackedChartState.ts"
+import { ChartState } from "../chart/ChartInterface.ts"
+import { StackedSeries } from "./StackedConstants.ts"
+import { ColumnTypeMap } from "../../core-table/index.ts"
 import {
     stackSeriesInBothDirections,
     withMissingValuesAsZeroes,
-} from "./StackedUtils.js"
-import { ColorScaleManager } from "../color/ColorScale.js"
+} from "./StackedUtils.ts"
+import { ColorScaleManager } from "../color/ColorScale.ts"
 import {
     ColorScaleConfigInterface,
     ColorSchemeName,
-} from "../../types/index.js"
-import { ChartManager } from "../chart/ChartManager.js"
+} from "../../types/index.ts"
+import { ChartManager } from "../chart/ChartManager.ts"
 
 export class StackedBarChartState
     extends AbstractStackedChartState

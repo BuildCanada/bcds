@@ -1,9 +1,9 @@
-import { Url, UrlMigration } from "../../utils/index.js"
+import { Url, UrlMigration } from "../../utils/index.ts"
 import {
     getExplorerSlugFromUrl,
     QueryParamTransformMap,
     transformQueryParams,
-} from "./ExplorerUrlMigrationUtils.js"
+} from "./ExplorerUrlMigrationUtils.ts"
 
 const EXPLORER_SLUG = "coronavirus-data-explorer"
 

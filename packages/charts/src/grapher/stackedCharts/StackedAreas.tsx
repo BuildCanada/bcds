@@ -7,9 +7,9 @@ import {
     lastOfNonEmptyArray,
     makeIdForHumanConsumption,
     bind,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { computed, makeObservable } from "mobx"
-import { SeriesName } from "../../types/index.js"
+import { SeriesName } from "../../types/index.ts"
 import { observer } from "mobx-react"
 import { DualAxis } from "../axis/Axis"
 import { rgb } from "d3-color"

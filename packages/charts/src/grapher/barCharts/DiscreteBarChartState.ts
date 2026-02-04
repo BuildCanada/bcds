@@ -10,7 +10,7 @@ import {
     CoreColumn,
     isNotErrorValue,
     ChartsTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { ColorScale, ColorScaleManager } from "../color/ColorScale"
 import { SelectionArray } from "../selection/SelectionArray"
 import {
@@ -34,7 +34,7 @@ import {
     SortBy,
     SortConfig,
     SortOrder,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ERROR_COLOR, NO_DATA_GRAY } from "../color/ColorConstants"
 import { ColorScheme } from "../color/ColorScheme"
 import { ColorSchemes } from "../color/ColorSchemes"

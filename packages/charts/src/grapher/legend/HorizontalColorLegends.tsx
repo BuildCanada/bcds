@@ -10,8 +10,8 @@ import {
     HorizontalAlign,
     VerticalAlign,
     makeIdForHumanConsumption,
-} from "../../utils/index.js"
-import { TextWrap } from "../../components/index.js"
+} from "../../utils/index.ts"
+import { TextWrap } from "../../components/index.ts"
 import {
     ColorScaleBin,
     NumericBin,

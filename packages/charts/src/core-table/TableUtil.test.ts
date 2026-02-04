@@ -1,12 +1,12 @@
 import { expect, it, describe } from "vitest"
 
-import { replaceDef } from "./CoreTableUtils.js"
-import { ChartsTable } from "./ChartsTable.js"
+import { replaceDef } from "./CoreTableUtils.ts"
+import { ChartsTable } from "./ChartsTable.ts"
 import {
     SampleColumnSlugs,
     SynthesizeGDPTable,
-} from "./TableSynthesizers.js"
-import { toPercentageColumnDef } from "./TableUtil.js"
+} from "./TableSynthesizers.ts"
+import { toPercentageColumnDef } from "./TableUtil.ts"
 
 describe(toPercentageColumnDef, () => {
     it("should format resulting column as percent", () => {

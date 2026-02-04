@@ -2,11 +2,11 @@ import * as React from "react"
 import { action, computed, observable, makeObservable } from "mobx"
 import cx from "classnames"
 import { observer } from "mobx-react"
-import { GrapherTabName } from "../../types/index.js"
-import { TabItem, Tabs } from "../tabs/Tabs.js"
+import { GrapherTabName } from "../../types/index.ts"
+import { TabItem, Tabs } from "../tabs/Tabs.tsx"
 import { makeLabelForGrapherTab } from "../chart/ChartTabs"
 import { Menu, MenuItem, Popover } from "react-aria-components"
-import { GrapherTabIcon } from "../../components/index.js"
+import { GrapherTabIcon } from "../../components/index.ts"
 
 export interface ContentSwitchersManager {
     availableTabs?: GrapherTabName[]

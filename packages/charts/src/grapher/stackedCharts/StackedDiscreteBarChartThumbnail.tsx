@@ -3,7 +3,7 @@ import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { ChartInterface } from "../chart/ChartInterface"
 import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
 import { StackedDiscreteBars } from "./StackedDiscreteBars"
 
 @observer

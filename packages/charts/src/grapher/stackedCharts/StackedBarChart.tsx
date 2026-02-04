@@ -10,14 +10,14 @@ import {
     makeIdForHumanConsumption,
     guid,
     exposeInstanceOnWindow,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { DualAxisComponent } from "../axis/AxisViews"
 import { NoDataModal } from "../noDataModal/NoDataModal"
 import {
     VerticalColorLegend,
     VerticalColorLegendManager,
 } from "../legend/VerticalColorLegend"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
 import {
     Tooltip,
     TooltipState,
@@ -29,7 +29,7 @@ import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
 } from "../core/GrapherConstants"
-import { StackedBarChartState } from "./StackedBarChartState.js"
+import { StackedBarChartState } from "./StackedBarChartState.ts"
 import {
     BAR_OPACITY,
     LEGEND_STYLE_FOR_STACKED_CHARTS,
@@ -38,19 +38,19 @@ import {
 } from "./StackedConstants"
 import { LegendInteractionState } from "../legend/LegendInteractionState"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { HorizontalAlign, SeriesName } from "../../types/index.js"
+import { HorizontalAlign, SeriesName } from "../../types/index.ts"
 import { makeClipPath } from "../chart/ChartUtils"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
 } from "../legend/HorizontalColorLegends"
 import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.ts"
 import { easeLinear } from "d3-ease"
 import { select, type BaseType, type Selection } from "d3-selection"
 import { ChartInterface } from "../chart/ChartInterface"
 import { ChartManager } from "../chart/ChartManager"
-import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
 import { StackedBars } from "./StackedBars"
 import { getXAxisConfigDefaultsForStackedBar } from "./StackedUtils"
 

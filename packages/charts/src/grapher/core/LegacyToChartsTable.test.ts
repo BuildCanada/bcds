@@ -6,8 +6,8 @@ import {
     ChartsTableSlugs,
     StandardColumnDefs,
     LegacyGrapherInterface,
-} from "../../types/index.js"
-import { ColumnTypeMap, ErrorValueTypes } from "../../core-table/index.js"
+} from "../../types/index.ts"
+import { ColumnTypeMap, ErrorValueTypes } from "../../core-table/index.ts"
 import {
     legacyToChartsTableAndDimensions,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
@@ -16,7 +16,7 @@ import {
     MultipleVariableDataDimensionsMap,
     VariableDataMetadataDimensions,
     DimensionProperty,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 
 describe(legacyToChartsTableAndDimensions, () => {
     const legacyVariableEntry: VariableDataMetadataDimensions = {

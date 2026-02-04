@@ -1,15 +1,15 @@
 import * as React from "react"
 
-import { Bounds } from "../../utils/index.js"
+import { Bounds } from "../../utils/index.ts"
 import { debounce } from "lodash-es"
-import { GrapherProgrammaticInterface } from "../index.js"
-import { FetchingGrapher } from "./FetchingGrapher.js"
+import { GrapherProgrammaticInterface } from "../index.ts"
+import { FetchingGrapher } from "./FetchingGrapher.tsx"
 import {
     ArchiveContext,
     VariableDataMetadataDimensions,
     VariableId,
-} from "../../types/index.js"
-import { loadVariableDataAndMetadata } from "./loadVariable.js"
+} from "../../types/index.ts"
+import { loadVariableDataAndMetadata } from "./loadVariable.ts"
 import { createRoot } from "react-dom/client"
 
 /**

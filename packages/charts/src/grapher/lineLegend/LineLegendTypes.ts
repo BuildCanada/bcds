@@ -1,5 +1,5 @@
-import { MarkdownTextWrap, TextWrap } from "../../components/index.js"
-import { Bounds } from "../../utils/index.js"
+import { MarkdownTextWrap, TextWrap } from "../../components/index.ts"
+import { Bounds } from "../../utils/index.ts"
 import { ChartSeries } from "../chart/ChartInterface"
 import { InteractionState } from "../interaction/InteractionState"
 

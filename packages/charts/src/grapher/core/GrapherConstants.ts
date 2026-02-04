@@ -2,9 +2,9 @@ import {
     EntityName,
     GRAPHER_CHART_TYPES,
     GrapherChartType,
-} from "../../types/index.js"
-import { Bounds } from "../../utils/index.js"
-import { defaultGrapherConfig } from "../schema/defaultGrapherConfig.js"
+} from "../../types/index.ts"
+import { Bounds } from "../../utils/index.ts"
+import { defaultGrapherConfig } from "../schema/defaultGrapherConfig.ts"
 
 export const GRAPHER_PROD_URL = "https://ourworldindata.org"
 

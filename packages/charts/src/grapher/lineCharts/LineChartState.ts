@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
 import * as R from "remeda"
-import { Color } from "../../utils/index.js"
+import { Color } from "../../utils/index.ts"
 import { computed, makeObservable } from "mobx"
 import {
     ScaleType,
@@ -12,7 +12,7 @@ import {
     ColorScaleConfigInterface,
     ColorSchemeName,
     ChartErrorInfo,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ColorSchemes } from "../color/ColorSchemes"
 import { ChartState } from "../chart/ChartInterface"
 import {
@@ -25,7 +25,7 @@ import {
     ChartsTable,
     CoreColumn,
     isNotErrorValue,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,

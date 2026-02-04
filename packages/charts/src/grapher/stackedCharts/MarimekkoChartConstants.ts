@@ -7,11 +7,11 @@ import {
     Bounds,
     EntityName,
     ColumnSlug,
-} from "../../utils/index.js"
-import { ChartsTable } from "../../core-table/index.js"
+} from "../../utils/index.ts"
+import { ChartsTable } from "../../core-table/index.ts"
 import { StackedPoint } from "./StackedConstants"
 import { DualAxis } from "../axis/Axis"
-import { InteractionState } from "../interaction/InteractionState.js"
+import { InteractionState } from "../interaction/InteractionState.ts"
 
 export interface MarimekkoChartManager extends ChartManager {
     endTime?: Time

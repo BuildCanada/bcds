@@ -5,7 +5,7 @@ import {
     RawSlopeChartSeries,
     SlopeChartSeries,
 } from "./SlopeChartConstants"
-import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
 import { SelectionArray } from "../selection/SelectionArray"
 import { FocusArray } from "../focus/FocusArray"
 import {
@@ -18,7 +18,7 @@ import {
     EntityName,
     ColorSchemeName,
     ChartErrorInfo,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
@@ -37,7 +37,7 @@ import {
     getDisplayName,
     getSeriesName,
 } from "../lineCharts/LineChartHelpers"
-import { domainExtent } from "../../utils/index.js"
+import { domainExtent } from "../../utils/index.ts"
 import { AxisConfig } from "../axis/AxisConfig"
 import { VerticalAxis } from "../axis/Axis"
 

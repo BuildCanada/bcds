@@ -10,11 +10,11 @@ import {
     dyFromAlign,
     textAnchorFromAlign,
     makeIdForHumanConsumption,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { VerticalAxis, HorizontalAxis, DualAxis } from "./Axis"
 import classNames from "classnames"
 import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
-import { ScaleType, DetailsMarker } from "../../types/index.js"
+import { ScaleType, DetailsMarker } from "../../types/index.ts"
 import { ComparisonLine } from "../comparisonLine/ComparisonLine"
 import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants"
 

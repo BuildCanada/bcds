@@ -6,7 +6,7 @@ import { expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { AxisConfig } from "./AxisConfig"
 import { DualAxisComponent, HorizontalAxisGridLines } from "./AxisViews"
-import { ScaleType } from "../../types/index.js"
+import { ScaleType } from "../../types/index.ts"
 import { DualAxis } from "./Axis"
 
 it("can create horizontal axis", () => {

@@ -9,10 +9,10 @@ import {
     AxisAlign,
     makeIdForHumanConsumption,
     dyFromAlign,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType, VerticalAlign } from "../../types/index.js"
+import { ScaleType, VerticalAlign } from "../../types/index.ts"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -39,12 +39,12 @@ import {
     HorizontalNumericColorLegend,
 } from "../legend/HorizontalColorLegends"
 import { DiscreteBarChartState } from "./DiscreteBarChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
 import {
     makeProjectedDataPatternId,
     enrichSeriesWithLabels,
 } from "./DiscreteBarChartHelpers"
-import { ChartsTable } from "../../core-table/index.js"
+import { ChartsTable } from "../../core-table/index.ts"
 import { HorizontalAxis } from "../axis/Axis"
 import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
 import type { BaseType, Selection } from "d3-selection"

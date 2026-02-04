@@ -27,12 +27,12 @@ import {
     setWindowUrl,
     lazy,
     RegionType,
-} from "../../../utils/index.js"
+} from "../../../utils/index.ts"
 import { GrapherAnalytics } from "../../core/GrapherAnalytics"
 import { WORLD_ENTITY_NAME } from "../../core/GrapherConstants"
 import { GLOBAL_ENTITY_SELECTOR_ELEMENT } from "./GlobalEntitySelectorConstants"
 import { SelectionArray } from "../../selection/SelectionArray"
-import { EntityName } from "../../../types/index.js"
+import { EntityName } from "../../../types/index.ts"
 import { setSelectedEntityNamesParam } from "../../core/EntityUrlBuilder"
 
 enum GlobalEntitySelectionModes {

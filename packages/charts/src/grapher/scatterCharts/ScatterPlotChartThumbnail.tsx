@@ -4,10 +4,10 @@ import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { ChartInterface } from "../chart/ChartInterface"
 import { ScatterPlotChartState } from "./ScatterPlotChartState"
-import { type ScatterPlotChartProps } from "./ScatterPlotChart.js"
+import { type ScatterPlotChartProps } from "./ScatterPlotChart.tsx"
 import { ScaleLinear, scaleSqrt } from "d3-scale"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { Bounds } from "../../utils/index.js"
+import { Bounds } from "../../utils/index.ts"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,

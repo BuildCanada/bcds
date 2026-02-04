@@ -11,7 +11,7 @@ import {
     ErrorValueTypes,
     makeOriginalTimeSlugFromColumnSlug,
     ChartsTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import {
     ScatterPlotManager,
     SCATTER_POINT_DEFAULT_RADIUS,
@@ -25,11 +25,11 @@ import {
     ChartsTableSlugs,
     Color,
     GRAPHER_CHART_TYPES,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ContinentColors } from "../color/CustomSchemes"
 import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels"
 import { GrapherState } from "../core/GrapherState"
-import { InteractionState } from "../interaction/InteractionState.js"
+import { InteractionState } from "../interaction/InteractionState.ts"
 
 it("can create a new chart", () => {
     const manager: ScatterPlotManager = {

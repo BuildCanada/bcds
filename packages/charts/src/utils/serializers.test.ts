@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { deserializeJSONFromHTML, serializeJSONForHTML } from "./serializers.js"
+import { deserializeJSONFromHTML, serializeJSONForHTML } from "./serializers.ts"
 
 describe("encode and decode json", () => {
     it("should encode and decode an object correctly", async () => {

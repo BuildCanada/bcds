@@ -13,7 +13,7 @@ import {
     makeIdForHumanConsumption,
     dyFromAlign,
     exposeInstanceOnWindow,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { action, computed, makeObservable, observable } from "mobx"
 import { observer } from "mobx-react"
 import {
@@ -29,14 +29,14 @@ import {
     EntityName,
     VerticalAlign,
     ColorScaleConfigInterface,
-} from "../../types/index.js"
-import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+} from "../../types/index.ts"
+import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
 import { getShortNameForEntity } from "../chart/ChartUtils"
 import {
     LEGEND_STYLE_FOR_STACKED_CHARTS,
     StackedSeries,
 } from "./StackedConstants"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
 import {
     Tooltip,
     TooltipValue,
@@ -67,7 +67,7 @@ import {
     Bar,
 } from "./MarimekkoChartConstants"
 import { MarimekkoChartState } from "./MarimekkoChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
 import { MarimekkoBars } from "./MarimekkoBars"
 import { toPlacedMarimekkoItems } from "./MarimekkoChartHelpers"
 

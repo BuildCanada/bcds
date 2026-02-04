@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { ColumnTypeNames, CoreMatrix, Time } from "../types/index.js"
+import { ColumnTypeNames, CoreMatrix, Time } from "../types/index.ts"
 import {
     emptyColumnsInFirstRowInDelimited,
     getDropIndexes,
@@ -16,9 +16,9 @@ import {
     concatColumnStores,
     guessColumnDefFromSlugAndRow,
     standardizeSlugs,
-} from "./CoreTableUtils.js"
-import { ErrorValueTypes } from "./ErrorValues.js"
-import { imemo } from "../utils/index.js"
+} from "./CoreTableUtils.ts"
+import { ErrorValueTypes } from "./ErrorValues.ts"
+import { imemo } from "../utils/index.ts"
 
 describe(toleranceInterpolation, () => {
     it("handles empty array", () => {

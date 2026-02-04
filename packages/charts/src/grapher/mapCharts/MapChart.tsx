@@ -5,7 +5,7 @@ import {
     exposeInstanceOnWindow,
     Color,
     HorizontalAlign,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import {
@@ -16,8 +16,8 @@ import {
 import { select } from "d3-selection"
 import { easeCubic } from "d3-ease"
 import { MapTooltip } from "./MapTooltip"
-import { TooltipState } from "../tooltip/Tooltip.js"
-import { CoreColumn } from "../../core-table/index.js"
+import { TooltipState } from "../tooltip/Tooltip.tsx"
+import { CoreColumn } from "../../core-table/index.ts"
 import {
     GeoFeature,
     MapBracket,
@@ -58,18 +58,18 @@ import {
     ColumnSlug,
     GrapherVariant,
     MapRegionName,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ClipPath, makeClipPath } from "../chart/ChartUtils"
 import { NoDataModal } from "../noDataModal/NoDataModal"
 import { Component, createRef } from "react"
 import { ChoroplethMap } from "./ChoroplethMap"
 import { ChoroplethGlobe } from "./ChoroplethGlobe"
 import { GlobeController } from "./GlobeController"
-import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.ts"
 import { match } from "ts-pattern"
 import { makeProjectedDataPatternId } from "./MapComponents"
 import { MapChartState } from "./MapChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.tsx"
 import { InteractionState } from "../interaction/InteractionState"
 
 export type MapChartProps = ChartComponentProps<MapChartState>

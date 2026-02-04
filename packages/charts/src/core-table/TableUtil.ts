@@ -4,8 +4,8 @@ import {
     CoreColumnDef,
     ColumnDef,
     ChartsTableSlugs,
-} from "../types/index.js"
-import { CoreTable } from "./CoreTable.js"
+} from "../types/index.ts"
+import { CoreTable } from "./CoreTable.ts"
 
 export function timeColumnSlugFromColumnDef(
     def: ColumnDef

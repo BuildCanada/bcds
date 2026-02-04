@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { urlRegex } from "./remarkPlainLinks.js"
+import { urlRegex } from "./remarkPlainLinks.ts"
 
 describe("urlRegex", () => {
     const urls = [

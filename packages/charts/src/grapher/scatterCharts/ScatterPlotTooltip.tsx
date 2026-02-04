@@ -9,8 +9,8 @@ import {
     calculateTrendDirection,
     Time,
     RequiredBy,
-} from "../../utils/index.js"
-import { CoreColumn } from "../../core-table/index.js"
+} from "../../utils/index.ts"
+import { CoreColumn } from "../../core-table/index.ts"
 import {
     Tooltip,
     TooltipState,
@@ -20,7 +20,7 @@ import {
     formatTooltipRangeValues,
     TooltipValue,
 } from "../tooltip/Tooltip"
-import { FooterItem, TooltipFooterIcon } from "../tooltip/TooltipProps.js"
+import { FooterItem, TooltipFooterIcon } from "../tooltip/TooltipProps.ts"
 import { ScatterSeries, SeriesPoint } from "./ScatterPlotChartConstants"
 import { ScatterPlotChartState } from "./ScatterPlotChartState"
 

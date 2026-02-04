@@ -4,9 +4,9 @@ import {
     insertMissingValuePlaceholders,
     computeRollingAverage,
     extractPotentialDataSlugsFromTransform,
-} from "./Transforms.js"
-import { ErrorValueTypes } from "./ErrorValues.js"
-import { ErrorValue } from "../types/index.js"
+} from "./Transforms.ts"
+import { ErrorValueTypes } from "./ErrorValues.ts"
+import { ErrorValue } from "../types/index.ts"
 
 describe(insertMissingValuePlaceholders, () => {
     const testCases = [

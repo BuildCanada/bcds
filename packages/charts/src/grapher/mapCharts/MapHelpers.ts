@@ -7,8 +7,8 @@ import {
     getCountryNamesForRegion,
     getRelativeMouse,
     lazy,
-} from "../../utils/index.js"
-import { GlobeRegionName, MapRegionName } from "../../types/index.js"
+} from "../../utils/index.ts"
+import { GlobeRegionName, MapRegionName } from "../../types/index.ts"
 import {
     GEO_FEATURES_CLASSNAME,
     MAP_HOVER_TARGET_RANGE,
@@ -16,9 +16,9 @@ import {
     MapRenderFeature,
     RenderFeatureType,
 } from "./MapChartConstants"
-import { CanadaTopology } from "./CanadaTopology.js"
-import { MapTopology } from "./MapTopology.js"
-import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { CanadaTopology } from "./CanadaTopology.ts"
+import { MapTopology } from "./MapTopology.ts"
+import { MapSelectionArray } from "../selection/MapSelectionArray.ts"
 import * as R from "remeda"
 
 export function detectNearbyFeature<Feature extends RenderFeature>({

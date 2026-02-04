@@ -4,8 +4,8 @@ import {
     geoAzimuthalEqualArea,
     GeoProjection,
 } from "d3-geo"
-import { geoRobinson, geoPatterson } from "./d3-geo-projection.js"
-import { MapRegionName } from "../../types/index.js"
+import { geoRobinson, geoPatterson } from "./d3-geo-projection.ts"
+import { MapRegionName } from "../../types/index.ts"
 
 export const MAP_PROJECTIONS: Record<MapRegionName, GeoProjection> = {
     World: geoRobinson(),

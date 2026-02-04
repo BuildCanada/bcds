@@ -3,15 +3,15 @@ import {
     EntityName,
     VariableRow,
     SeriesName,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ChartSeries } from "../chart/ChartInterface"
 import {
     GRAPHER_AREA_OPACITY_DEFAULT,
     GRAPHER_AREA_OPACITY_FOCUS,
     GRAPHER_AREA_OPACITY_MUTE,
 } from "../core/GrapherConstants"
-import { TextWrap } from "../../components/index.js"
-import { InteractionState } from "../interaction/InteractionState.js"
+import { TextWrap } from "../../components/index.ts"
+import { InteractionState } from "../interaction/InteractionState.ts"
 import { LegendStyleConfig } from "../legend/LegendInteractionState"
 
 export const AREA_OPACITY = {

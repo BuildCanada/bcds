@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { FuzzySearch } from "./FuzzySearch.js"
+import { FuzzySearch } from "./FuzzySearch.ts"
 
 describe(FuzzySearch, () => {
     const countries = [

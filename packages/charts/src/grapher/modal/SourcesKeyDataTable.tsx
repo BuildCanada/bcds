@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Fragment } from "react"
 import cx from "classnames"
-import { ProcessingLevel, excludeNull } from "../../utils/index.js"
+import { ProcessingLevel, excludeNull } from "../../utils/index.ts"
 import {
     makeSource,
     makeLastUpdated,
@@ -10,7 +10,7 @@ import {
     makeUnit,
     makeUnitConversionFactor,
     makeLinks,
-} from "../../components/index.js"
+} from "../../components/index.ts"
 import * as R from "remeda"
 
 interface SourcesKeyDataTableProps {

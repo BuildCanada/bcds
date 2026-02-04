@@ -13,12 +13,12 @@ import {
     ChartDimensionInterfaceWithMandatorySlug,
     ChartDimensionInterface,
     EntityName,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     ChartsTable,
     ErrorValueTypes,
     makeKeyFn,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import {
     diffDateISOStringInDays,
     getYearFromISOStringAndDayOffset,
@@ -33,10 +33,10 @@ import {
     ColumnSlug,
     EPOCH_DATE,
     VariableType,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { isContinentsVariableId } from "./GrapherConstants"
 import * as R from "remeda"
-import { getDimensionColumnSlug } from "../chart/ChartDimension.js"
+import { getDimensionColumnSlug } from "../chart/ChartDimension.ts"
 
 export const legacyToChartsTableAndDimensionsWithMandatorySlug = (
     json: MultipleVariableDataDimensionsMap,

@@ -1,9 +1,9 @@
-import { VariableId } from "./domainTypes/Various.js"
+import { VariableId } from "./domainTypes/Various.ts"
 import {
     ColumnSlug,
     DimensionProperty,
     Time,
-} from "./grapherTypes/GrapherTypes.js"
+} from "./grapherTypes/GrapherTypes.ts"
 
 export interface VariableDisplayConfigInterface {
     name?: string

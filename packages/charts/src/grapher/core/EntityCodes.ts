@@ -1,5 +1,5 @@
-import { lazy, regions } from "../../utils/index.js"
-import { EntityName } from "../../types/index.js"
+import { lazy, regions } from "../../utils/index.ts"
+import { EntityName } from "../../types/index.ts"
 import * as R from "remeda"
 
 const getEntityCodesToEntityNames: () => Record<string, string> = lazy(() =>

@@ -14,7 +14,7 @@ import {
     checkIsIncomeGroupName,
     getUserCountryInformation,
     regions,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { GlobeController } from "../mapCharts/GlobeController"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons"
@@ -23,7 +23,7 @@ import {
     DropdownCollection,
     DropdownCollectionItem,
     DropdownOptionGroup,
-} from "./Dropdown.js"
+} from "./Dropdown.tsx"
 import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants"
 import { match } from "ts-pattern"
 import * as R from "remeda"

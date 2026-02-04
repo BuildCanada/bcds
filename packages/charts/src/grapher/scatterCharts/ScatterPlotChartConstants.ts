@@ -1,6 +1,6 @@
 import { ScaleLinear } from "d3-scale"
 import { Quadtree } from "d3-quadtree"
-import { ChartsTable } from "../../core-table/index.js"
+import { ChartsTable } from "../../core-table/index.ts"
 import { DualAxis } from "../axis/Axis"
 import { ChartManager } from "../chart/ChartManager"
 import { NoDataModalManager } from "../noDataModal/NoDataModal"
@@ -12,7 +12,7 @@ import {
     Color,
     Time,
     EntityName,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     GRAPHER_FONT_SCALE_10,
     GRAPHER_FONT_SCALE_10_5,
@@ -20,9 +20,9 @@ import {
     GRAPHER_FONT_SCALE_13,
 } from "../core/GrapherConstants"
 
-import { Bounds, PointVector } from "../../utils/index.js"
+import { Bounds, PointVector } from "../../utils/index.ts"
 import { ChartSeries } from "../chart/ChartInterface"
-import { InteractionState } from "../interaction/InteractionState.js"
+import { InteractionState } from "../interaction/InteractionState.ts"
 
 export interface ScatterPlotManager extends ChartManager {
     hideConnectedScatterLines?: boolean

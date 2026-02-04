@@ -4,7 +4,7 @@ import { observer } from "mobx-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faRightLeft, faPen } from "@fortawesome/free-solid-svg-icons"
 import classnames from "classnames"
-import { GrapherWindowType } from "../../types/index.js"
+import { GrapherWindowType } from "../../types/index.ts"
 
 export interface EntitySelectionManager {
     canHighlightEntities?: boolean

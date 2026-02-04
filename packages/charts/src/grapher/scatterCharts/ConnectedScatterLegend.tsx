@@ -1,9 +1,9 @@
 import * as React from "react"
 import { computed, makeObservable } from "mobx"
 import { Triangle } from "./Triangle"
-import { TextWrap } from "../../components/index.js"
+import { TextWrap } from "../../components/index.ts"
 import { BASE_FONT_SIZE } from "../core/GrapherConstants"
-import { makeIdForHumanConsumption } from "../../utils/index.js"
+import { makeIdForHumanConsumption } from "../../utils/index.ts"
 import * as _ from "lodash-es"
 
 export interface ConnectedScatterLegendManager {

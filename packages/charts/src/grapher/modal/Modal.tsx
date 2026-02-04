@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Bounds, bind } from "../../utils/index.js"
+import { Bounds, bind } from "../../utils/index.ts"
 import {
     isElementInteractive,
     isTargetOutsideElement,

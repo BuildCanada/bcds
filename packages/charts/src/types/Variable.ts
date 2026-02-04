@@ -1,6 +1,6 @@
-import { Origin } from "./Origin.js"
-import { Source } from "./Source.js"
-import { VariableDisplayConfigInterface } from "./VariableDisplayConfigInterface.js"
+import { Origin } from "./Origin.ts"
+import { Source } from "./Source.ts"
+import { VariableDisplayConfigInterface } from "./VariableDisplayConfigInterface.ts"
 
 export interface VariableWithSource {
     id: number

@@ -1,7 +1,7 @@
 import { ChartSeries } from "../chart/ChartInterface"
 import { ChartManager } from "../chart/ChartManager"
-import { GrapherChartType } from "../../types/index.js"
-import { Bounds } from "../../utils/index.js"
+import { GrapherChartType } from "../../types/index.ts"
+import { Bounds } from "../../utils/index.ts"
 
 export interface FacetChartManager extends ChartManager {
     canSelectMultipleEntities?: boolean

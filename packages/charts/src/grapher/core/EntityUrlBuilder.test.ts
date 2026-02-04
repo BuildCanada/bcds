@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { Url } from "../../utils/index.js"
+import { Url } from "../../utils/index.ts"
 import {
     ENTITY_V2_DELIMITER,
     getSelectedEntityNamesParam,

@@ -12,7 +12,7 @@ import {
     getRegionByName,
     IncomeGroup,
     Region,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import * as R from "remeda"
 
 export class MapSelectionArray extends SelectionArray {

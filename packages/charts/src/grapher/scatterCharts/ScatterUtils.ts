@@ -5,7 +5,7 @@ import {
     ColumnSlug,
     PointVector,
     ValueRange,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     SCATTER_LABEL_FONT_SIZE_FACTOR_WHEN_HIDDEN_LINES,
     SCATTER_LINE_DEFAULT_WIDTH,
@@ -16,9 +16,9 @@ import {
     ScatterRenderPoint,
     ScatterRenderSeries,
 } from "./ScatterPlotChartConstants"
-import { BASE_FONT_SIZE } from "../core/GrapherConstants.js"
+import { BASE_FONT_SIZE } from "../core/GrapherConstants.ts"
 import { ScatterPlotChartState } from "./ScatterPlotChartState"
-import { ChartsTable } from "../../core-table/index.js"
+import { ChartsTable } from "../../core-table/index.ts"
 
 export const labelPriority = (label: ScatterLabel): number => {
     let priority = label.fontSize

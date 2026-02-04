@@ -5,7 +5,7 @@ import {
     defaultIfErrorValue,
     isNotErrorValue,
     ChartsTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { ChartState } from "../chart/ChartInterface"
 import { ColorScale, ColorScaleManager } from "../color/ColorScale"
 import {
@@ -29,12 +29,12 @@ import {
     ColorScaleConfigInterface,
     SeriesName,
     ValueRange,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     domainExtent,
     intersection,
     lowerCaseFirstLetterUnlessAbbreviation,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { ColorScaleConfig } from "../color/ColorScaleConfig"
 import { NO_DATA_GRAY } from "../color/ColorConstants"
 import { AxisConfig } from "../axis/AxisConfig"
@@ -42,7 +42,7 @@ import { BASE_FONT_SIZE } from "../core/GrapherConstants"
 import { SelectionArray } from "../selection/SelectionArray"
 import { computeSizeDomain } from "./ScatterUtils"
 import { FocusArray } from "../focus/FocusArray"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.ts"
 
 export class ScatterPlotChartState implements ChartState, ColorScaleManager {
     manager: ScatterPlotManager

@@ -3,15 +3,15 @@ import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { ChartInterface } from "../chart/ChartInterface"
-import { StackedBarChartState } from "./StackedBarChartState.js"
-import { type StackedBarChartProps } from "./StackedBarChart.js"
+import { StackedBarChartState } from "./StackedBarChartState.ts"
+import { type StackedBarChartProps } from "./StackedBarChart.tsx"
 import { ChartManager } from "../chart/ChartManager"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
 } from "../core/GrapherConstants"
-import { Bounds, excludeUndefined } from "../../utils/index.js"
+import { Bounds, excludeUndefined } from "../../utils/index.ts"
 import { AxisConfig, AxisManager } from "../axis/AxisConfig"
 import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
 import {

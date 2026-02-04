@@ -3,7 +3,7 @@ import Markdown, {
     type Options as MarkdownOptions,
     type Components as MarkdownComponents,
 } from "react-markdown"
-import { remarkPlainLinks } from "./markdown/remarkPlainLinks.js"
+import { remarkPlainLinks } from "./markdown/remarkPlainLinks.ts"
 import { visit } from "unist-util-visit"
 import type { Plugin } from "unified"
 import type { Root } from "hast"

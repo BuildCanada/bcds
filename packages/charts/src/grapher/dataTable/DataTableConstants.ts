@@ -1,4 +1,4 @@
-import { CoreColumn, ChartsTable } from "../../core-table/index.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.ts"
 import {
     ColumnSlug,
     EntityName,
@@ -6,7 +6,7 @@ import {
     VariableRow,
     SortOrder,
     Time,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     EntityNamesByRegionType,
     EntityRegionType,

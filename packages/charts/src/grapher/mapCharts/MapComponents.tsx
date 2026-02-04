@@ -1,5 +1,5 @@
 import React from "react"
-import { makeIdForHumanConsumption } from "../../utils/index.js"
+import { makeIdForHumanConsumption } from "../../utils/index.ts"
 import {
     BLUR_FILL_OPACITY,
     BLUR_STROKE_OPACITY,
@@ -19,7 +19,7 @@ import { isMapRenderFeature } from "./MapHelpers"
 import { getExternalMarkerEndPosition } from "./MapAnnotations"
 import { Patterns } from "../core/GrapherConstants"
 import { calculateLightnessScore, isDarkColor } from "../color/ColorUtils"
-import { Halo } from "../../components/index.js"
+import { Halo } from "../../components/index.ts"
 import { InteractionState } from "../interaction/InteractionState"
 
 export function BackgroundCountry<Feature extends RenderFeature>({

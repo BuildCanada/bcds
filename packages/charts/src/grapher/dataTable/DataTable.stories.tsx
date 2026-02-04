@@ -7,7 +7,7 @@ import {
     GrapherWithAggregates,
     GrapherWithMultipleVariablesAndMultipleYears,
 } from "./DataTable.sample"
-import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index.js"
+import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index.ts"
 
 const meta: Meta<typeof Grapher> = {
     title: "Charts/DataTable",

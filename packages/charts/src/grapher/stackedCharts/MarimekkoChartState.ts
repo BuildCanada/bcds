@@ -12,7 +12,7 @@ import {
     SimpleChartSeries,
     SimplePoint,
 } from "./MarimekkoChartConstants"
-import { CoreColumn, ChartsTable } from "../../core-table/index.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.ts"
 import {
     autoDetectYColumnSlugs,
     getShortNameForEntity,
@@ -29,16 +29,16 @@ import {
     SortBy,
     SortOrder,
     ScaleType,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { NO_DATA_GRAY } from "../color/ColorConstants"
 import { StackedPoint, StackedSeries } from "./StackedConstants"
 import { ColorScheme } from "../color/ColorScheme"
 import { ColorSchemes } from "../color/ColorSchemes"
-import { excludeUndefined } from "../../utils/index.js"
+import { excludeUndefined } from "../../utils/index.ts"
 import { SelectionArray } from "../selection/SelectionArray"
 import { FocusArray } from "../focus/FocusArray"
-import { AxisConfig } from "../axis/AxisConfig.js"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { AxisConfig } from "../axis/AxisConfig.ts"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.ts"
 
 export class MarimekkoChartState implements ChartState, ColorScaleManager {
     manager: MarimekkoChartManager

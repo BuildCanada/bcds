@@ -13,12 +13,12 @@ import {
     DetailsMarker,
     Color,
     GrapherVariant,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { TooltipManager } from "../tooltip/TooltipProps"
-import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.ts"
 
 import { SelectionArray } from "../selection/SelectionArray"
-import { ColumnSlug, SortConfig, TimeBound } from "../../utils/index.js"
+import { ColumnSlug, SortConfig, TimeBound } from "../../utils/index.ts"
 import { ColorScaleBin } from "../color/ColorScaleBin"
 import { ColorScale } from "../color/ColorScale"
 import { FocusArray } from "../focus/FocusArray"

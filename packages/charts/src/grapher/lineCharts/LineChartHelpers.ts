@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { ChartsTable } from "../../core-table/index.js"
+import { ChartsTable } from "../../core-table/index.ts"
 import {
     AxisAlign,
     AxisConfigInterface,
@@ -9,7 +9,7 @@ import {
     ScaleType,
     SeriesName,
     SeriesStrategy,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     LineChartSeries,
     PlacedLineChartSeries,

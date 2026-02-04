@@ -8,11 +8,11 @@ import {
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
     ChartsTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { DiscreteBarChartManager } from "./DiscreteBarChartConstants"
-import { ColorSchemeName, SeriesStrategy } from "../../types/index.js"
+import { ColorSchemeName, SeriesStrategy } from "../../types/index.ts"
 import { SelectionArray } from "../selection/SelectionArray"
-import { SortBy, SortOrder } from "../../utils/index.js"
+import { SortBy, SortOrder } from "../../utils/index.ts"
 import { DistinctColorScheme } from "../color/CustomSchemes"
 import { DiscreteBarChartState } from "./DiscreteBarChartState"
 

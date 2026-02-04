@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { FontFamily } from "../../utils/index.js"
+import { FontFamily } from "../../utils/index.ts"
 import {
     IRText,
     MarkdownTextWrap,
@@ -11,7 +11,7 @@ import {
     IRBold,
     IRLink,
     IRLineBreak,
-} from "./MarkdownTextWrap.js"
+} from "./MarkdownTextWrap.tsx"
 
 describe("MarkdownTextWrap", () => {
     it("heavier fontWeight should be wider than plain IRText", () => {

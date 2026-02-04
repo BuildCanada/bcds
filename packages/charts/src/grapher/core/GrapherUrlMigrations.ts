@@ -3,7 +3,7 @@ import {
     Url,
     UrlMigration,
     performUrlMigrations,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { migrateSelectedEntityNamesParam } from "./EntityUrlBuilder"
 
 export const grapherUrlMigrations: UrlMigration[] = [

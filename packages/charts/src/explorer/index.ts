@@ -1,6 +1,6 @@
-export { Explorer, type ExplorerProps } from "./Explorer.js"
+export { Explorer, type ExplorerProps } from "./Explorer.tsx"
 
-export { buildExplorerProps } from "./ExplorerUtils.js"
+export { buildExplorerProps } from "./ExplorerUtils.ts"
 
 export {
     DefaultNewExplorerSlug,
@@ -29,7 +29,7 @@ export {
     type ExplorerStandardQueryParams,
     UNSAVED_EXPLORER_DRAFT,
     UNSAVED_EXPLORER_PREVIEW_QUERYPARAMS,
-} from "./ExplorerConstants.js"
+} from "./ExplorerConstants.ts"
 
 export {
     type TableDef,
@@ -37,33 +37,33 @@ export {
     EXPLORER_FILE_SUFFIX,
     makeFullPath,
     type ExplorerGrapherInterface,
-} from "./ExplorerProgram.js"
+} from "./ExplorerProgram.ts"
 
-export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.js"
+export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.ts"
 
 export {
     explorerUrlMigrationsById,
     migrateExplorerUrl,
-} from "./urlMigrations/ExplorerUrlMigrations.js"
+} from "./urlMigrations/ExplorerUrlMigrations.ts"
 
-export { isEmpty } from "./gridLang/GrammarUtils.js"
+export { isEmpty } from "./gridLang/GrammarUtils.ts"
 
-export { ColumnGrammar } from "./ColumnGrammar.js"
+export { ColumnGrammar } from "./ColumnGrammar.ts"
 
-export { GridCell } from "./gridLang/GridCell.js"
+export { GridCell } from "./gridLang/GridCell.ts"
 
-export { GridProgram } from "./gridLang/GridProgram.js"
+export { GridProgram } from "./gridLang/GridProgram.ts"
 
-export { ExplorerGrammar } from "./ExplorerGrammar.js"
+export { ExplorerGrammar } from "./ExplorerGrammar.ts"
 
-export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations.js"
+export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations.ts"
 
-export { DecisionMatrix } from "./ExplorerDecisionMatrix.js"
+export { DecisionMatrix } from "./ExplorerDecisionMatrix.ts"
 
 export {
     GridBoolean,
     type CellPosition,
     type ParsedCell,
-} from "./gridLang/GridLangConstants.js"
+} from "./gridLang/GridLangConstants.ts"
 
-export { GrapherGrammar } from "./GrapherGrammar.js"
+export { GrapherGrammar } from "./GrapherGrammar.ts"

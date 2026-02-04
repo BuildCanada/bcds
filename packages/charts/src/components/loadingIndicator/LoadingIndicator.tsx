@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Bounds } from "../../utils/index.js"
+import { Bounds } from "../../utils/index.ts"
 
 const DEFAULT_COLOR = "#333"
 

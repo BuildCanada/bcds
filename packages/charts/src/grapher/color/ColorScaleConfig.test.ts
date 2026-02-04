@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { ColorSchemeName } from "../../types/index.js"
+import { ColorSchemeName } from "../../types/index.ts"
 import { NO_DATA_LABEL } from "./ColorScale"
 import { ColorScaleConfig } from "./ColorScaleConfig"
 

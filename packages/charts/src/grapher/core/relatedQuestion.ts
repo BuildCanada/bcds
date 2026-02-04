@@ -1,4 +1,4 @@
-import { RelatedQuestionsConfig } from "../../types/index.js"
+import { RelatedQuestionsConfig } from "../../types/index.ts"
 
 export const getErrorMessageRelatedQuestionUrl = (
     question: RelatedQuestionsConfig

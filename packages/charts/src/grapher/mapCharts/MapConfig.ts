@@ -5,7 +5,7 @@ import {
     MapConfigInterface,
     TimeBound,
     EntityName,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { ColorScaleConfig } from "../color/ColorScaleConfig"
 import {
     ColumnSlug,
@@ -20,7 +20,7 @@ import {
     NoUndefinedValues,
     ToleranceStrategy,
     minTimeBoundFromJSONOrNegativeInfinity,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { MapSelectionArray } from "../selection/MapSelectionArray"
 import { DEFAULT_GLOBE_ROTATION, DEFAULT_GLOBE_ZOOM } from "./MapChartConstants"
 import * as R from "remeda"

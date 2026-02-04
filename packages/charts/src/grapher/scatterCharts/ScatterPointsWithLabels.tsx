@@ -3,7 +3,7 @@ import * as R from "remeda"
 import { type BaseType, type Selection, select } from "d3-selection"
 import { ScaleLinear } from "d3-scale"
 import { NoDataModal } from "../noDataModal/NoDataModal"
-import { SortOrder } from "../../types/index.js"
+import { SortOrder } from "../../types/index.ts"
 import {
     Bounds,
     PointVector,
@@ -13,11 +13,11 @@ import {
     intersection,
     guid,
     makeIdForHumanConsumption,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import * as React from "react"
-import { Halo } from "../../components/index.js"
+import { Halo } from "../../components/index.ts"
 import { MultiColorPolyline } from "./MultiColorPolyline"
 import {
     ScatterPointsWithLabelsProps,

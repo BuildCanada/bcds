@@ -23,7 +23,7 @@ import {
     EntityName,
     CoreColumnDef,
     ChartsTableSlugs,
-} from "../../../utils/index.js"
+} from "../../../utils/index.ts"
 import classnames from "classnames"
 import { scaleLinear, ScaleLinear } from "d3-scale"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -35,7 +35,7 @@ import {
     ColumnTypeMap,
     CoreColumn,
     ChartsTable,
-} from "../../../core-table/index.js"
+} from "../../../core-table/index.ts"
 import { EntityPickerManager } from "./EntityPickerConstants"
 import { SelectionArray } from "../../selection/SelectionArray"
 

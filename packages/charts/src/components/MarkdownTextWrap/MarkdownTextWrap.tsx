@@ -7,13 +7,13 @@ import {
     imemo,
     Bounds,
     FontFamily,
-} from "../../utils/index.js"
-import { DetailsMarker } from "../../types/index.js"
-import { TextWrap } from "../TextWrap/TextWrap.js"
+} from "../../utils/index.ts"
+import { DetailsMarker } from "../../types/index.ts"
+import { TextWrap } from "../TextWrap/TextWrap.tsx"
 import { fromMarkdown } from "mdast-util-from-markdown"
 import type { Content, Root } from "mdast"
 import { match } from "ts-pattern"
-import { urlRegex } from "../markdown/remarkPlainLinks.js"
+import { urlRegex } from "../markdown/remarkPlainLinks.ts"
 import * as R from "remeda"
 
 const SUPERSCRIPT_NUMERALS = {

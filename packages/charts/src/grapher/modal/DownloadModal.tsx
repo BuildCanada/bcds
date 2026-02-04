@@ -13,14 +13,14 @@ import {
     getPhraseForProcessingLevel,
     triggerDownloadFromBlob,
     triggerDownloadFromUrl,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     Checkbox,
     CodeSnippet,
     OverlayHeader,
     RadioButton,
     LoadingIndicator,
-} from "../../components/index.js"
+} from "../../components/index.ts"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faCircleExclamation,
@@ -34,19 +34,19 @@ import {
     Origin,
     QueryParams,
     type GrapherImageDownloadEvent,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     BlankChartsTable,
     ChartsTable,
     CoreColumn,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { Modal } from "./Modal"
-import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer.js"
-import { TabItem, Tabs } from "../tabs/Tabs.js"
+import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer.tsx"
+import { TabItem, Tabs } from "../tabs/Tabs.tsx"
 import {
     DownloadIconFullDataset,
     DownloadIconSelected,
-} from "./DownloadIcons.js"
+} from "./DownloadIcons.tsx"
 import { match } from "ts-pattern"
 import * as R from "remeda"
 import {

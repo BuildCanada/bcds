@@ -3,7 +3,7 @@
 import { GrapherState } from "../core/GrapherState"
 import { computed, makeObservable } from "mobx"
 import { ChartDimension } from "./ChartDimension"
-import { DimensionProperty } from "../../utils/index.js"
+import { DimensionProperty } from "../../utils/index.ts"
 
 export class DimensionSlot {
     private grapherState: GrapherState

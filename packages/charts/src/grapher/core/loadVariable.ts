@@ -3,8 +3,8 @@ import {
     AssetMap,
     MultipleVariableDataDimensionsMap,
     VariableDataMetadataDimensions,
-} from "../../types/index.js"
-import { fetchWithRetry, readFromAssetMap } from "../../utils/index.js"
+} from "../../types/index.ts"
+import { fetchWithRetry, readFromAssetMap } from "../../utils/index.ts"
 import urljoin from "url-join"
 
 export const getVariableDataRoute = (

@@ -1,13 +1,13 @@
 import { observer } from "mobx-react"
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
-import { Bounds, Url } from "../../utils/index.js"
+import { Bounds, Url } from "../../utils/index.ts"
 import { Modal } from "./Modal"
 import {
     Checkbox,
     CodeSnippet,
     OverlayHeader,
-} from "../../components/index.js"
+} from "../../components/index.ts"
 import { DEFAULT_GRAPHER_BOUNDS, GrapherModal } from "../core/GrapherConstants"
 
 export interface EmbedModalManager {

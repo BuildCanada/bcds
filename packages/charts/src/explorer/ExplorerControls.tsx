@@ -1,12 +1,12 @@
 import { Component } from "react"
-import { Dropdown } from "../grapher/index.js"
-import { bind } from "../utils/index.js"
+import { Dropdown } from "../grapher/index.ts"
+import { bind } from "../utils/index.ts"
 import {
     ExplorerControlType,
     ExplorerChoiceOption,
     ExplorerChoice,
-} from "./ExplorerConstants.js"
-import { GridBoolean } from "./gridLang/GridLangConstants.js"
+} from "./ExplorerConstants.ts"
+import { GridBoolean } from "./gridLang/GridLangConstants.ts"
 import classNames from "classnames"
 import * as R from "remeda"
 

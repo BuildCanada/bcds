@@ -3,7 +3,7 @@ import {
     Color,
     ComparisonLineConfig,
     VerticalComparisonLineConfig,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { VerticalComparisonLine } from "./VerticalComparisonLine"
 import { CustomComparisonLine } from "./CustomComparisonLine"
 import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers"

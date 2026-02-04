@@ -12,7 +12,7 @@ import {
     GRAPHER_TAB_NAMES,
     ChartDimensionInterface,
     GRAPHER_TAB_QUERY_PARAMS,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import {
     TimeBoundValue,
     TimeBound,
@@ -22,20 +22,20 @@ import {
     Url,
     DimensionProperty,
     Bounds,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     SampleColumnSlugs,
     SynthesizeGDPTable,
     ChartsTable,
     ErrorValueTypes,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations"
 import { setSelectedEntityNamesParam } from "./EntityUrlBuilder"
 import { MapConfig } from "../mapCharts/MapConfig"
 import { SelectionArray } from "../selection/SelectionArray"
-import { latestGrapherConfigSchema } from "./GrapherConstants.js"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.js"
-import { GrapherProgrammaticInterface } from "./Grapher.js"
+import { latestGrapherConfigSchema } from "./GrapherConstants.ts"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.ts"
+import { GrapherProgrammaticInterface } from "./Grapher.tsx"
 import { GrapherState } from "./GrapherState"
 
 it("regression fix: container options are not serialized", () => {

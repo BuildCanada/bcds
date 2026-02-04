@@ -1,7 +1,7 @@
 import * as React from "react"
 import { observer } from "mobx-react"
 import { computed, action, makeObservable } from "mobx"
-import { Bounds } from "../../utils/index.js"
+import { Bounds } from "../../utils/index.ts"
 import { Modal } from "./Modal"
 import {
     EntitySelector,

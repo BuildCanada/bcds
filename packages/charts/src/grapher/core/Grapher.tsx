@@ -20,8 +20,8 @@ import {
     strToQueryParams,
     queryParamsToStr,
     setWindowQueryStr,
-} from "../../utils/index.js"
-import { BodyPortal } from "../../components/index.js"
+} from "../../utils/index.ts"
+import { BodyPortal } from "../../components/index.ts"
 import {
     ScaleType,
     AnnotationFieldsInTitle,
@@ -34,8 +34,8 @@ import {
     AdditionalGrapherDataFetchFn,
     GrapherVariant,
     Time,
-} from "../../types/index.js"
-import { ChartsTable } from "../../core-table/index.js"
+} from "../../types/index.ts"
+import { ChartsTable } from "../../core-table/index.ts"
 import {
     GRAPHER_LOADED_EVENT_NAME,
     GrapherModal,
@@ -60,9 +60,9 @@ import { SidePanel } from "../sidePanel/SidePanel"
 import { EntitySelector } from "../entitySelector/EntitySelector"
 import { SlideInDrawer } from "../slideInDrawer/SlideInDrawer"
 import { FocusArray } from "../focus/FocusArray"
-import { Chart } from "../chart/Chart.js"
+import { Chart } from "../chart/Chart.tsx"
 import { flushSync } from "react-dom"
-import { GrapherState } from "./GrapherState.js"
+import { GrapherState } from "./GrapherState.tsx"
 
 declare global {
     interface Window {

@@ -4,7 +4,7 @@ import {
     SampleColumnSlugs,
     SynthesizeGDPTable,
     SynthesizeProjectedPopulationTable,
-} from "../../core-table/index.js"
+} from "../../core-table/index.ts"
 import { MapChartManager } from "./MapChartConstants"
 import { MapChartState } from "./MapChartState"
 

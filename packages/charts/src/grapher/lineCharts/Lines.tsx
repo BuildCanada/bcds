@@ -5,7 +5,7 @@ import {
     PointVector,
     makeIdForHumanConsumption,
     pointsToPath,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants"

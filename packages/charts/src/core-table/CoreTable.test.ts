@@ -1,8 +1,8 @@
 import { expect, it, describe } from "vitest"
 
-import { CoreTable } from "./CoreTable.js"
-import { TransformType, ColumnTypeNames } from "../types/index.js"
-import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues.js"
+import { CoreTable } from "./CoreTable.ts"
+import { TransformType, ColumnTypeNames } from "../types/index.ts"
+import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues.ts"
 
 const sampleCsv = `country,population
 iceland,1

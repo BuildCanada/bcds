@@ -1,13 +1,13 @@
 import { expect, it, describe } from "vitest"
 
-import { TimeBoundValue } from "../types/index.js"
+import { TimeBoundValue } from "../types/index.ts"
 import {
     minTimeBoundFromJSONOrNegativeInfinity,
     maxTimeBoundFromJSONOrPositiveInfinity,
     minTimeToJSON,
     maxTimeToJSON,
     getTimeDomainFromQueryString,
-} from "./TimeBounds.js"
+} from "./TimeBounds.ts"
 
 describe(minTimeBoundFromJSONOrNegativeInfinity, () => {
     it("handles unbounded left", () => {

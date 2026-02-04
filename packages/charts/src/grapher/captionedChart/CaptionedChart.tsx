@@ -6,8 +6,8 @@ import {
     Bounds,
     exposeInstanceOnWindow,
     makeIdForHumanConsumption,
-} from "../../utils/index.js"
-import { MarkdownTextWrap, LoadingIndicator } from "../../components/index.js"
+} from "../../utils/index.ts"
+import { MarkdownTextWrap, LoadingIndicator } from "../../components/index.ts"
 import { Header, StaticHeader } from "../header/Header"
 import { Footer, StaticFooter } from "../footer/Footer"
 import {
@@ -29,7 +29,7 @@ import {
     Color,
     GrapherTabName,
     GrapherChartType,
-} from "../../types/index.js"
+} from "../../types/index.ts"
 import { DataTableManager } from "../dataTable/DataTableConstants"
 import {
     TimelineComponent,
@@ -40,7 +40,7 @@ import {
     ControlsRow,
     ControlsRowManager,
 } from "../controls/controlsRow/ControlsRow"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.js"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.ts"
 import { ChartAreaContent } from "../chart/ChartAreaContent"
 import { getChartSvgProps } from "../chart/ChartUtils"
 import { StaticChartWrapper } from "../chart/StaticChartWrapper"

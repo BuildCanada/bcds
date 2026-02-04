@@ -6,16 +6,16 @@ import {
     GRAPHER_MAP_TYPE,
     GrapherChartOrMapType,
     makeIdForHumanConsumption,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import { DataTable } from "../dataTable/DataTable"
 import { CaptionedChartManager } from "../captionedChart/CaptionedChart"
-import { LoadingIndicator } from "../../components/index.js"
+import { LoadingIndicator } from "../../components/index.ts"
 import { FacetChart } from "../facet/FacetChart"
 import { getChartSvgProps, NoDataPattern } from "./ChartUtils"
 import { ChartComponent, makeChartState } from "./ChartTypeMap"
 import { GRAPHER_CHART_AREA_CLASS } from "../core/GrapherConstants"
 import { ChartState } from "./ChartInterface"
-import { FacetMap } from "../facet/FacetMap.js"
+import { FacetMap } from "../facet/FacetMap.tsx"
 
 interface ChartAreaContentProps {
     manager: CaptionedChartManager

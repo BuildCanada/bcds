@@ -1,7 +1,7 @@
-import { GdocType } from "../gdocTypes/Gdoc.js"
-import { WP_PostType } from "../wordpressTypes/WordpressTypes.js"
-import { RelatedChart } from "../grapherTypes/GrapherTypes.js"
-import { TocHeading } from "./Toc.js"
+import { GdocType } from "../gdocTypes/Gdoc.ts"
+import { WP_PostType } from "../wordpressTypes/WordpressTypes.ts"
+import { RelatedChart } from "../grapherTypes/GrapherTypes.ts"
+import { TocHeading } from "./Toc.ts"
 
 export interface FormattedPost extends FullPost {
     stickyNavLinks?: { text: string; target: string }[]

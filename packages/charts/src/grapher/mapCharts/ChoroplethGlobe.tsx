@@ -24,7 +24,7 @@ import {
     MapRegionName,
     excludeUndefined,
     EntityName,
-} from "../../utils/index.js"
+} from "../../utils/index.ts"
 import {
     Annotation,
     ANNOTATION_COLOR_DARK,

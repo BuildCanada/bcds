@@ -1,7 +1,7 @@
 import * as React from "react"
 import { action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType } from "../../../types/index.js"
+import { ScaleType } from "../../../types/index.ts"
 import { AxisConfig } from "../../axis/AxisConfig"
 import classnames from "classnames"
 

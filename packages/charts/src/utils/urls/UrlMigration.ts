@@ -1,4 +1,4 @@
-import { Url } from "./Url.js"
+import { Url } from "./Url.ts"
 
 export type UrlMigration = (url: Url) => Url
 
