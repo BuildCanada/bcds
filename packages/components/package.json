@@ -12,7 +12,8 @@
       "import": "./dist/index.js"
     },
     "./styles.css": "./dist/styles/main.scss",
-    "./styles/*": "./dist/styles/*"
+    "./styles/*": "./dist/styles/*",
+    "./src/*": "./src/*"
   },
   "files": [
     "dist"
