@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { joinFragments, splitIntoFragments } from "./TextWrapUtils"
+import { joinFragments, splitIntoFragments } from "./TextWrapUtils.js"
 
 it("splits text correctly into fragments", () => {
     expect(splitIntoFragments("")).toEqual([])

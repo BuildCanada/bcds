@@ -1,21 +1,21 @@
 import * as _ from "lodash-es"
 import * as React from "react"
 import classnames from "classnames"
-import { NO_DATA_LABEL } from "../color/ColorScale"
+import { NO_DATA_LABEL } from "../color/ColorScale.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInfoCircle, faS } from "@fortawesome/free-solid-svg-icons"
-import { formatInlineList, GrapherTooltipAnchor } from "../../utils/index"
-import { GrapherTrendArrow } from "../../components/index"
+import { formatInlineList, GrapherTooltipAnchor } from "../../utils/index.js"
+import { GrapherTrendArrow } from "../../components/index.js"
 import {
     TooltipValueProps,
     TooltipValueRangeProps,
     TooltipContext,
     TooltipTableProps,
     TooltipVariableProps,
-} from "./TooltipProps"
-import { makeAxisLabel } from "../chart/ChartUtils"
+} from "./TooltipProps.js"
+import { makeAxisLabel } from "../chart/ChartUtils.js"
 import * as R from "remeda"
-import { CoreColumn } from "../../core-table/index"
+import { CoreColumn } from "../../core-table/index.js"
 
 type TooltipValue = number | string | undefined
 

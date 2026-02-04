@@ -1,7 +1,7 @@
 import { expect, it } from "vitest"
 
-import { AxisConfig } from "../axis/AxisConfig"
-import { ScaleType } from "../../types/index"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { ScaleType } from "../../types/index.js"
 
 it("serializes max to 'auto' if -Infinity", () => {
     const axis = new AxisConfig({ min: 1, max: -Infinity })

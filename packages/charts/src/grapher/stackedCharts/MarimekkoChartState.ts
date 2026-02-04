@@ -1,8 +1,8 @@
 import * as _ from "lodash-es"
 import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
-import { ChartState } from "../chart/ChartInterface"
-import { ColorScale, ColorScaleManager } from "../color/ColorScale"
+import { ChartState } from "../chart/ChartInterface.js"
+import { ColorScale, ColorScaleManager } from "../color/ColorScale.js"
 import {
     Bar,
     BarShape,
@@ -11,14 +11,14 @@ import {
     MarimekkoChartManager,
     SimpleChartSeries,
     SimplePoint,
-} from "./MarimekkoChartConstants"
-import { CoreColumn, ChartsTable } from "../../core-table/index"
+} from "./MarimekkoChartConstants.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.js"
 import {
     autoDetectYColumnSlugs,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
+} from "../chart/ChartUtils.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
 import {
     ChartErrorInfo,
     ColorSchemeName,
@@ -29,16 +29,16 @@ import {
     SortBy,
     SortOrder,
     ScaleType,
-} from "../../types/index"
-import { NO_DATA_GRAY } from "../color/ColorConstants"
-import { StackedPoint, StackedSeries } from "./StackedConstants"
-import { ColorScheme } from "../color/ColorScheme"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { excludeUndefined } from "../../utils/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { FocusArray } from "../focus/FocusArray"
-import { AxisConfig } from "../axis/AxisConfig"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../../types/index.js"
+import { NO_DATA_GRAY } from "../color/ColorConstants.js"
+import { StackedPoint, StackedSeries } from "./StackedConstants.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { excludeUndefined } from "../../utils/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 
 export class MarimekkoChartState implements ChartState, ColorScaleManager {
     manager: MarimekkoChartManager

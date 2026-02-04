@@ -1,9 +1,9 @@
 import { expect, it, describe } from "vitest"
 
-import { ColumnTypeNames } from "../types/index"
-import { ColumnTypeMap } from "./CoreTableColumns"
-import { ErrorValueTypes } from "./ErrorValues"
-import { ChartsTable } from "./ChartsTable"
+import { ColumnTypeNames } from "../types/index.js"
+import { ColumnTypeMap } from "./CoreTableColumns.js"
+import { ErrorValueTypes } from "./ErrorValues.js"
+import { ChartsTable } from "./ChartsTable.js"
 
 describe(ColumnTypeNames.Quarter, () => {
     const col = new ColumnTypeMap.Numeric(new ChartsTable(), { slug: "test" })

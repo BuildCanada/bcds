@@ -1,4 +1,4 @@
-import { GrapherInterface } from "../types/index"
+import { GrapherInterface } from "../types/index.js"
 import * as _ from "lodash-es"
 import {
     excludeUndefined,
@@ -6,7 +6,7 @@ import {
     omitEmptyObjectsRecursive,
     traverseObjects,
     merge,
-} from "./Util"
+} from "./Util.js"
 
 const REQUIRED_KEYS = ["$schema", "dimensions"]
 

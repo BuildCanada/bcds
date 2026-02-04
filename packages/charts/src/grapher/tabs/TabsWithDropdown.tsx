@@ -10,7 +10,7 @@ import {
 } from "react-aria-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
-import { TabItem, Tabs } from "./Tabs"
+import { TabItem, Tabs } from "./Tabs.js"
 
 export const TabsWithDropdown = <TabKey extends string = string>({
     items,

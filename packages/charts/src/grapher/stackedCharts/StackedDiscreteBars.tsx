@@ -11,26 +11,26 @@ import {
     dyFromAlign,
     exposeInstanceOnWindow,
     bind,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { action, computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType, SeriesName, VerticalAlign } from "../../types/index"
+import { ScaleType, SeriesName, VerticalAlign } from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
     GRAPHER_OPACITY_MUTE,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import {
     HorizontalAxisComponent,
     HorizontalAxisGridLines,
     HorizontalAxisZeroLine,
-} from "../axis/AxisViews"
-import { AxisConfig } from "../axis/AxisConfig"
-import { ChartInterface } from "../chart/ChartInterface"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+} from "../axis/AxisViews.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipState,
@@ -38,7 +38,7 @@ import {
     makeTooltipRoundingNotice,
     makeTooltipToleranceNotice,
     toTooltipTableColumns,
-} from "../tooltip/Tooltip"
+} from "../tooltip/Tooltip.js"
 import {
     Bar,
     BAR_OPACITY,
@@ -46,13 +46,13 @@ import {
     SizedItem,
     StackedPoint,
     StackedSeries,
-} from "./StackedConstants"
-import { isDarkColor } from "../color/ColorUtils"
-import { HorizontalAxis } from "../axis/Axis"
+} from "./StackedConstants.js"
+import { isDarkColor } from "../color/ColorUtils.js"
+import { HorizontalAxis } from "../axis/Axis.js"
 import { HashMap, NodeGroup } from "react-move"
 import { easeQuadOut } from "d3-ease"
-import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
-import { enrichSeriesWithLabels } from "../barCharts/DiscreteBarChartHelpers"
+import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState.js"
+import { enrichSeriesWithLabels } from "../barCharts/DiscreteBarChartHelpers.js"
 
 const BAR_SPACING_FACTOR = 0.35
 

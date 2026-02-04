@@ -4,9 +4,9 @@ import {
     SampleColumnSlugs,
     SynthesizeGDPTable,
     SynthesizeProjectedPopulationTable,
-} from "../../core-table/index"
-import { MapChartManager } from "./MapChartConstants"
-import { MapChartState } from "./MapChartState"
+} from "../../core-table/index.js"
+import { MapChartManager } from "./MapChartConstants.js"
+import { MapChartState } from "./MapChartState.js"
 
 const table = SynthesizeGDPTable({
     timeRange: [2000, 2001],

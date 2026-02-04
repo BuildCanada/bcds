@@ -1,8 +1,8 @@
 import * as React from "react"
 import { action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType } from "../../../types/index"
-import { AxisConfig } from "../../axis/AxisConfig"
+import { ScaleType } from "../../../types/index.js"
+import { AxisConfig } from "../../axis/AxisConfig.js"
 import classnames from "classnames"
 
 interface AxisScaleToggleProps {

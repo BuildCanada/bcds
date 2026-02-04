@@ -1,9 +1,9 @@
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { FacetAxisDomain, FacetStrategy } from "../../../types/index"
-import { AxisConfig } from "../../axis/AxisConfig"
-import { LabeledSwitch } from "../../../components/index"
+import { FacetAxisDomain, FacetStrategy } from "../../../types/index.js"
+import { AxisConfig } from "../../axis/AxisConfig.js"
+import { LabeledSwitch } from "../../../components/index.js"
 
 export interface FacetYDomainToggleManager {
     facetStrategy?: FacetStrategy

@@ -7,14 +7,14 @@ import {
     dyFromAlign,
     makeIdForHumanConsumption,
     VerticalAlign,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     COMPARISON_LINE_STYLE,
     COMPARISON_LINE_LABEL_STYLE,
-} from "./ComparisonLineConstants"
-import { ComparisonLineProps } from "./ComparisonLine"
-import { VerticalComparisonLineConfig } from "../../types/index"
-import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers"
+} from "./ComparisonLineConstants.js"
+import { ComparisonLineProps } from "./ComparisonLine.js"
+import { VerticalComparisonLineConfig } from "../../types/index.js"
+import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers.js"
 
 @observer
 export class VerticalComparisonLine extends React.Component<

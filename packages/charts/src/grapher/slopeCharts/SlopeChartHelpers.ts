@@ -4,17 +4,17 @@ import {
     PointVector,
     ScaleType,
     SeriesName,
-} from "../../utils/index"
-import { VerticalAxis } from "../axis/Axis"
+} from "../../utils/index.js"
+import { VerticalAxis } from "../axis/Axis.js"
 import {
     PlacedSlopeChartSeries,
     RenderSlopeChartSeries,
     SlopeChartSeries,
-} from "./SlopeChartConstants"
+} from "./SlopeChartConstants.js"
 import {
     byHoverThenFocusState,
     getHoverStateForSeries,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 
 export function getYAxisConfigDefaults(
     config?: AxisConfigInterface

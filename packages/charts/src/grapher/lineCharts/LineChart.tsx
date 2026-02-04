@@ -11,31 +11,31 @@ import {
     Bounds,
     HorizontalAlign,
     isTouchDevice,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { select, type Selection, type BaseType } from "d3-selection"
 import { easeLinear } from "d3-ease"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { LineLegend } from "../lineLegend/LineLegend"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { LineLegend } from "../lineLegend/LineLegend.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipState,
     TooltipTable,
     makeTooltipRoundingNotice,
     toTooltipTableColumns,
-} from "../tooltip/Tooltip"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../tooltip/Tooltip.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import { extent } from "d3-array"
-import { SeriesName, VerticalAlign, Time } from "../../types/index"
+import { SeriesName, VerticalAlign, Time } from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_OPACITY_MUTE,
-} from "../core/GrapherConstants"
-import { ChartInterface } from "../chart/ChartInterface"
+} from "../core/GrapherConstants.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
 import {
     LineChartSeries,
     LineChartManager,
@@ -54,23 +54,23 @@ import {
     STATIC_SMALL_MARKER_RADIUS,
     DEFAULT_MARKER_RADIUS,
     LINE_CHART_CLASS_NAME,
-} from "./LineChartConstants"
-import { CoreColumn } from "../../core-table/index"
+} from "./LineChartConstants.js"
+import { CoreColumn } from "../../core-table/index.js"
 import {
     ClipPath,
     getHoverStateForSeries,
     getSeriesKey,
     isTargetOutsideElement,
     makeClipPath,
-} from "../chart/ChartUtils"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
-import { ColorScale } from "../color/ColorScale"
-import { GRAPHER_BACKGROUND_DEFAULT, GRAY_50 } from "../color/ColorConstants"
-import { darkenColorForLine } from "../color/ColorUtils"
+} from "../chart/ChartUtils.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
+import { ColorScale } from "../color/ColorScale.js"
+import { GRAPHER_BACKGROUND_DEFAULT, GRAY_50 } from "../color/ColorConstants.js"
+import { darkenColorForLine } from "../color/ColorUtils.js"
 import {
     HorizontalColorLegendManager,
     HorizontalNumericColorLegend,
-} from "../legend/HorizontalColorLegends"
+} from "../legend/HorizontalColorLegends.js"
 import {
     AnnotationsMap,
     getAnnotationsForSeries,
@@ -78,14 +78,14 @@ import {
     getYAxisConfigDefaults,
     toPlacedLineChartSeries,
     toRenderLineChartSeries,
-} from "./LineChartHelpers"
-import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
-import { Lines } from "./Lines"
-import { LineChartState } from "./LineChartState"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { InteractionState } from "../interaction/InteractionState"
-import { LegendStyleConfig } from "../legend/LegendInteractionState"
+} from "./LineChartHelpers.js"
+import { LineLabelSeries } from "../lineLegend/LineLegendTypes.js"
+import { Lines } from "./Lines.js"
+import { LineChartState } from "./LineChartState.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { InteractionState } from "../interaction/InteractionState.js"
+import { LegendStyleConfig } from "../legend/LegendInteractionState.js"
 
 export type LineChartProps = ChartComponentProps<LineChartState>
 

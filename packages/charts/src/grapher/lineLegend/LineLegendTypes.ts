@@ -1,7 +1,7 @@
-import { MarkdownTextWrap, TextWrap } from "../../components/index"
-import { Bounds } from "../../utils/index"
-import { ChartSeries } from "../chart/ChartInterface"
-import { InteractionState } from "../interaction/InteractionState"
+import { MarkdownTextWrap, TextWrap } from "../../components/index.js"
+import { Bounds } from "../../utils/index.js"
+import { ChartSeries } from "../chart/ChartInterface.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export interface LineLabelSeries extends ChartSeries {
     label: string

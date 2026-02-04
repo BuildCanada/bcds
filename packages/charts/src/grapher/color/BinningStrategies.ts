@@ -3,11 +3,11 @@ import {
     AutomaticBinningStrategy,
     MidpointMode,
     ResolvedBinningStrategy,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     firstOfNonEmptyArray,
     lastOfNonEmptyArray,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { quantile } from "d3"
 import { sortedUniq } from "lodash-es"
 import * as R from "remeda"
@@ -15,11 +15,11 @@ import { match, P } from "ts-pattern"
 import {
     isLogBinningStrategy,
     runLogBinningStrategy,
-} from "./BinningStrategyLogarithmic"
+} from "./BinningStrategyLogarithmic.js"
 import {
     isEqualSizeBinningStrategy,
     runEqualSizeBinningStrategy,
-} from "./BinningStrategyEqualSizeBins"
+} from "./BinningStrategyEqualSizeBins.js"
 
 /**
  * Strategies:

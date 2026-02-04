@@ -1,9 +1,9 @@
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { MapConfig } from "../mapCharts/MapConfig"
-import { GlobeController } from "../mapCharts/GlobeController"
-import { MapRegionName } from "../../types/index"
+import { MapConfig } from "../mapCharts/MapConfig.js"
+import { GlobeController } from "../mapCharts/GlobeController.js"
+import { MapRegionName } from "../../types/index.js"
 
 export interface MapZoomToSelectionButtonManager {
     mapConfig?: MapConfig

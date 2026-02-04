@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { FocusArray } from "./FocusArray"
+import { FocusArray } from "./FocusArray.js"
 
 const seriesNames = ["Europe", "USA", "China"]
 

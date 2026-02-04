@@ -8,59 +8,59 @@ import {
     makeIdForHumanConsumption,
     exposeInstanceOnWindow,
     SplitBoundsPadding,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { action, computed, makeObservable, observable } from "mobx"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_18,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import {
     ChartErrorInfo,
     GRAPHER_MAP_TYPE,
     GrapherInteractionEvent,
     MapRegionName,
     Time,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     calculateAspectRatio,
     getFacetGridPadding,
     getLabelPadding as getFacetLabelPadding,
-} from "./FacetChartUtils"
+} from "./FacetChartUtils.js"
 import {
     FacetMapManager,
     MapFacetSeries,
     FacetMapProps,
     PlacedMapFacetSeries,
-} from "./FacetMapConstants"
-import { ChartsTable } from "../../core-table/index"
+} from "./FacetMapConstants.js"
+import { ChartsTable } from "../../core-table/index.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
     HorizontalNumericColorLegend,
-} from "../legend/HorizontalColorLegends"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
-import { GRAPHER_DARK_TEXT, GRAY_30 } from "../color/ColorConstants"
+} from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
+import { GRAPHER_DARK_TEXT, GRAY_30 } from "../color/ColorConstants.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
-} from "../legend/LegendInteractionState"
+} from "../legend/LegendInteractionState.js"
 import {
     MAP_LEGEND_MAX_WIDTH_RATIO,
     MapChart,
     PADDING_BELOW_MAP_LEGEND,
     PADDING_BETWEEN_MAP_AND_LEGEND,
     PADDING_BETWEEN_MAP_LEGENDS,
-} from "../mapCharts/MapChart"
-import { ChartComponent, makeChartInstance } from "../chart/ChartTypeMap"
+} from "../mapCharts/MapChart.js"
+import { ChartComponent, makeChartInstance } from "../chart/ChartTypeMap.js"
 import {
     MAP_VIEWPORT_FACETED_WORLD,
     MAP_VIEWPORTS,
     MapChartManager,
     MapViewport,
-} from "../mapCharts/MapChartConstants"
-import { ChartState } from "../chart/ChartInterface"
-import { MapConfig } from "../mapCharts/MapConfig"
+} from "../mapCharts/MapChartConstants.js"
+import { ChartState } from "../chart/ChartInterface.js"
+import { MapConfig } from "../mapCharts/MapConfig.js"
 
 @observer
 export class FacetMap

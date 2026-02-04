@@ -1,15 +1,15 @@
-import { DimensionProperty } from "../../utils/index"
-import { GrapherState } from "../core/GrapherState"
+import { DimensionProperty } from "../../utils/index.js"
+import { GrapherState } from "../core/GrapherState.js"
 import {
     GRAPHER_TAB_CONFIG_OPTIONS,
     GrapherInterface,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     TestMetadata,
     createTestDataset,
     fakeEntities,
-} from "../testData/TestData"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable"
+} from "../testData/TestData.js"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "../core/LegacyToChartsTable.js"
 
 export const childMortalityGrapher = (
     props: Partial<GrapherInterface> = {}

@@ -1,4 +1,4 @@
-import { CloseButton } from "../../components/index"
+import { CloseButton } from "../../components/index.js"
 
 export function ModalHeader({
     title,

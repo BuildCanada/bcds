@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Color } from "../../types/index"
+import { Color } from "../../types/index.js"
 
 interface HaloProps {
     id: string

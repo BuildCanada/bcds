@@ -15,7 +15,7 @@ import {
     ToleranceStrategy,
     differenceOfSets,
     sortedFindClosestIndex,
-} from "../utils/index"
+} from "../utils/index.js"
 import {
     Time,
     TransformType,
@@ -29,9 +29,9 @@ import {
     ChartsTableSlugs,
     ErrorValue,
     ToleranceOptions,
-} from "../types/index"
-import { CoreTable } from "./CoreTable"
-import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues"
+} from "../types/index.js"
+import { CoreTable } from "./CoreTable.js"
+import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues.js"
 import {
     getOriginalTimeColumnSlug,
     makeOriginalValueSlugFromColumnSlug,
@@ -39,15 +39,15 @@ import {
     makeOriginalStartTimeSlugFromColumnSlug,
     timeColumnSlugFromColumnDef,
     toPercentageColumnDef,
-} from "./TableUtil"
+} from "./TableUtil.js"
 import {
     linearInterpolation,
     toleranceInterpolation,
     replaceDef,
     InterpolationProvider,
     InterpolationContext,
-} from "./CoreTableUtils"
-import { CoreColumn, ColumnTypeMap } from "./CoreTableColumns"
+} from "./CoreTableUtils.js"
+import { CoreColumn, ColumnTypeMap } from "./CoreTableColumns.js"
 
 // An ChartsTable is a subset of Table. An ChartsTable always has EntityName, EntityCode, EntityId, and Time columns,
 // and value column(s). Whether or not we need in the long run is uncertain and it may just be a stepping stone

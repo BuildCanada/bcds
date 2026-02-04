@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
-import { SeriesName } from "../../utils/index"
-import { PlacedSeries } from "./LineLegendTypes"
-import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants"
+import { SeriesName } from "../../utils/index.js"
+import { PlacedSeries } from "./LineLegendTypes.js"
+import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants.js"
 import * as R from "remeda"
 
 type Bracket = [number, number]

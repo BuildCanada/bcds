@@ -7,7 +7,7 @@ import {
     excludeUndefined,
     EntityName,
     MapRegionName,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { Quadtree, quadtree } from "d3-quadtree"
@@ -28,8 +28,8 @@ import {
     MapViewport,
     MAP_VIEWPORTS,
     MAP_REGION_LABELS,
-} from "./MapChartConstants"
-import { getGeoFeaturesForMap } from "./GeoFeatures"
+} from "./MapChartConstants.js"
+import { getGeoFeaturesForMap } from "./GeoFeatures.js"
 import {
     BackgroundCountry,
     CountryWithData,
@@ -38,23 +38,23 @@ import {
     InternalValueAnnotation,
     NoDataPattern,
     ProjectedDataPattern,
-} from "./MapComponents"
-import { Patterns } from "../core/GrapherConstants"
+} from "./MapComponents.js"
+import { Patterns } from "../core/GrapherConstants.js"
 import {
     detectNearbyFeature,
     getCountriesByRegion,
     getForegroundFeatures,
     sortFeaturesByInteractionStateAndSize,
-} from "./MapHelpers"
+} from "./MapHelpers.js"
 import {
     makeInternalAnnotationForFeature,
     makeExternalAnnotationForFeature,
     repositionAndFilterExternalAnnotations,
-} from "./MapAnnotations"
-import { isDarkColor } from "../color/ColorUtils"
-import { MapConfig } from "./MapConfig"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
-import { MAP_PROJECTIONS } from "./MapProjections"
+} from "./MapAnnotations.js"
+import { isDarkColor } from "../color/ColorUtils.js"
+import { MapConfig } from "./MapConfig.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { MAP_PROJECTIONS } from "./MapProjections.js"
 
 @observer
 export class ChoroplethMap extends React.Component<{

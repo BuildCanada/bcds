@@ -10,49 +10,49 @@ import {
     makeIdForHumanConsumption,
     guid,
     exposeInstanceOnWindow,
-} from "../../utils/index"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../../utils/index.js"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import {
     VerticalColorLegend,
     VerticalColorLegendManager,
-} from "../legend/VerticalColorLegend"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+} from "../legend/VerticalColorLegend.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipState,
     TooltipTable,
     makeTooltipRoundingNotice,
     toTooltipTableColumns,
-} from "../tooltip/Tooltip"
+} from "../tooltip/Tooltip.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
-import { StackedBarChartState } from "./StackedBarChartState"
+} from "../core/GrapherConstants.js"
+import { StackedBarChartState } from "./StackedBarChartState.js"
 import {
     BAR_OPACITY,
     LEGEND_STYLE_FOR_STACKED_CHARTS,
     StackedPoint,
     StackedSeries,
-} from "./StackedConstants"
-import { LegendInteractionState } from "../legend/LegendInteractionState"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { HorizontalAlign, SeriesName } from "../../types/index"
-import { makeClipPath } from "../chart/ChartUtils"
+} from "./StackedConstants.js"
+import { LegendInteractionState } from "../legend/LegendInteractionState.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { HorizontalAlign, SeriesName } from "../../types/index.js"
+import { makeClipPath } from "../chart/ChartUtils.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
-} from "../legend/HorizontalColorLegends"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
+} from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
 import { easeLinear } from "d3-ease"
 import { select, type BaseType, type Selection } from "d3-selection"
-import { ChartInterface } from "../chart/ChartInterface"
-import { ChartManager } from "../chart/ChartManager"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { StackedBars } from "./StackedBars"
-import { getXAxisConfigDefaultsForStackedBar } from "./StackedUtils"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { StackedBars } from "./StackedBars.js"
+import { getXAxisConfigDefaultsForStackedBar } from "./StackedUtils.js"
 
 interface TickmarkPlacement {
     time: number

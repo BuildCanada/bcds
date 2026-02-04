@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest"
 import {
     mirrorBinsAroundMidpoint,
     pruneUnusedBins,
-} from "./BinningStrategies"
+} from "./BinningStrategies.js"
 
 describe(mirrorBinsAroundMidpoint, () => {
     it("should mirror positive bins around zero midpoint", () => {

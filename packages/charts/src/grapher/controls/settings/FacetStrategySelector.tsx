@@ -2,8 +2,8 @@ import * as _ from "lodash-es"
 import * as React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { DEFAULT_GRAPHER_ENTITY_TYPE } from "../../core/GrapherConstants"
-import { FacetStrategy } from "../../../utils/index"
+import { DEFAULT_GRAPHER_ENTITY_TYPE } from "../../core/GrapherConstants.js"
+import { FacetStrategy } from "../../../utils/index.js"
 import classnames from "classnames"
 
 export interface FacetStrategySelectionManager {

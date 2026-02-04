@@ -2,9 +2,9 @@ import { Feature, GeoJsonProperties, Polygon } from "geojson"
 import { GeoProjection } from "d3-geo"
 import { forceSimulation, forceX, forceY, SimulationNodeDatum } from "d3-force"
 // no types available
-import bboxCollide from "./d3-bboxCollide"
+import bboxCollide from "./d3-bboxCollide.js"
 import { booleanIntersects } from "@turf/boolean-intersects"
-import { Bounds, excludeUndefined } from "../../utils/index"
+import { Bounds, excludeUndefined } from "../../utils/index.js"
 import {
     Direction,
     Ellipse,
@@ -20,11 +20,11 @@ import {
     ANNOTATION_FONT_SIZE_EXTERNAL_MAX,
     ANNOTATION_MARKER_LINE_LENGTH_DEFAULT,
     ANNOTATION_MARKER_LINE_LENGTH_MAX,
-} from "./MapChartConstants"
+} from "./MapChartConstants.js"
 import * as R from "remeda"
-import { annotationPlacementsById } from "./MapAnnotationPlacements"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
-import { getGeoFeaturesForGlobe } from "./GeoFeatures"
+import { annotationPlacementsById } from "./MapAnnotationPlacements.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
+import { getGeoFeaturesForGlobe } from "./GeoFeatures.js"
 
 const MARKER_TEXT_GAP = 2
 

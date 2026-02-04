@@ -8,19 +8,19 @@ import {
     SynthesizeGDPTable,
     ChartsTable,
     ErrorValueTypes,
-} from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
+} from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import {
     ColumnTypeNames,
     FacetStrategy,
     ScaleType,
     SeriesStrategy,
-} from "../../types/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { LineChartManager } from "./LineChartConstants"
-import { NO_DATA_GRAY } from "../color/ColorConstants"
-import { LineChart } from "./LineChart"
-import { LineChartState } from "./LineChartState"
+} from "../../types/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { LineChartManager } from "./LineChartConstants.js"
+import { NO_DATA_GRAY } from "../color/ColorConstants.js"
+import { LineChart } from "./LineChart.js"
+import { LineChartState } from "./LineChartState.js"
 
 it("can create a new chart", () => {
     const table = SynthesizeGDPTable({ timeRange: [2000, 2010] })

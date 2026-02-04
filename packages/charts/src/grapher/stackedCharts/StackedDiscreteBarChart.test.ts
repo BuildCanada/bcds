@@ -5,16 +5,16 @@ import {
     SortBy,
     ColumnTypeNames,
     MissingDataStrategy,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     ChartsTable,
     SampleColumnSlugs,
     SynthesizeFruitTable,
-} from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
-import { SelectionArray } from "../selection/SelectionArray"
-import { StackedDiscreteBarChart } from "./StackedDiscreteBarChart"
-import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
+} from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { StackedDiscreteBarChart } from "./StackedDiscreteBarChart.js"
+import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState.js"
 
 it("can create a chart", () => {
     const table = SynthesizeFruitTable({

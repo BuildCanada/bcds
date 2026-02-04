@@ -1,30 +1,30 @@
 import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
-import { ChartState } from "../chart/ChartInterface"
+import { ChartState } from "../chart/ChartInterface.js"
 import {
     DiscreteBarChartManager,
     DiscreteBarItem,
     DiscreteBarSeries,
-} from "./DiscreteBarChartConstants"
+} from "./DiscreteBarChartConstants.js"
 import {
     CoreColumn,
     isNotErrorValue,
     ChartsTable,
-} from "../../core-table/index"
-import { ColorScale, ColorScaleManager } from "../color/ColorScale"
-import { SelectionArray } from "../selection/SelectionArray"
+} from "../../core-table/index.js"
+import { ColorScale, ColorScaleManager } from "../color/ColorScale.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 import {
     AnnotationsMap,
     getAnnotationsForSeries,
     getAnnotationsMap,
-} from "../lineCharts/LineChartHelpers"
+} from "../lineCharts/LineChartHelpers.js"
 import {
     ChartErrorInfo,
     ColorScaleConfigInterface,
@@ -34,12 +34,12 @@ import {
     SortBy,
     SortConfig,
     SortOrder,
-} from "../../types/index"
-import { ERROR_COLOR, NO_DATA_GRAY } from "../color/ColorConstants"
-import { ColorScheme } from "../color/ColorScheme"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
-import { FocusArray } from "../focus/FocusArray"
+} from "../../types/index.js"
+import { ERROR_COLOR, NO_DATA_GRAY } from "../color/ColorConstants.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
+import { FocusArray } from "../focus/FocusArray.js"
 
 export class DiscreteBarChartState implements ChartState, ColorScaleManager {
     manager: DiscreteBarChartManager

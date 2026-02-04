@@ -1,12 +1,12 @@
-import { DualAxis } from "../axis/Axis"
+import { DualAxis } from "../axis/Axis.js"
 import {
     Color,
     ComparisonLineConfig,
     VerticalComparisonLineConfig,
-} from "../../types/index"
-import { VerticalComparisonLine } from "./VerticalComparisonLine"
-import { CustomComparisonLine } from "./CustomComparisonLine"
-import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers"
+} from "../../types/index.js"
+import { VerticalComparisonLine } from "./VerticalComparisonLine.js"
+import { CustomComparisonLine } from "./CustomComparisonLine.js"
+import { isValidVerticalComparisonLineConfig } from "./ComparisonLineHelpers.js"
 
 export interface ComparisonLineProps<LineConfig extends ComparisonLineConfig> {
     dualAxis: DualAxis

@@ -1,13 +1,13 @@
 import * as React from "react"
 import { observer } from "mobx-react"
 import { computed, action, makeObservable } from "mobx"
-import { Bounds } from "../../utils/index"
-import { Modal } from "./Modal"
+import { Bounds } from "../../utils/index.js"
+import { Modal } from "./Modal.js"
 import {
     EntitySelector,
     EntitySelectorManager,
-} from "../entitySelector/EntitySelector"
-import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants"
+} from "../entitySelector/EntitySelector.js"
+import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants.js"
 
 export interface EntitySelectorModalManager extends EntitySelectorManager {
     isEntitySelectorModalOrDrawerOpen?: boolean

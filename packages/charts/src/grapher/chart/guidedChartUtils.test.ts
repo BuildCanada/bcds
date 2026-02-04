@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest"
-import { Url } from "../../utils/index"
+import { Url } from "../../utils/index.js"
 import {
     buildArchiveGuidedChartSrc,
     type ArchiveGuidedChartRegistration,
-} from "./guidedChartUtils"
+} from "./guidedChartUtils.js"
 import { createRef } from "react"
-import { ChartConfigType } from "../../types/index"
+import { ChartConfigType } from "../../types/index.js"
 
 const makeRegistration = (
     baseUrl: string,

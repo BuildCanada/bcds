@@ -6,17 +6,17 @@ import {
     ChartsTableSlugs,
     StandardColumnDefs,
     LegacyGrapherInterface,
-} from "../../types/index"
-import { ColumnTypeMap, ErrorValueTypes } from "../../core-table/index"
+} from "../../types/index.js"
+import { ColumnTypeMap, ErrorValueTypes } from "../../core-table/index.js"
 import {
     legacyToChartsTableAndDimensions,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "./LegacyToChartsTable"
+} from "./LegacyToChartsTable.js"
 import {
     MultipleVariableDataDimensionsMap,
     VariableDataMetadataDimensions,
     DimensionProperty,
-} from "../../utils/index"
+} from "../../utils/index.js"
 
 describe(legacyToChartsTableAndDimensions, () => {
     const legacyVariableEntry: VariableDataMetadataDimensions = {

@@ -2,40 +2,40 @@ import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import * as _ from "lodash-es"
-import { Bounds, SeriesName } from "../../utils/index"
-import { ChartInterface } from "../chart/ChartInterface"
-import { LineChartState } from "./LineChartState"
-import { LineChartProps } from "./LineChart"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
+import { Bounds, SeriesName } from "../../utils/index.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { LineChartState } from "./LineChartState.js"
+import { LineChartProps } from "./LineChart.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 import {
     LineChartManager,
     PlacedLineChartSeries,
     PlacedPoint,
     RenderLineChartSeries,
-} from "./LineChartConstants"
+} from "./LineChartConstants.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { Lines } from "./Lines"
+} from "../core/GrapherConstants.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { Lines } from "./Lines.js"
 import {
     getYAxisConfigDefaults,
     toPlacedLineChartSeries,
     toRenderLineChartSeries,
-} from "./LineChartHelpers"
+} from "./LineChartHelpers.js"
 import {
     HorizontalAxisComponent,
     VerticalAxisZeroLine,
-} from "../axis/AxisViews"
+} from "../axis/AxisViews.js"
 import {
     InitialVerticalLabelsSeries,
     VerticalLabelsState,
-} from "../verticalLabels/VerticalLabelsState"
-import { VerticalLabels } from "../verticalLabels/VerticalLabels"
-import { darkenColorForLine } from "../color/ColorUtils"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../verticalLabels/VerticalLabelsState.js"
+import { VerticalLabels } from "../verticalLabels/VerticalLabels.js"
+import { darkenColorForLine } from "../color/ColorUtils.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 const DOT_RADIUS = 4
 const SPACE_BETWEEN_DOT_AND_LABEL = 4

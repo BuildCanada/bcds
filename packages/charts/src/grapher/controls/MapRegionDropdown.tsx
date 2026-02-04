@@ -1,11 +1,11 @@
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { MapConfig } from "../mapCharts/MapConfig"
-import { MapRegionName } from "../../types/index"
-import { Dropdown } from "./Dropdown"
-import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants"
-import { GlobeController } from "../mapCharts/GlobeController"
+import { MapConfig } from "../mapCharts/MapConfig.js"
+import { MapRegionName } from "../../types/index.js"
+import { Dropdown } from "./Dropdown.js"
+import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants.js"
+import { GlobeController } from "../mapCharts/GlobeController.js"
 
 export interface MapRegionDropdownManager {
     mapConfig?: MapConfig

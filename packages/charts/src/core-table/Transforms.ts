@@ -1,20 +1,20 @@
 // @ts-nocheck
 import * as _ from "lodash-es"
-import { ColumnSlug } from "../utils/index"
+import { ColumnSlug } from "../utils/index.js"
 import {
     ErrorValue,
     CoreColumnDef,
     CoreColumnStore,
     Time,
     CoreValueType,
-} from "../types/index"
+} from "../types/index.js"
 import {
     ErrorValueTypes,
     isNotErrorValue,
     MissingValuePlaceholder,
     ValueTooLow,
     DivideByZeroError,
-} from "./ErrorValues"
+} from "./ErrorValues.js"
 import * as R from "remeda"
 
 enum TransformParamType {

@@ -7,11 +7,11 @@ import {
     DisplaySource,
     IndicatorTitleWithFragments,
     Source,
-} from "../types/index"
+} from "../types/index.js"
 import * as _ from "lodash-es"
-import { excludeUndefined } from "./Util"
-import dayjs from "./dayjs"
-import { parseArchivalDate } from "./archival/archivalDate"
+import { excludeUndefined } from "./Util.js"
+import dayjs from "./dayjs.js"
+import { parseArchivalDate } from "./archival/archivalDate.js"
 
 export function getOriginAttributionFragments(
     origins: Origin[] | undefined

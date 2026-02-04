@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
-import { lazy } from "../../utils/index"
-import { ColorSchemeInterface, ColorSchemeName } from "../../types/index"
+import { lazy } from "../../utils/index.js"
+import { ColorSchemeInterface, ColorSchemeName } from "../../types/index.js"
 import * as R from "remeda"
 
 // TODO: Initialize CustomColorSchemes lazily

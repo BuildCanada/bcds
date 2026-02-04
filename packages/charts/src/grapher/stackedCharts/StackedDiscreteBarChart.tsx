@@ -8,31 +8,31 @@ import {
     EntityName,
     getRelativeMouse,
     exposeInstanceOnWindow,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { action, computed, makeObservable, observable } from "mobx"
 import { observer } from "mobx-react"
-import { SeriesName } from "../../types/index"
+import { SeriesName } from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
-import { NoDataModal } from "../noDataModal/NoDataModal"
-import { ChartInterface } from "../chart/ChartInterface"
-import { ChartManager } from "../chart/ChartManager"
-import { TooltipState } from "../tooltip/Tooltip"
+} from "../core/GrapherConstants.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { TooltipState } from "../tooltip/Tooltip.js"
 import {
     LEGEND_STYLE_FOR_STACKED_CHARTS,
     StackedSeries,
-} from "./StackedConstants"
+} from "./StackedConstants.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
-} from "../legend/HorizontalColorLegends"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
-import { LegendInteractionState } from "../legend/LegendInteractionState"
-import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { StackedDiscreteBars } from "./StackedDiscreteBars"
+} from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
+import { LegendInteractionState } from "../legend/LegendInteractionState.js"
+import { StackedDiscreteBarChartState } from "./StackedDiscreteBarChartState.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { StackedDiscreteBars } from "./StackedDiscreteBars.js"
 
 export interface StackedDiscreteBarChartManager extends ChartManager {
     endTime?: Time

@@ -1,8 +1,8 @@
 import { expect, it } from "vitest"
 
-import { ColumnTypeNames } from "../../types/index"
-import { ChartsTable } from "../../core-table/index"
-import { getNonRedistributableInfo } from "./DownloadModal"
+import { ColumnTypeNames } from "../../types/index.js"
+import { ChartsTable } from "../../core-table/index.js"
+import { getNonRedistributableInfo } from "./DownloadModal.js"
 
 const getTable = (options: { nonRedistributable: boolean }): ChartsTable => {
     return new ChartsTable(

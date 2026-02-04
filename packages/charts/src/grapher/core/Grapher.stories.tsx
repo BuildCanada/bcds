@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Grapher } from "./Grapher"
+import { Grapher } from "./Grapher.js"
 import {
     createLineChartState,
     createDiscreteBarChartState,
@@ -9,7 +9,7 @@ import {
     createSlopeChartState,
     createMapChartState,
     createCanadaMapChartState,
-} from "../../../../../.storybook/helpers/grapherStateFactory"
+} from "../../../../../.storybook/helpers/grapherStateFactory.js"
 
 const meta: Meta<typeof Grapher> = {
     title: "Charts/Grapher",

@@ -3,7 +3,7 @@
  */
 
 import { expect, describe, it } from "vitest"
-import { reactRenderToStringClientOnly } from "./reactUtil"
+import { reactRenderToStringClientOnly } from "./reactUtil.js"
 import ReactDOMServer from "react-dom/server"
 
 describe(reactRenderToStringClientOnly, () => {

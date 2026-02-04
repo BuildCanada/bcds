@@ -1,16 +1,16 @@
 import { expect, it, describe } from "vitest"
 
 import * as _ from "lodash-es"
-import { FacetChart } from "./FacetChart"
-import { SynthesizeGDPTable, ChartsTable } from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
+import { FacetChart } from "./FacetChart.js"
+import { SynthesizeGDPTable, ChartsTable } from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import {
     GRAPHER_CHART_TYPES,
     FacetAxisDomain,
     FacetStrategy,
     ColumnTypeNames,
-} from "../../types/index"
-import { LineChart } from "../lineCharts/LineChart"
+} from "../../types/index.js"
+import { LineChart } from "../lineCharts/LineChart.js"
 
 const allElementsAreEqual = (array: any[]): boolean => {
     return _.uniq(array).length === 1

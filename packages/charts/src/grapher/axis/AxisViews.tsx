@@ -10,13 +10,13 @@ import {
     dyFromAlign,
     textAnchorFromAlign,
     makeIdForHumanConsumption,
-} from "../../utils/index"
-import { VerticalAxis, HorizontalAxis, DualAxis } from "./Axis"
+} from "../../utils/index.js"
+import { VerticalAxis, HorizontalAxis, DualAxis } from "./Axis.js"
 import classNames from "classnames"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
-import { ScaleType, DetailsMarker } from "../../types/index"
-import { ComparisonLine } from "../comparisonLine/ComparisonLine"
-import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
+import { ScaleType, DetailsMarker } from "../../types/index.js"
+import { ComparisonLine } from "../comparisonLine/ComparisonLine.js"
+import { DEFAULT_GRAPHER_BOUNDS } from "../core/GrapherConstants.js"
 
 const TICK_COLOR = "#ddd"
 const FAINT_TICK_COLOR = "#eee"

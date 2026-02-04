@@ -1,8 +1,8 @@
-import { ColumnSlug } from "../../../utils/index"
-import { GrapherAnalytics } from "../../core/GrapherAnalytics"
-import { ChartsTable } from "../../../core-table/index"
-import { CoreColumnDef, EntityName, SortOrder } from "../../../types/index"
-import { MapConfig } from "../../mapCharts/MapConfig"
+import { ColumnSlug } from "../../../utils/index.js"
+import { GrapherAnalytics } from "../../core/GrapherAnalytics.js"
+import { ChartsTable } from "../../../core-table/index.js"
+import { CoreColumnDef, EntityName, SortOrder } from "../../../types/index.js"
+import { MapConfig } from "../../mapCharts/MapConfig.js"
 
 export interface EntityPickerManager {
     entityPickerMetric?: ColumnSlug

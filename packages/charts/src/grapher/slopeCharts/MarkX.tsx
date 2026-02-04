@@ -2,8 +2,8 @@ import {
     dyFromAlign,
     makeIdForHumanConsumption,
     VerticalAlign,
-} from "../../utils/index"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
+} from "../../utils/index.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
 
 export function MarkX({
     label,

@@ -1,13 +1,13 @@
 import { computed, makeObservable } from "mobx"
-import { ChartState } from "../chart/ChartInterface"
+import { ChartState } from "../chart/ChartInterface.js"
 import {
     SlopeChartManager,
     RawSlopeChartSeries,
     SlopeChartSeries,
-} from "./SlopeChartConstants"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { FocusArray } from "../focus/FocusArray"
+} from "./SlopeChartConstants.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { FocusArray } from "../focus/FocusArray.js"
 import {
     ColumnSlug,
     ScaleType,
@@ -18,17 +18,17 @@ import {
     EntityName,
     ColorSchemeName,
     ChartErrorInfo,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
-import { ColorScheme } from "../color/ColorScheme"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner"
+} from "../chart/ChartUtils.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner.js"
 import {
     AnnotationsMap,
     getAnnotationsForSeries,
@@ -36,10 +36,10 @@ import {
     getColorKey,
     getDisplayName,
     getSeriesName,
-} from "../lineCharts/LineChartHelpers"
-import { domainExtent } from "../../utils/index"
-import { AxisConfig } from "../axis/AxisConfig"
-import { VerticalAxis } from "../axis/Axis"
+} from "../lineCharts/LineChartHelpers.js"
+import { domainExtent } from "../../utils/index.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { VerticalAxis } from "../axis/Axis.js"
 
 export class SlopeChartState implements ChartState {
     manager: SlopeChartManager

@@ -1,13 +1,13 @@
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { MapConfig } from "../mapCharts/MapConfig"
+import { MapConfig } from "../mapCharts/MapConfig.js"
 import {
     GrapherWindowType,
     MapRegionName,
     TimeBound,
-} from "../../utils/index"
-import { GlobeController } from "../mapCharts/GlobeController"
+} from "../../utils/index.js"
+import { GlobeController } from "../mapCharts/GlobeController.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons"
 import { match } from "ts-pattern"

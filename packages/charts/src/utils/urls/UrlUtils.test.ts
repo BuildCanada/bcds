@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { queryParamsToStr, strToQueryParams } from "./UrlUtils"
+import { queryParamsToStr, strToQueryParams } from "./UrlUtils.js"
 
 const testCases = [
     {

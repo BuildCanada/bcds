@@ -1,8 +1,8 @@
 import { expect, it, describe } from "vitest"
 
-import { ColorSchemeName } from "../../types/index"
-import { NO_DATA_LABEL } from "./ColorScale"
-import { ColorScaleConfig } from "./ColorScaleConfig"
+import { ColorSchemeName } from "../../types/index.js"
+import { NO_DATA_LABEL } from "./ColorScale.js"
+import { ColorScaleConfig } from "./ColorScaleConfig.js"
 
 it("can serialize for saving", () => {
     expect(new ColorScaleConfig().toObject()).toEqual({})

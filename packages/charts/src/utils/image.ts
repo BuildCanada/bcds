@@ -3,13 +3,13 @@
 Common utlities for deriving properties from image metadata.
 */
 
-import { traverseEnrichedBlock } from "./Util"
+import { traverseEnrichedBlock } from "./Util.js"
 import {
     AssetMap,
     Gdoc,
     GdocType,
     ImageMetadata,
-} from "../types/index"
+} from "../types/index.js"
 import { match, P } from "ts-pattern"
 
 export const AUTHOR_BYLINE_WIDTH = 48

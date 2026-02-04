@@ -1,7 +1,7 @@
-import { ChartSeries } from "../chart/ChartInterface"
-import { Bounds, GrapherAnalyticsContext } from "../../utils/index"
-import { MapChartManager } from "../mapCharts/MapChartConstants"
-import { GrapherAnalytics } from "../core/GrapherAnalytics"
+import { ChartSeries } from "../chart/ChartInterface.js"
+import { Bounds, GrapherAnalyticsContext } from "../../utils/index.js"
+import { MapChartManager } from "../mapCharts/MapChartConstants.js"
+import { GrapherAnalytics } from "../core/GrapherAnalytics.js"
 
 export interface FacetMapManager extends MapChartManager {
     analytics?: GrapherAnalytics

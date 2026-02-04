@@ -1,9 +1,9 @@
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { MapChartState } from "./MapChartState"
-import { MapChart, MapChartProps } from "./MapChart"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { MapChartState } from "./MapChartState.js"
+import { MapChart, MapChartProps } from "./MapChart.js"
 
 @observer
 export class MapChartThumbnail

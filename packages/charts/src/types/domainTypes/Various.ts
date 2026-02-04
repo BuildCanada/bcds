@@ -1,4 +1,4 @@
-import { Nominal } from "../NominalType"
+import { Nominal } from "../NominalType.js"
 
 export type Integer = number
 

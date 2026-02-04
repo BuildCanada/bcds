@@ -3,16 +3,16 @@ import {
     EntityName,
     VariableRow,
     SeriesName,
-} from "../../types/index"
-import { ChartSeries } from "../chart/ChartInterface"
+} from "../../types/index.js"
+import { ChartSeries } from "../chart/ChartInterface.js"
 import {
     GRAPHER_AREA_OPACITY_DEFAULT,
     GRAPHER_AREA_OPACITY_FOCUS,
     GRAPHER_AREA_OPACITY_MUTE,
-} from "../core/GrapherConstants"
-import { TextWrap } from "../../components/index"
-import { InteractionState } from "../interaction/InteractionState"
-import { LegendStyleConfig } from "../legend/LegendInteractionState"
+} from "../core/GrapherConstants.js"
+import { TextWrap } from "../../components/index.js"
+import { InteractionState } from "../interaction/InteractionState.js"
+import { LegendStyleConfig } from "../legend/LegendInteractionState.js"
 
 export const AREA_OPACITY = {
     DEFAULT: GRAPHER_AREA_OPACITY_DEFAULT,

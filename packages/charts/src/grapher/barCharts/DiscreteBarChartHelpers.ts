@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
-import { TextWrap, shortenWithEllipsis } from "../../components/index"
-import { EntityName } from "../../types/index"
-import { FontSettings } from "./DiscreteBarChartConstants"
+import { TextWrap, shortenWithEllipsis } from "../../components/index.js"
+import { EntityName } from "../../types/index.js"
+import { FontSettings } from "./DiscreteBarChartConstants.js"
 
 const ANNOTATION_PADDING = 2
 

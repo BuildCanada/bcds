@@ -1,6 +1,6 @@
-import { EntityName, SeriesName } from "../../types/index"
-import { Url, performUrlMigrations, UrlMigration } from "../../utils/index"
-import { codeToEntityName, entityNameToCode } from "./EntityCodes"
+import { EntityName, SeriesName } from "../../types/index.js"
+import { Url, performUrlMigrations, UrlMigration } from "../../utils/index.js"
+import { codeToEntityName, entityNameToCode } from "./EntityCodes.js"
 
 /*
  * Migration #1: Switch from + to ~ delimited entities.

@@ -7,16 +7,16 @@ import {
     ColorSchemeName,
     ColorScaleConfigInterface,
     MidpointMode,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     trimObject,
     deleteRuntimeAndUnchangedProps,
     objectWithPersistablesToObject,
     Persistable,
     updatePersistables,
-} from "../../utils/index"
+} from "../../utils/index.js"
 
-import { NO_DATA_LABEL } from "./ColorScale"
+import { NO_DATA_LABEL } from "./ColorScale.js"
 
 export class ColorScaleConfigDefaults implements ColorScaleConfigInterface {
     // Color scheme

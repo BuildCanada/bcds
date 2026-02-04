@@ -1,9 +1,9 @@
 import { expect, it, vi } from "vitest"
 
-import { defaultGrapherConfig } from "../defaultGrapherConfig"
-import { migrateGrapherConfigToLatestVersion } from "./migrate"
-import { migrateFrom006To007, migrateFrom007To008 } from "./migrations"
-import { AnyConfigWithValidSchema } from "./helpers"
+import { defaultGrapherConfig } from "../defaultGrapherConfig.js"
+import { migrateGrapherConfigToLatestVersion } from "./migrate.js"
+import { migrateFrom006To007, migrateFrom007To008 } from "./migrations.js"
+import { AnyConfigWithValidSchema } from "./helpers.js"
 import * as _ from "lodash-es"
 
 it("returns a valid config as is", () => {

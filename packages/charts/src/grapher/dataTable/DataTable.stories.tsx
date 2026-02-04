@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Grapher } from "../core/Grapher"
+import { Grapher } from "../core/Grapher.js"
 import {
     childMortalityGrapher,
     GrapherWithIncompleteData,
     GrapherWithAggregates,
     GrapherWithMultipleVariablesAndMultipleYears,
-} from "./DataTable.sample"
-import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index"
+} from "./DataTable.sample.js"
+import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index.js"
 
 const meta: Meta<typeof Grapher> = {
     title: "Charts/DataTable",

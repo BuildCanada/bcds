@@ -1,14 +1,14 @@
 // @ts-nocheck
 import * as _ from "lodash-es"
 import * as R from "remeda"
-import { Bounds, dyFromAlign, VerticalAlign } from "../../utils/index"
-import { DualAxis } from "../axis/Axis"
-import { ColorScaleBin } from "../color/ColorScaleBin"
-import { TooltipState } from "../tooltip/Tooltip"
-import { MarimekkoBarsForOneEntity } from "./MarimekkoBarsForOneEntity"
-import { Item, PlacedItem } from "./MarimekkoChartConstants"
-import { GRAPHER_FONT_SCALE_12, Patterns } from "../core/GrapherConstants"
-import { SelectionArray } from "../selection/SelectionArray"
+import { Bounds, dyFromAlign, VerticalAlign } from "../../utils/index.js"
+import { DualAxis } from "../axis/Axis.js"
+import { ColorScaleBin } from "../color/ColorScaleBin.js"
+import { TooltipState } from "../tooltip/Tooltip.js"
+import { MarimekkoBarsForOneEntity } from "./MarimekkoBarsForOneEntity.js"
+import { Item, PlacedItem } from "./MarimekkoChartConstants.js"
+import { GRAPHER_FONT_SCALE_12, Patterns } from "../core/GrapherConstants.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 
 interface MarimekkoBarsProps {
     dualAxis: DualAxis

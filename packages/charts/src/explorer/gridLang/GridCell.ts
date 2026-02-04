@@ -1,7 +1,7 @@
-import { trimArray } from "../../core-table/index"
-import { imemo, isPresent } from "../../utils/index"
+import { trimArray } from "../../core-table/index.js"
+import { imemo, isPresent } from "../../utils/index.js"
 
-import { didYouMean, isBlankLine, isEmpty } from "./GrammarUtils"
+import { didYouMean, isBlankLine, isEmpty } from "./GrammarUtils.js"
 import {
     CellPosition,
     CellDef,
@@ -15,7 +15,7 @@ import {
     SubTableValueCellDef,
     WorkInProgressCellDef,
     NothingGoesThereCellDef,
-} from "./GridLangConstants"
+} from "./GridLangConstants.js"
 
 export class GridCell implements ParsedCell {
     private position: CellPosition

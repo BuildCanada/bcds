@@ -16,7 +16,7 @@ export {
     type SerializedGridProgram,
     type VariableId,
     type QueryParams,
-} from "./domainTypes/Various"
+} from "./domainTypes/Various.js"
 
 export {
     Position,
@@ -25,7 +25,7 @@ export {
     VerticalAlign,
     type GridParameters,
     HorizontalAlign,
-} from "./domainTypes/Layout"
+} from "./domainTypes/Layout.js"
 
 export {
     type TableSlug,
@@ -57,7 +57,7 @@ export {
     type ColumnColorScale,
     type CoreColumnDef,
     ErrorValue,
-} from "./domainTypes/CoreTableTypes"
+} from "./domainTypes/CoreTableTypes.js"
 
 // Grapher types
 export {
@@ -69,7 +69,7 @@ export {
     GRAPHER_TAB_CONFIG_OPTIONS,
     GRAPHER_TAB_QUERY_PARAMS,
     ALL_GRAPHER_CHART_TYPES,
-} from "./grapherTypes/GrapherConstants"
+} from "./grapherTypes/GrapherConstants.js"
 
 export {
     type Box,
@@ -140,7 +140,7 @@ export {
     type ToleranceOptions,
     type AdditionalGrapherDataFetchFn,
     type GrapherTrendArrowDirection,
-} from "./grapherTypes/GrapherTypes"
+} from "./grapherTypes/GrapherTypes.js"
 
 export {
     logBinningStrategies,
@@ -154,7 +154,7 @@ export {
     type AutomaticBinningStrategy,
     type ResolvedBinningStrategy,
     type MidpointMode,
-} from "./grapherTypes/BinningStrategyTypes"
+} from "./grapherTypes/BinningStrategyTypes.js"
 
 // Variable types
 export {
@@ -176,10 +176,10 @@ export {
     type IndicatorTitleWithFragments,
     joinTitleFragments,
     type VariableType,
-} from "./Variable"
+} from "./Variable.js"
 
-export type { Source } from "./Source"
-export type { Origin } from "./Origin"
+export type { Source } from "./Source.js"
+export type { Origin } from "./Origin.js"
 
 export {
     type VariableDisplayConfigInterface,
@@ -187,9 +187,9 @@ export {
     VariableRoundingMode,
     type ChartDimensionInterface,
     type ChartDimensionInterfaceWithMandatorySlug,
-} from "./VariableDisplayConfigInterface"
+} from "./VariableDisplayConfigInterface.js"
 
-export { type Nominal, wrap, unwrap } from "./NominalType"
+export { type Nominal, wrap, unwrap } from "./NominalType.js"
 
 // Archive types (needed for data loading)
 export {
@@ -198,7 +198,7 @@ export {
     type AssetMap,
     type ArchiveContext,
     type ArchivedPageVersion,
-} from "./domainTypes/Archive"
+} from "./domainTypes/Archive.js"
 
 // Gdoc types (stubs for type compatibility)
 export {
@@ -229,10 +229,10 @@ export {
     type EnrichedHybridLink,
     type TocHeadingWithTitleSupertitle,
     type DisplaySource,
-} from "./gdocTypes/Gdoc"
+} from "./gdocTypes/Gdoc.js"
 
 // Database types (stubs)
-export { type DbPlainTag } from "./dbTypes/Tags"
+export { type DbPlainTag } from "./dbTypes/Tags.js"
 
 // Constants for site sections
 export const ALL_CHARTS_ID = "all-charts"
@@ -250,7 +250,7 @@ export {
     GrapherErrorAction,
     type GrapherAnalyticsContext,
     type GAEvent,
-} from "./analyticsTypes"
+} from "./analyticsTypes.js"
 
 // Additional stub types
 export type SubNavId = string

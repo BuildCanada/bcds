@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
 import * as R from "remeda"
-import { Color } from "../../utils/index"
+import { Color } from "../../utils/index.js"
 import { computed, makeObservable } from "mobx"
 import {
     ScaleType,
@@ -12,37 +12,37 @@ import {
     ColorScaleConfigInterface,
     ColorSchemeName,
     ChartErrorInfo,
-} from "../../types/index"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { ChartState } from "../chart/ChartInterface"
+} from "../../types/index.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { ChartState } from "../chart/ChartInterface.js"
 import {
     LineChartSeries,
     LineChartManager,
     LinePoint,
     DEFAULT_LINE_COLOR,
-} from "./LineChartConstants"
+} from "./LineChartConstants.js"
 import {
     ChartsTable,
     CoreColumn,
     isNotErrorValue,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
-import { ColorScheme } from "../color/ColorScheme"
-import { SelectionArray } from "../selection/SelectionArray"
-import { ColorScale, ColorScaleManager } from "../color/ColorScale"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
-import { NO_DATA_GRAY } from "../color/ColorConstants"
-import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner"
-import { getColorKey, getDisplayName, getSeriesName } from "./LineChartHelpers"
-import { FocusArray } from "../focus/FocusArray"
-import { AxisConfig } from "../axis/AxisConfig"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../chart/ChartUtils.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { ColorScale, ColorScaleManager } from "../color/ColorScale.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
+import { NO_DATA_GRAY } from "../color/ColorConstants.js"
+import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner.js"
+import { getColorKey, getDisplayName, getSeriesName } from "./LineChartHelpers.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 
 export class LineChartState implements ChartState, ColorScaleManager {
     manager: LineChartManager

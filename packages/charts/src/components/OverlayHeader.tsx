@@ -1,6 +1,6 @@
 import * as React from "react"
 import cx from "classnames"
-import { CloseButton } from "./closeButton/CloseButton"
+import { CloseButton } from "./closeButton/CloseButton.js"
 
 export function OverlayHeader({
     title,

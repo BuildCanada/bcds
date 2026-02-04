@@ -4,7 +4,7 @@ import {
     excludeUndefined,
     getRegionByName,
     Url,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     SeriesStrategy,
     EntityName,
@@ -17,10 +17,10 @@ import {
     PrimitiveType,
     ColumnTypeNames,
     Time,
-} from "../../types/index"
-import { LineChartSeries } from "../lineCharts/LineChartConstants"
-import { SelectionArray } from "../selection/SelectionArray"
-import { ChartManager } from "./ChartManager"
+} from "../../types/index.js"
+import { LineChartSeries } from "../lineCharts/LineChartConstants.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { ChartManager } from "./ChartManager.js"
 import {
     GRAPHER_SIDE_PANEL_CLASS,
     GRAPHER_TIMELINE_CLASS,
@@ -30,15 +30,15 @@ import {
     Patterns,
     GRAPHER_IMAGE_WIDTH_1X,
     GRAPHER_IMAGE_WIDTH_2X,
-} from "../core/GrapherConstants"
-import { ChartSeries } from "./ChartInterface"
+} from "../core/GrapherConstants.js"
+import { ChartSeries } from "./ChartInterface.js"
 import {
     ErrorValueTypes,
     isNotErrorValueOrEmptyCell,
     ChartsTable,
-} from "../../core-table/index"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
-import { InteractionState } from "../interaction/InteractionState"
+} from "../../core-table/index.js"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export const autoDetectYColumnSlugs = (manager: ChartManager): string[] => {
     if (manager.yColumnSlugs && manager.yColumnSlugs.length)

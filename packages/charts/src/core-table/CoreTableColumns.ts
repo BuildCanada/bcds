@@ -20,8 +20,8 @@ import {
     ToleranceStrategy,
     IndicatorTitleWithFragments,
     stripOuterParentheses,
-} from "../utils/index"
-import { CoreTable } from "./CoreTable"
+} from "../utils/index.js"
+import { CoreTable } from "./CoreTable.js"
 import {
     Time,
     JsTypes,
@@ -32,13 +32,13 @@ import {
     VariableRow,
     ErrorValue,
     VariableRoundingMode,
-} from "../types/index"
-import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues"
+} from "../types/index.js"
+import { ErrorValueTypes, isNotErrorValue } from "./ErrorValues.js"
 import {
     getOriginalStartTimeColumnSlug,
     getOriginalTimeColumnSlug,
     getOriginalValueColumnSlug,
-} from "./TableUtil"
+} from "./TableUtil.js"
 import * as R from "remeda"
 
 export abstract class AbstractCoreColumn<JS_TYPE extends PrimitiveType> {

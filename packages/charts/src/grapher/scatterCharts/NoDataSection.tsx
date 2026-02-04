@@ -1,10 +1,10 @@
 import * as React from "react"
-import { Bounds, HorizontalAlign } from "../../utils/index"
+import { Bounds, HorizontalAlign } from "../../utils/index.js"
 import {
     GRAPHER_FONT_SCALE_11,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { GRAPHER_LIGHT_TEXT } from "../color/ColorConstants"
+} from "../core/GrapherConstants.js"
+import { GRAPHER_LIGHT_TEXT } from "../color/ColorConstants.js"
 
 export function NoDataSection({
     seriesNames,

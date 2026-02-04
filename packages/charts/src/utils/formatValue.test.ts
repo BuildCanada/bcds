@@ -2,8 +2,8 @@ import { expect, it, describe } from "vitest"
 import {
     TickFormattingOptions,
     VariableRoundingMode,
-} from "../types/index"
-import { formatValue } from "./formatValue"
+} from "../types/index.js"
+import { formatValue } from "./formatValue.js"
 
 describe("rounding to a fixed number of decimals", () => {
     // prettier-ignore

@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { getLeastUsedColor, isDarkColor } from "./ColorUtils"
+import { getLeastUsedColor, isDarkColor } from "./ColorUtils.js"
 
 describe(getLeastUsedColor, () => {
     it("returns unused color", () => {

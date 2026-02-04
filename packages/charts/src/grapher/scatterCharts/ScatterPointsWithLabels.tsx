@@ -2,8 +2,8 @@ import * as _ from "lodash-es"
 import * as R from "remeda"
 import { type BaseType, type Selection, select } from "d3-selection"
 import { ScaleLinear } from "d3-scale"
-import { NoDataModal } from "../noDataModal/NoDataModal"
-import { SortOrder } from "../../types/index"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
+import { SortOrder } from "../../types/index.js"
 import {
     Bounds,
     PointVector,
@@ -13,12 +13,12 @@ import {
     intersection,
     guid,
     makeIdForHumanConsumption,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, action, observable, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import * as React from "react"
-import { Halo } from "../../components/index"
-import { MultiColorPolyline } from "./MultiColorPolyline"
+import { Halo } from "../../components/index.js"
+import { MultiColorPolyline } from "./MultiColorPolyline.js"
 import {
     ScatterPointsWithLabelsProps,
     ScatterRenderSeries,
@@ -29,20 +29,20 @@ import {
     SCATTER_POINT_HOVER_TARGET_RANGE,
     ScatterRenderPoint,
     SCATTER_LABEL_MIN_FONT_SIZE_FACTOR,
-} from "./ScatterPlotChartConstants"
-import { ScatterLine, ScatterPoint } from "./ScatterPoints"
+} from "./ScatterPlotChartConstants.js"
+import { ScatterLine, ScatterPoint } from "./ScatterPoints.js"
 import {
     makeStartLabel,
     makeMidLabels,
     makeEndLabel,
     labelPriority,
-} from "./ScatterUtils"
-import { Triangle } from "./Triangle"
-import { ColorScale } from "../color/ColorScale"
+} from "./ScatterUtils.js"
+import { Triangle } from "./Triangle.js"
+import { ColorScale } from "../color/ColorScale.js"
 import {
     BASE_FONT_SIZE,
     GRAPHER_TEXT_OUTLINE_FACTOR,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 
 // This is the component that actually renders the points. The higher level ScatterPlot class renders points, legends, comparison lines, etc.
 @observer

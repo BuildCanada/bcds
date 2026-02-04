@@ -7,7 +7,7 @@ import {
     type GrapherInteractionEvent,
     type GrapherAnalyticsContext,
     type GAEvent,
-} from "../../types/index"
+} from "../../types/index.js"
 
 const DEBUG = false
 

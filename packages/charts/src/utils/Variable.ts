@@ -6,12 +6,12 @@ import {
     updatePersistables,
     objectWithPersistablesToObject,
     deleteRuntimeAndUnchangedProps,
-} from "./persistable/Persistable"
+} from "./persistable/Persistable.js"
 import {
     VariableDataTableConfigInterface,
     VariableDisplayConfigInterface,
     VariableRoundingMode,
-} from "../types/index"
+} from "../types/index.js"
 
 class VariableDisplayConfigDefaults {
     name: string | undefined = undefined

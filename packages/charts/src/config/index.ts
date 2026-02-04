@@ -7,7 +7,7 @@ export {
     type LogoConfig,
     defaultChartsConfig,
     mergeWithDefaults,
-} from "./ChartsConfig"
+} from "./ChartsConfig.js"
 
 export {
     ChartsProvider,
@@ -17,4 +17,4 @@ export {
     createFallbackConfig,
     reportError,
     trackEvent,
-} from "./ChartsProvider"
+} from "./ChartsProvider.js"

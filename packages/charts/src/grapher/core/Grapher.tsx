@@ -20,8 +20,8 @@ import {
     strToQueryParams,
     queryParamsToStr,
     setWindowQueryStr,
-} from "../../utils/index"
-import { BodyPortal } from "../../components/index"
+} from "../../utils/index.js"
+import { BodyPortal } from "../../components/index.js"
 import {
     ScaleType,
     AnnotationFieldsInTitle,
@@ -34,35 +34,35 @@ import {
     AdditionalGrapherDataFetchFn,
     GrapherVariant,
     Time,
-} from "../../types/index"
-import { ChartsTable } from "../../core-table/index"
+} from "../../types/index.js"
+import { ChartsTable } from "../../core-table/index.js"
 import {
     GRAPHER_LOADED_EVENT_NAME,
     GrapherModal,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 
-import { FullScreen } from "../fullScreen/FullScreen"
+import { FullScreen } from "../fullScreen/FullScreen.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons"
-import { TooltipContainer } from "../tooltip/Tooltip"
-import { EntitySelectorModal } from "../modal/EntitySelectorModal"
-import { DownloadModal } from "../modal/DownloadModal"
+import { TooltipContainer } from "../tooltip/Tooltip.js"
+import { EntitySelectorModal } from "../modal/EntitySelectorModal.js"
+import { DownloadModal } from "../modal/DownloadModal.js"
 import { observer } from "mobx-react"
 import "d3-transition"
-import { SourcesModal } from "../modal/SourcesModal"
-import { Command, CommandPalette } from "../controls/CommandPalette"
-import { EmbedModal } from "../modal/EmbedModal"
+import { SourcesModal } from "../modal/SourcesModal.js"
+import { Command, CommandPalette } from "../controls/CommandPalette.js"
+import { EmbedModal } from "../modal/EmbedModal.js"
 import Mousetrap from "mousetrap"
-import { SelectionArray } from "../selection/SelectionArray"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.js"
 import classnames from "classnames"
-import { SidePanel } from "../sidePanel/SidePanel"
-import { EntitySelector } from "../entitySelector/EntitySelector"
-import { SlideInDrawer } from "../slideInDrawer/SlideInDrawer"
-import { FocusArray } from "../focus/FocusArray"
-import { Chart } from "../chart/Chart"
+import { SidePanel } from "../sidePanel/SidePanel.js"
+import { EntitySelector } from "../entitySelector/EntitySelector.js"
+import { SlideInDrawer } from "../slideInDrawer/SlideInDrawer.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { Chart } from "../chart/Chart.js"
 import { flushSync } from "react-dom"
-import { GrapherState } from "./GrapherState"
+import { GrapherState } from "./GrapherState.js"
 
 declare global {
     interface Window {

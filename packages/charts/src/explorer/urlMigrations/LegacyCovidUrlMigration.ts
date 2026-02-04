@@ -1,8 +1,8 @@
 import * as _ from "lodash-es"
-import { legacyToCurrentGrapherUrl } from "../../grapher/index"
-import { QueryParams, Url } from "../../utils/index"
-import { EXPLORERS_ROUTE_FOLDER } from "../ExplorerConstants"
-import { ExplorerUrlMigrationSpec } from "./ExplorerUrlMigrations"
+import { legacyToCurrentGrapherUrl } from "../../grapher/index.js"
+import { QueryParams, Url } from "../../utils/index.js"
+import { EXPLORERS_ROUTE_FOLDER } from "../ExplorerConstants.js"
+import { ExplorerUrlMigrationSpec } from "./ExplorerUrlMigrations.js"
 
 const covidMetricFromLegacyQueryParams = (queryParams: QueryParams) => {
     if (queryParams.casesMetric) {

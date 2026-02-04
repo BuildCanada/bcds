@@ -2,32 +2,32 @@ import * as React from "react"
 import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
 import { scaleLinear, ScaleLinear } from "d3-scale"
-import { TextWrap, Halo } from "../../components/index"
+import { TextWrap, Halo } from "../../components/index.js"
 import {
     Color,
     makeIdForHumanConsumption,
     VariableRoundingMode,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     BASE_FONT_SIZE,
     GRAPHER_FONT_SCALE_10,
     GRAPHER_FONT_SCALE_11,
     GRAPHER_TEXT_OUTLINE_FACTOR,
-} from "../core/GrapherConstants"
-import { CoreColumn } from "../../core-table/index"
+} from "../core/GrapherConstants.js"
+import { CoreColumn } from "../../core-table/index.js"
 import {
     ScatterSeries,
     SCATTER_POINT_MAX_RADIUS,
     SCATTER_POINT_OPACITY,
     SCATTER_POINT_STROKE_WIDTH,
     SCATTER_POINT_DEFAULT_RADIUS,
-} from "./ScatterPlotChartConstants"
-import { darkenColorForText } from "../color/ColorUtils"
+} from "./ScatterPlotChartConstants.js"
+import { darkenColorForText } from "../color/ColorUtils.js"
 import {
     GRAPHER_BACKGROUND_DEFAULT,
     GRAPHER_DARK_TEXT,
     GRAPHER_LIGHT_TEXT,
-} from "../color/ColorConstants"
+} from "../color/ColorConstants.js"
 
 export interface ScatterSizeLegendManager {
     sidebarWidth: number

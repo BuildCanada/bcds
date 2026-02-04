@@ -8,45 +8,45 @@ import {
     Bounds,
     guid,
     exposeInstanceOnWindow,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, action, observable, makeObservable } from "mobx"
-import { SeriesName, SeriesStrategy } from "../../types/index"
+import { SeriesName, SeriesStrategy } from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import { observer } from "mobx-react"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { LineLegend } from "../lineLegend/LineLegend"
-import { NoDataModal } from "../noDataModal/NoDataModal"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { LineLegend } from "../lineLegend/LineLegend.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipState,
     TooltipTable,
     makeTooltipRoundingNotice,
     toTooltipTableColumns,
-} from "../tooltip/Tooltip"
-import { StackedAreaChartState } from "./StackedAreaChartState"
-import { AREA_OPACITY, StackedSeries } from "./StackedConstants"
+} from "../tooltip/Tooltip.js"
+import { StackedAreaChartState } from "./StackedAreaChartState.js"
+import { AREA_OPACITY, StackedSeries } from "./StackedConstants.js"
 import {
     makeClipPath,
     isTargetOutsideElement,
     getHoverStateForSeries,
-} from "../chart/ChartUtils"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
+} from "../chart/ChartUtils.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { LineLabelSeries } from "../lineLegend/LineLegendTypes.js"
 import { easeLinear } from "d3-ease"
 import { select, type BaseType, type Selection } from "d3-selection"
-import { ChartInterface } from "../chart/ChartInterface"
-import { ChartManager } from "../chart/ChartManager"
-import { StackedAreas } from "./StackedAreas"
-import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"
-import { CategoricalBin } from "../color/ColorScaleBin"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { InteractionState } from "../interaction/InteractionState"
-import { resolveCollision } from "./StackedUtils"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { StackedAreas } from "./StackedAreas.js"
+import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin } from "../color/ColorScaleBin.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { InteractionState } from "../interaction/InteractionState.js"
+import { resolveCollision } from "./StackedUtils.js"
 
 const STACKED_AREA_CHART_CLASS_NAME = "StackedArea"
 

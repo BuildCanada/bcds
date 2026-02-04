@@ -1,4 +1,4 @@
-import { PrimitiveType } from "../types/index"
+import { PrimitiveType } from "../types/index.js"
 import * as _ from "lodash-es"
 import fuzzysort from "fuzzysort"
 

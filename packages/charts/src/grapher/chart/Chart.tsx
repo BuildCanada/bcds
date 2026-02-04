@@ -4,11 +4,11 @@ import { observer } from "mobx-react"
 import {
     CaptionedChart,
     StaticCaptionedChart,
-} from "../captionedChart/CaptionedChart"
-import { GrapherState } from "../core/GrapherState"
-import { ChartAreaContent } from "./ChartAreaContent"
-import { StaticChartWrapper } from "./StaticChartWrapper"
-import { GrapherVariant } from "../../types/index"
+} from "../captionedChart/CaptionedChart.js"
+import { GrapherState } from "../core/GrapherState.js"
+import { ChartAreaContent } from "./ChartAreaContent.js"
+import { StaticChartWrapper } from "./StaticChartWrapper.js"
+import { GrapherVariant } from "../../types/index.js"
 
 @observer
 export class Chart extends React.Component<{

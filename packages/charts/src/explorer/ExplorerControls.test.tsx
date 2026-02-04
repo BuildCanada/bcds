@@ -4,8 +4,8 @@
 
 import { expect, it, describe } from "vitest"
 import { render, screen } from "@testing-library/react"
-import { ExplorerControlType } from "./ExplorerConstants"
-import { ExplorerControlPanel } from "./ExplorerControls"
+import { ExplorerControlType } from "./ExplorerConstants.js"
+import { ExplorerControlPanel } from "./ExplorerControls.js"
 
 describe(ExplorerControlPanel, () => {
     const options = [

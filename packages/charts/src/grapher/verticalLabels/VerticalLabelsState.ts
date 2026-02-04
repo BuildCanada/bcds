@@ -1,7 +1,7 @@
 import * as R from "remeda"
 import { computed } from "mobx"
-import { Bounds, RequiredBy, VerticalAlign } from "../../utils/index"
-import { TextWrap } from "../../components/index"
+import { Bounds, RequiredBy, VerticalAlign } from "../../utils/index.js"
+import { TextWrap } from "../../components/index.js"
 
 interface VerticalLabelsOptions {
     /** Font size for the labels */

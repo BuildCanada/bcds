@@ -5,10 +5,10 @@ import {
     Bounds,
     FontFamily,
     VerticalAlign,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, makeObservable } from "mobx"
 import * as React from "react"
-import { Fragment, joinFragments, splitIntoFragments } from "./TextWrapUtils"
+import { Fragment, joinFragments, splitIntoFragments } from "./TextWrapUtils.js"
 import { match } from "ts-pattern"
 
 declare type FontSize = number

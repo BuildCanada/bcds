@@ -3,10 +3,10 @@ import { observer } from "mobx-react"
 import * as _ from "lodash-es"
 import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
-import { Bar, BarShape, PlacedItem } from "./MarimekkoChartConstants"
-import { DualAxis } from "../axis/Axis"
-import { Bounds } from "../../utils/index"
-import { Halo } from "../../components/index"
+import { Bar, BarShape, PlacedItem } from "./MarimekkoChartConstants.js"
+import { DualAxis } from "../axis/Axis.js"
+import { Bounds } from "../../utils/index.js"
+import { Halo } from "../../components/index.js"
 
 interface MarimekkoInternalLabelsProps {
     items: PlacedItem[]

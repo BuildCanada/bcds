@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
-import { GrapherInterface } from "../../../types/index"
+import { GrapherInterface } from "../../../types/index.js"
 
-import { defaultGrapherConfig } from "../defaultGrapherConfig"
+import { defaultGrapherConfig } from "../defaultGrapherConfig.js"
 import {
     getSchemaVersion,
     hasValidSchema,
@@ -9,8 +9,8 @@ import {
     hasOutdatedSchema,
     type AnyConfig,
     type AnyConfigWithValidSchema,
-} from "./helpers"
-import { runMigration } from "./migrations"
+} from "./helpers.js"
+import { runMigration } from "./migrations.js"
 
 const recursivelyApplyMigrations = (
     config: AnyConfigWithValidSchema

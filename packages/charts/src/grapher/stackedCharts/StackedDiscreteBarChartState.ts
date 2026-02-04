@@ -1,8 +1,8 @@
 import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
-import { ChartState } from "../chart/ChartInterface"
-import { StackedDiscreteBarChartManager } from "./StackedDiscreteBarChart"
-import { CoreColumn, ChartsTable } from "../../core-table/index"
+import { ChartState } from "../chart/ChartInterface.js"
+import { StackedDiscreteBarChartManager } from "./StackedDiscreteBarChart.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.js"
 import {
     ChartErrorInfo,
     ColorSchemeName,
@@ -12,24 +12,24 @@ import {
     SortBy,
     SortConfig,
     SortOrder,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
-import { SelectionArray } from "../selection/SelectionArray"
-import { Item, StackedSeries } from "./StackedConstants"
+} from "../chart/ChartUtils.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { Item, StackedSeries } from "./StackedConstants.js"
 import {
     stackSeriesInBothDirections,
     withMissingValuesAsZeroes,
-} from "./StackedUtils"
-import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner"
-import { ColorScheme } from "../color/ColorScheme"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { excludeUndefined } from "../../utils/index"
-import { FocusArray } from "../focus/FocusArray"
+} from "./StackedUtils.js"
+import { CategoricalColorAssigner } from "../color/CategoricalColorAssigner.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { excludeUndefined } from "../../utils/index.js"
+import { FocusArray } from "../focus/FocusArray.js"
 
 export class StackedDiscreteBarChartState implements ChartState {
     manager: StackedDiscreteBarChartManager

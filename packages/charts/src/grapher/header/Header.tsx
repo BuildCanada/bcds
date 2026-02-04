@@ -4,21 +4,21 @@ import {
     LogoOption,
     makeIdForHumanConsumption,
     Bounds,
-} from "../../utils/index"
-import { MarkdownTextWrap, TextWrap } from "../../components/index"
+} from "../../utils/index.js"
+import { MarkdownTextWrap, TextWrap } from "../../components/index.js"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { Logo } from "../captionedChart/Logos"
+import { Logo } from "../captionedChart/Logos.js"
 
-import { HeaderManager } from "./HeaderManager"
+import { HeaderManager } from "./HeaderManager.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     GRAPHER_FRAME_PADDING_VERTICAL,
     GRAPHER_HEADER_CLASS,
-} from "../core/GrapherConstants"
-import { GRAPHER_DARK_TEXT, GRAY_100, GRAY_80 } from "../color/ColorConstants"
+} from "../core/GrapherConstants.js"
+import { GRAPHER_DARK_TEXT, GRAY_100, GRAY_80 } from "../color/ColorConstants.js"
 
 interface HeaderProps {
     manager: HeaderManager

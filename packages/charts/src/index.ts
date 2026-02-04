@@ -41,49 +41,49 @@ export {
     createFallbackConfig,
     reportError,
     trackEvent,
-} from "./config/index"
+} from "./config/index.js"
 
 // Re-export grapher components
 export {
     Grapher,
     type GrapherProgrammaticInterface,
     type GrapherManager,
-} from "./grapher/core/Grapher"
+} from "./grapher/core/Grapher.js"
 
-export { GrapherState } from "./grapher/core/GrapherState"
-export { FetchingGrapher } from "./grapher/core/FetchingGrapher"
+export { GrapherState } from "./grapher/core/GrapherState.js"
+export { FetchingGrapher } from "./grapher/core/FetchingGrapher.js"
 
 // Explorer
-export { Explorer } from "./explorer/Explorer"
-export type { ExplorerProps } from "./explorer/Explorer"
+export { Explorer } from "./explorer/Explorer.js"
+export type { ExplorerProps } from "./explorer/Explorer.js"
 
 // Chart State types
-export type { ChartState, ChartSeries } from "./grapher/chart/ChartInterface"
-export type { LineChartState } from "./grapher/lineCharts/LineChartState"
-export type { SlopeChartState } from "./grapher/slopeCharts/SlopeChartState"
-export type { DiscreteBarChartState } from "./grapher/barCharts/DiscreteBarChartState"
-export type { StackedAreaChartState } from "./grapher/stackedCharts/StackedAreaChartState"
-export type { StackedBarChartState } from "./grapher/stackedCharts/StackedBarChartState"
-export type { StackedDiscreteBarChartState } from "./grapher/stackedCharts/StackedDiscreteBarChartState"
-export type { ScatterPlotChartState } from "./grapher/scatterCharts/ScatterPlotChartState"
-export type { MarimekkoChartState } from "./grapher/stackedCharts/MarimekkoChartState"
-export { MapChartState } from "./grapher/mapCharts/MapChartState"
-export { MapConfig } from "./grapher/mapCharts/MapConfig"
+export type { ChartState, ChartSeries } from "./grapher/chart/ChartInterface.js"
+export type { LineChartState } from "./grapher/lineCharts/LineChartState.js"
+export type { SlopeChartState } from "./grapher/slopeCharts/SlopeChartState.js"
+export type { DiscreteBarChartState } from "./grapher/barCharts/DiscreteBarChartState.js"
+export type { StackedAreaChartState } from "./grapher/stackedCharts/StackedAreaChartState.js"
+export type { StackedBarChartState } from "./grapher/stackedCharts/StackedBarChartState.js"
+export type { StackedDiscreteBarChartState } from "./grapher/stackedCharts/StackedDiscreteBarChartState.js"
+export type { ScatterPlotChartState } from "./grapher/scatterCharts/ScatterPlotChartState.js"
+export type { MarimekkoChartState } from "./grapher/stackedCharts/MarimekkoChartState.js"
+export { MapChartState } from "./grapher/mapCharts/MapChartState.js"
+export { MapConfig } from "./grapher/mapCharts/MapConfig.js"
 
 // Data loading
 export {
     fetchInputTableForConfig,
     getCachingInputTableFetcher,
     type FetchInputTableForConfigFn,
-} from "./grapher/core/loadGrapherTableHelpers"
+} from "./grapher/core/loadGrapherTableHelpers.js"
 
-export { loadVariableDataAndMetadata } from "./grapher/core/loadVariable"
+export { loadVariableDataAndMetadata } from "./grapher/core/loadVariable.js"
 
 // Color system
-export { ColorScale } from "./grapher/color/ColorScale"
-export { ColorScaleConfig } from "./grapher/color/ColorScaleConfig"
-export { ColorScheme } from "./grapher/color/ColorScheme"
-export { ColorSchemes, getColorSchemeForChartType } from "./grapher/color/ColorSchemes"
+export { ColorScale } from "./grapher/color/ColorScale.js"
+export { ColorScaleConfig } from "./grapher/color/ColorScaleConfig.js"
+export { ColorScheme } from "./grapher/color/ColorScheme.js"
+export { ColorSchemes, getColorSchemeForChartType } from "./grapher/color/ColorSchemes.js"
 export {
     NumericBin,
     CategoricalBin,
@@ -92,11 +92,11 @@ export {
     isNumericBin,
     isNoDataBin,
     isProjectedDataBin,
-} from "./grapher/color/ColorScaleBin"
+} from "./grapher/color/ColorScaleBin.js"
 
 // Selection and Focus
-export { SelectionArray } from "./grapher/selection/SelectionArray"
-export { FocusArray } from "./grapher/focus/FocusArray"
+export { SelectionArray } from "./grapher/selection/SelectionArray.js"
+export { FocusArray } from "./grapher/focus/FocusArray.js"
 
 // Constants
 export {
@@ -108,20 +108,20 @@ export {
     BASE_FONT_SIZE,
     Patterns,
     latestGrapherConfigSchema,
-} from "./grapher/core/GrapherConstants"
+} from "./grapher/core/GrapherConstants.js"
 
 // Controls
-export { EntityPicker } from "./grapher/controls/entityPicker/EntityPicker"
-export type { EntityPickerManager } from "./grapher/controls/entityPicker/EntityPickerConstants"
-export { GlobalEntitySelector } from "./grapher/controls/globalEntitySelector/GlobalEntitySelector"
-export { Dropdown } from "./grapher/controls/Dropdown"
+export { EntityPicker } from "./grapher/controls/entityPicker/EntityPicker.js"
+export type { EntityPickerManager } from "./grapher/controls/entityPicker/EntityPickerConstants.js"
+export { GlobalEntitySelector } from "./grapher/controls/globalEntitySelector/GlobalEntitySelector.js"
+export { Dropdown } from "./grapher/controls/Dropdown.js"
 
 // Schema and migrations
-export { defaultGrapherConfig } from "./grapher/schema/defaultGrapherConfig"
+export { defaultGrapherConfig } from "./grapher/schema/defaultGrapherConfig.js"
 export {
     migrateGrapherConfigToLatestVersion,
     migrateGrapherConfigToLatestVersionAndFailOnError,
-} from "./grapher/schema/migrations/migrate"
+} from "./grapher/schema/migrations/migrate.js"
 
 // URL utilities
 export {
@@ -131,46 +131,46 @@ export {
     generateSelectedEntityNamesParam,
     generateFocusedSeriesNamesParam,
     getEntityNamesParam,
-} from "./grapher/core/EntityUrlBuilder"
+} from "./grapher/core/EntityUrlBuilder.js"
 
-export { grapherConfigToQueryParams } from "./grapher/core/GrapherUrl"
+export { grapherConfigToQueryParams } from "./grapher/core/GrapherUrl.js"
 
 // Chart utilities
-export { ChartDimension } from "./grapher/chart/ChartDimension"
-export { DimensionSlot } from "./grapher/chart/DimensionSlot"
-export { makeChartState } from "./grapher/chart/ChartTypeMap"
-export { generateGrapherImageSrcSet } from "./grapher/chart/ChartUtils"
+export { ChartDimension } from "./grapher/chart/ChartDimension.js"
+export { DimensionSlot } from "./grapher/chart/DimensionSlot.js"
+export { makeChartState } from "./grapher/chart/ChartTypeMap.js"
+export { generateGrapherImageSrcSet } from "./grapher/chart/ChartUtils.js"
 
 // Slideshow
 export {
     type SlideShowManager,
     SlideShowController,
-} from "./grapher/slideshowController/SlideShowController"
+} from "./grapher/slideshowController/SlideShowController.js"
 
 // Analytics
-export { GrapherAnalytics } from "./grapher/core/GrapherAnalytics"
+export { GrapherAnalytics } from "./grapher/core/GrapherAnalytics.js"
 
 // Rendering helpers
 export {
     renderGrapherIntoContainer,
     renderSingleGrapherOnGrapherPage,
-} from "./grapher/core/GrapherUseHelpers"
+} from "./grapher/core/GrapherUseHelpers.js"
 
 // Map features
-export { GeoFeatures } from "./grapher/mapCharts/GeoFeatures"
+export { GeoFeatures } from "./grapher/mapCharts/GeoFeatures.js"
 export {
     MAP_REGION_LABELS,
     type GeoFeature,
     type Direction,
     type Ellipse,
     type EllipseCoords,
-} from "./grapher/mapCharts/MapChartConstants"
+} from "./grapher/mapCharts/MapChartConstants.js"
 
 // Comparison lines
-export { isValidVerticalComparisonLineConfig } from "./grapher/comparisonLine/ComparisonLineHelpers"
+export { isValidVerticalComparisonLineConfig } from "./grapher/comparisonLine/ComparisonLineHelpers.js"
 
 // Binning strategies
-export { hasValidConfigForBinningStrategy } from "./grapher/color/BinningStrategies"
+export { hasValidConfigForBinningStrategy } from "./grapher/color/BinningStrategies.js"
 
 // Chart tabs
 export {
@@ -180,7 +180,7 @@ export {
     mapGrapherTabNameToQueryParam,
     mapGrapherTabNameToConfigOption,
     makeLabelForGrapherTab,
-} from "./grapher/chart/ChartTabs"
+} from "./grapher/chart/ChartTabs.js"
 
 // Guided chart utilities
 export {
@@ -190,15 +190,15 @@ export {
     type GuidedChartContextValue,
     type ArchiveGuidedChartRegistration,
     buildArchiveGuidedChartSrc,
-} from "./grapher/chart/guidedChartUtils"
+} from "./grapher/chart/guidedChartUtils.js"
 
 // Legacy conversion
 export {
     legacyToChartsTableAndDimensions,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "./grapher/core/LegacyToChartsTable"
+} from "./grapher/core/LegacyToChartsTable.js"
 
-export { legacyToCurrentGrapherUrl } from "./grapher/core/GrapherUrlMigrations"
+export { legacyToCurrentGrapherUrl } from "./grapher/core/GrapherUrlMigrations.js"
 
 // Test data helpers (useful for demos and testing)
 export {
@@ -206,8 +206,8 @@ export {
     createTestDataset,
     type TestData,
     type TestMetadata,
-} from "./grapher/testData/TestData"
-export { LifeExpectancyGrapher } from "./grapher/testData/TestData.sample"
+} from "./grapher/testData/TestData.js"
+export { LifeExpectancyGrapher } from "./grapher/testData/TestData.sample.js"
 
 // Types commonly needed for data loading
 export {
@@ -219,8 +219,8 @@ export {
     type EntityName,
     type EntityId,
     type EntityCode,
-} from "./types/index"
+} from "./types/index.js"
 
 // Utilities for data loading
-export { Bounds } from "./utils/index"
-export { parseDelimited, ChartsTable, BlankChartsTable } from "./core-table/index"
+export { Bounds } from "./utils/index.js"
+export { parseDelimited, ChartsTable, BlankChartsTable } from "./core-table/index.js"

@@ -1,18 +1,18 @@
 import * as R from "remeda"
 import { computed, makeObservable } from "mobx"
-import { ChartState } from "../chart/ChartInterface"
+import { ChartState } from "../chart/ChartInterface.js"
 import {
     ChoroplethSeries,
     ChoroplethSeriesByName,
     MAP_REGION_LABELS,
     MapChartManager,
     MapColumnInfo,
-} from "./MapChartConstants"
+} from "./MapChartConstants.js"
 import {
     CoreColumn,
     ErrorValueTypes,
     ChartsTable,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 import { match, P } from "ts-pattern"
 import {
     ChartErrorInfo,
@@ -24,24 +24,24 @@ import {
     PrimitiveType,
     TickFormattingOptions,
     Time,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     anyToString,
     checkHasMembers,
     isPresent,
     mappableCountries,
     regions,
-} from "../../utils/index"
-import { MapConfig } from "./MapConfig"
-import { combineHistoricalAndProjectionColumns } from "../chart/ChartUtils"
+} from "../../utils/index.js"
+import { MapConfig } from "./MapConfig.js"
+import { combineHistoricalAndProjectionColumns } from "../chart/ChartUtils.js"
 import {
     getCountriesByRegion,
     isOnTheCanadaMap,
     isOnTheMap,
-} from "./MapHelpers"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
-import { ColorScale, ColorScaleManager } from "../color/ColorScale"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
+} from "./MapHelpers.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { ColorScale, ColorScaleManager } from "../color/ColorScale.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
 
 export type MapFormatValueForTooltip = (
     d: PrimitiveType,

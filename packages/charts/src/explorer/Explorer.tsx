@@ -13,12 +13,12 @@ import {
     GrapherQueryParams,
     EntityName,
     GRAPHER_TAB_QUERY_PARAMS,
-} from "../types/index"
+} from "../types/index.js"
 import {
     ChartsTable,
     BlankChartsTable,
     extractPotentialDataSlugsFromTransform,
-} from "../core-table/index"
+} from "../core-table/index.js"
 import {
     EntityPicker,
     EntityPickerManager,
@@ -35,7 +35,7 @@ import {
     fetchInputTableForConfig,
     loadVariableDataAndMetadata,
     FetchInputTableForConfigFn,
-} from "../grapher/index"
+} from "../grapher/index.js"
 import {
     Bounds,
     ColumnSlug,
@@ -53,15 +53,15 @@ import {
     setWindowUrl,
     Tippy,
     Url,
-} from "../utils/index"
-import { MarkdownTextWrap } from "../components/index"
+} from "../utils/index.js"
+import { MarkdownTextWrap } from "../components/index.js"
 import classNames from "classnames"
 import { action, computed, makeObservable, observable, reaction } from "mobx"
 import { observer } from "mobx-react"
 import React, { useCallback, useEffect, useState } from "react"
 import { createRoot } from "react-dom/client"
-import { ExplorerControlBar, ExplorerControlPanel } from "./ExplorerControls"
-import { ExplorerProgram } from "./ExplorerProgram"
+import { ExplorerControlBar, ExplorerControlPanel } from "./ExplorerControls.js"
+import { ExplorerProgram } from "./ExplorerProgram.js"
 import {
     ExplorerChartCreationMode,
     ExplorerChoiceParams,
@@ -71,12 +71,12 @@ import {
     EXPLORERS_ROUTE_FOLDER,
     UNSAVED_EXPLORER_DRAFT,
     UNSAVED_EXPLORER_PREVIEW_QUERYPARAMS,
-} from "./ExplorerConstants"
-import { ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec"
+} from "./ExplorerConstants.js"
+import { ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.js"
 import {
     explorerUrlMigrationsById,
     migrateExplorerUrl,
-} from "./urlMigrations/ExplorerUrlMigrations"
+} from "./urlMigrations/ExplorerUrlMigrations.js"
 
 export interface ExplorerProps extends SerializedGridProgram {
     grapherConfigs?: GrapherInterface[]

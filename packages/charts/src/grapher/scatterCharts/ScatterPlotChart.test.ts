@@ -1,8 +1,8 @@
 import { expect, it, describe } from "vitest"
 
 import * as _ from "lodash-es"
-import { ScatterPlotChart } from "../scatterCharts/ScatterPlotChart"
-import { ScatterPlotChartState } from "../scatterCharts/ScatterPlotChartState"
+import { ScatterPlotChart } from "../scatterCharts/ScatterPlotChart.js"
+import { ScatterPlotChartState } from "../scatterCharts/ScatterPlotChartState.js"
 import {
     SampleColumnSlugs,
     SynthesizeFruitTable,
@@ -11,13 +11,13 @@ import {
     ErrorValueTypes,
     makeOriginalTimeSlugFromColumnSlug,
     ChartsTable,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 import {
     ScatterPlotManager,
     SCATTER_POINT_DEFAULT_RADIUS,
     SCATTER_POINT_MAX_RADIUS,
     SCATTER_POINT_MIN_RADIUS,
-} from "./ScatterPlotChartConstants"
+} from "./ScatterPlotChartConstants.js"
 import {
     ScaleType,
     ScatterPointLabelStrategy,
@@ -25,11 +25,11 @@ import {
     ChartsTableSlugs,
     Color,
     GRAPHER_CHART_TYPES,
-} from "../../types/index"
-import { ContinentColors } from "../color/CustomSchemes"
-import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels"
-import { GrapherState } from "../core/GrapherState"
-import { InteractionState } from "../interaction/InteractionState"
+} from "../../types/index.js"
+import { ContinentColors } from "../color/CustomSchemes.js"
+import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels.js"
+import { GrapherState } from "../core/GrapherState.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 it("can create a new chart", () => {
     const manager: ScatterPlotManager = {

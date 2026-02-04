@@ -1,9 +1,9 @@
 import * as React from "react"
-import { Bounds, bind } from "../../utils/index"
+import { Bounds, bind } from "../../utils/index.js"
 import {
     isElementInteractive,
     isTargetOutsideElement,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 
 export class Modal extends React.Component<{
     bounds: Bounds

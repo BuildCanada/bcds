@@ -1,9 +1,9 @@
-import { PartialBy, PointVector } from "../../utils/index"
-import { EntityName, VariableRow } from "../../types/index"
-import { ChartSeries } from "../chart/ChartInterface"
-import { CoreColumn } from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
-import { InteractionState } from "../interaction/InteractionState"
+import { PartialBy, PointVector } from "../../utils/index.js"
+import { EntityName, VariableRow } from "../../types/index.js"
+import { ChartSeries } from "../chart/ChartInterface.js"
+import { CoreColumn } from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export interface SlopeChartManager extends ChartManager {
     canSelectMultipleEntities?: boolean // used to pick an appropriate series name

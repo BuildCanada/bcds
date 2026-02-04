@@ -1,4 +1,4 @@
-import { ChartManager } from "../chart/ChartManager"
+import { ChartManager } from "../chart/ChartManager.js"
 
 import {
     Color,
@@ -7,11 +7,11 @@ import {
     Bounds,
     EntityName,
     ColumnSlug,
-} from "../../utils/index"
-import { ChartsTable } from "../../core-table/index"
-import { StackedPoint } from "./StackedConstants"
-import { DualAxis } from "../axis/Axis"
-import { InteractionState } from "../interaction/InteractionState"
+} from "../../utils/index.js"
+import { ChartsTable } from "../../core-table/index.js"
+import { StackedPoint } from "./StackedConstants.js"
+import { DualAxis } from "../axis/Axis.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export interface MarimekkoChartManager extends ChartManager {
     endTime?: Time

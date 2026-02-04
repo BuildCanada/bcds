@@ -3,7 +3,7 @@ import {
     Color,
     ColorSchemeInterface,
     ColorSchemeName,
-} from "../../types/index"
+} from "../../types/index.js"
 
 type ColorSchemeProps = { displayName: string; singleColorScale: boolean }
 

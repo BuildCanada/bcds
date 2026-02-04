@@ -6,8 +6,8 @@ import {
     pickCandidate,
     pickCandidateWithMaxDistanceToReferenceCandidate,
     pickCandidateWithRetry,
-} from "./LineLegendHelpers"
-import { PlacedSeries } from "./LineLegendTypes"
+} from "./LineLegendHelpers.js"
+import { PlacedSeries } from "./LineLegendTypes.js"
 
 /**
  * Keep a subset of series that fit within the available height, prioritizing by

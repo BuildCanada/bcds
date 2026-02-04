@@ -1,4 +1,4 @@
-import { sleep } from "../../utils/index"
+import { sleep } from "../../utils/index.js"
 
 export const EMBEDDED_FONTS_CSS = "/fonts/embedded.css"
 export const IMPORT_FONTS_REGEX = /@import url\([^)]*?fonts\.css\)/

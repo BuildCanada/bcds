@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { Url } from "./Url"
+import { Url } from "./Url.js"
 
 describe(Url, () => {
     const url = Url.fromURL(

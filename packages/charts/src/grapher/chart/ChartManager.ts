@@ -13,15 +13,15 @@ import {
     DetailsMarker,
     Color,
     GrapherVariant,
-} from "../../types/index"
-import { TooltipManager } from "../tooltip/TooltipProps"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
+} from "../../types/index.js"
+import { TooltipManager } from "../tooltip/TooltipProps.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
 
-import { SelectionArray } from "../selection/SelectionArray"
-import { ColumnSlug, SortConfig, TimeBound } from "../../utils/index"
-import { ColorScaleBin } from "../color/ColorScaleBin"
-import { ColorScale } from "../color/ColorScale"
-import { FocusArray } from "../focus/FocusArray"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { ColumnSlug, SortConfig, TimeBound } from "../../utils/index.js"
+import { ColorScaleBin } from "../color/ColorScaleBin.js"
+import { ColorScale } from "../color/ColorScale.js"
+import { FocusArray } from "../focus/FocusArray.js"
 
 // The possible options common across our chart types. Not all of these apply to every chart type, so there is room to create a better type hierarchy.
 

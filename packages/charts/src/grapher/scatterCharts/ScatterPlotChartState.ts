@@ -5,21 +5,21 @@ import {
     defaultIfErrorValue,
     isNotErrorValue,
     ChartsTable,
-} from "../../core-table/index"
-import { ChartState } from "../chart/ChartInterface"
-import { ColorScale, ColorScaleManager } from "../color/ColorScale"
+} from "../../core-table/index.js"
+import { ChartState } from "../chart/ChartInterface.js"
+import { ColorScale, ColorScaleManager } from "../color/ColorScale.js"
 import {
     SCATTER_POINT_DEFAULT_COLOR,
     ScatterPlotManager,
     ScatterSeries,
     SeriesPoint,
-} from "./ScatterPlotChartConstants"
+} from "./ScatterPlotChartConstants.js"
 import { computed, makeObservable } from "mobx"
 import {
     autoDetectYColumnSlugs,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 import {
     ChartErrorInfo,
     ColorSchemeName,
@@ -29,20 +29,20 @@ import {
     ColorScaleConfigInterface,
     SeriesName,
     ValueRange,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     domainExtent,
     intersection,
     lowerCaseFirstLetterUnlessAbbreviation,
-} from "../../utils/index"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
-import { NO_DATA_GRAY } from "../color/ColorConstants"
-import { AxisConfig } from "../axis/AxisConfig"
-import { BASE_FONT_SIZE } from "../core/GrapherConstants"
-import { SelectionArray } from "../selection/SelectionArray"
-import { computeSizeDomain } from "./ScatterUtils"
-import { FocusArray } from "../focus/FocusArray"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../../utils/index.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
+import { NO_DATA_GRAY } from "../color/ColorConstants.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { BASE_FONT_SIZE } from "../core/GrapherConstants.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { computeSizeDomain } from "./ScatterUtils.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 
 export class ScatterPlotChartState implements ChartState, ColorScaleManager {
     manager: ScatterPlotManager

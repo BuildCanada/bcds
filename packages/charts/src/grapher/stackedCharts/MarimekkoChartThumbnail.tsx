@@ -2,23 +2,23 @@ import React from "react"
 import * as _ from "lodash-es"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { MarimekkoChartState } from "./MarimekkoChartState"
-import { type MarimekkoChartProps } from "./MarimekkoChart"
-import { MarimekkoChartManager, PlacedItem } from "./MarimekkoChartConstants"
-import { Bounds } from "../../utils/index"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { AxisConfig } from "../axis/AxisConfig"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { MarimekkoChartState } from "./MarimekkoChartState.js"
+import { type MarimekkoChartProps } from "./MarimekkoChart.js"
+import { MarimekkoChartManager, PlacedItem } from "./MarimekkoChartConstants.js"
+import { Bounds } from "../../utils/index.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { MarimekkoBars } from "./MarimekkoBars"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { toPlacedMarimekkoItems } from "./MarimekkoChartHelpers"
-import { MarimekkoInternalLabels } from "./MarimekkoInternalLabels"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../core/GrapherConstants.js"
+import { MarimekkoBars } from "./MarimekkoBars.js"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { toPlacedMarimekkoItems } from "./MarimekkoChartHelpers.js"
+import { MarimekkoInternalLabels } from "./MarimekkoInternalLabels.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 const LABEL_PADDING = 4
 

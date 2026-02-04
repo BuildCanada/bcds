@@ -5,7 +5,7 @@ import {
     stackSeriesInBothDirections,
     withMissingValuesAsZeroes,
     withUniformSpacing,
-} from "./StackedUtils"
+} from "./StackedUtils.js"
 
 const seriesArr = [
     {

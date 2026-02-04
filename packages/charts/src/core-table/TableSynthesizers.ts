@@ -5,14 +5,14 @@ import {
     countries,
     VariableDisplayConfigInterface,
     ColumnSlug,
-} from "../utils/index"
+} from "../utils/index.js"
 import {
     TimeRange,
     ColumnTypeNames,
     ColumnDef,
     ChartsTableSlugs,
-} from "../types/index"
-import { ChartsTable } from "./ChartsTable"
+} from "../types/index.js"
+import { ChartsTable } from "./ChartsTable.js"
 
 interface SynthOptions {
     entityCount: number

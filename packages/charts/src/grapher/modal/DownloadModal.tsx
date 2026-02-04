@@ -13,14 +13,14 @@ import {
     getPhraseForProcessingLevel,
     triggerDownloadFromBlob,
     triggerDownloadFromUrl,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     Checkbox,
     CodeSnippet,
     OverlayHeader,
     RadioButton,
     LoadingIndicator,
-} from "../../components/index"
+} from "../../components/index.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faCircleExclamation,
@@ -34,26 +34,26 @@ import {
     Origin,
     QueryParams,
     type GrapherImageDownloadEvent,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     BlankChartsTable,
     ChartsTable,
     CoreColumn,
-} from "../../core-table/index"
-import { Modal } from "./Modal"
-import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer"
-import { TabItem, Tabs } from "../tabs/Tabs"
+} from "../../core-table/index.js"
+import { Modal } from "./Modal.js"
+import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer.js"
+import { TabItem, Tabs } from "../tabs/Tabs.js"
 import {
     DownloadIconFullDataset,
     DownloadIconSelected,
-} from "./DownloadIcons"
+} from "./DownloadIcons.js"
 import { match } from "ts-pattern"
 import * as R from "remeda"
 import {
     DEFAULT_GRAPHER_BOUNDS,
     DEFAULT_GRAPHER_BOUNDS_SQUARE,
     GrapherModal,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 
 export interface DownloadModalManager {
     displaySlug: string

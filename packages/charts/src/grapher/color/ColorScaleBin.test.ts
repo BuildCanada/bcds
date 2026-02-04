@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { CategoricalBin, NumericBin } from "./ColorScaleBin"
+import { CategoricalBin, NumericBin } from "./ColorScaleBin.js"
 
 it("can create a bin", () => {
     const bin = new CategoricalBin({

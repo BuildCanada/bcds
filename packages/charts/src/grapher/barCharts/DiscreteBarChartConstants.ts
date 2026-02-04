@@ -1,9 +1,9 @@
-import { ChartManager } from "../chart/ChartManager"
-import { CoreColumn } from "../../core-table/index"
-import { ChartSeries } from "../chart/ChartInterface"
-import { Color, CoreValueType, Time } from "../../types/index"
-import { TextWrap } from "../../components/index"
-import { InteractionState } from "../interaction/InteractionState"
+import { ChartManager } from "../chart/ChartManager.js"
+import { CoreColumn } from "../../core-table/index.js"
+import { ChartSeries } from "../chart/ChartInterface.js"
+import { Color, CoreValueType, Time } from "../../types/index.js"
+import { TextWrap } from "../../components/index.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export interface DiscreteBarSeries extends ChartSeries {
     entityName: string

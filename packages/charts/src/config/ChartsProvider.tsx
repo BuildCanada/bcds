@@ -5,7 +5,7 @@ import {
     ChartsConfig,
     defaultChartsConfig,
     mergeWithDefaults,
-} from "./ChartsConfig"
+} from "./ChartsConfig.js"
 
 /**
  * Context for charts configuration

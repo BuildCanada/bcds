@@ -7,9 +7,9 @@ import {
     GV_LOGO_SVG,
     LEGACY_LOGO_SVG,
     SMALL_LEGACY_LOGO_SVG,
-} from "./LogosSVG"
-import { LogoOption } from "../../types/index"
-import { makeIdForHumanConsumption } from "../../utils/index"
+} from "./LogosSVG.js"
+import { LogoOption } from "../../types/index.js"
+import { makeIdForHumanConsumption } from "../../utils/index.js"
 
 interface LogoAttributes {
     svg: string

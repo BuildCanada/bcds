@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { ChartsTable } from "../../core-table/index"
+import { ChartsTable } from "../../core-table/index.js"
 import {
     AxisAlign,
     AxisConfigInterface,
@@ -9,20 +9,20 @@ import {
     ScaleType,
     SeriesName,
     SeriesStrategy,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     LineChartSeries,
     PlacedLineChartSeries,
     PlacedPoint,
     RenderLineChartSeries,
-} from "./LineChartConstants"
-import { DualAxis } from "../axis/Axis"
-import { LineChartState } from "./LineChartState"
-import { darkenColorForLine } from "../color/ColorUtils"
+} from "./LineChartConstants.js"
+import { DualAxis } from "../axis/Axis.js"
+import { LineChartState } from "./LineChartState.js"
+import { darkenColorForLine } from "../color/ColorUtils.js"
 import {
     byHoverThenFocusState,
     getHoverStateForSeries,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 
 export type AnnotationsMap = Map<PrimitiveType, Set<PrimitiveType>>
 

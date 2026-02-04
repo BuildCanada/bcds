@@ -1,8 +1,8 @@
 import * as React from "react"
 import { action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { BodyPortal } from "../../components/index"
-import { isTargetOutsideElement } from "../chart/ChartUtils"
+import { BodyPortal } from "../../components/index.js"
+import { isTargetOutsideElement } from "../chart/ChartUtils.js"
 
 interface FullScreenProps {
     children: React.ReactNode

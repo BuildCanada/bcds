@@ -1,11 +1,11 @@
 import { expect, it, describe } from "vitest"
 
-import { Url } from "../../utils/index"
+import { Url } from "../../utils/index.js"
 import {
     explorerUrlMigrationsById,
     ExplorerUrlMigrationId,
     migrateExplorerUrl,
-} from "./ExplorerUrlMigrations"
+} from "./ExplorerUrlMigrations.js"
 
 // ================================================
 // !!! BE CAREFUL WHEN MODIFYING EXISTING TESTS !!!

@@ -12,7 +12,7 @@ import {
     GRAPHER_TAB_NAMES,
     ChartDimensionInterface,
     GRAPHER_TAB_QUERY_PARAMS,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     TimeBoundValue,
     TimeBound,
@@ -22,21 +22,21 @@ import {
     Url,
     DimensionProperty,
     Bounds,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     SampleColumnSlugs,
     SynthesizeGDPTable,
     ChartsTable,
     ErrorValueTypes,
-} from "../../core-table/index"
-import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations"
-import { setSelectedEntityNamesParam } from "./EntityUrlBuilder"
-import { MapConfig } from "../mapCharts/MapConfig"
-import { SelectionArray } from "../selection/SelectionArray"
-import { latestGrapherConfigSchema } from "./GrapherConstants"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable"
-import { GrapherProgrammaticInterface } from "./Grapher"
-import { GrapherState } from "./GrapherState"
+} from "../../core-table/index.js"
+import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations.js"
+import { setSelectedEntityNamesParam } from "./EntityUrlBuilder.js"
+import { MapConfig } from "../mapCharts/MapConfig.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { latestGrapherConfigSchema } from "./GrapherConstants.js"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.js"
+import { GrapherProgrammaticInterface } from "./Grapher.js"
+import { GrapherState } from "./GrapherState.js"
 
 it("regression fix: container options are not serialized", () => {
     const grapher = new GrapherState({ xAxis: { min: 1 } })

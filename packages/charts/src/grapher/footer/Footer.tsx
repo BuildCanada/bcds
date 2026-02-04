@@ -6,24 +6,24 @@ import {
     getRelativeMouse,
     makeIdForHumanConsumption,
     Url,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     DATAPAGE_ABOUT_THIS_DATA_SECTION_ID,
     MarkdownTextWrap,
     TextWrap,
-} from "../../components/index"
-import { Tooltip } from "../tooltip/Tooltip"
-import { FooterManager } from "./FooterManager"
-import { ActionButtons } from "../controls/ActionButtons"
+} from "../../components/index.js"
+import { Tooltip } from "../tooltip/Tooltip.js"
+import { FooterManager } from "./FooterManager.js"
+import { ActionButtons } from "../controls/ActionButtons.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FOOTER_CLASS,
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     GrapherModal,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 
-import { GRAPHER_LIGHT_TEXT } from "../color/ColorConstants"
+import { GRAPHER_LIGHT_TEXT } from "../color/ColorConstants.js"
 
 // Estimated dimensions of action buttons for layout calculations
 const ESTIMATED_ACTION_BUTTONS_WIDTH = 400

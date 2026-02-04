@@ -8,7 +8,7 @@ import {
     Bounds,
     Time,
     Tippy,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons"
@@ -16,13 +16,13 @@ import {
     TimelineController,
     TimelineManager,
     TimelineDragTarget,
-} from "./TimelineController"
-import { ActionButton } from "../controls/ActionButtons"
+} from "./TimelineController.js"
+import { ActionButton } from "../controls/ActionButtons.js"
 import {
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     GRAPHER_TIMELINE_CLASS,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 
 export const TIMELINE_HEIGHT = 32 // Keep in sync with $timelineHeight in TimelineComponent.scss
 

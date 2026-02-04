@@ -18,7 +18,7 @@ import {
 } from "react-aria-components"
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { isTouchDevice } from "../../utils/index"
+import { isTouchDevice } from "../../utils/index.js"
 
 export interface BasicDropdownOption {
     trackNote?: string

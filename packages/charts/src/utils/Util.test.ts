@@ -33,13 +33,13 @@ import {
     normaliseToSingleDigitNumber,
     getUniqueNamesFromTagHierarchies,
     stripOuterParentheses,
-} from "./Util"
+} from "./Util.js"
 import {
     BlockSize,
     EnrichedGdocBlock,
     SortOrder,
     TagGraphRoot,
-} from "../types/index"
+} from "../types/index.js"
 
 describe(findClosestTime, () => {
     describe("without tolerance", () => {

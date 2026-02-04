@@ -1,12 +1,12 @@
 import { expect, it, describe } from "vitest"
 
-import { Url } from "../../utils/index"
+import { Url } from "../../utils/index.js"
 import {
     ENTITY_V2_DELIMITER,
     getSelectedEntityNamesParam,
     migrateSelectedEntityNamesParam,
     setSelectedEntityNamesParam,
-} from "./EntityUrlBuilder"
+} from "./EntityUrlBuilder.js"
 
 const encodeTests = [
     {

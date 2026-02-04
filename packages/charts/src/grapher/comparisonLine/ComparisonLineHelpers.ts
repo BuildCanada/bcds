@@ -1,7 +1,7 @@
 import {
     ComparisonLineConfig,
     VerticalComparisonLineConfig,
-} from "../../types/index"
+} from "../../types/index.js"
 
 export function isValidVerticalComparisonLineConfig(
     lineConfig: ComparisonLineConfig

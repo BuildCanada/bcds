@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest"
-import { GrapherState } from "../core/GrapherState"
+import { GrapherState } from "../core/GrapherState.js"
 import {
     SynthesizeFruitTable,
     SynthesizeGDPTable,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 
 it("updates the selection based on the active tab", () => {
     const grapher = new GrapherState({ hasMapTab: true })

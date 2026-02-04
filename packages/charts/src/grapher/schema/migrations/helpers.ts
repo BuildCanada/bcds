@@ -1,7 +1,7 @@
 import {
     latestSchemaVersion,
     outdatedSchemaVersions,
-} from "../defaultGrapherConfig"
+} from "../defaultGrapherConfig.js"
 
 const allSchemaVersions = [...outdatedSchemaVersions, latestSchemaVersion]
 

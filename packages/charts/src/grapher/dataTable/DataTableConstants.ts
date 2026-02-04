@@ -1,4 +1,4 @@
-import { CoreColumn, ChartsTable } from "../../core-table/index"
+import { CoreColumn, ChartsTable } from "../../core-table/index.js"
 import {
     ColumnSlug,
     EntityName,
@@ -6,13 +6,13 @@ import {
     VariableRow,
     SortOrder,
     Time,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     EntityNamesByRegionType,
     EntityRegionType,
-} from "../core/EntitiesByRegionType"
-import { SelectionArray } from "../selection/SelectionArray"
-import { TimelineDragTarget } from "../timeline/TimelineController"
+} from "../core/EntitiesByRegionType.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { TimelineDragTarget } from "../timeline/TimelineController.js"
 
 // Grapher's rendered data table is organized into groups, where
 // each group corresponds to an indicator from the core table.

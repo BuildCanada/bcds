@@ -1,8 +1,8 @@
 import { expect, it, describe } from "vitest"
 
-import { CoreTable, ErrorValueTypes } from "../../core-table/index"
-import { ColorScale } from "./ColorScale"
-import { ColorScaleConfigInterface } from "../../types/index"
+import { CoreTable, ErrorValueTypes } from "../../core-table/index.js"
+import { ColorScale } from "./ColorScale.js"
+import { ColorScaleConfigInterface } from "../../types/index.js"
 
 const createColorScaleFromTable = (
     colorValuePairs: { value: number; color?: string }[],

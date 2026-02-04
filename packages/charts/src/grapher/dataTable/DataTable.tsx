@@ -19,8 +19,8 @@ import {
     ChartsTableSlugs,
     VariableRoundingMode,
     VariableRow,
-} from "../../types/index"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
+} from "../../types/index.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
 import {
     valuesByEntityAtTimes,
     es6mapValues,
@@ -32,17 +32,17 @@ import {
     excludeUndefined,
     joinTitleFragments,
     FuzzySearch,
-} from "../../utils/index"
-import { SelectionArray } from "../selection/SelectionArray"
+} from "../../utils/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import {
     DEFAULT_GRAPHER_BOUNDS,
     DEFAULT_GRAPHER_ENTITY_TYPE,
     SVG_STYLE_PROPS,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import * as R from "remeda"
-import { makeSelectionArray } from "../chart/ChartUtils"
-import { isEntityRegionType } from "../core/EntitiesByRegionType"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+import { makeSelectionArray } from "../chart/ChartUtils.js"
+import { isEntityRegionType } from "../core/EntitiesByRegionType.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import {
     DataTableColumnKey,
     DisplayDataTableDimension,
@@ -66,8 +66,8 @@ import {
     COMMON_DATA_TABLE_FILTERS,
     DataTableFilter,
     SparklineKey,
-} from "./DataTableConstants"
-import { GRAY_30 } from "../color/ColorConstants"
+} from "./DataTableConstants.js"
+import { GRAY_30 } from "../color/ColorConstants.js"
 
 const ENTITY_SORT_INDEX = -1
 

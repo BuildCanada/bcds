@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Explorer } from "./Explorer"
+import { Explorer } from "./Explorer.js"
 import {
     SampleExplorerOfGraphers,
     SampleInlineDataExplorer,
-} from "./Explorer.sample"
-import { Bounds } from "../utils/index"
+} from "./Explorer.sample.js"
+import { Bounds } from "../utils/index.js"
 
 const meta: Meta<typeof Explorer> = {
     title: "Charts/Explorer",

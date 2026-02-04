@@ -5,39 +5,39 @@ import {
     Bounds,
     makeIdForHumanConsumption,
     excludeUndefined,
-} from "../../utils/index"
-import { TextWrap, Halo, MarkdownTextWrap } from "../../components/index"
+} from "../../utils/index.js"
+import { TextWrap, Halo, MarkdownTextWrap } from "../../components/index.js"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { VerticalAxis } from "../axis/Axis"
+import { VerticalAxis } from "../axis/Axis.js"
 import {
     Color,
     EntityName,
     SeriesName,
     VerticalAlign,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     GRAPHER_FONT_SCALE_12,
     GRAPHER_OPACITY_MUTE,
     GRAPHER_TEXT_OUTLINE_FACTOR,
-} from "../core/GrapherConstants"
-import { darkenColorForText } from "../color/ColorUtils"
-import { AxisConfig } from "../axis/AxisConfig"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
+} from "../core/GrapherConstants.js"
+import { darkenColorForText } from "../color/ColorUtils.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.js"
 import {
     findImportantSeriesThatFitIntoTheAvailableSpace,
     findSeriesThatFitIntoTheAvailableSpace,
-} from "./LineLegendFilterAlgorithms"
+} from "./LineLegendFilterAlgorithms.js"
 import {
     ANNOTATION_PADDING,
     DEFAULT_CONNECTOR_LINE_WIDTH,
     DEFAULT_FONT_WEIGHT,
     LEGEND_ITEM_MIN_SPACING,
     MARKER_MARGIN,
-} from "./LineLegendConstants"
-import { getSeriesKey } from "./LineLegendHelpers"
-import { LineLabelSeries, PlacedSeries, SizedSeries } from "./LineLegendTypes"
+} from "./LineLegendConstants.js"
+import { getSeriesKey } from "./LineLegendHelpers.js"
+import { LineLabelSeries, PlacedSeries, SizedSeries } from "./LineLegendTypes.js"
 
 function groupBounds(group: PlacedSeries[]): Bounds {
     const first = group[0]

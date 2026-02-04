@@ -2,30 +2,30 @@ import * as _ from "lodash-es"
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { StackedAreaChartState } from "./StackedAreaChartState"
-import { type StackedAreaChartProps } from "./StackedAreaChart"
-import { Bounds, excludeUndefined } from "../../utils/index"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { StackedAreaChartState } from "./StackedAreaChartState.js"
+import { type StackedAreaChartProps } from "./StackedAreaChart.js"
+import { Bounds, excludeUndefined } from "../../utils/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { ChartManager } from "../chart/ChartManager"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
+} from "../core/GrapherConstants.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
 import {
     HorizontalAxisComponent,
     VerticalAxisZeroLine,
-} from "../axis/AxisViews"
-import { StackedAreas } from "./StackedAreas"
+} from "../axis/AxisViews.js"
+import { StackedAreas } from "./StackedAreas.js"
 import {
     InitialVerticalLabelsSeries,
     VerticalLabelsState,
-} from "../verticalLabels/VerticalLabelsState"
-import { VerticalLabels } from "../verticalLabels/VerticalLabels"
-import { resolveCollision } from "./StackedUtils"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../verticalLabels/VerticalLabelsState.js"
+import { VerticalLabels } from "../verticalLabels/VerticalLabels.js"
+import { resolveCollision } from "./StackedUtils.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 const LEGEND_PADDING = 4
 

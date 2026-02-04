@@ -6,44 +6,44 @@ import {
     Bounds,
     exposeInstanceOnWindow,
     makeIdForHumanConsumption,
-} from "../../utils/index"
-import { MarkdownTextWrap, LoadingIndicator } from "../../components/index"
-import { Header, StaticHeader } from "../header/Header"
-import { Footer, StaticFooter } from "../footer/Footer"
+} from "../../utils/index.js"
+import { MarkdownTextWrap, LoadingIndicator } from "../../components/index.js"
+import { Header, StaticHeader } from "../header/Header.js"
+import { Footer, StaticFooter } from "../footer/Footer.js"
 import {
     STATIC_EXPORT_DETAIL_SPACING,
     GRAPHER_FRAME_PADDING_VERTICAL,
     GRAPHER_FRAME_PADDING_HORIZONTAL,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
-import { MapChartManager } from "../mapCharts/MapChartConstants"
-import { ChartManager } from "../chart/ChartManager"
+} from "../core/GrapherConstants.js"
+import { MapChartManager } from "../mapCharts/MapChartConstants.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { FooterManager } from "../footer/FooterManager"
-import { HeaderManager } from "../header/HeaderManager"
-import { SelectionArray } from "../selection/SelectionArray"
+import { FooterManager } from "../footer/FooterManager.js"
+import { HeaderManager } from "../header/HeaderManager.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import {
     EntityName,
     RelatedQuestionsConfig,
     Color,
     GrapherTabName,
     GrapherChartType,
-} from "../../types/index"
-import { DataTableManager } from "../dataTable/DataTableConstants"
+} from "../../types/index.js"
+import { DataTableManager } from "../dataTable/DataTableConstants.js"
 import {
     TimelineComponent,
     TIMELINE_HEIGHT,
-} from "../timeline/TimelineComponent"
-import { TimelineController } from "../timeline/TimelineController"
+} from "../timeline/TimelineComponent.js"
+import { TimelineController } from "../timeline/TimelineController.js"
 import {
     ControlsRow,
     ControlsRowManager,
-} from "../controls/controlsRow/ControlsRow"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
-import { ChartAreaContent } from "../chart/ChartAreaContent"
-import { getChartSvgProps } from "../chart/ChartUtils"
-import { StaticChartWrapper } from "../chart/StaticChartWrapper"
+} from "../controls/controlsRow/ControlsRow.js"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.js"
+import { ChartAreaContent } from "../chart/ChartAreaContent.js"
+import { getChartSvgProps } from "../chart/ChartUtils.js"
+import { StaticChartWrapper } from "../chart/StaticChartWrapper.js"
 
 export interface CaptionedChartManager
     extends ChartManager,

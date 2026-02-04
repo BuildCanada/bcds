@@ -3,16 +3,16 @@ import {
     VariableDataMetadataDimensions,
     ArchiveContext,
     VariableId,
-} from "../../types/index"
+} from "../../types/index.js"
 import React from "react"
-import { Grapher, GrapherProgrammaticInterface } from "./Grapher"
-import { loadVariableDataAndMetadata } from "./loadVariable"
-import { fetchInputTableForConfig } from "./loadGrapherTableHelpers"
-import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations"
+import { Grapher, GrapherProgrammaticInterface } from "./Grapher.js"
+import { loadVariableDataAndMetadata } from "./loadVariable.js"
+import { fetchInputTableForConfig } from "./loadGrapherTableHelpers.js"
+import { legacyToCurrentGrapherQueryParams } from "./GrapherUrlMigrations.js"
 import { unstable_batchedUpdates } from "react-dom"
-import { Bounds } from "../../utils/index"
-import { migrateGrapherConfigToLatestVersion } from "../schema/migrations/migrate"
-import { useMaybeGlobalGrapherStateRef } from "../chart/guidedChartUtils"
+import { Bounds } from "../../utils/index.js"
+import { migrateGrapherConfigToLatestVersion } from "../schema/migrations/migrate.js"
+import { useMaybeGlobalGrapherStateRef } from "../chart/guidedChartUtils.js"
 
 export interface FetchingGrapherProps {
     config?: GrapherProgrammaticInterface

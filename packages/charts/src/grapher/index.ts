@@ -2,15 +2,15 @@ export {
     NumericBin,
     CategoricalBin,
     type ColorScaleBin,
-} from "./color/ColorScaleBin"
-export { ChartDimension } from "./chart/ChartDimension"
-export { FetchingGrapher } from "./core/FetchingGrapher"
+} from "./color/ColorScaleBin.js"
+export { ChartDimension } from "./chart/ChartDimension.js"
+export { FetchingGrapher } from "./core/FetchingGrapher.js"
 export {
     fetchInputTableForConfig,
     getCachingInputTableFetcher,
     type FetchInputTableForConfigFn,
-} from "./core/loadGrapherTableHelpers"
-export { loadVariableDataAndMetadata } from "./core/loadVariable"
+} from "./core/loadGrapherTableHelpers.js"
+export { loadVariableDataAndMetadata } from "./core/loadVariable.js"
 export {
     GRAPHER_ROUTE_FOLDER,
     GRAPHER_EMBEDDED_FIGURE_ATTR,
@@ -36,60 +36,60 @@ export {
     latestGrapherConfigSchema,
     DEFAULT_GRAPHER_BOUNDS,
     DEFAULT_GRAPHER_BOUNDS_SQUARE,
-} from "./core/GrapherConstants"
+} from "./core/GrapherConstants.js"
 export {
     getVariableDataRoute,
     getVariableMetadataRoute,
-} from "./core/loadVariable"
-export { ColorScale } from "./color/ColorScale"
-export { ColorScaleConfig } from "./color/ColorScaleConfig"
-export { ColorScheme } from "./color/ColorScheme"
+} from "./core/loadVariable.js"
+export { ColorScale } from "./color/ColorScale.js"
+export { ColorScaleConfig } from "./color/ColorScaleConfig.js"
+export { ColorScheme } from "./color/ColorScheme.js"
 export {
     getColorNameDistinctAndSemanticPalettes,
     getColorNameDistinctLinesAndSemanticPalettes,
-} from "./color/CustomSchemes"
-export { ColorSchemes } from "./color/ColorSchemes"
-export { DimensionSlot } from "./chart/DimensionSlot"
-export { EntityPicker } from "./controls/entityPicker/EntityPicker"
-export type { EntityPickerManager } from "./controls/entityPicker/EntityPickerConstants"
-export { getColorSchemeForChartType } from "./color/ColorSchemes"
+} from "./color/CustomSchemes.js"
+export { ColorSchemes } from "./color/ColorSchemes.js"
+export { DimensionSlot } from "./chart/DimensionSlot.js"
+export { EntityPicker } from "./controls/entityPicker/EntityPicker.js"
+export type { EntityPickerManager } from "./controls/entityPicker/EntityPickerConstants.js"
+export { getColorSchemeForChartType } from "./color/ColorSchemes.js"
 export {
     isCategoricalBin,
     isNumericBin,
     isNoDataBin,
     isProjectedDataBin,
-} from "./color/ColorScaleBin"
+} from "./color/ColorScaleBin.js"
 export {
     GLOBAL_ENTITY_SELECTOR_DATA_ATTR,
     GLOBAL_ENTITY_SELECTOR_ELEMENT,
     GLOBAL_ENTITY_SELECTOR_DEFAULT_COUNTRY,
-} from "./controls/globalEntitySelector/GlobalEntitySelectorConstants"
-export { GlobalEntitySelector } from "./controls/globalEntitySelector/GlobalEntitySelector"
+} from "./controls/globalEntitySelector/GlobalEntitySelectorConstants.js"
+export { GlobalEntitySelector } from "./controls/globalEntitySelector/GlobalEntitySelector.js"
 export {
     Grapher,
     type GrapherProgrammaticInterface,
     type GrapherManager,
-} from "./core/Grapher"
-export { GrapherState } from "./core/GrapherState"
-export { GrapherAnalytics } from "./core/GrapherAnalytics"
-export { hydrateGlobalEntitySelectorIfAny } from "./controls/globalEntitySelector/GlobalEntitySelector"
-export { legacyToCurrentGrapherUrl } from "./core/GrapherUrlMigrations"
+} from "./core/Grapher.js"
+export { GrapherState } from "./core/GrapherState.js"
+export { GrapherAnalytics } from "./core/GrapherAnalytics.js"
+export { hydrateGlobalEntitySelectorIfAny } from "./controls/globalEntitySelector/GlobalEntitySelector.js"
+export { legacyToCurrentGrapherUrl } from "./core/GrapherUrlMigrations.js"
 export {
     legacyToChartsTableAndDimensions,
     legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "./core/LegacyToChartsTable"
-export { getErrorMessageRelatedQuestionUrl } from "./core/relatedQuestion"
-export { MapChartState } from "./mapCharts/MapChartState"
-export { MapConfig } from "./mapCharts/MapConfig"
+} from "./core/LegacyToChartsTable.js"
+export { getErrorMessageRelatedQuestionUrl } from "./core/relatedQuestion.js"
+export { MapChartState } from "./mapCharts/MapChartState.js"
+export { MapConfig } from "./mapCharts/MapConfig.js"
 export {
     MAP_REGION_LABELS,
     type GeoFeature,
     type Direction,
     type Ellipse,
     type EllipseCoords,
-} from "./mapCharts/MapChartConstants"
-export { SelectionArray } from "./selection/SelectionArray"
-export { FocusArray } from "./focus/FocusArray"
+} from "./mapCharts/MapChartConstants.js"
+export { SelectionArray } from "./selection/SelectionArray.js"
+export { FocusArray } from "./focus/FocusArray.js"
 export {
     setSelectedEntityNamesParam,
     migrateSelectedEntityNamesParam,
@@ -97,18 +97,18 @@ export {
     generateSelectedEntityNamesParam,
     generateFocusedSeriesNamesParam,
     getEntityNamesParam,
-} from "./core/EntityUrlBuilder"
-export { grapherConfigToQueryParams } from "./core/GrapherUrl"
+} from "./core/EntityUrlBuilder.js"
+export { grapherConfigToQueryParams } from "./core/GrapherUrl.js"
 export {
     type SlideShowManager,
     SlideShowController,
-} from "./slideshowController/SlideShowController"
-export { defaultGrapherConfig } from "./schema/defaultGrapherConfig"
+} from "./slideshowController/SlideShowController.js"
+export { defaultGrapherConfig } from "./schema/defaultGrapherConfig.js"
 export {
     migrateGrapherConfigToLatestVersion,
     migrateGrapherConfigToLatestVersionAndFailOnError,
-} from "./schema/migrations/migrate"
-export { generateGrapherImageSrcSet } from "./chart/ChartUtils"
+} from "./schema/migrations/migrate.js"
+export { generateGrapherImageSrcSet } from "./chart/ChartUtils.js"
 export {
     useMaybeGlobalGrapherStateRef,
     useGuidedChartLinkHandler,
@@ -116,7 +116,7 @@ export {
     type GuidedChartContextValue,
     type ArchiveGuidedChartRegistration,
     buildArchiveGuidedChartSrc,
-} from "./chart/guidedChartUtils"
+} from "./chart/guidedChartUtils.js"
 export {
     isChartTypeName,
     isValidTabQueryParam,
@@ -124,20 +124,20 @@ export {
     mapGrapherTabNameToQueryParam,
     mapGrapherTabNameToConfigOption,
     makeLabelForGrapherTab,
-} from "./chart/ChartTabs"
+} from "./chart/ChartTabs.js"
 export {
     renderGrapherIntoContainer,
     renderSingleGrapherOnGrapherPage,
-} from "./core/GrapherUseHelpers"
-export { GeoFeatures } from "./mapCharts/GeoFeatures"
-export { isValidVerticalComparisonLineConfig } from "./comparisonLine/ComparisonLineHelpers"
-export { hasValidConfigForBinningStrategy } from "./color/BinningStrategies"
-export { Dropdown } from "./controls/Dropdown"
+} from "./core/GrapherUseHelpers.js"
+export { GeoFeatures } from "./mapCharts/GeoFeatures.js"
+export { isValidVerticalComparisonLineConfig } from "./comparisonLine/ComparisonLineHelpers.js"
+export { hasValidConfigForBinningStrategy } from "./color/BinningStrategies.js"
+export { Dropdown } from "./controls/Dropdown.js"
 
-export { makeChartState } from "./chart/ChartTypeMap"
-export type { ChartState } from "./chart/ChartInterface"
+export { makeChartState } from "./chart/ChartTypeMap.js"
+export type { ChartState } from "./chart/ChartInterface.js"
 
-export type { ChartSeries } from "./chart/ChartInterface"
+export type { ChartSeries } from "./chart/ChartInterface.js"
 
 // Test data helpers (useful for demos and testing)
 export {
@@ -145,13 +145,13 @@ export {
     createTestDataset,
     type TestData,
     type TestMetadata,
-} from "./testData/TestData"
-export { LifeExpectancyGrapher } from "./testData/TestData.sample"
-export type { LineChartState } from "./lineCharts/LineChartState"
-export type { SlopeChartState } from "./slopeCharts/SlopeChartState"
-export type { DiscreteBarChartState } from "./barCharts/DiscreteBarChartState"
-export type { StackedAreaChartState } from "./stackedCharts/StackedAreaChartState"
-export type { StackedBarChartState } from "./stackedCharts/StackedBarChartState"
-export type { StackedDiscreteBarChartState } from "./stackedCharts/StackedDiscreteBarChartState"
-export type { ScatterPlotChartState } from "./scatterCharts/ScatterPlotChartState"
-export type { MarimekkoChartState } from "./stackedCharts/MarimekkoChartState"
+} from "./testData/TestData.js"
+export { LifeExpectancyGrapher } from "./testData/TestData.sample.js"
+export type { LineChartState } from "./lineCharts/LineChartState.js"
+export type { SlopeChartState } from "./slopeCharts/SlopeChartState.js"
+export type { DiscreteBarChartState } from "./barCharts/DiscreteBarChartState.js"
+export type { StackedAreaChartState } from "./stackedCharts/StackedAreaChartState.js"
+export type { StackedBarChartState } from "./stackedCharts/StackedBarChartState.js"
+export type { StackedDiscreteBarChartState } from "./stackedCharts/StackedDiscreteBarChartState.js"
+export type { ScatterPlotChartState } from "./scatterCharts/ScatterPlotChartState.js"
+export type { MarimekkoChartState } from "./stackedCharts/MarimekkoChartState.js"

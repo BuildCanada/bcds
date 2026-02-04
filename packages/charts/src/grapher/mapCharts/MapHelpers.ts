@@ -7,18 +7,18 @@ import {
     getCountryNamesForRegion,
     getRelativeMouse,
     lazy,
-} from "../../utils/index"
-import { GlobeRegionName, MapRegionName } from "../../types/index"
+} from "../../utils/index.js"
+import { GlobeRegionName, MapRegionName } from "../../types/index.js"
 import {
     GEO_FEATURES_CLASSNAME,
     MAP_HOVER_TARGET_RANGE,
     RenderFeature,
     MapRenderFeature,
     RenderFeatureType,
-} from "./MapChartConstants"
-import { CanadaTopology } from "./CanadaTopology"
-import { MapTopology } from "./MapTopology"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
+} from "./MapChartConstants.js"
+import { CanadaTopology } from "./CanadaTopology.js"
+import { MapTopology } from "./MapTopology.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
 import * as R from "remeda"
 
 export function detectNearbyFeature<Feature extends RenderFeature>({

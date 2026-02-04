@@ -1,12 +1,12 @@
 import * as _ from "lodash-es"
-import { PointVector } from "./PointVector"
+import { PointVector } from "./PointVector.js"
 import pixelWidth from "string-pixel-width"
 import {
     Box,
     GridParameters,
     Position,
     PositionMap,
-} from "../types/index"
+} from "../types/index.js"
 
 // Important utility class for all visualizations
 // Since we want to be able to render charts headlessly and functionally, we

@@ -11,19 +11,19 @@ import {
     GrapherInterface,
     AxisMinMaxValueStr,
     GrapherChartType,
-} from "../types/index"
+} from "../types/index.js"
 import {
     CoreTable,
     ChartsTable,
     isNotErrorValue,
-} from "../core-table/index"
+} from "../core-table/index.js"
 import {
     GitCommit,
     PromiseCache,
     SerializedGridProgram,
     trimObject,
     fetchWithRetry,
-} from "../utils/index"
+} from "../utils/index.js"
 import {
     CellDef,
     Grammar,
@@ -31,19 +31,19 @@ import {
     GRID_CELL_DELIMITER,
     GRID_NODE_DELIMITER,
     RootKeywordCellDef,
-} from "./gridLang/GridLangConstants"
-import { GridProgram } from "./gridLang/GridProgram"
-import { ColumnGrammar } from "./ColumnGrammar"
+} from "./gridLang/GridLangConstants.js"
+import { GridProgram } from "./gridLang/GridProgram.js"
+import { ColumnGrammar } from "./ColumnGrammar.js"
 import {
     DefaultNewExplorerSlug,
     ExplorerChartCreationMode,
     ExplorerChoiceParams,
     EXPLORERS_ROUTE_FOLDER,
-} from "./ExplorerConstants"
-import { DecisionMatrix } from "./ExplorerDecisionMatrix"
-import { ExplorerGrammar } from "./ExplorerGrammar"
-import { GrapherGrammar } from "./GrapherGrammar"
-import { latestGrapherConfigSchema } from "../grapher/index"
+} from "./ExplorerConstants.js"
+import { DecisionMatrix } from "./ExplorerDecisionMatrix.js"
+import { ExplorerGrammar } from "./ExplorerGrammar.js"
+import { GrapherGrammar } from "./GrapherGrammar.js"
+import { latestGrapherConfigSchema } from "../grapher/index.js"
 
 export const EXPLORER_FILE_SUFFIX = ".explorer.tsv"
 

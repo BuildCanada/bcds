@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
-import { CustomColorSchemes } from "./CustomSchemes"
-import { ColorScheme } from "./ColorScheme"
+import { CustomColorSchemes } from "./CustomSchemes.js"
+import { ColorScheme } from "./ColorScheme.js"
 import { match } from "ts-pattern"
 import {
     GRAPHER_CHART_TYPES,
@@ -8,8 +8,8 @@ import {
     ColorSchemeName,
     GRAPHER_MAP_TYPE,
     GrapherChartOrMapType,
-} from "../../types/index"
-import { getColorBrewerScheme } from "./ColorBrewerSchemes"
+} from "../../types/index.js"
+import { getColorBrewerScheme } from "./ColorBrewerSchemes.js"
 
 function getPreferredSchemesByType(
     type: GrapherChartOrMapType

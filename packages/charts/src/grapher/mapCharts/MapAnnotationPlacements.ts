@@ -1,6 +1,6 @@
-import { GeoFeaturesById } from "./GeoFeatures"
+import { GeoFeaturesById } from "./GeoFeatures.js"
 import annotations from "./MapAnnotationPlacements.json"
-import { Direction, EllipseCoords, GeoFeature } from "./MapChartConstants"
+import { Direction, EllipseCoords, GeoFeature } from "./MapChartConstants.js"
 
 interface RawAnnotationPlacement {
     id: string

@@ -1,13 +1,13 @@
 import * as _ from "lodash-es"
-import { EntityName } from "../../types/index"
+import { EntityName } from "../../types/index.js"
 import {
     AggregateSource,
     aggregateSources,
     Country,
     excludeUndefined,
     getRegionByName,
-} from "../../utils/index"
-import { CUSTOM_REGION_SOURCE_IDS, isWorldEntityName } from "./GrapherConstants"
+} from "../../utils/index.js"
+import { CUSTOM_REGION_SOURCE_IDS, isWorldEntityName } from "./GrapherConstants.js"
 import * as R from "remeda"
 
 const customAggregateSources = CUSTOM_REGION_SOURCE_IDS

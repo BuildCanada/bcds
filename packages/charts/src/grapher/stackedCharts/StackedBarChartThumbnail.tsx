@@ -2,33 +2,33 @@ import * as _ from "lodash-es"
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { StackedBarChartState } from "./StackedBarChartState"
-import { type StackedBarChartProps } from "./StackedBarChart"
-import { ChartManager } from "../chart/ChartManager"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { StackedBarChartState } from "./StackedBarChartState.js"
+import { type StackedBarChartProps } from "./StackedBarChart.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { Bounds, excludeUndefined } from "../../utils/index"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../core/GrapherConstants.js"
+import { Bounds, excludeUndefined } from "../../utils/index.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 import {
     getXAxisConfigDefaultsForStackedBar,
     resolveCollision,
-} from "./StackedUtils"
+} from "./StackedUtils.js"
 import {
     HorizontalAxisComponent,
     VerticalAxisZeroLine,
-} from "../axis/AxisViews"
-import { StackedBars } from "./StackedBars"
+} from "../axis/AxisViews.js"
+import { StackedBars } from "./StackedBars.js"
 import {
     InitialVerticalLabelsSeries,
     VerticalLabelsState,
-} from "../verticalLabels/VerticalLabelsState"
-import { VerticalLabels } from "../verticalLabels/VerticalLabels"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../verticalLabels/VerticalLabelsState.js"
+import { VerticalLabels } from "../verticalLabels/VerticalLabels.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 const LEGEND_PADDING = 4
 

@@ -1,6 +1,6 @@
-import { DualAxis } from "../axis/Axis"
-import { PlacedItem } from "./MarimekkoChartConstants"
-import { MarimekkoChartState } from "./MarimekkoChartState"
+import { DualAxis } from "../axis/Axis.js"
+import { PlacedItem } from "./MarimekkoChartConstants.js"
+import { MarimekkoChartState } from "./MarimekkoChartState.js"
 
 export function toPlacedMarimekkoItems(
     chartState: MarimekkoChartState,

@@ -16,29 +16,29 @@ import {
     GRAPHER_CHART_TYPES,
     FacetStrategy,
     GrapherChartType,
-} from "../../types/index"
-import { OverlayHeader } from "../../components/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { ChartDimension } from "../chart/ChartDimension"
-import { makeSelectionArray } from "../chart/ChartUtils"
-import { AxisConfig } from "../axis/AxisConfig"
+} from "../../types/index.js"
+import { OverlayHeader } from "../../components/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { ChartDimension } from "../chart/ChartDimension.js"
+import { makeSelectionArray } from "../chart/ChartUtils.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
 
-import { AxisScaleToggle } from "./settings/AxisScaleToggle"
-import { AbsRelToggle, AbsRelToggleManager } from "./settings/AbsRelToggle"
-import { ZoomToggle, ZoomToggleManager } from "./settings/ZoomToggle"
+import { AxisScaleToggle } from "./settings/AxisScaleToggle.js"
+import { AbsRelToggle, AbsRelToggleManager } from "./settings/AbsRelToggle.js"
+import { ZoomToggle, ZoomToggleManager } from "./settings/ZoomToggle.js"
 import {
     FacetStrategySelector,
     FacetStrategySelectionManager,
-} from "./settings/FacetStrategySelector"
+} from "./settings/FacetStrategySelector.js"
 import {
     FacetYDomainToggle,
     FacetYDomainToggleManager,
-} from "./settings/FacetYDomainToggle"
+} from "./settings/FacetYDomainToggle.js"
 import {
     NoDataAreaToggle,
     NoDataAreaToggleManager,
-} from "./settings/NoDataAreaToggle"
-import { GRAPHER_SETTINGS_CLASS } from "../core/GrapherConstants"
+} from "./settings/NoDataAreaToggle.js"
+import { GRAPHER_SETTINGS_CLASS } from "../core/GrapherConstants.js"
 
 const {
     LineChart,

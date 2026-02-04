@@ -4,8 +4,8 @@
 
 import { expect, describe, test } from "vitest"
 import { render } from "@testing-library/react"
-import { GlobalEntitySelector } from "./GlobalEntitySelector"
-import { SelectionArray } from "../../selection/SelectionArray"
+import { GlobalEntitySelector } from "./GlobalEntitySelector.js"
+import { SelectionArray } from "../../selection/SelectionArray.js"
 
 describe("when you render a GlobalEntitySelector", () => {
     test("something renders", () => {

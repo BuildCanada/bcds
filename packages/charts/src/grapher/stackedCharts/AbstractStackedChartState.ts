@@ -1,7 +1,7 @@
 import * as _ from "lodash-es"
 import * as R from "remeda"
-import { ChartState } from "../chart/ChartInterface"
-import { ChartManager } from "../chart/ChartManager"
+import { ChartState } from "../chart/ChartInterface.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import {
     ChartErrorInfo,
     ColorSchemeName,
@@ -9,35 +9,35 @@ import {
     MissingDataStrategy,
     SeriesName,
     SeriesStrategy,
-} from "../../types/index"
+} from "../../types/index.js"
 import { computed, makeObservable } from "mobx"
 import {
     StackedPoint,
     StackedRawSeries,
     StackedSeries,
-} from "./StackedConstants"
+} from "./StackedConstants.js"
 import {
     ChartsTable,
     CoreColumn,
     isNotErrorValueOrEmptyCell,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 import {
     autoDetectSeriesStrategy,
     autoDetectYColumnSlugs,
     getDefaultFailMessage,
     getShortNameForEntity,
     makeSelectionArray,
-} from "../chart/ChartUtils"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { SelectionArray } from "../selection/SelectionArray"
+} from "../chart/ChartUtils.js"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import {
     CategoricalColorAssigner,
     CategoricalColorMap,
-} from "../color/CategoricalColorAssigner"
-import { BinaryMapPaletteE } from "../color/CustomSchemes"
-import { FocusArray } from "../focus/FocusArray"
-import { AxisConfig } from "../axis/AxisConfig"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../color/CategoricalColorAssigner.js"
+import { BinaryMapPaletteE } from "../color/CustomSchemes.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 
 // used in StackedBar charts to color negative and positive bars
 const POSITIVE_COLOR = BinaryMapPaletteE.colorSets[0][0] // orange

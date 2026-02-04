@@ -5,10 +5,10 @@ import {
     PointVector,
     makeIdForHumanConsumption,
     pointsToPath,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants"
+import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants.js"
 import {
     DEFAULT_LINE_COLOR,
     DEFAULT_LINE_OUTLINE_WIDTH,
@@ -17,10 +17,10 @@ import {
     LinesProps,
     PlacedLineChartSeries,
     RenderLineChartSeries,
-} from "./LineChartConstants"
-import { getSeriesKey } from "../chart/ChartUtils"
-import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants"
-import { MultiColorPolyline } from "../scatterCharts/MultiColorPolyline"
+} from "./LineChartConstants.js"
+import { getSeriesKey } from "../chart/ChartUtils.js"
+import { GRAPHER_BACKGROUND_DEFAULT } from "../color/ColorConstants.js"
+import { MultiColorPolyline } from "../scatterCharts/MultiColorPolyline.js"
 
 @observer
 export class Lines extends React.Component<LinesProps> {

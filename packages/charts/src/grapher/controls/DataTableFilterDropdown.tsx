@@ -1,16 +1,16 @@
 import * as React from "react"
 import { computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { Dropdown } from "./Dropdown"
-import { EntityName } from "../../utils/index"
-import { DataTableConfig } from "../dataTable/DataTableConstants"
-import { ChartsTable } from "../../core-table/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { makeSelectionArray } from "../chart/ChartUtils"
+import { Dropdown } from "./Dropdown.js"
+import { EntityName } from "../../utils/index.js"
+import { DataTableConfig } from "../dataTable/DataTableConstants.js"
+import { ChartsTable } from "../../core-table/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { makeSelectionArray } from "../chart/ChartUtils.js"
 import {
     EntityRegionTypeGroup,
     entityRegionTypeLabels,
-} from "../core/EntitiesByRegionType"
+} from "../core/EntitiesByRegionType.js"
 
 export interface DataTableFilterDropdownManager {
     dataTableConfig: DataTableConfig

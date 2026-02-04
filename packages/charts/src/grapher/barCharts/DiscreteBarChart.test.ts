@@ -1,20 +1,20 @@
 import * as _ from "lodash-es"
 import { expect, it, describe } from "vitest"
 
-import { DiscreteBarChart } from "./DiscreteBarChart"
+import { DiscreteBarChart } from "./DiscreteBarChart.js"
 import {
     SampleColumnSlugs,
     SynthesizeFruitTable,
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
     ChartsTable,
-} from "../../core-table/index"
-import { DiscreteBarChartManager } from "./DiscreteBarChartConstants"
-import { ColorSchemeName, SeriesStrategy } from "../../types/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { SortBy, SortOrder } from "../../utils/index"
-import { DistinctColorScheme } from "../color/CustomSchemes"
-import { DiscreteBarChartState } from "./DiscreteBarChartState"
+} from "../../core-table/index.js"
+import { DiscreteBarChartManager } from "./DiscreteBarChartConstants.js"
+import { ColorSchemeName, SeriesStrategy } from "../../types/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { SortBy, SortOrder } from "../../utils/index.js"
+import { DistinctColorScheme } from "../color/CustomSchemes.js"
+import { DiscreteBarChartState } from "./DiscreteBarChartState.js"
 
 it("can create a new bar chart", () => {
     const table = SynthesizeGDPTable({ timeRange: [2000, 2001] })

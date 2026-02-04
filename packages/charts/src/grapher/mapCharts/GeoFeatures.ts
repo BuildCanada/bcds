@@ -4,12 +4,12 @@ import {
     GlobeRenderFeature,
     MapRenderFeature,
     RenderFeatureType,
-} from "./MapChartConstants"
-import { Bounds, lazy, MapRegionName, PointVector } from "../../utils/index"
-import { CanadaTopology } from "./CanadaTopology"
-import { MapTopology } from "./MapTopology"
+} from "./MapChartConstants.js"
+import { Bounds, lazy, MapRegionName, PointVector } from "../../utils/index.js"
+import { CanadaTopology } from "./CanadaTopology.js"
+import { MapTopology } from "./MapTopology.js"
 import { geoBounds, geoCentroid, geoPath } from "d3-geo"
-import { MAP_PROJECTIONS } from "./MapProjections"
+import { MAP_PROJECTIONS } from "./MapProjections.js"
 
 // Get the underlying geographical topology elements we're going to display
 export const GeoFeatures: GeoFeature[] = (

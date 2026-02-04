@@ -4,8 +4,8 @@ import {
     evalFormula,
     generateComparisonLinePoints,
     parseEquation,
-} from "./ComparisonLineGenerator"
-import { ScaleType } from "../../types/index"
+} from "./ComparisonLineGenerator.js"
+import { ScaleType } from "../../types/index.js"
 
 describe("formula parsing & evaluation", () => {
     it("should parse and evaluate a simple formula", () => {

@@ -13,17 +13,17 @@ import {
     isTouchDevice,
     domainExtent,
     calculateTrendDirection,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_11,
     GRAPHER_FONT_SCALE_12,
     GRAPHER_TEXT_OUTLINE_FACTOR,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import {
     SeriesName,
     MissingDataStrategy,
@@ -31,8 +31,8 @@ import {
     SeriesStrategy,
     VerticalAlign,
     HorizontalAlign,
-} from "../../types/index"
-import { ChartInterface } from "../chart/ChartInterface"
+} from "../../types/index.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
 import { scaleLinear, ScaleLinear } from "d3-scale"
 import { select, type BaseType, type Selection } from "d3-selection"
 import {
@@ -41,14 +41,14 @@ import {
     RenderSlopeChartSeries,
     SlopeChartSeries,
     SlopeChartManager,
-} from "./SlopeChartConstants"
-import { CoreColumn } from "../../core-table/index"
-import { getHoverStateForSeries } from "../chart/ChartUtils"
-import { VerticalAxis } from "../axis/Axis"
-import { VerticalAxisZeroLine } from "../axis/AxisViews"
-import { NoDataSection } from "../scatterCharts/NoDataSection"
+} from "./SlopeChartConstants.js"
+import { CoreColumn } from "../../core-table/index.js"
+import { getHoverStateForSeries } from "../chart/ChartUtils.js"
+import { VerticalAxis } from "../axis/Axis.js"
+import { VerticalAxisZeroLine } from "../axis/AxisViews.js"
+import { NoDataSection } from "../scatterCharts/NoDataSection.js"
 
-import { LineLegend, LineLegendProps } from "../lineLegend/LineLegend"
+import { LineLegend, LineLegendProps } from "../lineLegend/LineLegend.js"
 import {
     formatTooltipRangeValues,
     makeTooltipRoundingNotice,
@@ -56,30 +56,30 @@ import {
     Tooltip,
     TooltipState,
     TooltipValueRange,
-} from "../tooltip/Tooltip"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+} from "../tooltip/Tooltip.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 
-import { Halo } from "../../components/index"
-import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"
-import { CategoricalBin } from "../color/ColorScaleBin"
+import { Halo } from "../../components/index.js"
+import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin } from "../color/ColorScaleBin.js"
 import {
     GRAPHER_BACKGROUND_DEFAULT,
     GRAPHER_DARK_TEXT,
-} from "../color/ColorConstants"
-import { FocusArray } from "../focus/FocusArray"
-import { LineLabelSeries } from "../lineLegend/LineLegendTypes"
-import { SlopeChartState } from "./SlopeChartState"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { InteractionState } from "../interaction/InteractionState"
+} from "../color/ColorConstants.js"
+import { FocusArray } from "../focus/FocusArray.js"
+import { LineLabelSeries } from "../lineLegend/LineLegendTypes.js"
+import { SlopeChartState } from "./SlopeChartState.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 import {
     getYAxisConfigDefaults,
     toPlacedSlopeChartSeries,
     toRenderSlopeChartSeries,
-} from "./SlopeChartHelpers"
-import { Slope } from "./Slope"
-import { MarkX } from "./MarkX"
-import { CATEGORICAL_LEGEND_STYLE } from "../lineCharts/LineChartConstants"
+} from "./SlopeChartHelpers.js"
+import { Slope } from "./Slope.js"
+import { MarkX } from "./MarkX.js"
+import { CATEGORICAL_LEGEND_STYLE } from "../lineCharts/LineChartConstants.js"
 
 type SVGMouseOrTouchEvent =
     | React.MouseEvent<SVGGElement>

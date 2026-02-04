@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { PointVector } from "./PointVector"
+import { PointVector } from "./PointVector.js"
 
 it("can report the center", () => {
     const point = new PointVector(6, 8)

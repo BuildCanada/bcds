@@ -1,11 +1,11 @@
 import { expect, it, describe } from "vitest"
 
-import { CategoricalBin, NumericBin } from "../color/ColorScaleBin"
+import { CategoricalBin, NumericBin } from "../color/ColorScaleBin.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalNumericColorLegend,
     PositionedBin,
-} from "./HorizontalColorLegends"
+} from "./HorizontalColorLegends.js"
 
 describe(HorizontalNumericColorLegend, () => {
     it("can create one", () => {

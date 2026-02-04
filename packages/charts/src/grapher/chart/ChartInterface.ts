@@ -1,16 +1,16 @@
-import { ChartsTable } from "../../core-table/index"
+import { ChartsTable } from "../../core-table/index.js"
 import {
     FacetStrategy,
     SeriesName,
     SeriesStrategy,
     Color,
     ChartErrorInfo,
-} from "../../types/index"
-import { ColorScale } from "../color/ColorScale"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends"
-import { SelectionArray } from "../selection/SelectionArray"
-import { FocusArray } from "../focus/FocusArray"
+} from "../../types/index.js"
+import { ColorScale } from "../color/ColorScale.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { HorizontalColorLegendManager } from "../legend/HorizontalColorLegends.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { FocusArray } from "../focus/FocusArray.js"
 
 // The idea of this interface is to try and start reusing more code across our Chart classes and make it easier
 // for a dev to work on a chart type they haven't touched before if they've worked with another that implements

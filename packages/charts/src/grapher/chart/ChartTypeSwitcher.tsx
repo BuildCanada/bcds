@@ -2,7 +2,7 @@ import * as React from "react"
 import {
     ALL_GRAPHER_CHART_TYPES,
     GrapherChartType,
-} from "../../types/index"
+} from "../../types/index.js"
 
 // Just a utility for testing
 export class ChartTypeSwitcher extends React.Component<{

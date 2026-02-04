@@ -6,7 +6,7 @@ import {
     FooterItem,
     TooltipFadeMode,
     TooltipFooterIcon,
-} from "../tooltip/TooltipProps"
+} from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipValue,
@@ -14,9 +14,9 @@ import {
     makeTooltipRoundingNotice,
     TooltipValueRange,
     formatTooltipRangeValues,
-} from "../tooltip/Tooltip"
-import { MapChartManager, MapColumnInfo } from "./MapChartConstants"
-import { ColorScale } from "../color/ColorScale"
+} from "../tooltip/Tooltip.js"
+import { MapChartManager, MapColumnInfo } from "./MapChartConstants.js"
+import { ColorScale } from "../color/ColorScale.js"
 import {
     Time,
     EntityName,
@@ -24,17 +24,17 @@ import {
     AxisConfigInterface,
     ColumnSlug,
     PrimitiveType,
-} from "../../types/index"
-import { CoreColumn, ChartsTable } from "../../core-table/index"
+} from "../../types/index.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.js"
 import {
     calculateTrendDirection,
     excludeUndefined,
     PointVector,
-} from "../../utils/index"
-import { darkenColorForHighContrastText } from "../color/ColorUtils"
-import { MapSparkline, MapSparklineManager } from "./MapSparkline"
+} from "../../utils/index.js"
+import { darkenColorForHighContrastText } from "../color/ColorUtils.js"
+import { MapSparkline, MapSparklineManager } from "./MapSparkline.js"
 import { match } from "ts-pattern"
-import { MapFormatValueForTooltip } from "./MapChartState"
+import { MapFormatValueForTooltip } from "./MapChartState.js"
 
 interface MapTooltipProps {
     entityName: EntityName

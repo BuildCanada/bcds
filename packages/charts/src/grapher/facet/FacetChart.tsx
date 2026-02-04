@@ -15,13 +15,13 @@ import {
     makeIdForHumanConsumption,
     exposeInstanceOnWindow,
     SplitBoundsPadding,
-} from "../../utils/index"
-import { shortenWithEllipsis } from "../../components/index"
+} from "../../utils/index.js"
+import { shortenWithEllipsis } from "../../components/index.js"
 import { action, computed, makeObservable, observable } from "mobx"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import {
     GRAPHER_CHART_TYPES,
     GrapherChartType,
@@ -31,44 +31,44 @@ import {
     SeriesStrategy,
     AxisConfigInterface,
     ChartErrorInfo,
-} from "../../types/index"
-import { ChartComponent, makeChartInstance } from "../chart/ChartTypeMap"
-import { ChartManager } from "../chart/ChartManager"
-import { ChartInterface, ChartState } from "../chart/ChartInterface"
+} from "../../types/index.js"
+import { ChartComponent, makeChartInstance } from "../chart/ChartTypeMap.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { ChartInterface, ChartState } from "../chart/ChartInterface.js"
 import {
     calculateAspectRatio,
     getFacetGridPadding,
     getFontSize,
     getLabelPadding,
-} from "./FacetChartUtils"
+} from "./FacetChartUtils.js"
 import {
     FacetSeries,
     FacetChartProps,
     PlacedFacetSeries,
     FacetChartManager,
-} from "./FacetChartConstants"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
-import { autoDetectYColumnSlugs, makeSelectionArray } from "../chart/ChartUtils"
-import { SelectionArray } from "../selection/SelectionArray"
-import { AxisConfig } from "../axis/AxisConfig"
-import { HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "./FacetChartConstants.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { autoDetectYColumnSlugs, makeSelectionArray } from "../chart/ChartUtils.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegend,
     HorizontalColorLegendManager,
     HorizontalNumericColorLegend,
-} from "../legend/HorizontalColorLegends"
+} from "../legend/HorizontalColorLegends.js"
 import {
     CategoricalBin,
     ColorScaleBin,
     NumericBin,
-} from "../color/ColorScaleBin"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
-import { FocusArray } from "../focus/FocusArray"
+} from "../color/ColorScaleBin.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
+import { FocusArray } from "../focus/FocusArray.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
-} from "../legend/LegendInteractionState"
+} from "../legend/LegendInteractionState.js"
 
 const SHARED_X_AXIS_MIN_FACET_COUNT = 12
 

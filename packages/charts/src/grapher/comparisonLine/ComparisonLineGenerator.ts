@@ -1,6 +1,6 @@
 import Formula from "fparser"
 import { scaleLinear, scaleLog } from "d3-scale"
-import { ScaleType } from "../../types/index"
+import { ScaleType } from "../../types/index.js"
 
 export function generateComparisonLinePoints(
     lineFunction: string = "x",

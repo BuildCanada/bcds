@@ -2,26 +2,26 @@ import * as _ from "lodash-es"
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { ScatterPlotChartState } from "./ScatterPlotChartState"
-import { type ScatterPlotChartProps } from "./ScatterPlotChart"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { ScatterPlotChartState } from "./ScatterPlotChartState.js"
+import { type ScatterPlotChartProps } from "./ScatterPlotChart.js"
 import { ScaleLinear, scaleSqrt } from "d3-scale"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { Bounds } from "../../utils/index"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { Bounds } from "../../utils/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
+} from "../core/GrapherConstants.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
 import {
     SCATTER_LINE_MIN_WIDTH,
     SCATTER_POINT_MIN_RADIUS,
     ScatterPlotManager,
-} from "./ScatterPlotChartConstants"
-import { toSizeRange } from "./ScatterUtils"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "./ScatterPlotChartConstants.js"
+import { toSizeRange } from "./ScatterUtils.js"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 @observer
 export class ScatterPlotChartThumbnail

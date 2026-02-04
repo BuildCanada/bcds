@@ -1,5 +1,5 @@
 import * as _ from "lodash-es"
-import { BASE_FONT_SIZE } from "../core/GrapherConstants"
+import { BASE_FONT_SIZE } from "../core/GrapherConstants.js"
 import {
     trimObject,
     deleteRuntimeAndUnchangedProps,
@@ -8,16 +8,16 @@ import {
     Position,
     TickFormattingOptions,
     Bounds,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { observable, computed, makeObservable } from "mobx"
-import { HorizontalAxis, VerticalAxis } from "./Axis"
+import { HorizontalAxis, VerticalAxis } from "./Axis.js"
 import {
     AxisMinMaxValueStr,
     AxisConfigInterface,
     FacetAxisDomain,
     ScaleType,
     Tickmark,
-} from "../../types/index"
+} from "../../types/index.js"
 
 export interface AxisManager {
     fontSize: number

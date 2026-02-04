@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest"
 
-import { GridProgram } from "./GridProgram"
+import { GridProgram } from "./GridProgram.js"
 
 describe(GridProgram, () => {
     it("can create a program", () => {

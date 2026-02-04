@@ -1,11 +1,11 @@
-import { trimMatrix } from "../../core-table/index"
+import { trimMatrix } from "../../core-table/index.js"
 import {
     isPresent,
     GitCommit,
     SerializedGridProgram,
-} from "../../utils/index"
+} from "../../utils/index.js"
 
-import { GridCell } from "./GridCell"
+import { GridCell } from "./GridCell.js"
 import {
     CellDef,
     CellPosition,
@@ -14,8 +14,8 @@ import {
     GRID_NODE_DELIMITER,
     Origin,
     ParsedCell,
-} from "./GridLangConstants"
-import { tsvToMatrix } from "./GrammarUtils"
+} from "./GridLangConstants.js"
+import { tsvToMatrix } from "./GrammarUtils.js"
 
 /**
  * Block location for the below would be like (numRows = 2)

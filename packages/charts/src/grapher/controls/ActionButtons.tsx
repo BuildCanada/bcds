@@ -16,11 +16,11 @@ import {
     ShareMenuManager,
     shareUsingShareApi,
     shouldShareUsingShareApi,
-} from "./ShareMenu"
-import { Tippy } from "../../utils/index"
+} from "./ShareMenu.js"
+import { Tippy } from "../../utils/index.js"
 import classNames from "classnames"
-import { GrapherModal } from "../core/GrapherConstants"
-import { DownloadModalTabName } from "../modal/DownloadModal"
+import { GrapherModal } from "../core/GrapherConstants.js"
+import { DownloadModalTabName } from "../modal/DownloadModal.js"
 
 export interface ActionButtonsManager extends ShareMenuManager {
     isAdmin?: boolean

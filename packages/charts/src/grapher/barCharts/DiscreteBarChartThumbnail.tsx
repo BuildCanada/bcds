@@ -1,14 +1,14 @@
 import React from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ChartInterface } from "../chart/ChartInterface"
-import { DiscreteBarChartState } from "./DiscreteBarChartState"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { DiscreteBarChartState } from "./DiscreteBarChartState.js"
 import {
     DiscreteBarChart,
     type DiscreteBarChartProps,
-} from "./DiscreteBarChart"
+} from "./DiscreteBarChart.js"
 
-import { DiscreteBarChartManager } from "./DiscreteBarChartConstants"
+import { DiscreteBarChartManager } from "./DiscreteBarChartConstants.js"
 
 @observer
 export class DiscreteBarChartThumbnail

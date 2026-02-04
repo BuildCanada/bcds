@@ -1,7 +1,7 @@
 import { expect, it } from "vitest"
 
-import { Position } from "../types/index"
-import { Bounds } from "./Bounds"
+import { Position } from "../types/index.js"
+import { Bounds } from "./Bounds.js"
 
 it("can report the center", () => {
     const bounds = new Bounds(0, 0, 100, 100)

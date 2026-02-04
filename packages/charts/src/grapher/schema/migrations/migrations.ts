@@ -14,8 +14,8 @@ import {
     createSchemaForVersion,
     getSchemaVersion,
     isLatestVersion,
-} from "./helpers"
-import { GRAPHER_CHART_TYPES } from "../../../types/index"
+} from "./helpers.js"
+import { GRAPHER_CHART_TYPES } from "../../../types/index.js"
 
 // see # legacy commit 26f2a0d1790c71bdda7e12f284ca552945d2f6ef
 const migrateFrom001To002 = (

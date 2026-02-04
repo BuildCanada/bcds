@@ -1,7 +1,7 @@
-import { TooltipManager } from "../tooltip/TooltipProps"
-import { DetailsMarker } from "../../types/index"
-import { ActionButtonsManager } from "../controls/ActionButtons"
-import { GrapherModal } from "../core/GrapherConstants"
+import { TooltipManager } from "../tooltip/TooltipProps.js"
+import { DetailsMarker } from "../../types/index.js"
+import { ActionButtonsManager } from "../controls/ActionButtons.js"
+import { GrapherModal } from "../core/GrapherConstants.js"
 
 /**
  * Branding configuration for the footer

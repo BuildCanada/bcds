@@ -1,4 +1,4 @@
-import { EntityName } from "../../types/index"
+import { EntityName } from "../../types/index.js"
 import { action, computed, observable, makeObservable } from "mobx"
 
 export class SelectionArray {

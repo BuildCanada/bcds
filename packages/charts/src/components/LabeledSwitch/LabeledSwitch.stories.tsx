@@ -2,7 +2,7 @@ import * as React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "storybook/test"
 
-import { LabeledSwitch } from "./LabeledSwitch"
+import { LabeledSwitch } from "./LabeledSwitch.js"
 
 const meta: Meta<typeof LabeledSwitch> = {
     title: "Components/LabeledSwitch",

@@ -1,9 +1,9 @@
 import { FormatSpecifier } from "d3-format"
-import { createFormatter } from "./Util"
+import { createFormatter } from "./Util.js"
 import {
     VariableRoundingMode,
     TickFormattingOptions,
-} from "../types/index"
+} from "../types/index.js"
 
 // Used outside this module to figure out if the unit will be joined with the number.
 export function checkIsVeryShortUnit(unit: string): unit is "$" | "£" | "%" {

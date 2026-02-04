@@ -1,19 +1,19 @@
 import { expect, it, describe, test } from "vitest"
 
-import { DimensionProperty } from "../../utils/index"
+import { DimensionProperty } from "../../utils/index.js"
 import {
     SynthesizeGDPTable,
     SampleColumnSlugs,
-} from "../../core-table/index"
-import { GrapherProgrammaticInterface } from "../core/Grapher"
-import { GrapherState } from "./GrapherState"
+} from "../../core-table/index.js"
+import { GrapherProgrammaticInterface } from "../core/Grapher.js"
+import { GrapherState } from "./GrapherState.js"
 import {
     legacyMapGrapher,
     legacyMapGrapherData,
-} from "../mapCharts/MapChart.sample"
-import { GRAPHER_CHART_TYPES } from "../../types/index"
-import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable"
-import { MapChartState } from "../mapCharts/MapChartState"
+} from "../mapCharts/MapChart.sample.js"
+import { GRAPHER_CHART_TYPES } from "../../types/index.js"
+import { legacyToChartsTableAndDimensionsWithMandatorySlug } from "./LegacyToChartsTable.js"
+import { MapChartState } from "../mapCharts/MapChartState.js"
 
 describe("grapher and map charts", () => {
     describe("map time tolerance plus query string works with a map chart", () => {

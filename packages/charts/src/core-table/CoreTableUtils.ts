@@ -2,7 +2,7 @@
 import * as _ from "lodash-es"
 import * as Papa from "papaparse"
 import * as R from "remeda"
-import { sampleFrom, slugifySameCase, ColumnSlug } from "../utils/index"
+import { sampleFrom, slugifySameCase, ColumnSlug } from "../utils/index.js"
 import {
     CoreColumnStore,
     CoreRow,
@@ -16,8 +16,8 @@ import {
     EntityIdColumnDef,
     EntityNameColumnDef,
     ChartsTableSlugs,
-} from "../types/index"
-import { ErrorValueTypes, DroppedForTesting } from "./ErrorValues"
+} from "../types/index.js"
+import { ErrorValueTypes, DroppedForTesting } from "./ErrorValues.js"
 
 export const columnStoreToRows = (
     columnStore: CoreColumnStore

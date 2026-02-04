@@ -4,10 +4,10 @@
 
 import { expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
-import { AxisConfig } from "./AxisConfig"
-import { DualAxisComponent, HorizontalAxisGridLines } from "./AxisViews"
-import { ScaleType } from "../../types/index"
-import { DualAxis } from "./Axis"
+import { AxisConfig } from "./AxisConfig.js"
+import { DualAxisComponent, HorizontalAxisGridLines } from "./AxisViews.js"
+import { ScaleType } from "../../types/index.js"
+import { DualAxis } from "./Axis.js"
 
 it("can create horizontal axis", () => {
     const axisConfig = new AxisConfig({

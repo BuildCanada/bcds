@@ -1,22 +1,22 @@
 import * as _ from "lodash-es"
 import { computed, toJS, makeObservable } from "mobx"
-import { ColorScaleConfig } from "./ColorScaleConfig"
-import { mapNullToUndefined, sortNumeric } from "../../utils/index"
+import { ColorScaleConfig } from "./ColorScaleConfig.js"
+import { mapNullToUndefined, sortNumeric } from "../../utils/index.js"
 import { pairs } from "d3-array"
-import { ColorSchemes } from "../color/ColorSchemes"
-import { ColorScheme } from "../color/ColorScheme"
-import { ColorScaleBin, NumericBin, CategoricalBin } from "./ColorScaleBin"
-import { NO_DATA_GRAY } from "./ColorConstants"
+import { ColorSchemes } from "../color/ColorSchemes.js"
+import { ColorScheme } from "../color/ColorScheme.js"
+import { ColorScaleBin, NumericBin, CategoricalBin } from "./ColorScaleBin.js"
+import { NO_DATA_GRAY } from "./ColorConstants.js"
 import {
     ColorScaleConfigInterface,
     ColorSchemeName,
     Color,
     CoreValueType,
     VariableRoundingMode,
-} from "../../types/index"
-import { CoreColumn } from "../../core-table/index"
+} from "../../types/index.js"
+import { CoreColumn } from "../../core-table/index.js"
 import * as R from "remeda"
-import { runBinningStrategy } from "./BinningStrategies"
+import { runBinningStrategy } from "./BinningStrategies.js"
 
 export const NO_DATA_LABEL = "No data"
 export const PROJECTED_DATA_LABEL = "Projected data"

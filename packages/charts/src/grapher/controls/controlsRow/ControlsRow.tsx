@@ -2,33 +2,33 @@ import { Component } from "react"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 
-import { Bounds } from "../../../utils/index"
+import { Bounds } from "../../../utils/index.js"
 
-import { ContentSwitchers, ContentSwitchersManager } from "../ContentSwitchers"
+import { ContentSwitchers, ContentSwitchersManager } from "../ContentSwitchers.js"
 import {
     EntitySelectionToggle,
     EntitySelectionManager,
-} from "../EntitySelectionToggle"
+} from "../EntitySelectionToggle.js"
 import {
     MapRegionDropdown,
     MapRegionDropdownManager,
-} from "../MapRegionDropdown"
-import { SettingsMenu, SettingsMenuManager } from "../SettingsMenu"
-import { GRAPHER_FRAME_PADDING_HORIZONTAL } from "../../core/GrapherConstants"
-import { MapResetButton, MapResetButtonManager } from "../MapResetButton"
+} from "../MapRegionDropdown.js"
+import { SettingsMenu, SettingsMenuManager } from "../SettingsMenu.js"
+import { GRAPHER_FRAME_PADDING_HORIZONTAL } from "../../core/GrapherConstants.js"
+import { MapResetButton, MapResetButtonManager } from "../MapResetButton.js"
 import {
     DataTableFilterDropdown,
     DataTableFilterDropdownManager,
-} from "../DataTableFilterDropdown"
+} from "../DataTableFilterDropdown.js"
 import {
     DataTableSearchField,
     DataTableSearchFieldManager,
-} from "../DataTableSearchField"
+} from "../DataTableSearchField.js"
 import {
     MapZoomToSelectionButton,
     MapZoomToSelectionButtonManager,
-} from "../MapZoomToSelectionButton"
-import { MapZoomDropdown, MapZoomDropdownManager } from "../MapZoomDropdown"
+} from "../MapZoomToSelectionButton.js"
+import { MapZoomDropdown, MapZoomDropdownManager } from "../MapZoomDropdown.js"
 
 export interface ControlsRowManager
     extends ContentSwitchersManager,

@@ -1,9 +1,9 @@
-import { Url, UrlMigration, performUrlMigrations } from "../../utils/index"
+import { Url, UrlMigration, performUrlMigrations } from "../../utils/index.js"
 
-import { legacyCovidMigrationSpec } from "./LegacyCovidUrlMigration"
-import { co2UrlMigration } from "./CO2UrlMigration"
-import { energyUrlMigration } from "./EnergyUrlMigration"
-import { covidUrlMigration } from "./CovidUrlMigration"
+import { legacyCovidMigrationSpec } from "./LegacyCovidUrlMigration.js"
+import { co2UrlMigration } from "./CO2UrlMigration.js"
+import { energyUrlMigration } from "./EnergyUrlMigration.js"
+import { covidUrlMigration } from "./CovidUrlMigration.js"
 
 export enum ExplorerUrlMigrationId {
     legacyToGridCovidExplorer = "legacyToGridCovidExplorer",

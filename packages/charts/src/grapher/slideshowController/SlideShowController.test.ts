@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { SlideShowController } from "./SlideShowController"
+import { SlideShowController } from "./SlideShowController.js"
 
 it("can create a new slideshow", () => {
     let newSlide = ""

@@ -1,6 +1,6 @@
 import * as _ from "lodash-es"
 import React from "react"
-import { EntitySelectionMode, SeriesName, Color } from "../../types/index"
+import { EntitySelectionMode, SeriesName, Color } from "../../types/index.js"
 import { observable, computed, action, makeObservable } from "mobx"
 import { ScaleLinear, scaleSqrt } from "d3-scale"
 import { Quadtree, quadtree } from "d3-quadtree"
@@ -15,33 +15,33 @@ import {
     Bounds,
     isTouchDevice,
     makeIdForHumanConsumption,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { observer } from "mobx-react"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
-} from "../core/GrapherConstants"
+} from "../core/GrapherConstants.js"
 import {
     ChartsTable,
     isNotErrorValue,
     CoreColumn,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 import {
     ConnectedScatterLegend,
     ConnectedScatterLegendManager,
-} from "./ConnectedScatterLegend"
+} from "./ConnectedScatterLegend.js"
 import {
     VerticalColorLegend,
     VerticalColorLegendManager,
-} from "../legend/VerticalColorLegend"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
+} from "../legend/VerticalColorLegend.js"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
 
-import { ColorScale, NO_DATA_LABEL } from "../color/ColorScale"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartInterface } from "../chart/ChartInterface"
-import { getShortNameForEntity } from "../chart/ChartUtils"
+import { ColorScale, NO_DATA_LABEL } from "../color/ColorScale.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { getShortNameForEntity } from "../chart/ChartUtils.js"
 import {
     ScatterPlotManager,
     ScatterSeries,
@@ -52,25 +52,25 @@ import {
     SeriesPoint,
     ScatterPointQuadtreeNode,
     SCATTER_QUADTREE_SAMPLING_DISTANCE,
-} from "./ScatterPlotChartConstants"
-import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels"
-import { ColorScaleBin } from "../color/ColorScaleBin"
+} from "./ScatterPlotChartConstants.js"
+import { ScatterPointsWithLabels } from "./ScatterPointsWithLabels.js"
+import { ColorScaleBin } from "../color/ColorScaleBin.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
-} from "../legend/LegendInteractionState"
+} from "../legend/LegendInteractionState.js"
 import {
     ScatterSizeLegend,
     ScatterSizeLegendManager,
-} from "./ScatterSizeLegend"
-import { TooltipState } from "../tooltip/Tooltip"
-import { NoDataSection } from "./NoDataSection"
-import { ScatterPlotChartState } from "./ScatterPlotChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { toSizeRange } from "./ScatterUtils"
-import { ScatterPlotTooltip } from "./ScatterPlotTooltip"
-import { GRAY_100, GRAY_60 } from "../color/ColorConstants"
-import { INACTIVE_SCATTER_POINT_COLOR } from "./ScatterPoints"
+} from "./ScatterSizeLegend.js"
+import { TooltipState } from "../tooltip/Tooltip.js"
+import { NoDataSection } from "./NoDataSection.js"
+import { ScatterPlotChartState } from "./ScatterPlotChartState.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { toSizeRange } from "./ScatterUtils.js"
+import { ScatterPlotTooltip } from "./ScatterPlotTooltip.js"
+import { GRAY_100, GRAY_60 } from "../color/ColorConstants.js"
+import { INACTIVE_SCATTER_POINT_COLOR } from "./ScatterPoints.js"
 
 export type ScatterPlotChartProps = ChartComponentProps<ScatterPlotChartState>
 

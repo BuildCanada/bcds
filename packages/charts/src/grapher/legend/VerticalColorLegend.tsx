@@ -1,21 +1,21 @@
 import * as _ from "lodash-es"
 import * as React from "react"
-import { makeIdForHumanConsumption } from "../../utils/index"
-import { TextWrap } from "../../components/index"
+import { makeIdForHumanConsumption } from "../../utils/index.js"
+import { TextWrap } from "../../components/index.js"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import {
     GRAPHER_FONT_SCALE_11_2,
     BASE_FONT_SIZE,
-} from "../core/GrapherConstants"
-import { ColorScaleBin, NumericBin } from "../color/ColorScaleBin"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
+} from "../core/GrapherConstants.js"
+import { ColorScaleBin, NumericBin } from "../color/ColorScaleBin.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
     LegendMarkerStyle,
     LegendTextStyle,
-} from "../legend/LegendInteractionState"
+} from "../legend/LegendInteractionState.js"
 
 export interface VerticalColorLegendManager {
     maxLegendWidth?: number

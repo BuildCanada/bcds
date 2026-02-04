@@ -1,14 +1,14 @@
-import { numberMagnitude, RequiredBy } from "../../utils/index"
+import { numberMagnitude, RequiredBy } from "../../utils/index.js"
 import {
     BinningStrategyIncludingManual,
     LogBinningStrategy,
     ResolvedLogBinningStrategy,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     calcMagnitudeDiff,
     pruneUnusedBins,
     ResolvedBinningStrategyConfig,
-} from "./BinningStrategies"
+} from "./BinningStrategies.js"
 import * as R from "remeda"
 import { match } from "ts-pattern"
 

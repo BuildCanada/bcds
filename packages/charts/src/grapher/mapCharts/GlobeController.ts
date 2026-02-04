@@ -3,7 +3,7 @@ import { geoInterpolate, geoOrthographic, geoPath } from "d3-geo"
 import { interpolateNumber } from "d3-interpolate"
 import { easeCubicOut } from "d3-ease"
 import * as R from "remeda"
-import { EntityName, GlobeConfig, GlobeRegionName } from "../../types/index"
+import { EntityName, GlobeConfig, GlobeRegionName } from "../../types/index.js"
 import {
     Bounds,
     excludeUndefined,
@@ -13,9 +13,9 @@ import {
     getCountryNamesForRegion,
     getRegionByName,
     checkHasMembers,
-} from "../../utils/index"
-import { MapConfig } from "./MapConfig"
-import { getGeoFeaturesForGlobe } from "./GeoFeatures"
+} from "../../utils/index.js"
+import { MapConfig } from "./MapConfig.js"
+import { getGeoFeaturesForGlobe } from "./GeoFeatures.js"
 import {
     DEFAULT_GLOBE_ROTATION,
     DEFAULT_GLOBE_ROTATIONS_FOR_TIME,
@@ -29,10 +29,10 @@ import {
     GLOBE_VIEWPORTS,
     GlobeRenderFeature,
     MAP_REGION_NAMES,
-} from "./MapChartConstants"
-import { isPointPlacedOnVisibleHemisphere } from "./MapHelpers"
+} from "./MapChartConstants.js"
+import { isPointPlacedOnVisibleHemisphere } from "./MapHelpers.js"
 import { ckmeans } from "simple-statistics"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
 import { center } from "@turf/center"
 import { action } from "mobx"
 

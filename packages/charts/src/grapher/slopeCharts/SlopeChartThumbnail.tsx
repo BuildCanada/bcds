@@ -3,36 +3,36 @@ import * as _ from "remeda"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import { scaleLinear, ScaleLinear } from "d3-scale"
-import { ChartInterface } from "../chart/ChartInterface"
-import { SlopeChartState } from "./SlopeChartState"
-import { type SlopeChartProps } from "./SlopeChart"
+import { ChartInterface } from "../chart/ChartInterface.js"
+import { SlopeChartState } from "./SlopeChartState.js"
+import { type SlopeChartProps } from "./SlopeChart.js"
 import {
     PlacedSlopeChartSeries,
     RenderSlopeChartSeries,
     SlopeChartManager,
     SlopeChartSeries,
-} from "./SlopeChartConstants"
+} from "./SlopeChartConstants.js"
 import {
     getYAxisConfigDefaults,
     toPlacedSlopeChartSeries,
     toRenderSlopeChartSeries,
-} from "./SlopeChartHelpers"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
+} from "./SlopeChartHelpers.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { Bounds, SeriesName } from "../../utils/index"
-import { VerticalAxis } from "../axis/Axis"
-import { Slope } from "./Slope"
+} from "../core/GrapherConstants.js"
+import { Bounds, SeriesName } from "../../utils/index.js"
+import { VerticalAxis } from "../axis/Axis.js"
+import { Slope } from "./Slope.js"
 import {
     InitialVerticalLabelsSeries,
     VerticalLabelsState,
-} from "../verticalLabels/VerticalLabelsState"
-import { VerticalLabels } from "../verticalLabels/VerticalLabels"
-import { MarkX } from "./MarkX"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../verticalLabels/VerticalLabelsState.js"
+import { VerticalLabels } from "../verticalLabels/VerticalLabels.js"
+import { MarkX } from "./MarkX.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 
 const DOT_RADIUS = 3.5
 const SPACE_BETWEEN_DOT_AND_LABEL = 4

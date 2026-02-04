@@ -29,24 +29,24 @@ import {
     Region,
     getRegionByName,
     makeSafeForCSS,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     Checkbox,
     RadioButton,
     OverlayHeader,
-} from "../../components/index"
+} from "../../components/index.js"
 import {
     faLocationArrow,
     faArrowRightArrowLeft,
     faFilter,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { SelectionArray } from "../selection/SelectionArray"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import {
     combineHistoricalAndProjectionColumns,
     makeSelectionArray,
-} from "../chart/ChartUtils"
+} from "../chart/ChartUtils.js"
 import {
     DEFAULT_GRAPHER_ENTITY_TYPE,
     DEFAULT_GRAPHER_ENTITY_TYPE_PLURAL,
@@ -54,10 +54,10 @@ import {
     GDP_PER_CAPITA_INDICATOR_ID_USED_IN_ENTITY_SELECTOR,
     isPopulationVariableETLPath,
     isWorldEntityName,
-} from "../core/GrapherConstants"
-import { CoreColumn, ChartsTable } from "../../core-table/index"
-import { SortIcon } from "../controls/SortIcon"
-import { Dropdown } from "../controls/Dropdown"
+} from "../core/GrapherConstants.js"
+import { CoreColumn, ChartsTable } from "../../core-table/index.js"
+import { SortIcon } from "../controls/SortIcon.js"
+import { Dropdown } from "../controls/Dropdown.js"
 import { scaleLinear, type ScaleLinear } from "d3-scale"
 import {
     AdditionalGrapherDataFetchFn,
@@ -68,11 +68,11 @@ import {
     Time,
     ToleranceStrategy,
     type EntitySelectorEvent,
-} from "../../types/index"
-import { buildVariableTable } from "../core/LegacyToChartsTable"
-import { DrawerContext } from "../slideInDrawer/SlideInDrawer"
+} from "../../types/index.js"
+import { buildVariableTable } from "../core/LegacyToChartsTable.js"
+import { DrawerContext } from "../slideInDrawer/SlideInDrawer.js"
 import * as R from "remeda"
-import { MapConfig } from "../mapCharts/MapConfig"
+import { MapConfig } from "../mapCharts/MapConfig.js"
 import { match } from "ts-pattern"
 import {
     entityRegionTypeLabels,
@@ -80,9 +80,9 @@ import {
     EntityRegionType,
     EntityRegionTypeGroup,
     isAggregateSource,
-} from "../core/EntitiesByRegionType"
-import { SearchField } from "../controls/SearchField"
-import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants"
+} from "../core/EntitiesByRegionType.js"
+import { SearchField } from "../controls/SearchField.js"
+import { MAP_REGION_LABELS } from "../mapCharts/MapChartConstants.js"
 
 export type CoreColumnBySlug = Record<ColumnSlug, CoreColumn>
 

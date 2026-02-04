@@ -1,5 +1,5 @@
-import { ColorScaleBin } from "../color/ColorScaleBin"
-import { Bounds, ColumnSlug } from "../../utils/index"
+import { ColorScaleBin } from "../color/ColorScaleBin.js"
+import { Bounds, ColumnSlug } from "../../utils/index.js"
 import {
     MapRegionName,
     SeriesName,
@@ -7,15 +7,15 @@ import {
     ProjectionColumnInfo,
     type GrapherInteractionEvent,
     Time,
-} from "../../types/index"
-import { ChartManager } from "../chart/ChartManager"
-import { MapConfig } from "./MapConfig"
-import { ChartSeries } from "../chart/ChartInterface"
-import { GlobeController } from "./GlobeController"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
-import { CoreColumn } from "../../core-table/index"
+} from "../../types/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
+import { MapConfig } from "./MapConfig.js"
+import { ChartSeries } from "../chart/ChartInterface.js"
+import { GlobeController } from "./GlobeController.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { CoreColumn } from "../../core-table/index.js"
 import * as R from "remeda"
-import { InteractionState } from "../interaction/InteractionState"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export declare type SVGMouseEvent = React.MouseEvent<SVGElement>
 

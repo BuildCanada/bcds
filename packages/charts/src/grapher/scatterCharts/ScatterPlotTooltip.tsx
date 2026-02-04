@@ -9,8 +9,8 @@ import {
     calculateTrendDirection,
     Time,
     RequiredBy,
-} from "../../utils/index"
-import { CoreColumn } from "../../core-table/index"
+} from "../../utils/index.js"
+import { CoreColumn } from "../../core-table/index.js"
 import {
     Tooltip,
     TooltipState,
@@ -19,10 +19,10 @@ import {
     makeTooltipRoundingNotice,
     formatTooltipRangeValues,
     TooltipValue,
-} from "../tooltip/Tooltip"
-import { FooterItem, TooltipFooterIcon } from "../tooltip/TooltipProps"
-import { ScatterSeries, SeriesPoint } from "./ScatterPlotChartConstants"
-import { ScatterPlotChartState } from "./ScatterPlotChartState"
+} from "../tooltip/Tooltip.js"
+import { FooterItem, TooltipFooterIcon } from "../tooltip/TooltipProps.js"
+import { ScatterSeries, SeriesPoint } from "./ScatterPlotChartConstants.js"
+import { ScatterPlotChartState } from "./ScatterPlotChartState.js"
 
 export interface ScatterPlotTooltipProps {
     chartState: ScatterPlotChartState

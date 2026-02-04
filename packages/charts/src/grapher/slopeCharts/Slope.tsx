@@ -1,6 +1,6 @@
-import { makeIdForHumanConsumption, PointVector } from "../../utils/index"
-import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants"
-import { RenderSlopeChartSeries } from "./SlopeChartConstants"
+import { makeIdForHumanConsumption, PointVector } from "../../utils/index.js"
+import { GRAPHER_OPACITY_MUTE } from "../core/GrapherConstants.js"
+import { RenderSlopeChartSeries } from "./SlopeChartConstants.js"
 
 interface SlopeProps {
     series: RenderSlopeChartSeries

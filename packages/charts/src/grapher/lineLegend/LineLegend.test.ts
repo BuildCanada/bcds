@@ -1,11 +1,11 @@
 import { expect, it, describe } from "vitest"
 
-import { PartialBy } from "../../utils/index"
-import { AxisConfig } from "../axis/AxisConfig"
-import { LineLegend } from "./LineLegend"
-import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants"
-import { LineLabelSeries } from "./LineLegendTypes"
-import { InteractionState } from "../interaction/InteractionState"
+import { PartialBy } from "../../utils/index.js"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { LineLegend } from "./LineLegend.js"
+import { LEGEND_ITEM_MIN_SPACING } from "./LineLegendConstants.js"
+import { LineLabelSeries } from "./LineLegendTypes.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 const makeAxis = ({
     min = 0,

@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
-import { GrapherState } from "./GrapherState"
-import { SynthesizeGDPTable } from "../../core-table/index"
+import { GrapherState } from "./GrapherState.js"
+import { SynthesizeGDPTable } from "../../core-table/index.js"
 
 it("detects regions based on their suffix", () => {
     const table = SynthesizeGDPTable({

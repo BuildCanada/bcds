@@ -1,5 +1,5 @@
-import { QueryParams } from "../../types/index"
-import { omitUndefinedValues } from "../Util"
+import { QueryParams } from "../../types/index.js"
+import { omitUndefinedValues } from "../Util.js"
 
 /**
  * Converts a query string into an object of key-value pairs.

@@ -7,11 +7,11 @@ import {
     lastOfNonEmptyArray,
     makeIdForHumanConsumption,
     bind,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, makeObservable } from "mobx"
-import { SeriesName } from "../../types/index"
+import { SeriesName } from "../../types/index.js"
 import { observer } from "mobx-react"
-import { DualAxis } from "../axis/Axis"
+import { DualAxis } from "../axis/Axis.js"
 import { rgb } from "d3-color"
 import {
     AREA_OPACITY,
@@ -21,7 +21,7 @@ import {
     StackedPlacedSeries,
     StackedPoint,
     StackedSeries,
-} from "./StackedConstants"
+} from "./StackedConstants.js"
 
 interface AreasProps extends React.SVGAttributes<SVGGElement> {
     dualAxis: DualAxis

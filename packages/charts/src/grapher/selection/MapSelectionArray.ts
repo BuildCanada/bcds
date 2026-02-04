@@ -1,5 +1,5 @@
 import { computed, makeObservable } from "mobx"
-import { SelectionArray } from "./SelectionArray"
+import { SelectionArray } from "./SelectionArray.js"
 import {
     Aggregate,
     checkHasMembers,
@@ -12,7 +12,7 @@ import {
     getRegionByName,
     IncomeGroup,
     Region,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import * as R from "remeda"
 
 export class MapSelectionArray extends SelectionArray {

@@ -10,27 +10,27 @@ import {
     HorizontalAlign,
     VerticalAlign,
     makeIdForHumanConsumption,
-} from "../../utils/index"
-import { TextWrap } from "../../components/index"
+} from "../../utils/index.js"
+import { TextWrap } from "../../components/index.js"
 import {
     ColorScaleBin,
     NumericBin,
     CategoricalBin,
-} from "../color/ColorScaleBin"
+} from "../color/ColorScaleBin.js"
 import {
     BASE_FONT_SIZE,
     GRAPHER_FONT_SCALE_12,
     GRAPHER_FONT_SCALE_12_8,
     GRAPHER_FONT_SCALE_14,
-} from "../core/GrapherConstants"
-import { darkenColorForLine } from "../color/ColorUtils"
+} from "../core/GrapherConstants.js"
+import { darkenColorForLine } from "../color/ColorUtils.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
     LegendTextStyle,
     LegendMarkerStyle,
-} from "../legend/LegendInteractionState"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
+} from "../legend/LegendInteractionState.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
 
 export interface PositionedBin {
     x: number

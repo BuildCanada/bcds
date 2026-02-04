@@ -1,14 +1,14 @@
 import * as R from "remeda"
-import { PointVector, makeIdForHumanConsumption } from "../../utils/index"
+import { PointVector, makeIdForHumanConsumption } from "../../utils/index.js"
 import { observer } from "mobx-react"
 import * as React from "react"
-import { MultiColorPolyline } from "./MultiColorPolyline"
+import { MultiColorPolyline } from "./MultiColorPolyline.js"
 import {
     ScatterRenderSeries,
     SCATTER_POINT_OPACITY,
     SCATTER_POINT_STROKE_WIDTH,
-} from "./ScatterPlotChartConstants"
-import { Triangle } from "./Triangle"
+} from "./ScatterPlotChartConstants.js"
+import { Triangle } from "./Triangle.js"
 
 interface ScatterPointProps {
     series: ScatterRenderSeries

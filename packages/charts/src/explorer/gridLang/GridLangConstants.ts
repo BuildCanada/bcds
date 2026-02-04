@@ -1,4 +1,4 @@
-import { GrapherInterface } from "../../types/index"
+import { GrapherInterface } from "../../types/index.js"
 
 export const CellHasErrorsClass = "CellHasErrorsClass"
 

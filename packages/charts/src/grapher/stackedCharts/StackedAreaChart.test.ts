@@ -1,21 +1,21 @@
 import * as _ from "lodash-es"
 import { expect, it, describe } from "vitest"
 
-import { StackedAreaChart } from "./StackedAreaChart"
+import { StackedAreaChart } from "./StackedAreaChart.js"
 import {
     SampleColumnSlugs,
     SynthesizeFruitTable,
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
     ChartsTable,
-} from "../../core-table/index"
+} from "../../core-table/index.js"
 
 import { makeObservable, observable } from "mobx"
-import { AxisConfig } from "../axis/AxisConfig"
-import { SelectionArray } from "../selection/SelectionArray"
-import { ColumnTypeNames, GRAPHER_CHART_TYPES } from "../../utils/index"
-import { StackedAreaChartState } from "./StackedAreaChartState"
-import { ChartManager } from "../chart/ChartManager"
+import { AxisConfig } from "../axis/AxisConfig.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { ColumnTypeNames, GRAPHER_CHART_TYPES } from "../../utils/index.js"
+import { StackedAreaChartState } from "./StackedAreaChartState.js"
+import { ChartManager } from "../chart/ChartManager.js"
 
 class MockManager implements ChartManager {
     constructor() {

@@ -1,9 +1,9 @@
 // todo: remove
 
-import { GrapherState } from "../core/GrapherState"
+import { GrapherState } from "../core/GrapherState.js"
 import { computed, makeObservable } from "mobx"
-import { ChartDimension } from "./ChartDimension"
-import { DimensionProperty } from "../../utils/index"
+import { ChartDimension } from "./ChartDimension.js"
+import { DimensionProperty } from "../../utils/index.js"
 
 export class DimensionSlot {
     private grapherState: GrapherState

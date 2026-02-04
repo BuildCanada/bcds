@@ -1,12 +1,12 @@
 import * as _ from "lodash-es"
-import { Region, regions } from "../../utils/index"
+import { Region, regions } from "../../utils/index.js"
 import {
     MultipleVariableDataDimensionsMap,
     VariableWithSource,
     EntityCode,
     EntityId,
     EntityName,
-} from "../../types/index"
+} from "../../types/index.js"
 
 type Entity = { id: EntityId; code?: EntityCode; name?: EntityName }
 type TestDatum = { year: number; entity: Entity; value: string | number }

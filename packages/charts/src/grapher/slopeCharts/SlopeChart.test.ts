@@ -1,8 +1,8 @@
 import * as _ from "lodash-es"
 import { expect, it, describe } from "vitest"
 
-import { SlopeChart } from "./SlopeChart"
-import { SlopeChartManager } from "./SlopeChartConstants"
+import { SlopeChart } from "./SlopeChart.js"
+import { SlopeChartManager } from "./SlopeChartConstants.js"
 import {
     ErrorValueTypes,
     ChartsTable,
@@ -10,16 +10,16 @@ import {
     SynthesizeFruitTableWithNonPositives,
     SynthesizeFruitTableWithStringValues,
     SynthesizeGDPTable,
-} from "../../core-table/index"
-import { ChartManager } from "../chart/ChartManager"
+} from "../../core-table/index.js"
+import { ChartManager } from "../chart/ChartManager.js"
 import {
     ColumnTypeNames,
     FacetStrategy,
     ScaleType,
     SeriesStrategy,
-} from "../../utils/index"
-import { SelectionArray } from "../selection/SelectionArray"
-import { SlopeChartState } from "./SlopeChartState"
+} from "../../utils/index.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
+import { SlopeChartState } from "./SlopeChartState.js"
 
 const table = SynthesizeGDPTable({ timeRange: [2000, 2010] })
 const manager: SlopeChartManager = {

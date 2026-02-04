@@ -1,12 +1,12 @@
 import { expect, it, describe } from "vitest"
 
-import { StackMode, TimeBoundValueStr } from "../../types/index"
+import { StackMode, TimeBoundValueStr } from "../../types/index.js"
 import {
     grapherConfigToQueryParams,
     grapherObjectToQueryParams,
-} from "./GrapherUrl"
-import { MapConfig } from "../mapCharts/MapConfig"
-import { GrapherState } from "./GrapherState"
+} from "./GrapherUrl.js"
+import { MapConfig } from "../mapCharts/MapConfig.js"
+import { GrapherState } from "./GrapherState.js"
 
 describe(grapherConfigToQueryParams, () => {
     it("should convert an empty grapher config to an empty object", () => {

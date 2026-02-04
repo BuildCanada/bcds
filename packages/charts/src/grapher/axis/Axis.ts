@@ -14,20 +14,20 @@ import {
     Tickmark,
     ValueRange,
     VariableRoundingMode,
-} from "../../utils/index"
-import { ComparisonLineConfig } from "../../types/index"
-import { AxisConfig, AxisManager } from "./AxisConfig"
-import { MarkdownTextWrap } from "../../components/index"
-import { CoreColumn } from "../../core-table/index"
+} from "../../utils/index.js"
+import { ComparisonLineConfig } from "../../types/index.js"
+import { AxisConfig, AxisManager } from "./AxisConfig.js"
+import { MarkdownTextWrap } from "../../components/index.js"
+import { CoreColumn } from "../../core-table/index.js"
 import {
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_10_5,
     GRAPHER_FONT_SCALE_11,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { makeAxisLabel } from "../chart/ChartUtils"
+} from "../core/GrapherConstants.js"
+import { makeAxisLabel } from "../chart/ChartUtils.js"
 import * as R from "remeda"
-import { isValidVerticalComparisonLineConfig } from "../comparisonLine/ComparisonLineHelpers"
+import { isValidVerticalComparisonLineConfig } from "../comparisonLine/ComparisonLineHelpers.js"
 
 interface TickLabelPlacement {
     value: number

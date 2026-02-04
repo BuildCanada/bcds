@@ -1,5 +1,5 @@
-import { Color, CoreValueType } from "../../types/index"
-import { NO_DATA_LABEL, PROJECTED_DATA_LABEL } from "./ColorScale"
+import { Color, CoreValueType } from "../../types/index.js"
+import { NO_DATA_LABEL, PROJECTED_DATA_LABEL } from "./ColorScale.js"
 
 interface BinProps {
     color: Color

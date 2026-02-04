@@ -15,10 +15,10 @@ import {
     copyToClipboard,
     isAndroid,
     isIOS,
-} from "../../utils/index"
-import { GrapherModal } from "../core/GrapherConstants"
-import { isTargetOutsideElement } from "../chart/ChartUtils"
-import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer"
+} from "../../utils/index.js"
+import { GrapherModal } from "../core/GrapherConstants.js"
+import { isTargetOutsideElement } from "../chart/ChartUtils.js"
+import { GrapherRasterizeFn } from "../captionedChart/StaticChartRasterizer.js"
 
 export interface ShareMenuManager {
     slug?: string

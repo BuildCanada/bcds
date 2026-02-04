@@ -24,7 +24,7 @@ import {
     MapRegionName,
     excludeUndefined,
     EntityName,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import {
     Annotation,
     ANNOTATION_COLOR_DARK,
@@ -45,9 +45,9 @@ import {
     PROJECTED_DATA_LEGEND_COLOR,
     RenderFeature,
     SVGMouseEvent,
-} from "./MapChartConstants"
-import { MapConfig } from "./MapConfig"
-import { getGeoFeaturesForGlobe } from "./GeoFeatures"
+} from "./MapChartConstants.js"
+import { MapConfig } from "./MapConfig.js"
+import { getGeoFeaturesForGlobe } from "./GeoFeatures.js"
 import {
     BackgroundCountry,
     CountryWithData,
@@ -56,8 +56,8 @@ import {
     InternalValueAnnotation,
     NoDataPattern,
     ProjectedDataPattern,
-} from "./MapComponents"
-import { Patterns } from "../core/GrapherConstants"
+} from "./MapComponents.js"
+import { Patterns } from "../core/GrapherConstants.js"
 import {
     calculateDistance,
     detectNearbyFeature,
@@ -65,16 +65,16 @@ import {
     sortFeaturesByInteractionStateAndSize,
     getForegroundFeatures,
     isValidGlobeRegionName,
-} from "./MapHelpers"
+} from "./MapHelpers.js"
 import {
     makeInternalAnnotationForFeature,
     makeExternalAnnotationForFeature,
     repositionAndFilterExternalAnnotations,
-} from "./MapAnnotations"
+} from "./MapAnnotations.js"
 import * as R from "remeda"
-import { GlobeController } from "./GlobeController"
-import { isDarkColor } from "../color/ColorUtils"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
+import { GlobeController } from "./GlobeController.js"
+import { isDarkColor } from "../color/ColorUtils.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
 
 const DEFAULT_SCALE = geoOrthographic().scale()
 

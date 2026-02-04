@@ -2,15 +2,15 @@ import {
     BinningStrategyIncludingManual,
     EqualSizeBinningStrategy,
     ResolvedBinningStrategy,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     normaliseToSingleDigitNumber,
     RequiredBy,
     roundSigFig,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import * as R from "remeda"
 import { match, P } from "ts-pattern"
-import { ResolvedBinningStrategyConfig } from "./BinningStrategies"
+import { ResolvedBinningStrategyConfig } from "./BinningStrategies.js"
 
 export const isEqualSizeBinningStrategy = (
     strategy: BinningStrategyIncludingManual | ResolvedBinningStrategy

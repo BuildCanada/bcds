@@ -5,19 +5,19 @@ import {
     exposeInstanceOnWindow,
     Color,
     HorizontalAlign,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { observable, computed, action, makeObservable } from "mobx"
 import { observer } from "mobx-react"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
     HorizontalNumericColorLegend,
-} from "../legend/HorizontalColorLegends"
+} from "../legend/HorizontalColorLegends.js"
 import { select } from "d3-selection"
 import { easeCubic } from "d3-ease"
-import { MapTooltip } from "./MapTooltip"
-import { TooltipState } from "../tooltip/Tooltip"
-import { CoreColumn } from "../../core-table/index"
+import { MapTooltip } from "./MapTooltip.js"
+import { TooltipState } from "../tooltip/Tooltip.js"
+import { CoreColumn } from "../../core-table/index.js"
 import {
     GeoFeature,
     MapBracket,
@@ -31,16 +31,16 @@ import {
     MapColumnInfo,
     PROJECTED_DATA_LEGEND_COLOR,
     MapViewport,
-} from "./MapChartConstants"
-import { MapConfig } from "./MapConfig"
-import { ColorScale } from "../color/ColorScale"
+} from "./MapChartConstants.js"
+import { MapConfig } from "./MapConfig.js"
+import { ColorScale } from "../color/ColorScale.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_MAX_TOOLTIP_WIDTH,
     Patterns,
-} from "../core/GrapherConstants"
-import { ChartInterface } from "../chart/ChartInterface"
+} from "../core/GrapherConstants.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
 import {
     CategoricalBin,
     ColorScaleBin,
@@ -49,28 +49,28 @@ import {
     isNumericBin,
     isProjectedDataBin,
     NumericBin,
-} from "../color/ColorScaleBin"
+} from "../color/ColorScaleBin.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
-} from "../legend/LegendInteractionState"
+} from "../legend/LegendInteractionState.js"
 import {
     ColumnSlug,
     GrapherVariant,
     MapRegionName,
-} from "../../types/index"
-import { ClipPath, makeClipPath } from "../chart/ChartUtils"
-import { NoDataModal } from "../noDataModal/NoDataModal"
+} from "../../types/index.js"
+import { ClipPath, makeClipPath } from "../chart/ChartUtils.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
 import { Component, createRef } from "react"
-import { ChoroplethMap } from "./ChoroplethMap"
-import { ChoroplethGlobe } from "./ChoroplethGlobe"
-import { GlobeController } from "./GlobeController"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
+import { ChoroplethMap } from "./ChoroplethMap.js"
+import { ChoroplethGlobe } from "./ChoroplethGlobe.js"
+import { GlobeController } from "./GlobeController.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
 import { match } from "ts-pattern"
-import { makeProjectedDataPatternId } from "./MapComponents"
-import { MapChartState } from "./MapChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { InteractionState } from "../interaction/InteractionState"
+import { makeProjectedDataPatternId } from "./MapComponents.js"
+import { MapChartState } from "./MapChartState.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { InteractionState } from "../interaction/InteractionState.js"
 
 export type MapChartProps = ChartComponentProps<MapChartState>
 

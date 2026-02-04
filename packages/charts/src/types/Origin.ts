@@ -1,4 +1,4 @@
-import { License } from "./Variable"
+import { License } from "./Variable.js"
 export interface Origin {
     id?: number
     title?: string

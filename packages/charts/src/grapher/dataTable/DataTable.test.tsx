@@ -7,14 +7,14 @@ import { render } from "@testing-library/react"
 import {
     GRAPHER_CHART_TYPES,
     GRAPHER_TAB_CONFIG_OPTIONS,
-} from "../../types/index"
+} from "../../types/index.js"
 import {
     childMortalityGrapher,
     GrapherWithIncompleteData,
     GrapherWithMultipleVariablesAndMultipleYears,
-} from "./DataTable.sample"
-import { LifeExpectancyGrapher } from "../testData/TestData.sample"
-import { DataTable } from "./DataTable"
+} from "./DataTable.sample.js"
+import { LifeExpectancyGrapher } from "../testData/TestData.sample.js"
+import { DataTable } from "./DataTable.js"
 
 describe("when you render a table", () => {
     let container: HTMLElement

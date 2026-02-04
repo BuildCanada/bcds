@@ -1,6 +1,6 @@
-import { DimensionProperty } from "../../utils/index"
-import { GrapherProgrammaticInterface } from "../core/Grapher"
-import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index"
+import { DimensionProperty } from "../../utils/index.js"
+import { GrapherProgrammaticInterface } from "../core/Grapher.js"
+import { GRAPHER_TAB_CONFIG_OPTIONS } from "../../types/index.js"
 
 export const legacyMapGrapher: GrapherProgrammaticInterface = {
     hasMapTab: true,

@@ -5,8 +5,8 @@ import {
     MapConfigInterface,
     TimeBound,
     EntityName,
-} from "../../types/index"
-import { ColorScaleConfig } from "../color/ColorScaleConfig"
+} from "../../types/index.js"
+import { ColorScaleConfig } from "../color/ColorScaleConfig.js"
 import {
     ColumnSlug,
     Persistable,
@@ -20,9 +20,9 @@ import {
     NoUndefinedValues,
     ToleranceStrategy,
     minTimeBoundFromJSONOrNegativeInfinity,
-} from "../../utils/index"
-import { MapSelectionArray } from "../selection/MapSelectionArray"
-import { DEFAULT_GLOBE_ROTATION, DEFAULT_GLOBE_ZOOM } from "./MapChartConstants"
+} from "../../utils/index.js"
+import { MapSelectionArray } from "../selection/MapSelectionArray.js"
+import { DEFAULT_GLOBE_ROTATION, DEFAULT_GLOBE_ZOOM } from "./MapChartConstants.js"
 import * as R from "remeda"
 
 // MapConfig holds the data and underlying logic needed by MapTab.

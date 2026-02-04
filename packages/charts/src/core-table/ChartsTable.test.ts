@@ -4,14 +4,14 @@ import {
     SampleColumnSlugs,
     SynthesizeFruitTable,
     SynthesizeGDPTable,
-} from "./TableSynthesizers"
-import { ChartsTable } from "./ChartsTable"
+} from "./TableSynthesizers.js"
+import { ChartsTable } from "./ChartsTable.js"
 import {
     ColumnTypeNames,
     ColumnDef,
     ChartsTableSlugs,
-} from "../types/index"
-import { ErrorValueTypes } from "./ErrorValues"
+} from "../types/index.js"
+import { ErrorValueTypes } from "./ErrorValues.js"
 
 const sampleRows = [
     {

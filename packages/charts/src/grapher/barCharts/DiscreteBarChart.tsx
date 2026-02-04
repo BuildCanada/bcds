@@ -9,10 +9,10 @@ import {
     AxisAlign,
     makeIdForHumanConsumption,
     dyFromAlign,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { computed, makeObservable } from "mobx"
 import { observer } from "mobx-react"
-import { ScaleType, VerticalAlign } from "../../types/index"
+import { ScaleType, VerticalAlign } from "../../types/index.js"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
@@ -20,11 +20,11 @@ import {
     GRAPHER_AREA_OPACITY_DEFAULT,
     GRAPHER_OPACITY_MUTE,
     GRAPHER_AREA_OPACITY_MUTE,
-} from "../core/GrapherConstants"
-import { NoDataModal } from "../noDataModal/NoDataModal"
-import { HorizontalAxisZeroLine } from "../axis/AxisViews"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartInterface } from "../chart/ChartInterface"
+} from "../core/GrapherConstants.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
+import { HorizontalAxisZeroLine } from "../axis/AxisViews.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
 import {
     BAR_SPACING_FACTOR,
     DiscreteBarChartManager,
@@ -32,23 +32,23 @@ import {
     FontSettings,
     PlacedDiscreteBarSeries,
     SizedDiscreteBarSeries,
-} from "./DiscreteBarChartConstants"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
+} from "./DiscreteBarChartConstants.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
 import {
     HorizontalColorLegendManager,
     HorizontalNumericColorLegend,
-} from "../legend/HorizontalColorLegends"
-import { DiscreteBarChartState } from "./DiscreteBarChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
+} from "../legend/HorizontalColorLegends.js"
+import { DiscreteBarChartState } from "./DiscreteBarChartState.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
 import {
     makeProjectedDataPatternId,
     enrichSeriesWithLabels,
-} from "./DiscreteBarChartHelpers"
-import { ChartsTable } from "../../core-table/index"
-import { HorizontalAxis } from "../axis/Axis"
-import { GRAPHER_DARK_TEXT } from "../color/ColorConstants"
+} from "./DiscreteBarChartHelpers.js"
+import { ChartsTable } from "../../core-table/index.js"
+import { HorizontalAxis } from "../axis/Axis.js"
+import { GRAPHER_DARK_TEXT } from "../color/ColorConstants.js"
 import type { BaseType, Selection } from "d3-selection"
-import { NUMERIC_LEGEND_STYLE } from "../lineCharts/LineChartConstants"
+import { NUMERIC_LEGEND_STYLE } from "../lineCharts/LineChartConstants.js"
 
 const DEFAULT_PROJECTED_DATA_COLOR_IN_LEGEND = "#787878"
 

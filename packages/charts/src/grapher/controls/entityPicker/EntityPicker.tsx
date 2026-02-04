@@ -23,21 +23,21 @@ import {
     EntityName,
     CoreColumnDef,
     ChartsTableSlugs,
-} from "../../../utils/index"
+} from "../../../utils/index.js"
 import classnames from "classnames"
 import { scaleLinear, ScaleLinear } from "d3-scale"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons"
-import { VerticalScrollContainer } from "../../controls/VerticalScrollContainer"
-import { SortIcon } from "../../controls/SortIcon"
-import { Dropdown, BasicDropdownOption } from "../Dropdown"
+import { VerticalScrollContainer } from "../../controls/VerticalScrollContainer.js"
+import { SortIcon } from "../../controls/SortIcon.js"
+import { Dropdown, BasicDropdownOption } from "../Dropdown.js"
 import {
     ColumnTypeMap,
     CoreColumn,
     ChartsTable,
-} from "../../../core-table/index"
-import { EntityPickerManager } from "./EntityPickerConstants"
-import { SelectionArray } from "../../selection/SelectionArray"
+} from "../../../core-table/index.js"
+import { EntityPickerManager } from "./EntityPickerConstants.js"
+import { SelectionArray } from "../../selection/SelectionArray.js"
 
 const toggleSort = (order: SortOrder): SortOrder =>
     order === SortOrder.desc ? SortOrder.asc : SortOrder.desc

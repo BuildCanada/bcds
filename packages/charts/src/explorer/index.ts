@@ -1,6 +1,6 @@
-export { Explorer, type ExplorerProps } from "./Explorer"
+export { Explorer, type ExplorerProps } from "./Explorer.js"
 
-export { buildExplorerProps } from "./ExplorerUtils"
+export { buildExplorerProps } from "./ExplorerUtils.js"
 
 export {
     DefaultNewExplorerSlug,
@@ -29,7 +29,7 @@ export {
     type ExplorerStandardQueryParams,
     UNSAVED_EXPLORER_DRAFT,
     UNSAVED_EXPLORER_PREVIEW_QUERYPARAMS,
-} from "./ExplorerConstants"
+} from "./ExplorerConstants.js"
 
 export {
     type TableDef,
@@ -37,33 +37,33 @@ export {
     EXPLORER_FILE_SUFFIX,
     makeFullPath,
     type ExplorerGrapherInterface,
-} from "./ExplorerProgram"
+} from "./ExplorerProgram.js"
 
-export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec"
+export { type ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec.js"
 
 export {
     explorerUrlMigrationsById,
     migrateExplorerUrl,
-} from "./urlMigrations/ExplorerUrlMigrations"
+} from "./urlMigrations/ExplorerUrlMigrations.js"
 
-export { isEmpty } from "./gridLang/GrammarUtils"
+export { isEmpty } from "./gridLang/GrammarUtils.js"
 
-export { ColumnGrammar } from "./ColumnGrammar"
+export { ColumnGrammar } from "./ColumnGrammar.js"
 
-export { GridCell } from "./gridLang/GridCell"
+export { GridCell } from "./gridLang/GridCell.js"
 
-export { GridProgram } from "./gridLang/GridProgram"
+export { GridProgram } from "./gridLang/GridProgram.js"
 
-export { ExplorerGrammar } from "./ExplorerGrammar"
+export { ExplorerGrammar } from "./ExplorerGrammar.js"
 
-export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations"
+export { ExplorerUrlMigrationId } from "./urlMigrations/ExplorerUrlMigrations.js"
 
-export { DecisionMatrix } from "./ExplorerDecisionMatrix"
+export { DecisionMatrix } from "./ExplorerDecisionMatrix.js"
 
 export {
     GridBoolean,
     type CellPosition,
     type ParsedCell,
-} from "./gridLang/GridLangConstants"
+} from "./gridLang/GridLangConstants.js"
 
-export { GrapherGrammar } from "./GrapherGrammar"
+export { GrapherGrammar } from "./GrapherGrammar.js"

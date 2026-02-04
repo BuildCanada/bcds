@@ -6,16 +6,16 @@ import {
     GRAPHER_MAP_TYPE,
     GrapherChartOrMapType,
     makeIdForHumanConsumption,
-} from "../../utils/index"
-import { DataTable } from "../dataTable/DataTable"
-import { CaptionedChartManager } from "../captionedChart/CaptionedChart"
-import { LoadingIndicator } from "../../components/index"
-import { FacetChart } from "../facet/FacetChart"
-import { getChartSvgProps, NoDataPattern } from "./ChartUtils"
-import { ChartComponent, makeChartState } from "./ChartTypeMap"
-import { GRAPHER_CHART_AREA_CLASS } from "../core/GrapherConstants"
-import { ChartState } from "./ChartInterface"
-import { FacetMap } from "../facet/FacetMap"
+} from "../../utils/index.js"
+import { DataTable } from "../dataTable/DataTable.js"
+import { CaptionedChartManager } from "../captionedChart/CaptionedChart.js"
+import { LoadingIndicator } from "../../components/index.js"
+import { FacetChart } from "../facet/FacetChart.js"
+import { getChartSvgProps, NoDataPattern } from "./ChartUtils.js"
+import { ChartComponent, makeChartState } from "./ChartTypeMap.js"
+import { GRAPHER_CHART_AREA_CLASS } from "../core/GrapherConstants.js"
+import { ChartState } from "./ChartInterface.js"
+import { FacetMap } from "../facet/FacetMap.js"
 
 interface ChartAreaContentProps {
     manager: CaptionedChartManager

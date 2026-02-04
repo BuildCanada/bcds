@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 
-import { getSegmentsFromPoints } from "../scatterCharts/MultiColorPolyline"
+import { getSegmentsFromPoints } from "../scatterCharts/MultiColorPolyline.js"
 
 it("splits different-colored segments", () => {
     const points = [

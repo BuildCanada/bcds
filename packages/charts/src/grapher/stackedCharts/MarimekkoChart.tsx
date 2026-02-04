@@ -13,49 +13,49 @@ import {
     makeIdForHumanConsumption,
     dyFromAlign,
     exposeInstanceOnWindow,
-} from "../../utils/index"
+} from "../../utils/index.js"
 import { action, computed, makeObservable, observable } from "mobx"
 import { observer } from "mobx-react"
 import {
     BASE_FONT_SIZE,
     DEFAULT_GRAPHER_BOUNDS,
     GRAPHER_FONT_SCALE_12,
-} from "../core/GrapherConstants"
-import { DualAxisComponent } from "../axis/AxisViews"
-import { NoDataModal } from "../noDataModal/NoDataModal"
-import { AxisConfig, AxisManager } from "../axis/AxisConfig"
-import { ChartInterface } from "../chart/ChartInterface"
+} from "../core/GrapherConstants.js"
+import { DualAxisComponent } from "../axis/AxisViews.js"
+import { NoDataModal } from "../noDataModal/NoDataModal.js"
+import { AxisConfig, AxisManager } from "../axis/AxisConfig.js"
+import { ChartInterface } from "../chart/ChartInterface.js"
 import {
     EntityName,
     VerticalAlign,
     ColorScaleConfigInterface,
-} from "../../types/index"
-import { ChartsTable, CoreColumn } from "../../core-table/index"
-import { getShortNameForEntity } from "../chart/ChartUtils"
+} from "../../types/index.js"
+import { ChartsTable, CoreColumn } from "../../core-table/index.js"
+import { getShortNameForEntity } from "../chart/ChartUtils.js"
 import {
     LEGEND_STYLE_FOR_STACKED_CHARTS,
     StackedSeries,
-} from "./StackedConstants"
-import { TooltipFooterIcon } from "../tooltip/TooltipProps"
+} from "./StackedConstants.js"
+import { TooltipFooterIcon } from "../tooltip/TooltipProps.js"
 import {
     Tooltip,
     TooltipValue,
     TooltipState,
     makeTooltipRoundingNotice,
     makeTooltipToleranceNotice,
-} from "../tooltip/Tooltip"
+} from "../tooltip/Tooltip.js"
 import {
     HorizontalCategoricalColorLegend,
     HorizontalColorLegendManager,
-} from "../legend/HorizontalColorLegends"
-import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin"
+} from "../legend/HorizontalColorLegends.js"
+import { CategoricalBin, ColorScaleBin } from "../color/ColorScaleBin.js"
 import {
     LegendInteractionState,
     LegendStyleConfig,
-} from "../legend/LegendInteractionState"
-import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis"
-import { ColorScale } from "../color/ColorScale"
-import { SelectionArray } from "../selection/SelectionArray"
+} from "../legend/LegendInteractionState.js"
+import { DualAxis, HorizontalAxis, VerticalAxis } from "../axis/Axis.js"
+import { ColorScale } from "../color/ColorScale.js"
+import { SelectionArray } from "../selection/SelectionArray.js"
 import {
     MarimekkoChartManager,
     Item,
@@ -65,11 +65,11 @@ import {
     LabelWithPlacement,
     LabelCandidateWithElement,
     Bar,
-} from "./MarimekkoChartConstants"
-import { MarimekkoChartState } from "./MarimekkoChartState"
-import { ChartComponentProps } from "../chart/ChartTypeMap"
-import { MarimekkoBars } from "./MarimekkoBars"
-import { toPlacedMarimekkoItems } from "./MarimekkoChartHelpers"
+} from "./MarimekkoChartConstants.js"
+import { MarimekkoChartState } from "./MarimekkoChartState.js"
+import { ChartComponentProps } from "../chart/ChartTypeMap.js"
+import { MarimekkoBars } from "./MarimekkoBars.js"
+import { toPlacedMarimekkoItems } from "./MarimekkoChartHelpers.js"
 
 const MARKER_MARGIN: number = 4
 const MARKER_AREA_HEIGHT: number = 25

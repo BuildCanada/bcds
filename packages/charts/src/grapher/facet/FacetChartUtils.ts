@@ -1,4 +1,4 @@
-import { BASE_FONT_SIZE, GRAPHER_FONT_SCALE_10 } from "../core/GrapherConstants"
+import { BASE_FONT_SIZE, GRAPHER_FONT_SCALE_10 } from "../core/GrapherConstants.js"
 
 // not sure if we want to do something more sophisticated
 export const getFontSize = (

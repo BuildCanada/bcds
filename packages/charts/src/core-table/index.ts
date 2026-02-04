@@ -1,4 +1,4 @@
-export { CoreTable, columnDefinitionsFromInput } from "./CoreTable"
+export { CoreTable, columnDefinitionsFromInput } from "./CoreTable.js"
 export {
     SynthesizeNonCountryTable,
     SampleColumnSlugs,
@@ -7,7 +7,7 @@ export {
     SynthesizeFruitTableWithNonPositives,
     SynthesizeFruitTableWithStringValues,
     SynthesizeProjectedPopulationTable,
-} from "./TableSynthesizers"
+} from "./TableSynthesizers.js"
 
 export {
     type CoreColumn,
@@ -15,9 +15,9 @@ export {
     ColumnTypeMap,
     AbstractCoreColumn,
     TimeColumn,
-} from "./CoreTableColumns"
+} from "./CoreTableColumns.js"
 
-export { ChartsTable, BlankChartsTable } from "./ChartsTable"
+export { ChartsTable, BlankChartsTable } from "./ChartsTable.js"
 
 export {
     DroppedForTesting,
@@ -28,7 +28,7 @@ export {
     isNotErrorValue,
     isNotErrorValueOrEmptyCell,
     defaultIfErrorValue,
-} from "./ErrorValues"
+} from "./ErrorValues.js"
 
 export {
     columnStoreToRows,
@@ -63,7 +63,7 @@ export {
     trimArray,
     sortColumnStore,
     emptyColumnsInFirstRowInDelimited,
-} from "./CoreTableUtils"
+} from "./CoreTableUtils.js"
 
 export {
     timeColumnSlugFromColumnDef,
@@ -71,7 +71,7 @@ export {
     makeOriginalValueSlugFromColumnSlug,
     getOriginalTimeColumnSlug,
     toPercentageColumnDef,
-} from "./TableUtil"
+} from "./TableUtil.js"
 
 export {
     insertMissingValuePlaceholders,
@@ -79,4 +79,4 @@ export {
     AvailableTransforms,
     applyTransforms,
     extractPotentialDataSlugsFromTransform,
-} from "./Transforms"
+} from "./Transforms.js"
