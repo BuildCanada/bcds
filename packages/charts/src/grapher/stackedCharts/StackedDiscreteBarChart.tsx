@@ -52,13 +52,10 @@ export class StackedDiscreteBarChart
     constructor(props: StackedDiscreteBarChartProps) {
         super(props)
 
-        makeObservable(this, {
-            focusSeriesName: observable,
-            tooltipState: observable,
-        })
+        makeObservable(this)
     }
 
-    focusSeriesName: SeriesName | undefined = undefined
+    @observable accessor focusSeriesName: SeriesName | undefined = undefined
 
     @computed get chartState(): StackedDiscreteBarChartState {
         return this.props.chartState
@@ -182,7 +179,7 @@ export class StackedDiscreteBarChart
         return new HorizontalCategoricalColorLegend({ manager: this })
     }
 
-    tooltipState = new TooltipState<{
+    @observable accessor tooltipState = new TooltipState<{
         entityName: string
         seriesName?: string
     }>()

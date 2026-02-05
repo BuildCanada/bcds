@@ -65,14 +65,18 @@ export class ChartDimension
     ) {
         super()
 
-        makeObservable(this, {
+        makeObservable<ChartDimension, "table">(this, {
             _slug: observable,
+            table: computed,
+            slug: computed,
+            column: computed,
+            columnSlug: computed,
         })
         this.manager = manager
         if (obj) this.updateFromObject(obj)
     }
 
-    @computed private get table(): ChartsTable {
+    private get table(): ChartsTable {
         return this.manager.table
     }
 
@@ -102,7 +106,7 @@ export class ChartDimension
     // Do not persist yet, until we migrate off VariableIds
     _slug: ColumnSlug | undefined = undefined
 
-    @computed get slug(): ColumnSlug {
+    get slug(): ColumnSlug {
         if (this._slug) return this._slug
         return getDimensionColumnSlug(this.variableId, this.targetYear)
     }
@@ -111,11 +115,11 @@ export class ChartDimension
         this._slug = value
     }
 
-    @computed get column(): CoreColumn {
+    get column(): CoreColumn {
         return this.table.get(this.columnSlug)
     }
 
-    @computed get columnSlug(): string {
+    get columnSlug(): string {
         return this.slug ?? this.variableId.toString()
     }
 }

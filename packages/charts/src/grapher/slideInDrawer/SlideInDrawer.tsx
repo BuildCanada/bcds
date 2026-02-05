@@ -17,15 +17,13 @@ interface SlideInDrawerProps {
 
 @observer
 export class SlideInDrawer extends React.Component<SlideInDrawerProps> {
-    visible: boolean = this.props.active // true while the drawer is active and during enter/exit transitions
+    @observable.ref accessor visible: boolean = this.props.active // true while the drawer is active and during enter/exit transitions
     drawerRef = React.createRef<HTMLDivElement>()
 
     constructor(props: SlideInDrawerProps) {
         super(props)
 
-        makeObservable(this, {
-            visible: observable.ref,
-        })
+        makeObservable(this)
     }
 
     override componentDidMount(): void {

@@ -93,7 +93,12 @@ export class AxisConfig
 {
     constructor(props?: AxisConfigInterface, axisManager?: AxisManager) {
         super()
-        makeObservable(this)
+        makeObservable<AxisConfig, "constrainedMin" | "constrainedMax">(this, {
+            fontSize: computed,
+            constrainedMin: computed,
+            constrainedMax: computed,
+            domain: computed,
+        })
         this.updateFromObject(props)
         this.axisManager = axisManager
     }
@@ -138,12 +143,12 @@ export class AxisConfig
         return obj
     }
 
-    @computed get fontSize(): number {
+    get fontSize(): number {
         return this.axisManager?.fontSize || BASE_FONT_SIZE
     }
 
     // A log scale domain cannot have values <= 0, so we double check here
-    @computed private get constrainedMin(): number {
+    private get constrainedMin(): number {
         if (this.scaleType === ScaleType.log && (this.min ?? 0) <= 0)
             return Infinity
         return this.min ?? Infinity
@@ -157,13 +162,13 @@ export class AxisConfig
         return false
     }
 
-    @computed private get constrainedMax(): number {
+    private get constrainedMax(): number {
         if (this.scaleType === ScaleType.log && (this.max || 0) <= 0)
             return -Infinity
         return this.max ?? -Infinity
     }
 
-    @computed get domain(): [number, number] {
+    get domain(): [number, number] {
         return [this.constrainedMin, this.constrainedMax]
     }
 
