@@ -83,9 +83,7 @@ abstract class AbstractFooter<
     constructor(props: Props) {
         super(props)
 
-        makeObservable(this, {
-            tooltipTarget: observable.ref,
-        })
+        makeObservable(this)
     }
 
     @computed protected get manager(): FooterManager {
@@ -318,7 +316,7 @@ abstract class AbstractFooter<
     }
 
     base = React.createRef<HTMLDivElement>()
-    tooltipTarget: { x: number; y: number } | undefined = undefined
+    @observable.ref accessor tooltipTarget: { x: number; y: number } | undefined = undefined
 
     @action.bound private onMouseMove(e: MouseEvent): void {
         const cc = this.base.current?.querySelector(".cclogo")

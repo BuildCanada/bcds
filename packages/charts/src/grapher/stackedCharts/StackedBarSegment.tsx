@@ -29,12 +29,10 @@ export class StackedBarSegment extends React.Component<StackedBarSegmentProps> {
     constructor(props: StackedBarSegmentProps) {
         super(props)
 
-        makeObservable(this, {
-            mouseOver: observable,
-        })
+        makeObservable(this)
     }
 
-    mouseOver: boolean = false
+    @observable accessor mouseOver: boolean = false
 
     @computed get yPos(): number {
         const { bar, yAxis } = this.props

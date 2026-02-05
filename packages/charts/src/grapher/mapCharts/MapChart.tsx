@@ -90,10 +90,7 @@ export class MapChart
     constructor(props: MapChartProps) {
         super(props)
 
-        makeObservable(this, {
-            hoverBracket: observable,
-            tooltipState: observable,
-        })
+        makeObservable(this)
     }
 
     /**
@@ -101,9 +98,9 @@ export class MapChart
      *
      * Hovering a map bracket highlights all countries within that bracket on the map.
      */
-    hoverBracket: MapBracket | undefined = undefined
+    @observable accessor hoverBracket: MapBracket | undefined = undefined
 
-    tooltipState = new TooltipState<{
+    @observable accessor tooltipState = new TooltipState<{
         featureId: string
     }>()
 

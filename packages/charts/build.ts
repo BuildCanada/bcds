@@ -41,12 +41,10 @@ const transpileFile = async (srcPath: string, destPath: string) => {
         target: "esnext",
         sourcemap: "external",
         sourcefile: srcPath,
-        // Use legacy decorators mode for compatibility with mobx-react
         tsconfigRaw: {
             compilerOptions: {
-                experimentalDecorators: true,
-                emitDecoratorMetadata: false,
-                useDefineForClassFields: false,
+                experimentalDecorators: false,
+                useDefineForClassFields: true,
             },
         },
     })
