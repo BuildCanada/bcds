@@ -7,7 +7,7 @@
     "node": ">=22.0"
   },
   "scripts": {
-    "build": "storybook build -o storybook-static",
+    "build": "storybook build -o storybook-static --stats-json",
     "build:packages": "bun run build:colours && bun run build:components && bun run build:charts",
     "build:colours": "cd packages/colours && bun run build",
     "build:components": "cd packages/components && bun run build",
