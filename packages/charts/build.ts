@@ -38,15 +38,19 @@ const transpileFile = async (srcPath: string, destPath: string) => {
     const result = await transform(content, {
         loader: isTsx ? "tsx" : "ts",
         format: "esm",
-        target: "esnext",
+        target: "es2022",
+        jsx: "automatic",
         sourcemap: "external",
         sourcefile: srcPath,
-        // Use legacy decorators mode for compatibility with mobx-react
+        // Emit native TC-39 stage 3 decorators. The codebase mixes mobx
+        // decorators (@computed, @action) with stage-3-style ones (@bind in
+        // utils/Util.ts), so the legacy emit path produces output that calls
+        // stage-3 decorators with legacy arguments at runtime. Stage 3 emit
+        // is what Storybook uses and matches the source authoring style.
         tsconfigRaw: {
             compilerOptions: {
-                experimentalDecorators: true,
-                emitDecoratorMetadata: false,
-                useDefineForClassFields: false,
+                experimentalDecorators: false,
+                useDefineForClassFields: true,
             },
         },
     })
