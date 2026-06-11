@@ -1,0 +1,10 @@
+{
+  "slug": "stacked-discrete-bar-provincial-composition",
+  "title": "Provincial spending composition",
+  "subtitle": "Program spending and debt charges by province",
+  "data": "provincial-budgets",
+  "y": ["program_spending", "debt_charges"],
+  "types": ["stacked-discrete-bar"],
+  "selectedEntities": ["Ontario", "Quebec", "British Columbia", "Alberta", "Nova Scotia"],
+  "sourceText": "Provincial public accounts"
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "stacked-area-government-debt",
+  "title": "Government debt as a share of GDP",
+  "subtitle": "Federal, provincial, and municipal debt divided by nominal GDP",
+  "data": "government-debt",
+  "y": ["federal_debt", "provincial_debt", "municipal_debt"],
+  "types": ["stacked-area"],
+  "sourceText": "Fiscal reference tables"
+}

@@ -1,0 +1,89 @@
+{
+  "name": "@buildcanada/charts2",
+  "version": "0.1.0",
+  "description": "Build Canada charts v2: pure layout core with a single React SVG renderer, deterministic headless rendering, and a CLI.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    },
+    "./styles.css": "./dist/react/styles/charts.scss",
+    "./styles/*": "./dist/react/styles/*"
+  },
+  "bin": {
+    "bcds-charts": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "samples"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuildCanada/bcds.git",
+    "directory": "packages/charts2"
+  },
+  "bugs": {
+    "url": "https://github.com/BuildCanada/bcds/issues"
+  },
+  "homepage": "https://github.com/BuildCanada/bcds#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "corpus:bless": "bun src/corpus/bless.ts",
+    "extract-font-metrics": "bun run scripts/extract-font-metrics.ts"
+  },
+  "keywords": [
+    "charts",
+    "data-visualization",
+    "svg",
+    "react",
+    "build-canada"
+  ],
+  "author": "Build Canada",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@buildcanada/colours": "^0.3.3",
+    "@resvg/resvg-js": "^2.6.2",
+    "citty": "^0.1.6",
+    "d3-array": "^3.2.4",
+    "d3-dsv": "^3.0.1",
+    "d3-format": "^3.1.0",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/d3-array": "^3.2.2",
+    "@types/d3-dsv": "^3.0.7",
+    "@types/d3-format": "^3.0.4",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.7",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "fontkit": "^2.0.4",
+    "happy-dom": "^20.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.15",
+    "wawoff2": "^2.0.1"
+  }
+}

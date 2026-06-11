@@ -1,0 +1,635 @@
+// =============================================================================
+// @buildcanada/charts2 — chrome styles
+//
+// Standalone stylesheet: no imports, no external colour dependencies.
+// All classes are BEM under the `bcds2-` prefix.
+//
+// Theming contract — override these CSS custom properties on any ancestor
+// (every colour in this sheet derives from one of them, with the listed
+// fallback used when unset):
+//
+//   --bcds2-bg       surfaces: tooltip card, popovers, table cells   (#ffffff)
+//   --bcds2-text     primary text                                    (#1f2a33)
+//   --bcds2-grid     hairlines: borders, tracks, ticks, gridlines    (#d4dadf)
+//   --bcds2-accent   interactive accents: handles, active tab,
+//                    focus rings, sort arrows                        (#1d4ed8)
+//
+// Muted/secondary text is the text colour at reduced opacity, so a single
+// --bcds2-text override restyles every label consistently.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Tooltip (spec 06)
+// -----------------------------------------------------------------------------
+
+.bcds2-tooltip {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    min-width: 160px;
+    max-width: 320px;
+    padding: 8px 10px;
+    background: var(--bcds2-bg, #ffffff);
+    color: var(--bcds2-text, #1f2a33);
+    border: 1px solid var(--bcds2-grid, #d4dadf);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    font-size: 13px;
+    line-height: 1.35;
+
+    &__title {
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    &__title-annotation {
+        font-weight: 400;
+        opacity: 0.6;
+    }
+
+    &__subtitle {
+        opacity: 0.6;
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    &__rows {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin: 4px 0;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &--emphasized {
+            font-weight: 700;
+        }
+
+        &--missing {
+            opacity: 0.55;
+        }
+
+        &--total {
+            margin-top: 4px;
+            padding-top: 4px;
+            border-top: 1px solid var(--bcds2-grid, #d4dadf);
+            font-weight: 600;
+        }
+    }
+
+    &__swatch {
+        flex: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+    }
+
+    &__label {
+        margin-right: 12px;
+    }
+
+    &__value {
+        margin-left: auto;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    &__footers {
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px solid var(--bcds2-grid, #d4dadf);
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        font-size: 12px;
+        opacity: 0.7;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    &__footer-icon {
+        flex: none;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Timeline (spec 08 §2–3)
+// -----------------------------------------------------------------------------
+
+.bcds2-timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    color: var(--bcds2-text, #1f2a33);
+    font-size: 12px;
+
+    &__play {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 50%;
+        background: var(--bcds2-bg, #ffffff);
+        color: var(--bcds2-accent, #1d4ed8);
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--bcds2-accent, #1d4ed8);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--bcds2-accent, #1d4ed8);
+            outline-offset: 1px;
+        }
+    }
+
+    &__track {
+        position: relative;
+        flex: 1;
+        height: 24px;
+        cursor: pointer;
+        touch-action: none;
+    }
+
+    &__rail {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        transform: translateY(-50%);
+        background: var(--bcds2-grid, #d4dadf);
+        border-radius: 1px;
+    }
+
+    &__tick {
+        position: absolute;
+        top: 50%;
+        width: 1px;
+        height: 8px;
+        transform: translate(-50%, -50%);
+        background: var(--bcds2-grid, #d4dadf);
+    }
+
+    &__range {
+        position: absolute;
+        top: 50%;
+        height: 4px;
+        transform: translateY(-50%);
+        background: var(--bcds2-accent, #1d4ed8);
+        opacity: 0.35;
+        border-radius: 2px;
+        pointer-events: none;
+    }
+
+    &__handle {
+        position: absolute;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        transform: translate(-50%, -50%);
+        background: var(--bcds2-accent, #1d4ed8);
+        border: 2px solid var(--bcds2-bg, #ffffff);
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px var(--bcds2-grid, #d4dadf);
+        cursor: grab;
+
+        &:focus-visible {
+            outline: 2px solid var(--bcds2-accent, #1d4ed8);
+            outline-offset: 2px;
+        }
+    }
+
+    &__readout {
+        flex: none;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Entity selector (spec 07 §2)
+// -----------------------------------------------------------------------------
+
+.bcds2-entity-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--bcds2-text, #1f2a33);
+    font-size: 13px;
+
+    &__search {
+        padding: 6px 8px;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        background: var(--bcds2-bg, #ffffff);
+        color: inherit;
+        font: inherit;
+
+        &:focus-visible {
+            outline: 2px solid var(--bcds2-accent, #1d4ed8);
+            outline-offset: -1px;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    &__sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        select {
+            font: inherit;
+            color: inherit;
+            background: var(--bcds2-bg, #ffffff);
+            border: 1px solid var(--bcds2-grid, #d4dadf);
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+    }
+
+    &__order {
+        padding: 2px 6px;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        background: var(--bcds2-bg, #ffffff);
+        color: inherit;
+        cursor: pointer;
+    }
+
+    &__bulk {
+        margin-left: auto;
+        display: inline-flex;
+        gap: 8px;
+    }
+
+    &__action {
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--bcds2-accent, #1d4ed8);
+        font: inherit;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__groups {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        overflow-y: auto;
+    }
+
+    &__group-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        opacity: 0.65;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 4px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:hover {
+            background: var(--bcds2-grid, #d4dadf);
+        }
+
+        &--no-data .bcds2-entity-selector__name {
+            opacity: 0.5;
+        }
+    }
+
+    &__tag {
+        font-size: 10px;
+        padding: 0 4px;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 8px;
+        opacity: 0.65;
+        white-space: nowrap;
+    }
+
+    &__value {
+        margin-left: auto;
+        font-variant-numeric: tabular-nums;
+        opacity: 0.75;
+        white-space: nowrap;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Tabs (spec 10 §3)
+// -----------------------------------------------------------------------------
+
+.bcds2-tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--bcds2-grid, #d4dadf);
+
+    &__tab {
+        padding: 6px 12px;
+        border: none;
+        border-bottom: 2px solid transparent;
+        background: none;
+        color: var(--bcds2-text, #1f2a33);
+        font: inherit;
+        font-size: 13px;
+        opacity: 0.7;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--bcds2-accent, #1d4ed8);
+            outline-offset: -2px;
+        }
+
+        &--active {
+            opacity: 1;
+            font-weight: 600;
+            border-bottom-color: var(--bcds2-accent, #1d4ed8);
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Settings menu (spec 10 §4)
+// -----------------------------------------------------------------------------
+
+.bcds2-settings {
+    position: relative;
+    display: inline-block;
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        background: var(--bcds2-bg, #ffffff);
+        color: var(--bcds2-text, #1f2a33);
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--bcds2-accent, #1d4ed8);
+        }
+
+        &[aria-expanded="true"] {
+            color: var(--bcds2-accent, #1d4ed8);
+            border-color: var(--bcds2-accent, #1d4ed8);
+        }
+    }
+
+    &__popover {
+        position: absolute;
+        top: calc(100% + 4px);
+        right: 0;
+        z-index: 20;
+        min-width: 200px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: var(--bcds2-bg, #ffffff);
+        color: var(--bcds2-text, #1f2a33);
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        font-size: 13px;
+    }
+
+    &__item {
+        margin: 0;
+
+        &--toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        &--radio {
+            border: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+    }
+
+    &__legend {
+        padding: 0;
+        margin-bottom: 2px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        opacity: 0.65;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Data table (spec 22)
+// -----------------------------------------------------------------------------
+
+.bcds2-data-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--bcds2-text, #1f2a33);
+    font-size: 13px;
+
+    &__toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    &__scope {
+        display: inline-flex;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    &__scope-button {
+        padding: 4px 10px;
+        border: none;
+        background: var(--bcds2-bg, #ffffff);
+        color: inherit;
+        font: inherit;
+        font-size: 12px;
+        cursor: pointer;
+
+        & + & {
+            border-left: 1px solid var(--bcds2-grid, #d4dadf);
+        }
+
+        &[aria-pressed="true"] {
+            background: var(--bcds2-accent, #1d4ed8);
+            color: var(--bcds2-bg, #ffffff);
+        }
+    }
+
+    &__search {
+        padding: 4px 8px;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+        background: var(--bcds2-bg, #ffffff);
+        color: inherit;
+        font: inherit;
+        font-size: 12px;
+    }
+
+    &__scroll {
+        overflow: auto;
+        border: 1px solid var(--bcds2-grid, #d4dadf);
+        border-radius: 4px;
+    }
+
+    &__table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        padding: 6px 10px;
+        background: var(--bcds2-bg, #ffffff);
+        border-bottom: 1px solid var(--bcds2-grid, #d4dadf);
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+
+        &--numeric {
+            text-align: right;
+        }
+
+        // Entity header pinned both top and left.
+        &--entity {
+            left: 0;
+            z-index: 2;
+        }
+    }
+
+    &__sort-button {
+        padding: 0;
+        border: none;
+        background: none;
+        color: inherit;
+        font: inherit;
+        font-weight: inherit;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--bcds2-accent, #1d4ed8);
+            outline-offset: 1px;
+        }
+    }
+
+    &__sort-arrow {
+        margin-left: 4px;
+        font-size: 9px;
+        color: var(--bcds2-accent, #1d4ed8);
+    }
+
+    &__metric {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1px;
+    }
+
+    &__metric-unit,
+    &__metric-time {
+        font-weight: 400;
+        font-size: 11px;
+        opacity: 0.65;
+    }
+
+    &__cell {
+        padding: 5px 10px;
+        border-bottom: 1px solid var(--bcds2-grid, #d4dadf);
+        text-align: left;
+        font-weight: 400;
+        white-space: nowrap;
+
+        &--numeric {
+            text-align: right;
+        }
+
+        &--missing {
+            opacity: 0.45;
+        }
+
+        // Entity column pinned left while the table scrolls horizontally.
+        &--entity {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            background: var(--bcds2-bg, #ffffff);
+            font-weight: 600;
+        }
+    }
+
+    &__marker {
+        margin-left: 4px;
+        font-size: 10px;
+        opacity: 0.65;
+        cursor: help;
+    }
+
+    &__row:hover &__cell {
+        background: var(--bcds2-bg, #ffffff);
+        filter: brightness(0.97);
+    }
+}

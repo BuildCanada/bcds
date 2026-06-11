@@ -5,6 +5,7 @@ const config: StorybookConfig = {
     stories: [
         "./docs/**/*.mdx",
         "../packages/charts/src/**/*.stories.@(ts|tsx)",
+        "../packages/charts2/src/**/*.stories.@(ts|tsx)",
         "../packages/colours/src/**/*.stories.@(ts|tsx)",
         "../packages/components/src/**/*.stories.@(ts|tsx)",
     ],
