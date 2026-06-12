@@ -486,7 +486,7 @@ export function layoutVerticalAxes(input: VerticalAxesInput): VerticalAxesResult
     }
 
     const yScale = createValueScale(input.scaleType, spec.domain, [plotArea.y + plotArea.height, plotArea.y])
-    const nodes = verticalValueAxisNodes(spec, yScale, plotArea, area.y, {
+    const nodes = verticalValueAxisNodes(spec, yScale, plotArea, Math.max(0, area.y - PLOT_TOP_PAD), {
         theme,
         font,
         hideGridlines: input.config?.hideGridlines,

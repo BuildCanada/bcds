@@ -7,6 +7,7 @@ import {
     logTicks,
     prepareValueAxis,
     timeAxisNodes,
+    layoutVerticalAxes,
     verticalValueAxisNodes,
 } from "./axis.ts"
 import { computeValueDomain, createValueScale, niceLinearDomain, targetTickCount } from "./scales.ts"
@@ -163,6 +164,31 @@ describe("axis nodes", () => {
         expect(gridRules.some((node) => node.kind === "rule" && node.style.dash?.join(",") === "4,4")).toBe(true)
         const zero = gridRules.find((node) => node.key === "axis/y/grid/0")
         expect(zero?.kind === "rule" ? zero.style.dash : undefined).toBeUndefined()
+    })
+
+    it("centres left y-axis tick labels on their gridlines, including the top tick", () => {
+        const result = layoutVerticalAxes({
+            area: { x: 16, y: 72, width: 818, height: 500 },
+            values: [0, 250],
+            markType: "line",
+            scaleType: "linear",
+            meta: { type: "currency", currency: "CAD" },
+            locale: "en",
+            theme: buildCanadaTheme,
+            measurer: defaultMeasurer,
+            font,
+            rightReserve: 80,
+        })
+
+        for (const text of result.nodes) {
+            if (text.kind !== "text" || !text.key.startsWith("axis/y/tick/")) continue
+            const grid = result.nodes.find((node) => node.kind === "rule" && node.key === text.key.replace("/tick/", "/grid/"))
+            expect(grid?.kind).toBe("rule")
+            if (grid?.kind !== "rule") continue
+
+            const textCenter = text.position.y - (text.measured.ascent - text.measured.descent) / 2
+            expect(textCenter).toBeCloseTo(grid.from.y, 6)
+        }
     })
 
     it("renders vertical value-axis gridlines as dashed without duplicate bottom tick marks", () => {
