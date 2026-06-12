@@ -216,9 +216,20 @@ export function defaultFontsDir(): string {
 }
 
 export function listFontFiles(fontsDir: string): string[] {
+    const preferredOrder = [
+        // resvg currently fails to match Söhne by family name when several
+        // brand fonts are loaded, so keep the active chart UI font first.
+        "soehne-kraftig.ttf",
+        "founders-grotesk-mono-regular.ttf",
+        "financier-text-regular.ttf",
+    ]
+    const orderOf = (file: string): number => {
+        const index = preferredOrder.indexOf(file.toLowerCase())
+        return index === -1 ? preferredOrder.length : index
+    }
     return readdirSync(fontsDir)
         .filter((file) => file.toLowerCase().endsWith(".ttf"))
-        .sort()
+        .sort((a, b) => orderOf(a) - orderOf(b) || a.localeCompare(b))
         .map((file) => join(fontsDir, file))
 }
 

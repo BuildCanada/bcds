@@ -11,6 +11,7 @@ import {
     DEFAULT_WIDTH,
     XML_DECLARATION,
     defaultFontsDir,
+    listFontFiles,
     outputPathFor,
     parseFormats,
     rasterize,
@@ -159,12 +160,26 @@ describe("renderDefinitionToSvg", () => {
 // ---------------------------------------------------------------------------
 
 describe("rasterize", () => {
-    it("renders a thumbnail PNG of provincial-budgets", (ctx) => {
+    it("loads Söhne before inactive brand fonts so resvg fallback uses the chart UI face", () => {
+        const dir = makeTmpDir()
+        writeFileSync(join(dir, "financier-text-regular.ttf"), "")
+        writeFileSync(join(dir, "soehne-kraftig.ttf"), "")
+        writeFileSync(join(dir, "founders-grotesk-mono-regular.ttf"), "")
+        writeFileSync(join(dir, "other.ttf"), "")
+
+        expect(listFontFiles(dir).map((path) => path.slice(dir.length + 1))).toEqual([
+            "soehne-kraftig.ttf",
+            "founders-grotesk-mono-regular.ttf",
+            "financier-text-regular.ttf",
+            "other.ttf",
+        ])
+    })
+
+    it("renders a thumbnail PNG of provincial-budgets", () => {
         if (!existsSync(defaultFontsDir())) {
             console.warn(
                 "skipping PNG smoke test: .fonts-cache missing — run `bun run extract-font-metrics` in packages/charts2",
             )
-            ctx.skip()
             return
         }
         const dir = makeTmpDir()
