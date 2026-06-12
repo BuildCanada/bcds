@@ -259,10 +259,10 @@ describe("layoutChart behaviours", () => {
         expect(scene.nodes.some((n) => n.key.startsWith("legend/"))).toBe(true)
     })
 
-    it("thumbnail chrome renders title + plot + attribution only", () => {
+    it("thumbnail chrome renders title + plot without footer text", () => {
         const scene = sceneFor("government-debt", { y: DEBT_Y, types: ["line"] }, { width: 300, height: 160 }, "thumbnail")
         expect(scene.nodes.some((n) => n.key.startsWith("chrome/title"))).toBe(true)
-        expect(scene.nodes.some((n) => n.key === "chrome/attribution")).toBe(true)
+        expect(scene.nodes.some((n) => n.key === "chrome/attribution")).toBe(false)
         expect(scene.nodes.some((n) => n.key === "chrome/source")).toBe(false)
         expect(scene.nodes.some((n) => n.key.startsWith("chrome/subtitle"))).toBe(false)
     })

@@ -95,7 +95,7 @@ export const buildCanadaTheme: Theme = {
         padding: { top: 16, right: 16, bottom: 16, left: 16 },
     },
     attribution: {
-        text: "Powered by Build Canada Charts",
+        text: "",
         url: "https://buildcanada.com",
     },
     localeDefault: "en",

@@ -1,6 +1,6 @@
 /**
  * Frame chrome geometry (spec 10 §1–2): header (title + subtitle) and footer
- * (source, note, attribution) text nodes, plus the content rectangle left
+ * (source and note) text nodes, plus the content rectangle left
  * for legend + plot. Interactive chrome components (tabs, controls,
  * timeline) are M9's — this module lays out static text geometry only.
  *
@@ -193,10 +193,6 @@ export function layoutChrome(input: ChromeInput): ChromeLayout {
         const source = sourceLineText(definition, manifest, locale)
         if (source !== "") footerLines.push({ key: "chrome/source", text: source, anchor: "start" })
     }
-    if (mode !== "none" && theme.attribution.text !== "") {
-        footerLines.push({ key: "chrome/attribution", text: theme.attribution.text, anchor: "end" })
-    }
-
     let footerTop = size.height - padding.bottom
     if (footerLines.length > 0) {
         footerTop -= footerLines.length * lineHeight + (footerLines.length - 1) * FOOTER_GAP + FOOTER_TOP_GAP

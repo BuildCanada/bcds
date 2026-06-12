@@ -141,4 +141,10 @@ describe("chrome logo", () => {
         })
         expect(layout.contentArea.y).toBe(71.6)
     })
+
+    it("does not render powered-by attribution text", () => {
+        const layout = layoutChrome({ ...base, theme: buildCanadaTheme })
+        expect(layout.nodes.find((node) => node.key === "chrome/attribution")).toBeUndefined()
+        expect(layout.nodes.some((node) => node.kind === "text" && node.text.startsWith("Powered by"))).toBe(false)
+    })
 })
