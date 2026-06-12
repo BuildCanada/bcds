@@ -1,6 +1,7 @@
 {
   "slug": "discrete-bar-population",
   "title": "Population by province and territory",
+  "subtitle": "Latest population estimates by province and territory",
   "data": "population-snapshot",
   "y": ["population"],
   "types": ["discrete-bar"],

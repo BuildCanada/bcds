@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs"
+import { readFileSync, readdirSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
@@ -26,6 +26,12 @@ describe("samples", () => {
 
     it.each(sampleFiles)("%s validates and renders deterministically", (file) => {
         const path = join(samplesDir, file)
+        const raw = JSON.parse(readFileSync(path, "utf8")) as { subtitle?: unknown }
+        const subtitle = typeof raw.subtitle === "string" ? raw.subtitle : ""
+
+        expect(typeof raw.subtitle).toBe("string")
+        expect(subtitle.trim()).not.toBe("")
+
         const validation = validateInput(path)
         expect(validation.errors, JSON.stringify(validation.diagnostics, null, 2)).toBe(0)
         expect(validation.diagnostics).toEqual([])
@@ -37,6 +43,7 @@ describe("samples", () => {
         expect(first.svg).not.toBeNull()
         expect(first.svg).toBe(second.svg)
         expect(first.svg?.startsWith(`${XML_DECLARATION}\n<svg`)).toBe(true)
+        expect(first.svg).toContain(subtitle)
         expect(first.svg).not.toContain("NaN")
         expect(first.svg).not.toContain("Infinity")
     })
