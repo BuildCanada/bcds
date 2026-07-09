@@ -23,6 +23,7 @@ import { declutterLabels, type LabelCandidate } from "../declutter.ts"
 import { createValueScale } from "../scales.ts"
 import { buildSeriesModels, toShareOfTotalSeries } from "../series.ts"
 import { stackSeries, withMissingValuesAsZeroes, type StackedSeries } from "../stacking.ts"
+import { comparisonLineNodes } from "./comparisonLines.ts"
 import {
     buildFooters,
     collectFooterFlags,
@@ -279,6 +280,21 @@ export function layoutStackedArea(ctx: LayoutContext, area: Rect, opts: ChartLay
         needsLegendFallback = true
     }
 
+    // --- Comparison (reference) lines ------------------------------------------
+    if (ctx.definition.comparisonLines !== undefined && ctx.definition.comparisonLines.length > 0) {
+        nodes.push(
+            ...comparisonLineNodes({
+                lines: ctx.definition.comparisonLines,
+                plotArea,
+                yScale,
+                xScale,
+                theme,
+                measurer,
+                fontScale: scale,
+            }),
+        )
+    }
+
     // --- Hover ---------------------------------------------------------------------
     const targets: HitTarget[] = []
     const t = strings(locale)
@@ -358,6 +374,7 @@ export function layoutStackedArea(ctx: LayoutContext, area: Rect, opts: ChartLay
         greyedLegendKeys,
         needsLegendFallback,
         empty: false,
+        valueDomain: axes.spec.domain,
         diagnostics,
     }
 }

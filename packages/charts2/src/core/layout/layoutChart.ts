@@ -36,6 +36,7 @@ import {
 import { activeChartType } from "./chooseType.ts"
 import { layoutChrome, type ChromeMode } from "./chrome.ts"
 import { buildContext, type LayoutContext } from "./context.ts"
+import { layoutFacetedChart } from "./facet.ts"
 import { layoutLegend, type LegendLayout } from "./legend.ts"
 
 export interface LayoutChartOptions {
@@ -86,6 +87,22 @@ export function layoutChart(options: LayoutChartOptions): ChartScene {
 
     const chartType = activeChartType(ctx.definition.types, view, ctx.collapsed, ctx.definition.defaultTab)
 
+    // Comparison lines render on the continuous-axis charts only (spec 02 §2);
+    // flag the request on any other type rather than silently dropping it.
+    if (
+        ctx.definition.comparisonLines !== undefined &&
+        ctx.definition.comparisonLines.length > 0 &&
+        chartType !== "line" &&
+        chartType !== "stacked-area"
+    ) {
+        diagnostics.push({
+            severity: "warning",
+            code: "comparison-lines-unsupported",
+            message: `Comparison lines are not yet rendered for ${chartType} charts`,
+            context: { chartType },
+        })
+    }
+
     const chrome = layoutChrome({
         definition: ctx.definition,
         manifest: dataset.manifest,
@@ -105,6 +122,38 @@ export function layoutChart(options: LayoutChartOptions): ChartScene {
     const noTimes = ctx.grain !== "none" && ctx.times.length === 0
     if (ctx.entities.length === 0 || noTimes) {
         return noDataScene(ctx, size, theme, chrome.nodes, chrome.contentArea, fontScale, diagnostics)
+    }
+
+    // --- Faceting: a grid of small multiples replaces the single chart --------
+    if (mode === "full" && ctx.definition.facet !== "none") {
+        const facet = layoutFacetedChart({
+            ctx,
+            chartType,
+            run: CHART_LAYOUTS[chartType],
+            area: chrome.contentArea,
+            theme,
+            measurer,
+            fontScale,
+        })
+        // null → fewer than two panels; fall through to the single chart.
+        if (facet !== null) {
+            diagnostics.push(...facet.diagnostics)
+            if (facet.empty) {
+                return noDataScene(ctx, size, theme, chrome.nodes, chrome.contentArea, fontScale, diagnostics)
+            }
+            const facetNodes: SceneNode[] = [...chrome.nodes, ...facet.nodes]
+            return {
+                width: size.width,
+                height: size.height,
+                background: theme.chrome.background,
+                plotArea: roundRect(facet.plotArea),
+                nodes: facetNodes.map(roundNode),
+                series: facet.series,
+                ...(facet.legend !== null ? { legend: facet.legend } : {}),
+                hover: roundHover(facet.hover),
+                diagnostics,
+            }
+        }
     }
 
     // --- Chart layout, with the legend two-pass -------------------------------

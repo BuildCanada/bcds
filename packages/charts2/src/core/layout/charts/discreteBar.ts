@@ -292,6 +292,7 @@ export function layoutDiscreteBar(ctx: LayoutContext, area: Rect, opts: ChartLay
         greyedLegendKeys: [],
         needsLegendFallback: false,
         empty: false,
+        valueDomain: spec.domain,
         diagnostics,
     }
 }

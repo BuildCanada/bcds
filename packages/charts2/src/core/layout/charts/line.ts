@@ -21,6 +21,7 @@ import type { LayoutContext } from "../context.ts"
 import { declutterLabels, type LabelCandidate } from "../declutter.ts"
 import { createValueScale } from "../scales.ts"
 import { buildSeriesModels, toRelativeLineSeries } from "../series.ts"
+import { comparisonLineNodes } from "./comparisonLines.ts"
 import {
     buildFooters,
     centeredBaseline,
@@ -267,6 +268,21 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
         needsLegendFallback = true
     }
 
+    // --- Comparison (reference) lines ------------------------------------------
+    if (ctx.definition.comparisonLines !== undefined && ctx.definition.comparisonLines.length > 0) {
+        nodes.push(
+            ...comparisonLineNodes({
+                lines: ctx.definition.comparisonLines,
+                plotArea,
+                yScale,
+                xScale,
+                theme,
+                measurer,
+                fontScale: scale,
+            }),
+        )
+    }
+
     // --- Hover -------------------------------------------------------------------
     const targets: HitTarget[] = []
     const subtitle = builtResult.strategy === "entity" ? metricSubtitle(ctx, slug) : undefined
@@ -318,6 +334,7 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
         greyedLegendKeys: [],
         needsLegendFallback,
         empty: false,
+        valueDomain: axes.spec.domain,
         diagnostics,
     }
 }

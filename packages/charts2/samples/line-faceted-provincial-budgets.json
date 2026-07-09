@@ -1,0 +1,11 @@
+{
+  "slug": "line-faceted-provincial-budgets",
+  "title": "Provincial spending composition",
+  "subtitle": "Program spending and debt charges, faceted by province",
+  "data": "provincial-budgets",
+  "y": ["program_spending", "debt_charges"],
+  "types": ["line"],
+  "facet": "entity",
+  "selectedEntities": ["Ontario", "Quebec", "British Columbia", "Alberta"],
+  "sourceText": "Provincial public accounts"
+}

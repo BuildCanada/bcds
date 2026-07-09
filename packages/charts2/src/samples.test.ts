@@ -16,6 +16,8 @@ describe("samples", () => {
     it("has committed sample definitions", () => {
         expect(sampleFiles).toEqual([
             "discrete-bar-population.json",
+            "line-comparison-provincial-budgets.json",
+            "line-faceted-provincial-budgets.json",
             "line-federal-departments.json",
             "line-provincial-budgets.json",
             "stacked-area-government-debt.json",

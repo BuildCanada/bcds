@@ -38,6 +38,9 @@ export interface ChartLayer {
     needsLegendFallback: boolean
     /** No drawable data — layoutChart renders the no-data panel instead. */
     empty: boolean
+    /** Value-axis domain [min, max] after nice-ing; faceting reads it to share
+     *  one scale across panels. Absent for empty/degenerate layers. */
+    valueDomain?: [number, number]
     diagnostics: Diagnostic[]
 }
 

@@ -1,0 +1,14 @@
+{
+  "slug": "line-comparison-provincial-budgets",
+  "title": "Provincial budget spending",
+  "subtitle": "Total budgetary expenditure, with reference lines",
+  "data": "provincial-budgets",
+  "y": ["total_spending"],
+  "types": ["line"],
+  "selectedEntities": ["Ontario", "Quebec"],
+  "comparisonLines": [
+    { "y": 100, "label": "$100B reference" },
+    { "x": 2022, "label": "2022" }
+  ],
+  "sourceText": "Provincial public accounts"
+}

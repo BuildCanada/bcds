@@ -380,6 +380,7 @@ export function layoutStackedDiscreteBar(ctx: LayoutContext, area: Rect, opts: C
         greyedLegendKeys: [],
         needsLegendFallback: false,
         empty: false,
+        valueDomain: spec.domain,
         diagnostics,
     }
 }

@@ -206,6 +206,7 @@ export function layoutStackedBar(ctx: LayoutContext, area: Rect, opts: ChartLaye
         greyedLegendKeys: [],
         needsLegendFallback: false,
         empty: false,
+        valueDomain: axes.spec.domain,
         diagnostics,
     }
 }
