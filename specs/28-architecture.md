@@ -59,7 +59,7 @@ Brand fonts: **Söhne Kräftig** (headings/UI), **Financier Text** (long-form), 
 
 ## 5. Package & monorepo
 
-- `packages/charts2`, name `@buildcanada/charts2@0.x` while incubating; cutover to `@buildcanada/charts@2.0.0` later. Side-by-side with the legacy package (TradingPost pins `^0.3.9`) and with the independent `packages/charts3` slice (kept untouched by decision 2026-06-11).
+- `packages/charts2`, name `@buildcanada/charts2@0.x` while incubating; cutover to `@buildcanada/charts@2.0.0` later. Side-by-side with the legacy package (TradingPost pins `^0.3.9`).
 - Exports: `.` (core + react), `./core` (headless), `./styles.css`; bin `bcds-charts` → `dist/cli/index.js` (shebang `#!/usr/bin/env node`, added by build.ts).
 - Conventions cloned from `packages/components`: bun build.ts (tsc emit + asset copy), tsconfig bundler-mode, vitest happy-dom, stories aggregated by root Storybook.
 - Workspace bin is dangling until first build — run `bun run build:charts2` after clone.

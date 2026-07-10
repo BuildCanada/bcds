@@ -8,12 +8,11 @@
   },
   "scripts": {
     "build": "storybook build -o storybook-static --stats-json",
-    "build:packages": "bun run build:colours && bun run build:components && bun run build:charts && bun run build:charts2 && bun run build:charts3",
+    "build:packages": "bun run build:colours && bun run build:components && bun run build:charts && bun run build:charts2",
     "build:colours": "cd packages/colours && bun run build",
     "build:components": "cd packages/components && bun run build",
     "build:charts": "cd packages/charts && bun run build",
     "build:charts2": "cd packages/charts2 && bun run build",
-    "build:charts3": "cd packages/charts3 && bun run build",
     "charts2": "bun packages/charts2/src/cli/index.ts",
     "typecheck": "bun run --filter '*' typecheck",
     "test": "bun run --filter '*' test",

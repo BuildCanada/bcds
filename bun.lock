@@ -346,7 +346,7 @@
     },
     "packages/charts": {
       "name": "@buildcanada/charts",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "dependencies": {
         "@buildcanada/colours": "^0.3.3",
         "@buildcanada/components": "^0.3.4",
@@ -456,26 +456,6 @@
         "typescript": "~5.9.2",
         "vitest": "^4.0.15",
         "wawoff2": "^2.0.1",
-      },
-      "peerDependencies": {
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
-      },
-    },
-    "packages/charts3": {
-      "name": "@buildcanada/charts3",
-      "version": "3.0.0-alpha.0",
-      "dependencies": {
-        "@buildcanada/colours": "^0.3.3",
-      },
-      "devDependencies": {
-        "@testing-library/react": "^16.3.0",
-        "@types/react": "^19.2.2",
-        "@types/react-dom": "^19.2.2",
-        "esbuild": "^0.27.2",
-        "happy-dom": "^20.1.0",
-        "typescript": "^5",
-        "vitest": "^4.0.15",
       },
       "peerDependencies": {
         "react": "^19.0.0",
@@ -606,8 +586,6 @@
     "@buildcanada/charts": ["@buildcanada/charts@workspace:packages/charts"],
 
     "@buildcanada/charts2": ["@buildcanada/charts2@workspace:packages/charts2"],
-
-    "@buildcanada/charts3": ["@buildcanada/charts3@workspace:packages/charts3"],
 
     "@buildcanada/colours": ["@buildcanada/colours@workspace:packages/colours"],
 
