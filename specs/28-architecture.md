@@ -1,7 +1,7 @@
-# 28 — Architecture & Technical Decisions (charts2)
+# 28 — Architecture & Technical Decisions (charts v2)
 
 **Status:** Ready
-**Covers:** The technical decisions behind `@buildcanada/charts2`, the v2 rebuild executing specs 01–27. Unlike specs 01–27 (functional), this spec is deliberately technical. Decisions here were validated by spikes on 2026-06-11.
+**Covers:** The technical decisions behind `@buildcanada/charts`, the v2 rebuild executing specs 01–27 (incubated as `@buildcanada/charts2`). Unlike specs 01–27 (functional), this spec is deliberately technical. Decisions here were validated by spikes on 2026-06-11.
 
 ## 1. Shape
 
@@ -59,10 +59,10 @@ Brand fonts: **Söhne Kräftig** (headings/UI), **Financier Text** (long-form), 
 
 ## 5. Package & monorepo
 
-- `packages/charts2`, name `@buildcanada/charts2@0.x` while incubating; cutover to `@buildcanada/charts@2.0.0` later. Side-by-side with the legacy package (TradingPost pins `^0.3.9`).
+- `packages/charts`, published as `@buildcanada/charts@1.0.0` — incubated as `@buildcanada/charts2@0.x` in `packages/charts2`, then cut over to replace the legacy package.
 - Exports: `.` (core + react), `./core` (headless), `./styles.css`; bin `bcds-charts` → `dist/cli/index.js` (shebang `#!/usr/bin/env node`, added by build.ts).
 - Conventions cloned from `packages/components`: bun build.ts (tsc emit + asset copy), tsconfig bundler-mode, vitest happy-dom, stories aggregated by root Storybook.
-- Workspace bin is dangling until first build — run `bun run build:charts2` after clone.
+- Workspace bin is dangling until first build — run `bun run build:charts` after clone.
 
 ## 6. Frozen contracts
 

@@ -5,7 +5,7 @@
 
 ## Why a rebuild
 
-The first-pass extraction in `packages/charts` carried over OWID assumptions that block our uses:
+The first-pass extraction (the legacy `@buildcanada/charts` package, since replaced by this rebuild) carried over OWID assumptions that block our uses:
 
 - The entity/region model is hard-coded to world countries, continents, and World Bank income groups. Our data spans provinces, municipalities, ridings, departments, programs, and non-geographic categories.
 - OWID URLs, schemas, and branding are embedded throughout.
@@ -49,7 +49,7 @@ The first-pass extraction in `packages/charts` carried over OWID assumptions tha
 | `25-motion-and-video.md` | Animation system and CLI video generation |
 | `26-testing.md` | Test strategy: functional contracts, visual regression, data fixtures |
 | `27-scenarios.md` | Worked end-to-end scenarios used to pressure-test the specs |
-| `28-architecture.md` | Technical decisions for the charts2 rebuild (the one technical spec besides 01) |
+| `28-architecture.md` | Technical decisions for the v2 rebuild (the one technical spec besides 01) |
 | `29-component-primitives.md` | Shared `@buildcanada/components` primitives used by chart chrome |
 
 ## Glossary

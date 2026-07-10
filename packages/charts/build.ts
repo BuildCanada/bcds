@@ -1,9 +1,8 @@
-import { mkdir, cp, rm, readFile, writeFile } from "node:fs/promises"
+import { mkdir, cp, rm, chmod, readFile, writeFile } from "node:fs/promises"
 import { spawn } from "node:child_process"
 import { existsSync } from "node:fs"
 import { join, dirname } from "node:path"
 import { Glob } from "bun"
-import { transform } from "esbuild"
 
 const runCommand = (command: string, args: string[]): Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -15,52 +14,34 @@ const runCommand = (command: string, args: string[]): Promise<void> => {
     })
 }
 
-const copyAssetFiles = async () => {
-    // Copy SCSS, JSON, and existing JS files
-    const glob = new Glob("**/*.{scss,json,js}")
+// SCSS, committed font-metrics JSON, and the bundled agent skill ship alongside
+// the compiled JS.
+// Brand font binaries (woff2) are intentionally NOT copied: the published
+// package must not redistribute licensed fonts (see specs/28-architecture.md).
+const copyAssets = async () => {
     const srcDir = "src"
     const distDir = "dist"
-
-    for await (const file of glob.scan(srcDir)) {
-        const srcPath = join(srcDir, file)
-        const destPath = join(distDir, file)
-        const destDir = dirname(destPath)
-
-        await mkdir(destDir, { recursive: true })
-        await cp(srcPath, destPath)
+    for (const pattern of ["**/*.scss", "fonts/metrics/*.json"]) {
+        const glob = new Glob(pattern)
+        for await (const file of glob.scan(srcDir)) {
+            const destPath = join(distDir, file)
+            await mkdir(dirname(destPath), { recursive: true })
+            await cp(join(srcDir, file), destPath)
+        }
+    }
+    if (existsSync("skills")) {
+        await cp("skills", join(distDir, "skills"), { recursive: true })
     }
 }
 
-const transpileFile = async (srcPath: string, destPath: string) => {
-    const content = await readFile(srcPath, "utf-8")
-    const isTsx = srcPath.endsWith(".tsx")
-
-    const result = await transform(content, {
-        loader: isTsx ? "tsx" : "ts",
-        format: "esm",
-        target: "es2022",
-        jsx: "automatic",
-        sourcemap: "external",
-        sourcefile: srcPath,
-        // Emit native TC-39 stage 3 decorators. The codebase mixes mobx
-        // decorators (@computed, @action) with stage-3-style ones (@bind in
-        // utils/Util.ts), so the legacy emit path produces output that calls
-        // stage-3 decorators with legacy arguments at runtime. Stage 3 emit
-        // is what Storybook uses and matches the source authoring style.
-        tsconfigRaw: {
-            compilerOptions: {
-                experimentalDecorators: false,
-                useDefineForClassFields: true,
-            },
-        },
-    })
-
-    const destDir = dirname(destPath)
-    await mkdir(destDir, { recursive: true })
-    await writeFile(destPath, result.code)
-    if (result.map) {
-        await writeFile(destPath + ".map", result.map)
+const makeBinExecutable = async () => {
+    const binPath = "dist/cli/index.js"
+    if (!existsSync(binPath)) return
+    const content = await readFile(binPath, "utf8")
+    if (!content.startsWith("#!")) {
+        await writeFile(binPath, `#!/usr/bin/env node\n${content}`)
     }
+    await chmod(binPath, 0o755)
 }
 
 const build = async () => {
@@ -70,35 +51,14 @@ const build = async () => {
     }
     await mkdir("dist", { recursive: true })
 
-    console.log("Copying asset files (SCSS, JSON) to dist...")
-    await copyAssetFiles()
+    console.log("Copying assets to dist...")
+    await copyAssets()
 
-    console.log("Transpiling TypeScript files with esbuild...")
-    const glob = new Glob("**/*.{ts,tsx}")
-    const tasks: Promise<void>[] = []
+    console.log("Compiling TypeScript...")
+    await runCommand("npx", ["tsc", "--project", "tsconfig.build.json"])
 
-    for await (const file of glob.scan("src")) {
-        if (
-            !file.includes(".test.") &&
-            !file.includes(".stories.") &&
-            !file.includes(".spec.")
-        ) {
-            const srcPath = join("src", file)
-            const destPath = join("dist", file.replace(/\.tsx?$/, ".js"))
-            tasks.push(transpileFile(srcPath, destPath))
-        }
-    }
-
-    await Promise.all(tasks)
-    console.log(`Transpiled ${tasks.length} files`)
-
-    console.log("Generating type declarations...")
-    await runCommand("npx", [
-        "tsc",
-        "--project",
-        "tsconfig.build.json",
-        "--emitDeclarationOnly",
-    ])
+    console.log("Making CLI bin executable...")
+    await makeBinExecutable()
 
     console.log("Build complete!")
 }
