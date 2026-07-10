@@ -1,0 +1,9 @@
+{
+  "slug": "line-provincial-budgets",
+  "title": "Provincial budget spending",
+  "subtitle": "Total budgetary expenditure, public accounts basis",
+  "data": "provincial-budgets",
+  "y": ["total_spending"],
+  "selectedEntities": ["Ontario", "Quebec", "British Columbia", "Alberta", "Nova Scotia"],
+  "sourceText": "Provincial public accounts"
+}

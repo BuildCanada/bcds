@@ -1,0 +1,8 @@
+{
+  "slug": "line-federal-departments",
+  "title": "Federal departmental spending",
+  "subtitle": "Annual budgetary expenditure by department",
+  "data": "federal-departments",
+  "y": ["spending"],
+  "sourceText": "Public Accounts of Canada"
+}

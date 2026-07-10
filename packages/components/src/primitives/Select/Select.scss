@@ -1,0 +1,94 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+.bc-select {
+  display: flex;
+  flex-direction: column;
+  gap: calc($space-1 / 2);
+
+  &__label {
+    @include label;
+    color: $text-primary;
+
+    &--visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &__required {
+    color: $auburn;
+    margin-left: 2px;
+  }
+
+  &__control {
+    position: relative;
+  }
+
+  &__input {
+    @include body-2;
+    width: 100%;
+    min-height: 44px;
+    padding: calc($space-1 + 4px) $space-5 calc($space-1 + 4px) $space-2;
+    border: 2px solid $border-default;
+    border-radius: $radius-none;
+    background-color: $white;
+    color: $text-primary;
+    appearance: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: $gray-400;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $auburn;
+      box-shadow: 0 0 0 3px rgba($auburn, 0.1);
+    }
+
+    &:disabled {
+      background-color: $gray-100;
+      color: $text-muted;
+      cursor: not-allowed;
+    }
+  }
+
+  &__chevron {
+    position: absolute;
+    right: $space-2;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: $text-muted;
+    font-size: 20px;
+  }
+
+  &__hint,
+  &__error {
+    @include body-3;
+    margin: 0;
+  }
+
+  &__hint {
+    color: $text-secondary;
+  }
+
+  &__error {
+    color: $auburn;
+  }
+
+  &--error &__input {
+    border-color: $auburn;
+  }
+}

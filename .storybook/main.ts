@@ -5,6 +5,7 @@ const config: StorybookConfig = {
     stories: [
         "./docs/**/*.mdx",
         "../packages/charts/src/**/*.stories.@(ts|tsx)",
+        "../packages/charts2/src/**/*.stories.@(ts|tsx)",
         "../packages/colours/src/**/*.stories.@(ts|tsx)",
         "../packages/components/src/**/*.stories.@(ts|tsx)",
     ],
@@ -72,6 +73,12 @@ const config: StorybookConfig = {
                     "d3-shape",
                     "d3-transition",
                     "d3-zoom",
+                ],
+                // Keep local workspace packages out of Vite's optimized-deps
+                // cache so Storybook sees newly added exports immediately.
+                exclude: [
+                    ...(config.optimizeDeps?.exclude || []),
+                    "@buildcanada/components",
                 ],
             },
             esbuild: {

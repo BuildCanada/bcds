@@ -1,0 +1,23 @@
+// Layout core (M6): (definition, dataset, view, theme, size, measurer) →
+// ChartScene. Specs 03, 05, 08, 10–16, 26.
+
+export * from "./axis.ts"
+export * from "./charts/discreteBar.ts"
+export * from "./charts/dumbbell.ts"
+export * from "./charts/line.ts"
+export * from "./charts/marimekko.ts"
+export * from "./charts/scatter.ts"
+export * from "./charts/shared.ts"
+export * from "./charts/slope.ts"
+export * from "./charts/stackedArea.ts"
+export * from "./charts/stackedBar.ts"
+export * from "./charts/stackedDiscreteBar.ts"
+export * from "./chooseType.ts"
+export * from "./chrome.ts"
+export * from "./context.ts"
+export * from "./declutter.ts"
+export * from "./layoutChart.ts"
+export * from "./legend.ts"
+export * from "./scales.ts"
+export * from "./series.ts"
+export * from "./stacking.ts"
