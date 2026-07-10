@@ -1,4 +1,4 @@
-# Charts2 samples
+# Charts samples
 
 These definition files are ready to use with the CLI from the package root:
 

@@ -177,7 +177,7 @@ Behavior:
 - Panels containing form controls use dialog/popover semantics, not command-menu semantics.
 - Static export ignores open interactive popovers unless explicitly requested.
 
-## 11. Charts2 Adoption Map
+## 11. Charts Adoption Map
 
 | Chart chrome surface | Component primitive | Notes |
 |---|---|---|

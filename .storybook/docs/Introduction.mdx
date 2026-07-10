@@ -28,7 +28,7 @@ bun add @buildcanada/charts
 
 ```tsx
 import { buildDataset, parseCsv, parseDefinition, parseManifest } from "@buildcanada/charts/core"
-import { Chart, Tooltip } from "@buildcanada/charts"
+import { Chart } from "@buildcanada/charts"
 import "@buildcanada/charts/styles.css"
 
 // 1. Dataset: manifest + CSV → Dataset.
@@ -44,6 +44,7 @@ const { definition, diagnostics } = parseDefinition({
     y: ["total_spending"],
     selectedEntities: ["Ontario", "Quebec", "British Columbia"],
 })
+if (definition === null) throw new Error(diagnostics.map((d) => d.message).join("; "))
 
 // 3. Render.
 function App() {

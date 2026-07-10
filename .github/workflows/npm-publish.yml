@@ -44,6 +44,10 @@ jobs:
 
             - run: bun install --frozen-lockfile
 
+            # charts imports the built output of its workspace siblings, so
+            # they must be built before prepublishOnly compiles charts.
+            - run: bun run build:colours && bun run build:components
+
             - run: bunx npm publish --access public --provenance ${{ env.DRY_RUN }}
               working-directory: packages/charts
 
