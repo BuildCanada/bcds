@@ -217,6 +217,31 @@ describe("SceneSVG", () => {
         expect(markup).toMatch(/<line(?![^>]*opacity)/)
     })
 
+    it("hides non-emphasized line markers outright, keeping the emphasized ones (spec 07 §3)", () => {
+        const base = minimalScene()
+        const betaPoint: SceneNode = {
+            kind: "point",
+            key: "series/beta/point",
+            seriesKey: "beta",
+            role: "mark",
+            center: { x: 70, y: 50 },
+            radius: 3,
+            style: { fill: "#334455" },
+        }
+        const markup = renderToStaticMarkup(
+            <SceneSVG
+                scene={{ ...base, nodes: [...base.nodes, betaPoint] }}
+                idPrefix="p1"
+                emphasis={{ mode: "emphasis", keys: new Set(["alpha"]) }}
+                dimOpacity={0.2}
+            />,
+        )
+        // alpha's marker (emphasized) stays…
+        expect(markup).toContain('cx="50" cy="40.5"')
+        // …beta's marker (non-emphasized) is gone, not merely dimmed.
+        expect(markup).not.toContain('cx="70"')
+    })
+
     it("is a pass-through when emphasis is idle", () => {
         const scene = minimalScene()
         const idle = renderToStaticMarkup(

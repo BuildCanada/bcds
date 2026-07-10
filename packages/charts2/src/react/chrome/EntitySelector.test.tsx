@@ -12,10 +12,31 @@ const pathological = loadFixtureDataset("pathological").dataset
 const federal = loadFixtureDataset("federal-departments").dataset
 
 function rowNames(container: HTMLElement): string[] {
-    return [...container.querySelectorAll(".bcds2-entity-selector__name")].map((el) => el.textContent ?? "")
+    return [...container.querySelectorAll(".bcds2-entity-selector__row")].map((row) => {
+        const name = row.querySelector(".bcds2-entity-selector__name, .bc-checkbox__text")
+        return name?.textContent ?? ""
+    })
 }
 
 describe("EntitySelector search (spec 07 §2)", () => {
+    it("renders search with the Build Canada TextField primitive", () => {
+        const { container } = render(
+            <EntitySelector dataset={pathological} selected={[]} mode="multi" onChange={() => undefined} locale="en" />,
+        )
+        expect(container.querySelector(".bc-textfield.bcds2-entity-selector__search")).not.toBeNull()
+    })
+
+    it("renders multi-select controls with shared Button and Checkbox primitives", () => {
+        const { container, getByLabelText } = render(
+            <EntitySelector dataset={federal} selected={[]} mode="multi" onChange={() => undefined} locale="en" />,
+        )
+        expect(container.querySelector(".bc-btn.bcds2-entity-selector__order")).not.toBeNull()
+        expect(container.querySelectorAll(".bc-btn.bcds2-entity-selector__action").length).toBe(2)
+        expect(container.querySelector(".bc-checkbox.bcds2-entity-selector__group-checkbox")).not.toBeNull()
+        expect(container.querySelector(".bc-checkbox.bcds2-entity-selector__row-checkbox")).not.toBeNull()
+        expect(getByLabelText("Sorted ascending")).not.toBeNull()
+    })
+
     it("finds accented entities from unaccented queries (quebec → Québec)", () => {
         const { container, getByLabelText } = render(
             <EntitySelector dataset={pathological} selected={[]} mode="multi" onChange={() => undefined} locale="en" />,
@@ -55,7 +76,7 @@ describe("EntitySelector groups (spec 07 §2)", () => {
         const first = render(
             <EntitySelector dataset={federal} selected={[]} mode="multi" onChange={onChange} locale="en" />,
         )
-        fireEvent.click(first.getByLabelText("Select all in Social"))
+        fireEvent.click(first.getByLabelText("Social"))
         expect(onChange).toHaveBeenCalledWith(social)
         first.unmount()
 
@@ -63,7 +84,7 @@ describe("EntitySelector groups (spec 07 §2)", () => {
         const second = render(
             <EntitySelector dataset={federal} selected={social} mode="multi" onChange={onChange} locale="en" />,
         )
-        fireEvent.click(second.getByLabelText("Select all in Social"))
+        fireEvent.click(second.getByLabelText("Social"))
         expect(onChange).toHaveBeenCalledWith([])
     })
 })
@@ -123,10 +144,9 @@ describe("EntitySelector selection modes (spec 07 §1)", () => {
         const { container } = render(
             <EntitySelector dataset={pathological} selected={["Québec"]} mode="single" onChange={onChange} locale="en" />,
         )
-        const rows = [...container.querySelectorAll(".bcds2-entity-selector__row")]
-        const lonely = rows.find((row) => row.textContent?.includes("Lonely Station"))
-        expect(lonely?.querySelector("input")?.getAttribute("type")).toBe("radio")
-        fireEvent.click(lonely!.querySelector("input")!)
+        expect(container.querySelector(".bc-radio-group")).not.toBeNull()
+        const lonely = container.querySelector('input[type="radio"][value="Lonely Station"]') as HTMLInputElement
+        fireEvent.click(lonely)
         expect(onChange).toHaveBeenCalledWith(["Lonely Station"])
     })
 

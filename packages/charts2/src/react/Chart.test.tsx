@@ -136,4 +136,23 @@ describe("Chart", () => {
         // Focus and escape NEVER call layoutChart.
         expect(layoutSpy.mock.calls.length).toBe(layoutCallsAfterMount)
     })
+
+    it("focusedSeries prop seeds focus emphasis on mount, without interaction", () => {
+        const dim = buildCanadaTheme.palette.dimOpacity.toString()
+        const { container } = render(
+            <Chart
+                definition={definitionFor({
+                    y: ["total_spending"],
+                    types: ["line"],
+                    selectedEntities: ["Ontario", "Quebec", "Alberta"],
+                })}
+                dataset={dataset}
+                width={850}
+                height={600}
+                focusedSeries={["Ontario"]}
+            />,
+        )
+        // Non-focused series are dimmed to the theme dim immediately (no hover/click).
+        expect(container.querySelectorAll(`[opacity="${dim}"]`).length).toBeGreaterThan(0)
+    })
 })

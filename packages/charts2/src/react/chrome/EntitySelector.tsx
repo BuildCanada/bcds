@@ -7,6 +7,7 @@
  */
 
 import { useMemo, useState } from "react"
+import { Button, Checkbox, IconButton, RadioGroup, Select, TextField } from "@buildcanada/components"
 import { resolveValue } from "../../core/data/derived.ts"
 import { formatValue } from "../../core/format/number.ts"
 import type { Dataset, EntityMeta, Locale, SortOrder } from "../../core/types.ts"
@@ -169,42 +170,56 @@ export function EntitySelector({ dataset, selected, mode, onChange, sortColumns 
 
     return (
         <div className="bcds2-entity-selector">
-            <input
+            <TextField
                 type="search"
                 className="bcds2-entity-selector__search"
+                label={`Search ${labelPlural}`}
                 placeholder={`Search ${labelPlural}`}
-                aria-label={`Search ${labelPlural}`}
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
             />
             <div className="bcds2-entity-selector__controls">
-                <label className="bcds2-entity-selector__sort">
-                    Sort by
-                    <select aria-label="Sort by" value={sortBy} onChange={(event) => handleSortByChange(event.target.value)}>
-                        <option value="name">Name</option>
-                        {sortColumns.map((slug) => (
-                            <option key={slug} value={slug}>
-                                {dataset.columns.get(slug)?.meta.name ?? slug}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-                <button
-                    type="button"
+                <Select
+                    className="bcds2-entity-selector__sort"
+                    label="Sort by"
+                    value={sortBy}
+                    onChange={(event) => handleSortByChange(event.target.value)}
+                    options={[
+                        { value: "name", label: "Name" },
+                        ...sortColumns.map((slug) => ({
+                            value: slug,
+                            label: dataset.columns.get(slug)?.meta.name ?? slug,
+                        })),
+                    ]}
+                />
+                <IconButton
                     className="bcds2-entity-selector__order"
-                    aria-label={sortOrder === "asc" ? "Sorted ascending" : "Sorted descending"}
+                    label={sortOrder === "asc" ? "Sorted ascending" : "Sorted descending"}
                     onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-                >
-                    {sortOrder === "asc" ? "↑" : "↓"}
-                </button>
+                    variant="outline-charcoal"
+                    size="sm"
+                    icon={<span aria-hidden="true">{sortOrder === "asc" ? "↑" : "↓"}</span>}
+                />
                 {mode === "multi" && (
                     <span className="bcds2-entity-selector__bulk">
-                        <button type="button" className="bcds2-entity-selector__action" onClick={() => onChange([...dataset.entities])}>
+                        <Button
+                            className="bcds2-entity-selector__action"
+                            onClick={() => onChange([...dataset.entities])}
+                            variant="outline-charcoal"
+                            size="sm"
+                            icon={null}
+                        >
                             Select all
-                        </button>
-                        <button type="button" className="bcds2-entity-selector__action" onClick={() => onChange([])}>
+                        </Button>
+                        <Button
+                            className="bcds2-entity-selector__action"
+                            onClick={() => onChange([])}
+                            variant="outline-charcoal"
+                            size="sm"
+                            icon={null}
+                        >
                             Clear
-                        </button>
+                        </Button>
                     </span>
                 )}
             </div>
@@ -216,40 +231,63 @@ export function EntitySelector({ dataset, selected, mode, onChange, sortColumns 
                         <div key={group.name ?? ""} className="bcds2-entity-selector__group">
                             {group.name !== null &&
                                 (mode === "multi" ? (
-                                    <label className="bcds2-entity-selector__group-header">
-                                        <input
-                                            type="checkbox"
+                                    <div className="bcds2-entity-selector__group-header">
+                                        <Checkbox
+                                            className="bcds2-entity-selector__group-checkbox"
+                                            label={group.name}
                                             checked={allSelected}
-                                            aria-label={`Select all in ${group.name}`}
                                             onChange={() => toggleGroup(groupNames)}
                                         />
-                                        <span>{group.name}</span>
-                                    </label>
+                                    </div>
                                 ) : (
                                     <div className="bcds2-entity-selector__group-header">
                                         <span>{group.name}</span>
                                     </div>
                                 ))}
-                            {group.rows.map((row) => (
-                                <label
-                                    key={row.name}
-                                    className={
-                                        row.hasData
-                                            ? "bcds2-entity-selector__row"
-                                            : "bcds2-entity-selector__row bcds2-entity-selector__row--no-data"
-                                    }
-                                >
-                                    <input
-                                        type={mode === "single" ? "radio" : "checkbox"}
-                                        name={mode === "single" ? "bcds2-entity-selector" : undefined}
-                                        checked={selected.includes(row.name)}
-                                        onChange={() => toggleEntity(row.name)}
-                                    />
-                                    <span className="bcds2-entity-selector__name">{row.name}</span>
-                                    {!row.hasData && <span className="bcds2-entity-selector__tag">no data</span>}
-                                    {row.valueText !== null && <span className="bcds2-entity-selector__value">{row.valueText}</span>}
-                                </label>
-                            ))}
+                            {mode === "single" ? (
+                                <RadioGroup
+                                    className="bcds2-entity-selector__radio-group"
+                                    legend={group.name ?? `Select ${labelPlural}`}
+                                    visuallyHiddenLegend
+                                    name="bcds2-entity-selector"
+                                    value={selected[0] ?? ""}
+                                    onValueChange={(value) => toggleEntity(value)}
+                                    options={group.rows.map((row) => ({
+                                        value: row.name,
+                                        label: (
+                                            <span
+                                                className={
+                                                    row.hasData
+                                                        ? "bcds2-entity-selector__row"
+                                                        : "bcds2-entity-selector__row bcds2-entity-selector__row--no-data"
+                                                }
+                                            >
+                                                <span className="bcds2-entity-selector__name">{row.name}</span>
+                                                {!row.hasData && <span className="bcds2-entity-selector__tag">no data</span>}
+                                                {row.valueText !== null && <span className="bcds2-entity-selector__value">{row.valueText}</span>}
+                                            </span>
+                                        ),
+                                    }))}
+                                />
+                            ) : (
+                                group.rows.map((row) => {
+                                    const rowClass = row.hasData
+                                        ? "bcds2-entity-selector__row"
+                                        : "bcds2-entity-selector__row bcds2-entity-selector__row--no-data"
+                                    return (
+                                        <div key={row.name} className={`${rowClass} bcds2-entity-selector__row--multi`}>
+                                            <Checkbox
+                                                className="bcds2-entity-selector__row-checkbox"
+                                                label={row.name}
+                                                checked={selected.includes(row.name)}
+                                                onChange={() => toggleEntity(row.name)}
+                                            />
+                                            {!row.hasData && <span className="bcds2-entity-selector__tag">no data</span>}
+                                            {row.valueText !== null && <span className="bcds2-entity-selector__value">{row.valueText}</span>}
+                                        </div>
+                                    )
+                                })
+                            )}
                         </div>
                     )
                 })}

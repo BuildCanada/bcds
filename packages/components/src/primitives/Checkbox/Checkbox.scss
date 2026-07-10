@@ -6,7 +6,10 @@
  ******************************************************************************/
 
 .bc-checkbox {
+  $checkbox-size: 18px;
+
   display: inline-flex;
+  align-items: flex-start;
 
   /***************************************************************************
    * Hidden native input
@@ -31,7 +34,8 @@
   &__label {
     display: inline-flex;
     align-items: center;
-    gap: $space-1;
+    gap: 10px;
+    margin: 0;
     cursor: pointer;
     user-select: none;
   }
@@ -41,30 +45,67 @@
    ***************************************************************************/
 
   &__box {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
-    border: 2px solid $border-default;
+    box-sizing: border-box;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    min-width: $checkbox-size;
+    min-height: $checkbox-size;
+    aspect-ratio: 1 / 1;
+    border: 2px solid $gray-200;
     border-radius: $radius-none;
     background-color: $white;
-    transition: all $transition-fast;
+    color: $white;
+    line-height: 0;
     flex-shrink: 0;
+    pointer-events: none;
+    transition: all $transition-fast;
   }
 
   &__check {
-    width: 14px;
-    height: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 12px;
+    height: 12px;
     color: $white;
     opacity: 0;
-    transform: scale(0.8);
+    transform: translate(-50%, -50%) scale(0.95);
     transition: all $transition-fast;
+  }
+
+  &__mixed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    background-color: $white;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity $transition-fast;
   }
 
   &__text {
     @include body-2;
     color: $text-primary;
+    line-height: $checkbox-size;
+
+    &--visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   }
 
   /***************************************************************************
@@ -72,8 +113,8 @@
    ***************************************************************************/
 
   // Hover
-  &__label:hover &__box {
-    border-color: $gray-400;
+  &__input:not(:checked):not(:disabled) + &__label:hover &__box {
+    border-color: $auburn-500;
   }
 
   // Focus
@@ -84,13 +125,35 @@
 
   // Checked
   &__input:checked + &__label &__box {
-    background-color: $auburn;
-    border-color: $auburn;
+    background-color: $auburn-500;
+    border-color: $auburn-500;
+  }
+
+  &__input:active + &__label &__box {
+    background-color: $auburn-100;
+  }
+
+  &__input:checked:active + &__label &__box {
+    background-color: $auburn-600;
+    border-color: $auburn-600;
   }
 
   &__input:checked + &__label &__check {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__input[aria-checked="mixed"] + &__label &__box {
+    background-color: $auburn-500;
+    border-color: $auburn-500;
+  }
+
+  &__input[aria-checked="mixed"] + &__label &__check {
+    opacity: 0;
+  }
+
+  &__input[aria-checked="mixed"] + &__label &__mixed {
+    opacity: 1;
   }
 
   // Disabled
@@ -100,7 +163,8 @@
 
   &--disabled &__box {
     background-color: $gray-100;
-    border-color: $gray-300;
+    border-color: $gray-200;
+    color: $gray-500;
   }
 
   &--disabled &__text {
@@ -108,7 +172,7 @@
   }
 
   &--disabled &__input:checked + &__label &__box {
-    background-color: $gray-400;
-    border-color: $gray-400;
+    background-color: $gray-300;
+    border-color: $gray-300;
   }
 }

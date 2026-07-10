@@ -19,7 +19,7 @@
     "./styles/*": "./dist/react/styles/*"
   },
   "bin": {
-    "bcds-charts": "./dist/cli/index.js"
+    "charts": "./dist/cli/index.js"
   },
   "files": [
     "dist",
@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@buildcanada/colours": "^0.3.3",
+    "@buildcanada/components": "^0.3.5",
     "@resvg/resvg-js": "^2.6.2",
     "citty": "^0.1.6",
     "d3-array": "^3.2.4",

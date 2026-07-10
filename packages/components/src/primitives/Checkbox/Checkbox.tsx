@@ -1,10 +1,13 @@
 import cx from "classnames"
-import { forwardRef, useId } from "react"
+import { forwardRef, useEffect, useId, useRef } from "react"
+import type React from "react"
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
     label: string
+    visuallyHiddenLabel?: boolean
     checked?: boolean
     defaultChecked?: boolean
+    indeterminate?: boolean
     name?: string
     id?: string
     className?: string
@@ -16,29 +19,45 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     function Checkbox(
         {
             label,
+            visuallyHiddenLabel = false,
             checked,
             defaultChecked,
+            indeterminate = false,
             name,
             id: providedId,
             className,
             disabled = false,
             onChange,
+            ...rest
         },
         ref
     ) {
         const generatedId = useId()
         const id = providedId || generatedId
+        const inputRef = useRef<HTMLInputElement | null>(null)
+
+        useEffect(() => {
+            if (inputRef.current) inputRef.current.indeterminate = indeterminate
+        }, [indeterminate])
+
+        const setRefs = (node: HTMLInputElement | null) => {
+            inputRef.current = node
+            if (typeof ref === "function") ref(node)
+            else if (ref) ref.current = node
+        }
 
         const classes = cx(
             "bc-checkbox",
             { "bc-checkbox--disabled": disabled },
+            { "bc-checkbox--indeterminate": indeterminate },
             className
         )
 
         return (
             <div className={classes}>
                 <input
-                    ref={ref}
+                    {...rest}
+                    ref={setRefs}
                     type="checkbox"
                     id={id}
                     name={name}
@@ -46,6 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                     defaultChecked={defaultChecked}
                     disabled={disabled}
                     className="bc-checkbox__input"
+                    aria-checked={indeterminate ? "mixed" : checked}
                     onChange={onChange}
                 />
                 <label htmlFor={id} className="bc-checkbox__label">
@@ -64,8 +84,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                                 strokeLinejoin="round"
                             />
                         </svg>
+                        <span className="bc-checkbox__mixed" />
                     </span>
-                    <span className="bc-checkbox__text">{label}</span>
+                    <span
+                        className={cx("bc-checkbox__text", {
+                            "bc-checkbox__text--visually-hidden": visuallyHiddenLabel,
+                        })}
+                    >
+                        {label}
+                    </span>
                 </label>
             </div>
         )

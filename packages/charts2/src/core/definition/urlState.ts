@@ -23,7 +23,18 @@
 import { formatTimeOrdinalRaw, parseTime } from "../data/time.ts"
 import type { Diagnostic, SortOrder, Tab, TimeBound, TimeGrain, TimeSelection, ViewState } from "../types.ts"
 
-const TABS = new Set(["line", "discrete-bar", "stacked-area", "stacked-bar", "stacked-discrete-bar", "table"])
+const TABS = new Set([
+    "line",
+    "discrete-bar",
+    "stacked-area",
+    "stacked-bar",
+    "stacked-discrete-bar",
+    "slope",
+    "dumbbell",
+    "scatter",
+    "marimekko",
+    "table",
+])
 const SCALES = new Set(["linear", "log"])
 const STACK_MODES = new Set(["absolute", "relative"])
 const FACETS = new Set(["none", "entity", "metric"])

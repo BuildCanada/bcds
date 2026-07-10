@@ -98,10 +98,14 @@ describe("parseDefinition required fields", () => {
 
 describe("parseDefinition unknown fields (spec 02 §4)", () => {
     it("warns about unknown top-level fields instead of silently ignoring them", () => {
-        const { definition, diagnostics } = parseDefinition({ ...minimal, x: "gdp" })
+        const { definition, diagnostics } = parseDefinition({ ...minimal, notARealField: "gdp" })
         expect(definition).not.toBeNull()
         expect(diagnostics).toEqual([
-            expect.objectContaining({ severity: "warning", code: "unknown-definition-field", context: { field: "x" } }),
+            expect.objectContaining({
+                severity: "warning",
+                code: "unknown-definition-field",
+                context: { field: "notARealField" },
+            }),
         ])
     })
 

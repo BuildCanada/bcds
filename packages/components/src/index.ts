@@ -6,8 +6,14 @@
 
 // Primitives
 export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./primitives/Button/index.js"
+export { IconButton, type IconButtonProps } from "./primitives/Button/index.js"
 export { TextField, type TextFieldProps, type TextFieldType } from "./primitives/TextField/index.js"
 export { Checkbox, type CheckboxProps } from "./primitives/Checkbox/index.js"
+export { RadioGroup, type RadioGroupOption, type RadioGroupOrientation, type RadioGroupProps } from "./primitives/RadioGroup/index.js"
+export { Select, type SelectOption, type SelectOptionGroup, type SelectOptionItem, type SelectProps } from "./primitives/Select/index.js"
+export { SegmentedControl, Tabs, type SegmentedControlItem, type SegmentedControlMode, type SegmentedControlOrientation, type SegmentedControlProps } from "./primitives/SegmentedControl/index.js"
+export { RangeSlider, Slider, type RangeSliderProps, type SliderProps, type SliderTick } from "./primitives/Slider/index.js"
+export { Popover, MenuButton, type MenuButtonItem, type MenuButtonProps, type PopoverPlacement, type PopoverProps } from "./primitives/Popover/index.js"
 
 // Layout
 export { Container, type ContainerProps, type ContainerSize } from "./layout/Container/index.js"

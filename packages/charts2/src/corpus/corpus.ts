@@ -144,6 +144,57 @@ const stackedDiscreteBudgets = {
     sourceText: "Provincial public accounts",
 }
 
+const budgetEntities = ["Ontario", "Quebec", "British Columbia", "Alberta", "Nova Scotia"]
+
+// Slope: one metric across the window's two endpoints (spec 12).
+const slopeBudgets = {
+    title: "Provincial spending, first vs latest year",
+    subtitle: "Total budgetary expenditure, public accounts basis",
+    data: "provincial-budgets",
+    y: ["total_spending"],
+    types: ["slope"],
+    selectedEntities: budgetEntities,
+    sourceText: "Provincial public accounts",
+}
+
+// Dumbbell: two metrics at one time, one row per entity (spec 17).
+const dumbbellBudgets = {
+    title: "Program spending vs debt charges",
+    subtitle: "By province, 2023-24",
+    data: "provincial-budgets",
+    y: ["program_spending", "debt_charges"],
+    types: ["dumbbell"],
+    time: "2023-24",
+    selectedEntities: budgetEntities,
+    sourceText: "Provincial public accounts",
+}
+
+// Scatter: x vs y metric, one point per entity at a target time (spec 18).
+const scatterBudgets = {
+    title: "Debt charges vs program spending",
+    subtitle: "By province, 2023-24",
+    data: "provincial-budgets",
+    x: "program_spending",
+    y: ["debt_charges"],
+    types: ["scatter"],
+    time: "2023-24",
+    selectedEntities: budgetEntities,
+    sourceText: "Provincial public accounts",
+}
+
+// Marimekko: stacked metrics with column widths from an x metric (spec 19).
+const marimekkoBudgets = {
+    title: "Spending composition, sized by budget",
+    subtitle: "Width = total spending; 2023-24",
+    data: "provincial-budgets",
+    y: ["program_spending", "debt_charges"],
+    x: "total_spending",
+    types: ["marimekko"],
+    time: "2023-24",
+    selectedEntities: budgetEntities,
+    sourceText: "Provincial public accounts",
+}
+
 // ---------------------------------------------------------------------------
 // The corpus
 // ---------------------------------------------------------------------------
@@ -295,6 +346,47 @@ export const corpusCases: readonly CorpusCase[] = [
         state: "missing-data",
         fixture: "provincial-budgets",
         raw: { ...stackedDiscreteBudgets, time: "2022-23" },
+        size: DEFAULT,
+    }),
+
+    // --- slope (provincial-budgets, two-endpoint window) --------------------
+    makeCase({ type: "slope", state: "default", fixture: "provincial-budgets", raw: slopeBudgets, size: THUMBNAIL }),
+    makeCase({ type: "slope", state: "default", fixture: "provincial-budgets", raw: slopeBudgets, size: DEFAULT }),
+    makeCase({ type: "slope", state: "default", fixture: "provincial-budgets", raw: slopeBudgets, size: WIDE }),
+    makeCase({
+        type: "slope",
+        state: "fr",
+        fixture: "provincial-budgets",
+        raw: { ...slopeBudgets, locale: "fr" },
+        size: DEFAULT,
+    }),
+
+    // --- dumbbell (provincial-budgets, two-metric) --------------------------
+    makeCase({ type: "dumbbell", state: "default", fixture: "provincial-budgets", raw: dumbbellBudgets, size: THUMBNAIL }),
+    makeCase({ type: "dumbbell", state: "default", fixture: "provincial-budgets", raw: dumbbellBudgets, size: DEFAULT }),
+    makeCase({ type: "dumbbell", state: "default", fixture: "provincial-budgets", raw: dumbbellBudgets, size: WIDE }),
+    makeCase({
+        type: "dumbbell",
+        state: "change-labels",
+        fixture: "provincial-budgets",
+        raw: { ...dumbbellBudgets, valueLabelMode: "change", connector: "line" },
+        size: DEFAULT,
+    }),
+
+    // --- scatter (provincial-budgets, snapshot) -----------------------------
+    makeCase({ type: "scatter", state: "default", fixture: "provincial-budgets", raw: scatterBudgets, size: THUMBNAIL }),
+    makeCase({ type: "scatter", state: "default", fixture: "provincial-budgets", raw: scatterBudgets, size: DEFAULT }),
+    makeCase({ type: "scatter", state: "default", fixture: "provincial-budgets", raw: scatterBudgets, size: WIDE }),
+
+    // --- marimekko (provincial-budgets, width = total spending) -------------
+    makeCase({ type: "marimekko", state: "default", fixture: "provincial-budgets", raw: marimekkoBudgets, size: THUMBNAIL }),
+    makeCase({ type: "marimekko", state: "default", fixture: "provincial-budgets", raw: marimekkoBudgets, size: DEFAULT }),
+    makeCase({ type: "marimekko", state: "default", fixture: "provincial-budgets", raw: marimekkoBudgets, size: WIDE }),
+    makeCase({
+        type: "marimekko",
+        state: "relative",
+        fixture: "provincial-budgets",
+        raw: { ...marimekkoBudgets, stackMode: "relative" },
         size: DEFAULT,
     }),
 ]

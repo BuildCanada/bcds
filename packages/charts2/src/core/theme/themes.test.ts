@@ -1,4 +1,5 @@
-import { auburn, lake } from "@buildcanada/colours"
+import { auburn } from "@buildcanada/colours/styles/colours/auburn.js"
+import { lake } from "@buildcanada/colours/styles/colours/lake.js"
 import { describe, expect, it } from "vitest"
 
 import type { Theme } from "./types.ts"
@@ -34,6 +35,10 @@ describe("themes", () => {
     it("themes declare a top-right logo", () => {
         expect(buildCanadaTheme.branding.logo).toBe("build-canada-square")
         expect(canadaSpendsTheme.branding.logo).toBe("canada-spends")
+    })
+
+    it("uses the same chart background across brands", () => {
+        expect(canadaSpendsTheme.chrome.background).toBe(buildCanadaTheme.chrome.background)
     })
 
     it("noData is a reserved neutral, never in the categorical palette", () => {

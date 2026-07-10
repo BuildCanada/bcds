@@ -12,6 +12,7 @@
 
 import { useMemo } from "react"
 import type { ReactNode } from "react"
+import { Button, SegmentedControl, TextField } from "@buildcanada/components"
 import { resolveValue } from "../../core/data/derived.ts"
 import { snapToAvailable } from "../../core/data/time.ts"
 import { formatChange, formatValue } from "../../core/format/number.ts"
@@ -163,10 +164,12 @@ export function DataTable({
         const isActive = sort.column === columnId
         const nextOrder: SortOrder = isActive ? (sort.order === "asc" ? "desc" : "asc") : columnId === "entity" ? "asc" : "desc"
         return (
-            <button
-                type="button"
+            <Button
                 className="bcds2-data-table__sort-button"
                 onClick={() => onSortChange({ column: columnId, order: nextOrder })}
+                variant="outline-charcoal"
+                size="sm"
+                icon={null}
             >
                 {content}
                 {isActive && (
@@ -174,7 +177,7 @@ export function DataTable({
                         {sort.order === "asc" ? "▲" : "▼"}
                     </span>
                 )}
-            </button>
+            </Button>
         )
     }
 
@@ -259,28 +262,21 @@ export function DataTable({
     return (
         <div className="bcds2-data-table">
             <div className="bcds2-data-table__toolbar">
-                <div className="bcds2-data-table__scope" role="group" aria-label="Table scope">
-                    <button
-                        type="button"
-                        className="bcds2-data-table__scope-button"
-                        aria-pressed={scope === "selected"}
-                        onClick={() => onScopeChange("selected")}
-                    >
-                        Selected
-                    </button>
-                    <button
-                        type="button"
-                        className="bcds2-data-table__scope-button"
-                        aria-pressed={scope === "all"}
-                        onClick={() => onScopeChange("all")}
-                    >
-                        All
-                    </button>
-                </div>
-                <input
+                <SegmentedControl
+                    className="bcds2-data-table__scope"
+                    label="Table scope"
+                    mode="toggle"
+                    value={scope}
+                    onValueChange={(value) => onScopeChange(value as DataTableScope)}
+                    items={[
+                        { value: "selected", label: "Selected" },
+                        { value: "all", label: "All" },
+                    ]}
+                />
+                <TextField
                     type="search"
                     className="bcds2-data-table__search"
-                    aria-label={`Search ${dataset.manifest.entity.labelPlural}`}
+                    label={`Search ${dataset.manifest.entity.labelPlural}`}
                     placeholder={`Search ${dataset.manifest.entity.labelPlural}`}
                     value={searchQuery}
                     onChange={(event) => onSearchChange(event.target.value)}

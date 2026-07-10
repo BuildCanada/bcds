@@ -109,8 +109,11 @@ export function Tooltip({ model, x, y, bounds }: TooltipProps) {
             {model.subtitle !== undefined && <div className="bcds2-tooltip__subtitle">{model.subtitle}</div>}
             {model.rows.length > 0 && (
                 <div className="bcds2-tooltip__rows">
-                    {model.rows.map((row) => (
-                        <TooltipValueRow key={row.seriesKey} row={row} />
+                    {model.rows.map((row, index) => (
+                        // Key by index, not seriesKey: a single series can own several
+                        // rows (e.g. slope/dumbbell start/end), so seriesKey is not unique
+                        // and duplicate keys corrupt reconciliation (stale rows retained).
+                        <TooltipValueRow key={`${row.seriesKey}-${index}`} row={row} />
                     ))}
                 </div>
             )}

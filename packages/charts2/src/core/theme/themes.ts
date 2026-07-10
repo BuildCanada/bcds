@@ -10,7 +10,11 @@
  * @buildcanada/colours by identity.
  */
 
-import { auburn, charcoal, lake, linen, nickel } from "@buildcanada/colours"
+import { auburn } from "@buildcanada/colours/styles/colours/auburn.js"
+import { charcoal } from "@buildcanada/colours/styles/colours/charcoal.js"
+import { lake } from "@buildcanada/colours/styles/colours/lake.js"
+import { linen } from "@buildcanada/colours/styles/colours/linen.js"
+import { nickel } from "@buildcanada/colours/styles/colours/nickel.js"
 
 import type { HexColour } from "../types.ts"
 import type { Theme } from "./types.ts"
@@ -78,7 +82,7 @@ export const buildCanadaTheme: Theme = {
     palette: {
         categorical: grapherDistinctLinesPalette,
         noData: nickel["300"],
-        dimOpacity: 0.35,
+        dimOpacity: 0.2,
         sequentialScale: lake,
     },
     branding: {
@@ -106,7 +110,7 @@ export const canadaSpendsTheme: Theme = {
     palette: {
         categorical: grapherDistinctPalette,
         noData: nickel["300"],
-        dimOpacity: 0.35,
+        dimOpacity: 0.2,
         sequentialScale: auburn,
     },
     branding: {
@@ -114,7 +118,7 @@ export const canadaSpendsTheme: Theme = {
     },
     typography,
     chrome: {
-        background: "#ffffff",
+        background: linen["50"],
         gridline: charcoal["200"],
         axisLine: charcoal["400"],
         tickLabel: charcoal["600"],

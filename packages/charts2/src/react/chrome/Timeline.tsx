@@ -12,6 +12,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react"
+import { IconButton } from "@buildcanada/components"
 import { snapToAvailable } from "../../core/data/time.ts"
 import { formatTime, formatTimeRange } from "../../core/format/timeLabels.ts"
 import type { Locale, TimeBound, TimeGrain, TimeOrdinal, TimeSelection } from "../../core/types.ts"
@@ -325,21 +326,23 @@ export function Timeline({ times, grain, locale, selection, mode, onChange, play
     return (
         <div className="bcds2-timeline">
             {playable && (
-                <button
-                    type="button"
+                <IconButton
                     className="bcds2-timeline__play"
-                    aria-label={playing ? "Pause" : "Play"}
+                    label={playing ? "Pause" : "Play"}
                     aria-pressed={playing}
                     onClick={handlePlayClick}
-                >
-                    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-                        {playing ? (
-                            <path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor" />
-                        ) : (
-                            <path d="M2 1l9 5-9 5z" fill="currentColor" />
-                        )}
-                    </svg>
-                </button>
+                    variant="outline-charcoal"
+                    size="sm"
+                    icon={
+                        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                            {playing ? (
+                                <path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor" />
+                            ) : (
+                                <path d="M2 1l9 5-9 5z" fill="currentColor" />
+                            )}
+                        </svg>
+                    }
+                />
             )}
             <div ref={trackRef} className="bcds2-timeline__track" onPointerDown={handlePointerDown}>
                 <div className="bcds2-timeline__rail" aria-hidden="true" />

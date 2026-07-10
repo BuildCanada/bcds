@@ -27,7 +27,17 @@ export const DEFAULT_CHART_TYPES: readonly ChartType[] = ["line", "discrete-bar"
 // Schemas (zod v4) — unknown keys are stripped here and warned about below.
 // ---------------------------------------------------------------------------
 
-const chartTypeSchema = z.enum(["line", "discrete-bar", "stacked-area", "stacked-bar", "stacked-discrete-bar"])
+const chartTypeSchema = z.enum([
+    "line",
+    "discrete-bar",
+    "stacked-area",
+    "stacked-bar",
+    "stacked-discrete-bar",
+    "slope",
+    "dumbbell",
+    "scatter",
+    "marimekko",
+])
 
 const tabSchema = z.union([chartTypeSchema, z.literal("table")])
 
@@ -110,6 +120,13 @@ const definitionSchema = z.object({
 
     data: z.string(),
     y: z.array(z.string()).min(1),
+    x: z.string().optional(),
+    sizeMetric: z.string().optional(),
+    colourMetric: z.string().optional(),
+    connector: z.enum(["arrow", "line"]).optional(),
+    valueLabelMode: z.enum(["absolute", "change", "percentChange", "none"]).optional(),
+    trendColouring: z.boolean().optional(),
+    showNoDataArea: z.boolean().optional(),
     filter: z.record(z.string(), z.string()).optional(),
     bindings: z.record(z.string(), bindingOverrideSchema).optional(),
 
@@ -281,6 +298,13 @@ export function parseDefinition(raw: unknown): ParseDefinitionResult {
         ...(parsed.subtitle !== undefined ? { subtitle: parsed.subtitle } : {}),
         ...(parsed.note !== undefined ? { note: parsed.note } : {}),
         ...(parsed.sourceText !== undefined ? { sourceText: parsed.sourceText } : {}),
+        ...(parsed.x !== undefined ? { x: parsed.x } : {}),
+        ...(parsed.sizeMetric !== undefined ? { sizeMetric: parsed.sizeMetric } : {}),
+        ...(parsed.colourMetric !== undefined ? { colourMetric: parsed.colourMetric } : {}),
+        ...(parsed.connector !== undefined ? { connector: parsed.connector } : {}),
+        ...(parsed.valueLabelMode !== undefined ? { valueLabelMode: parsed.valueLabelMode } : {}),
+        ...(parsed.trendColouring !== undefined ? { trendColouring: parsed.trendColouring } : {}),
+        ...(parsed.showNoDataArea !== undefined ? { showNoDataArea: parsed.showNoDataArea } : {}),
         ...(parsed.filter !== undefined ? { filter: parsed.filter } : {}),
         ...(parsed.bindings !== undefined ? { bindings: parsed.bindings } : {}),
         ...(parsed.defaultTab !== undefined ? { defaultTab: parsed.defaultTab } : {}),

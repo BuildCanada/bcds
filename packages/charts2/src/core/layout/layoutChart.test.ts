@@ -284,7 +284,7 @@ describe("layoutChart behaviours", () => {
 
     it("precomputes tooltip models on hover targets (M9 consumes them as data)", () => {
         const scene = sceneFor("government-debt", { y: DEBT_Y, types: ["line"] }, { width: 850, height: 600 })
-        expect(scene.hover.targets.length).toBe(5)
+        expect(scene.hover.targets.filter((t) => t.kind === "time").length).toBe(5)
         const target = scene.hover.targets[0]
         if (target.kind !== "time") return
         expect(target.tooltip.rows.length).toBe(3)

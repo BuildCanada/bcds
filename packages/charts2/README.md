@@ -6,11 +6,11 @@ Build Canada charts v2: a pure-function layout core with a single React SVG rend
 
 - `src/core/` — DOM-free, React-free: data layer, formatting, themes, text metrics, layout → `ChartScene`
 - `src/react/` — `SceneSVG` (the only renderer) + `Chart` + interactive chrome (tooltip, timeline, entity selector, tabs, settings, data table)
-- `src/cli/` — `bcds-charts render|validate` (same render path via `renderToStaticMarkup`)
+- CLI — `charts render|validate` (same render path via `renderToStaticMarkup`)
 - `src/fixtures/` — committed fixture datasets (spec 26 §2), loadable by name in tests/stories/CLI
-- `samples/` — CLI-ready chart definitions, tested against bundled fixtures
+- `samples/` — CLI-ready chart definitions, tested against included fixtures
 - `src/corpus/` — golden SVG corpus + bless script (spec 26 §1.3)
-- `src/stories/` — Storybook stories under `Charts2/` (run Storybook from the repo root)
+- `src/stories/` — Storybook stories under `Charts2/`
 
 ## Quick start
 
@@ -19,8 +19,7 @@ import { buildDataset, parseCsv, parseDefinition, parseManifest } from "@buildca
 import { Chart, Tooltip } from "@buildcanada/charts2"
 import "@buildcanada/charts2/styles.css"
 
-// 1. Dataset: manifest + CSV → Dataset (in-repo code can shortcut with
-//    loadFixtureDataset("provincial-budgets") from src/fixtures).
+// 1. Dataset: manifest + CSV → Dataset.
 const { manifest } = parseManifest(rawManifestJson)
 const { rows } = parseCsv(csvText, manifest!)
 const { dataset } = buildDataset(manifest!, rows)
@@ -55,9 +54,19 @@ Headless (no React state, no DOM): `layoutChart({ definition, dataset, size })` 
 
 ## CLI
 
-`bcds-charts` ships as the package bin (`dist/cli/index.js`; run `bun run build` once before the workspace bin works). From source: `bun run --cwd ../.. charts2 …` or `bun src/cli/index.ts …`.
+Install the CLI globally:
 
-### `bcds-charts render <definition.json>`
+```bash
+npm install -g @buildcanada/charts2
+```
+
+Then call it with `charts`:
+
+```bash
+charts --help
+```
+
+### `charts render <definition.json>`
 
 Render one chart definition to SVG/PNG. The SVG string is a pure function of definition + dataset + flags (spec 24 §3) — same inputs, same bytes. On any error diagnostic, nothing is written.
 
@@ -75,18 +84,45 @@ Render one chart definition to SVG/PNG. The SVG string is a pure function of def
 | `--no-chrome` | Plot only (no header/footer) |
 | `--fonts <dir>` | TTF directory for PNG rasterization (default: the package `.fonts-cache`) |
 
-The definition's `data` field may reference a dataset directory (`manifest.json` + `data.csv`), a `{manifest, rows}` JSON file, or a bundled fixture name (`provincial-budgets`, `federal-departments`, `population-snapshot`, `government-debt`, `pathological`).
+The definition's `data` field may reference a dataset directory (`manifest.json` + `data.csv`), a `{manifest, rows}` JSON file, or an included fixture name (`provincial-budgets`, `federal-departments`, `population-snapshot`, `government-debt`, `pathological`).
 
-Sample definitions live in `samples/` and can be rendered directly:
+Sample definitions can be rendered directly:
 
 ```bash
-bun src/cli/index.ts render samples/line-provincial-budgets.json --out chart.svg
-bun src/cli/index.ts render samples/stacked-area-government-debt.json --preset social
+charts render samples/line-provincial-budgets.json --out chart.svg
+charts render samples/stacked-area-government-debt.json --preset social
 ```
 
-### `bcds-charts validate <input>`
+### `charts validate <input>`
 
 Report ALL problems at once (spec 01 §8). Accepts a definition JSON, a dataset directory, a single `manifest.json`, a `{manifest, rows}` JSON file, or a fixture name. Diagnostics print to stderr one per line; a summary line goes to stdout.
+
+### `charts scaffold <chart-type> <name>`
+
+Create a starter chart directory containing `definition.json`, `manifest.json`, and `data.csv`.
+
+```bash
+charts scaffold line "provincial spending"
+charts scaffold discrete-bar "population by province"
+charts scaffold stacked-area "government debt"
+charts scaffold stacked-bar "annual spending composition"
+charts scaffold stacked-discrete-bar "program spending by province"
+```
+
+The generated `definition.json` uses `"data": "."`, so it resolves the colocated `manifest.json` and `data.csv`. Pass `--force` to replace an existing scaffold directory.
+
+### `charts install-skill`
+
+Install the included `charts2-cli` agent skill, which teaches coding agents how to validate and render charts with this CLI.
+
+```bash
+charts install-skill
+charts install-skill --agent claude
+charts install-skill --agent codex --force
+charts install-skill --path ~/.codex/skills
+```
+
+`--agent auto` is the default and installs into detected Codex and Claude skill directories. Use `--agent all` to install into both conventional locations, or `--path <skills-dir>` for any agent that reads Agent Skills-style folders containing `SKILL.md`.
 
 ### Exit codes
 
@@ -100,30 +136,23 @@ Report ALL problems at once (spec 01 §8). Accepts a definition JSON, a dataset 
 
 After an **intentional** rendering change:
 
-```bash
-bun run corpus:bless             # rewrites src/corpus/__golden__/*.svg
-git diff src/corpus/__golden__   # review every diff; commit in the same PR
-```
+Run the corpus bless script, then review every golden SVG diff before publishing the change.
 
 ## Develop
 
-```bash
-bun install
-bun run extract-font-metrics   # regenerates metrics JSON + .fonts-cache TTFs
-bun run test
-bun run build                  # required once before the workspace bin works
-bun run --cwd ../.. charts2 render <definition.json>   # CLI from source
-bun run --cwd ../.. storybook  # stories under "Charts2/" (repo-root Storybook)
-```
+Use the package scripts for dependency installation, font metrics, tests, build, and Storybook. For CLI usage, install globally and call `charts`.
 
 Brand font binaries are never committed here or published — only metrics JSON. See `specs/28-architecture.md` §3.
 
 ## Deferred (later phases)
 
-Implemented today: line, discrete-bar, stacked-area, stacked-bar, stacked-discrete-bar; themes; en/fr locales; URL state; interactive chrome; CLI render/validate. Per the phased plan, **not yet implemented**:
+Implemented today: line, discrete-bar, stacked-area, stacked-bar, stacked-discrete-bar; themes; en/fr locales; URL state; interactive chrome; CLI render/validate; faceting (small multiples); comparison lines. Per the phased plan, **not yet implemented**:
 
-- Faceting — `facet: entity|metric` parses but small multiples do not lay out yet (spec 09)
-- Comparison lines — `comparisonLines` parses but does not render (spec 02)
 - Further chart types: maps (spec 20), scatter (spec 18), slope (spec 12), dumbbell (spec 17), marimekko (spec 19)
 - Motion/video rendering — `animate`, golden frames (spec 25)
 - Explorer — control sweeps over a chart family (spec 23)
+
+Partial (spec 09/02, with documented gaps):
+
+- Faceting — `facet: entity|metric` lays out a grid of small multiples with a shared value domain, per-panel titles, a shared legend, and a 16-panel cap. Not yet: the reader-togglable independent-axis mode, leftmost-column/bottom-row tick thinning, monochrome single-metric entity facets, and faceted maps.
+- Comparison lines — `comparisonLines` render on line and stacked-area charts (horizontal `y` and vertical `x` reference lines with labels). Other chart types emit a `comparison-lines-unsupported` warning.

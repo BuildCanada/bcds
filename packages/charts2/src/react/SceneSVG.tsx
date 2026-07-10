@@ -174,7 +174,21 @@ function dimFor(node: SceneNode, ctx: RenderContext, ancestorDimmed: boolean): n
     return ctx.emphasis.keys.has(node.seriesKey) ? 1 : ctx.dimOpacity
 }
 
+/** Focus visual (spec 07 §3): data-point markers on non-emphasized series are
+ *  hidden outright, not merely dimmed. Scoped to `mark` `point` nodes, so bars
+ *  (rect) and areas are unaffected; only line/scatter markers ever disappear. */
+function markerHidden(node: SceneNode, ctx: RenderContext): boolean {
+    return (
+        ctx.emphasis.mode === "emphasis" &&
+        node.kind === "point" &&
+        node.role === "mark" &&
+        node.seriesKey !== undefined &&
+        !ctx.emphasis.keys.has(node.seriesKey)
+    )
+}
+
 function renderNode(node: SceneNode, ctx: RenderContext, ancestorDimmed: boolean): ReactNode {
+    if (markerHidden(node, ctx)) return null
     const dim = dimFor(node, ctx, ancestorDimmed)
     const childDimmed = ancestorDimmed || dim !== 1
 

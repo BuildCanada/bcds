@@ -14,7 +14,8 @@ const runCommand = (command: string, args: string[]): Promise<void> => {
     })
 }
 
-// SCSS and committed font-metrics JSON ship alongside the compiled JS.
+// SCSS, committed font-metrics JSON, and the bundled agent skill ship alongside
+// the compiled JS.
 // Brand font binaries (woff2) are intentionally NOT copied: the published
 // package must not redistribute licensed fonts (see specs/28-architecture.md).
 const copyAssets = async () => {
@@ -27,6 +28,9 @@ const copyAssets = async () => {
             await mkdir(dirname(destPath), { recursive: true })
             await cp(join(srcDir, file), destPath)
         }
+    }
+    if (existsSync("skills")) {
+        await cp("skills", join(distDir, "skills"), { recursive: true })
     }
 }
 

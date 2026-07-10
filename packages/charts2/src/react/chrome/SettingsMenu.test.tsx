@@ -32,6 +32,7 @@ describe("SettingsMenu (spec 10 §4)", () => {
 
         fireEvent.click(getByLabelText("Settings"))
         expect(container.querySelector(".bcds2-settings__popover")).not.toBeNull()
+        expect(container.querySelector(".bc-checkbox")).not.toBeNull()
         expect(getByText("Relative")).not.toBeNull()
         expect(getByText("Y-axis scale")).not.toBeNull()
         expect(container.querySelectorAll(".bcds2-settings__item").length).toBe(2)

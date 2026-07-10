@@ -1,0 +1,51 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+.bc-popover {
+  display: inline-block;
+
+  &__panel {
+    z-index: $z-popover;
+    min-width: 220px;
+    max-width: min(420px, calc(100vw - 16px));
+    padding: $space-2;
+    border: 2px solid $border-default;
+    border-radius: $radius-none;
+    background: $white;
+    color: $text-primary;
+    box-shadow: $shadow-lg;
+  }
+}
+
+.bc-menu-button {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 180px;
+
+  &__item {
+    @include body-2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: $space-1;
+    border: 0;
+    background: transparent;
+    color: $text-primary;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover:not(:disabled),
+    &:focus-visible {
+      background: $gray-100;
+      outline: none;
+    }
+
+    &--disabled,
+    &:disabled {
+      color: $text-muted;
+      cursor: not-allowed;
+    }
+  }
+}

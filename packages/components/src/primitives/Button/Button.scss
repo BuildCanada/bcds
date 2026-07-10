@@ -158,10 +158,62 @@
   }
 
   /***************************************************************************
+   * Chart-facing aliases
+   ***************************************************************************/
+
+  &--primary {
+    background-color: $auburn;
+    border-color: $auburn;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $auburn-600;
+      border-color: $auburn-600;
+    }
+  }
+
+  &--secondary {
+    background-color: $white;
+    border-color: $border-default;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+      border-color: $gray-500;
+      background-color: $gray-50;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: $charcoal;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+    }
+  }
+
+  &--danger {
+    background-color: $auburn-700;
+    border-color: $auburn-700;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $auburn-800;
+      border-color: $auburn-800;
+    }
+  }
+
+  /***************************************************************************
    * State Modifiers
    ***************************************************************************/
 
   &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &[aria-disabled="true"] {
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -194,6 +246,9 @@
    ***************************************************************************/
 
   &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.875em;
     transition: transform $transition-fast;
 

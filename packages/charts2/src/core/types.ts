@@ -188,6 +188,16 @@ export type ChartType =
     | "stacked-area"
     | "stacked-bar"
     | "stacked-discrete-bar"
+    | "slope"
+    | "dumbbell"
+    | "scatter"
+    | "marimekko"
+
+/** Dumbbell connector style (spec 17). */
+export type ConnectorStyle = "arrow" | "line"
+
+/** Value-label mode for two-endpoint charts (spec 17). */
+export type ValueLabelMode = "absolute" | "change" | "percentChange" | "none"
 
 export type Tab = ChartType | "table"
 
@@ -246,6 +256,21 @@ export interface ChartDefinition {
     data: string
     /** Metric column slugs (≥1). */
     y: string[]
+    /** X-axis metric column slug. Required for scatter (spec 18); optional
+     *  column-width metric for marimekko (spec 19). Ignored by other types. */
+    x?: string
+    /** Scatter point-size metric (spec 18). Uniform radius when absent. */
+    sizeMetric?: string
+    /** Scatter point-colour metric (spec 18). Theme primary when absent. */
+    colourMetric?: string
+    /** Dumbbell connector style (spec 17). Default "arrow". */
+    connector?: ConnectorStyle
+    /** Dumbbell endpoint value labels (spec 17). Default "absolute". */
+    valueLabelMode?: ValueLabelMode
+    /** Colour slope/dumbbell marks by direction (rising/falling/flat), specs 12/17. */
+    trendColouring?: boolean
+    /** Marimekko: group entities lacking y data into a right-edge area (spec 19). */
+    showNoDataArea?: boolean
     /** Dimension filters for long-format datasets. */
     filter?: Record<string, string>
     /** Per-binding overrides of column metadata. */

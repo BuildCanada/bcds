@@ -226,6 +226,10 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
     }
 
     // --- End-of-line labels ----------------------------------------------------
+    // Each end label is also a series hover/focus hit target (spec 07 §3):
+    // pointing at a line's right-side label emphasizes it and dims the rest.
+    const subtitle = builtResult.strategy === "entity" ? metricSubtitle(ctx, slug) : undefined
+    const labelTargets: HitTarget[] = []
     let needsLegendFallback = false
     if (showLabels) {
         const candidates: LabelCandidate[] = []
@@ -247,7 +251,9 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
         const { placed, dropped } = declutterLabels(candidates, plotArea.y, plotArea.y + plotArea.height)
         for (const label of placed) {
             const metrics = measurer.measure(label.text, labelFont)
-            const colour = series.find((s) => s.key === label.seriesKey)?.colour ?? theme.chrome.tickLabel
+            const s = series.find((entry) => entry.key === label.seriesKey)
+            const colour = s?.colour ?? theme.chrome.tickLabel
+            const labelX = plotArea.x + plotArea.width + LABEL_GAP
             nodes.push(
                 textNode({
                     key: `label/${label.seriesKey}`,
@@ -255,13 +261,43 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
                     text: label.text,
                     font: labelFont,
                     anchor: "start",
-                    x: plotArea.x + plotArea.width + LABEL_GAP,
+                    x: labelX,
                     baselineY: label.y + metrics.ascent,
                     colour,
                     measurer,
                     seriesKey: label.seriesKey,
                 }),
             )
+            if (s !== undefined) {
+                const drawable = s.points.filter((p) => !logScale || p.value > 0)
+                const last = drawable[drawable.length - 1]
+                if (last !== undefined) {
+                    labelTargets.push({
+                        kind: "series",
+                        seriesKey: s.key,
+                        shape: {
+                            x: labelX,
+                            y: label.y,
+                            width: metrics.width,
+                            height: metrics.ascent + metrics.descent,
+                        },
+                        tooltip: {
+                            title: s.label,
+                            ...(subtitle !== undefined ? { subtitle } : {}),
+                            rows: [
+                                {
+                                    seriesKey: s.key,
+                                    label: s.label,
+                                    swatch: s.colour,
+                                    valueText: tooltipValueText(ctx, s.column ?? slug, last.value, relative),
+                                    emphasized: true,
+                                },
+                            ],
+                            footers: [],
+                        },
+                    })
+                }
+            }
         }
         if (dropped.length > 0) needsLegendFallback = true
     } else if (ctx.definition.hideSeriesLabels && !opts.legendReserved) {
@@ -285,7 +321,6 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
 
     // --- Hover -------------------------------------------------------------------
     const targets: HitTarget[] = []
-    const subtitle = builtResult.strategy === "entity" ? metricSubtitle(ctx, slug) : undefined
     for (const time of ctx.times) {
         const flags = collectFooterFlags()
         const present: { row: TooltipRow; value: number }[] = []
@@ -324,6 +359,10 @@ export function layoutLineChart(ctx: LayoutContext, area: Rect, opts: ChartLayer
             },
         })
     }
+
+    // Series (label) targets after the time strips; SceneSVG renders series
+    // shapes over the time strips, and they sit in the right-reserve margin.
+    targets.push(...labelTargets)
 
     return {
         plotArea,

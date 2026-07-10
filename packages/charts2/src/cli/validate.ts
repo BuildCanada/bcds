@@ -1,5 +1,5 @@
 /**
- * bcds-charts validate — report ALL problems at once (spec 01 §8, spec 24).
+ * charts validate — report ALL problems at once (spec 01 §8, spec 24).
  *
  * Accepts a chart definition file, a dataset directory (manifest.json +
  * data.csv), a single manifest.json, a {manifest, rows} JSON file, or a

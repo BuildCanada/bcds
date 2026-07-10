@@ -1,5 +1,5 @@
 /**
- * bcds-charts render — one chart definition → SVG/PNG (spec 24).
+ * charts render — one chart definition → SVG/PNG (spec 24).
  *
  * Pipeline: loadDefinition → loadDataset → resolveDefinitionTimes →
  * layoutChart → renderToStaticMarkup(<SceneSVG/>) → XML declaration → file
@@ -23,6 +23,7 @@ import { renderToStaticMarkup } from "react-dom/server"
 
 import { getTheme, layoutChart, resolveDefinitionTimes, type ChromeMode, type Theme } from "../core/index.ts"
 import type { Diagnostic, Locale, ViewState } from "../core/types.ts"
+import type { EmphasisModel } from "../react/interaction/emphasisReducer.ts"
 import { SceneSVG } from "../react/SceneSVG.tsx"
 import { CliFailure, CliUsageError, countErrors, hasErrors, printDiagnostics } from "./errors.ts"
 import { loadDataset, loadDefinition, parseState } from "./loadInputs.ts"
@@ -126,6 +127,9 @@ export interface RenderSvgOptions extends GeometryFlags {
     themeName?: string
     locale?: Locale
     transparent?: boolean
+    /** Series keys to force-focus (spec 07 §3); overrides the definition's
+     *  focusedSeries. Unknown keys are dropped with a warning. */
+    focus?: string[]
 }
 
 export interface RenderSvgResult {
@@ -196,7 +200,29 @@ export function renderDefinitionToSvg(options: RenderSvgOptions): RenderSvgResul
 
     if (options.transparent === true) scene = { ...scene, background: "transparent" }
 
-    const markup = renderToStaticMarkup(createElement(SceneSVG, { scene, idPrefix: slug }))
+    // Force-focus (spec 07 §3): --focus overrides the definition's focusedSeries;
+    // the focused series stay full-opacity while the rest dim and their markers
+    // hide. Unknown keys are dropped with a warning so a typo can't blank the chart.
+    const requestedFocus =
+        options.focus !== undefined && options.focus.length > 0 ? options.focus : (definition.focusedSeries ?? [])
+    const knownKeys = new Set(scene.series.map((s) => s.key))
+    const unknownFocus = requestedFocus.filter((key) => !knownKeys.has(key))
+    if (unknownFocus.length > 0) {
+        diagnostics.push({
+            severity: "warning",
+            code: "unknown-focus-series",
+            message: `--focus: no series named ${unknownFocus.join(", ")}`,
+            context: { unknown: unknownFocus.join(", ") },
+        })
+    }
+    const focusKeys = requestedFocus.filter((key) => knownKeys.has(key))
+    const emphasis: EmphasisModel =
+        focusKeys.length > 0 ? { mode: "emphasis", keys: new Set(focusKeys) } : { mode: "idle" }
+    const dimTheme = theme ?? getTheme(definition.theme).theme
+
+    const markup = renderToStaticMarkup(
+        createElement(SceneSVG, { scene, idPrefix: slug, emphasis, dimOpacity: dimTheme.palette.dimOpacity }),
+    )
     return {
         svg: `${XML_DECLARATION}\n${markup}`,
         slug,
@@ -287,6 +313,18 @@ export function parseFormats(value: string | string[] | undefined): OutputFormat
     return formats
 }
 
+/** --focus A --focus B and --focus A,B both work; trimmed, deduped, ordered. */
+export function parseFocusKeys(value: string | string[] | undefined): string[] {
+    if (value === undefined) return []
+    const tokens = (Array.isArray(value) ? value : [value])
+        .flatMap((entry) => entry.split(","))
+        .map((token) => token.trim())
+        .filter((token) => token !== "")
+    const keys: string[] = []
+    for (const token of tokens) if (!keys.includes(token)) keys.push(token)
+    return keys
+}
+
 function parsePositiveInt(value: string | undefined, flag: string): number | undefined {
     if (value === undefined) return undefined
     const parsed = Number(value)
@@ -337,6 +375,7 @@ interface RenderArgs {
     theme?: string
     locale?: string
     state?: string
+    focus?: string | string[]
     transparent: boolean
     chrome: boolean
     fonts?: string
@@ -357,6 +396,7 @@ export function runRender(args: RenderArgs): void {
         themeName: args.theme,
         locale: parseLocale(args.locale),
         transparent: args.transparent,
+        focus: parseFocusKeys(args.focus),
     })
 
     printDiagnostics(result.diagnostics)
@@ -425,6 +465,11 @@ export const renderCommand = defineCommand({
         state: {
             type: "string",
             description: 'URL-style view state, e.g. "tab=line&time=2014-15..2024-25&entities=ON~QC"',
+        },
+        focus: {
+            type: "string",
+            description:
+                "Series key(s) to focus — dim the rest to the theme dim and hide their line markers; repeatable or comma-separated (default: the definition's focusedSeries)",
         },
         transparent: { type: "boolean", description: "No background fill", default: false },
         chrome: {

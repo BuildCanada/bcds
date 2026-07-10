@@ -389,7 +389,11 @@ export class DownloadModalVisTab extends React.Component<DownloadModalProps> {
     }
 
     override componentDidMount(): void {
-        queueMicrotask(() => this.export())
+        if (typeof requestAnimationFrame !== "undefined") {
+            requestAnimationFrame(() => this.export())
+        } else {
+            queueMicrotask(() => this.export())
+        }
 
         void canWriteToClipboard().then(
             (canWriteToClipboard) =>

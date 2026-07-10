@@ -1,0 +1,39 @@
+.bc-charts3 {
+    display: block;
+    color: var(--bc-charts3-text, #1e3626);
+    background: var(--bc-charts3-background, #ffffff);
+}
+
+.bc-charts3 svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.bc-charts3-explorer {
+    display: grid;
+    gap: 12px;
+}
+
+.bc-charts3-explorer__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: end;
+}
+
+.bc-charts3-explorer__control {
+    display: grid;
+    gap: 4px;
+    font: 12px/1.3 Arial, sans-serif;
+    color: var(--bc-charts3-text, #1e3626);
+}
+
+.bc-charts3-explorer__control select {
+    min-width: 160px;
+    border: 1px solid #c7c7bf;
+    border-radius: 4px;
+    background: #ffffff;
+    color: inherit;
+    padding: 6px 8px;
+}

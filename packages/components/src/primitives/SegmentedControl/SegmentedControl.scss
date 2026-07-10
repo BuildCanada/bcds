@@ -1,0 +1,108 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+.bc-segmented-control {
+  display: inline-flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  &__label {
+    @include label;
+    color: $text-primary;
+
+    &--visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &__list {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, auto);
+    align-items: stretch;
+    border: 2px solid $auburn-500;
+    background-color: $white;
+  }
+
+  &--vertical &__list {
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(40px, auto);
+  }
+
+  &__item {
+    @include button-text-sm;
+    min-width: 44px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc($space-1 / 2);
+    padding: $space-1 $space-2;
+    border: 0;
+    border-right: 1px solid $border-muted;
+    border-radius: 0;
+    background: transparent;
+    color: $text-primary;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color $transition-fast, color $transition-fast;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+    }
+
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+      outline: 2px solid $auburn;
+      outline-offset: -2px;
+    }
+
+    &[aria-selected="true"],
+    &[aria-pressed="true"] {
+      background-color: $auburn-500;
+      color: $white;
+      box-shadow: none;
+
+      &:hover:not(:disabled) {
+        background-color: $auburn-600;
+      }
+    }
+
+    &:disabled {
+      color: $text-muted;
+      cursor: not-allowed;
+      background: $gray-50;
+    }
+  }
+
+  &--vertical &__item {
+    border-right: 0;
+    border-bottom: 1px solid $border-muted;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+  }
+
+  &__panel {
+    @include body-2;
+    color: $text-primary;
+  }
+}

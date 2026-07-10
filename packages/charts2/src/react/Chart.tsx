@@ -17,7 +17,7 @@ import { layoutChart } from "../core/layout/layoutChart.ts"
 import type { HitTarget, TooltipModel, Vec2 } from "../core/scene/nodes.ts"
 import { getTheme } from "../core/theme/registry.ts"
 import type { Theme } from "../core/theme/types.ts"
-import type { ChartDefinition, Dataset, ViewState } from "../core/types.ts"
+import type { ChartDefinition, Dataset, SeriesKey, ViewState } from "../core/types.ts"
 import { emphasisFor, emphasisReducer, type EmphasisState } from "./interaction/emphasisReducer.ts"
 import { useUrlState } from "./interaction/useUrlState.ts"
 import { SceneSVG } from "./SceneSVG.tsx"
@@ -42,6 +42,10 @@ export interface ChartProps {
     height?: number
     /** Tooltip render prop — the chrome Tooltip component plugs in here. */
     renderTooltip?: (args: RenderTooltipArgs) => ReactNode
+    /** Force an initial focus set (spec 07 §3), taking precedence over the
+     *  view's `focus` and the definition's `focusedSeries`. Hover and Escape
+     *  still apply on top. */
+    focusedSeries?: SeriesKey[]
 }
 
 /** SSR/first-paint size before the container has been measured. */
@@ -60,6 +64,7 @@ export function Chart({
     width,
     height,
     renderTooltip,
+    focusedSeries,
 }: ChartProps): ReactNode {
     const grain = dataset.manifest.timeGrain
 
@@ -101,7 +106,7 @@ export function Chart({
         null,
         (): EmphasisState => ({
             hover: null,
-            focus: new Set(view.focus ?? definition.focusedSeries ?? []),
+            focus: new Set(focusedSeries ?? view.focus ?? definition.focusedSeries ?? []),
         }),
     )
 

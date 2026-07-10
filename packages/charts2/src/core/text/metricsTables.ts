@@ -7,9 +7,9 @@
  * FontRole yet.
  */
 
-import financierTextRegular from "../../fonts/metrics/financier-text-regular.json"
-import foundersGroteskMonoRegular from "../../fonts/metrics/founders-grotesk-mono-regular.json"
-import soehneKraftig from "../../fonts/metrics/soehne-kraftig.json"
+import financierTextRegular from "../../fonts/metrics/financier-text-regular.json" with { type: "json" }
+import foundersGroteskMonoRegular from "../../fonts/metrics/founders-grotesk-mono-regular.json" with { type: "json" }
+import soehneKraftig from "../../fonts/metrics/soehne-kraftig.json" with { type: "json" }
 import type { FontMetricsTable, FontRole } from "./measurer.ts"
 
 export const headingTable: FontMetricsTable = soehneKraftig

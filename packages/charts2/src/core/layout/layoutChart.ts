@@ -19,7 +19,11 @@ import type { Theme } from "../theme/types.ts"
 import { truncateWithEllipsis } from "../text/truncate.ts"
 import type { ChartDefinition, ChartType, Dataset, Diagnostic, ViewState } from "../types.ts"
 import { layoutDiscreteBar } from "./charts/discreteBar.ts"
+import { layoutDumbbell } from "./charts/dumbbell.ts"
 import { layoutLineChart } from "./charts/line.ts"
+import { layoutMarimekko } from "./charts/marimekko.ts"
+import { layoutScatter } from "./charts/scatter.ts"
+import { layoutSlope } from "./charts/slope.ts"
 import { layoutStackedArea } from "./charts/stackedArea.ts"
 import { layoutStackedBar } from "./charts/stackedBar.ts"
 import { layoutStackedDiscreteBar } from "./charts/stackedDiscreteBar.ts"
@@ -59,12 +63,16 @@ const CHART_LAYOUTS: Record<ChartType, ChartLayoutFn> = {
     "stacked-area": layoutStackedArea,
     "stacked-bar": layoutStackedBar,
     "stacked-discrete-bar": layoutStackedDiscreteBar,
+    slope: layoutSlope,
+    dumbbell: layoutDumbbell,
+    scatter: layoutScatter,
+    marimekko: layoutMarimekko,
 }
 
 /** Spec 05 §1: when a legend is planned before the chart is laid out. */
 function legendPlanned(chartType: ChartType, definition: ChartDefinition, mode: ChromeMode): boolean {
     if (definition.hideLegend || mode === "thumbnail" || mode === "none") return false
-    if (chartType === "stacked-bar" || chartType === "stacked-discrete-bar") return true
+    if (chartType === "stacked-bar" || chartType === "stacked-discrete-bar" || chartType === "marimekko") return true
     if (definition.hideSeriesLabels && (chartType === "line" || chartType === "stacked-area")) return true
     return false
 }

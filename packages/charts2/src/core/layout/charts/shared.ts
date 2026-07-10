@@ -82,8 +82,8 @@ function font(family: FontSpec["family"], sizePx: number, weight: FontSpec["weig
     return { family, sizePx: round2(sizePx), weight }
 }
 
-export const titleFont = (scale: number): FontSpec => font("heading", 20 * scale, 700)
-export const subtitleFont = (scale: number): FontSpec => font("body", 13 * scale, 400)
+export const titleFont = (scale: number): FontSpec => font("heading", 24 * scale, 700)
+export const subtitleFont = (scale: number): FontSpec => font("body", 15 * scale, 400)
 export const tickFont = (scale: number): FontSpec => font("body", 12 * scale, 400)
 export const seriesLabelFont = (scale: number): FontSpec => font("body", 12 * scale, 400)
 export const valueLabelFont = (scale: number): FontSpec => font("body", 12 * scale, 400)

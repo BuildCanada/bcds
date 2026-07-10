@@ -13,6 +13,7 @@ import {
     defaultFontsDir,
     listFontFiles,
     outputPathFor,
+    parseFocusKeys,
     parseFormats,
     rasterize,
     renderDefinitionToSvg,
@@ -99,6 +100,15 @@ describe("parseFormats", () => {
     })
 })
 
+describe("parseFocusKeys", () => {
+    it("splits comma-separated and repeated values, trims, and dedupes in order", () => {
+        expect(parseFocusKeys(undefined)).toEqual([])
+        expect(parseFocusKeys("Ontario")).toEqual(["Ontario"])
+        expect(parseFocusKeys(" Ontario , Quebec ")).toEqual(["Ontario", "Quebec"])
+        expect(parseFocusKeys(["Ontario", "Quebec,Ontario"])).toEqual(["Ontario", "Quebec"])
+    })
+})
+
 describe("outputPathFor", () => {
     it("defaults to <slug>.<format>", () => {
         expect(outputPathFor(undefined, "my-chart", "svg", 1)).toBe("my-chart.svg")
@@ -153,6 +163,42 @@ describe("renderDefinitionToSvg", () => {
         expect(result.svg).toBeNull()
         expect(result.diagnostics.some((d) => d.severity === "error")).toBe(true)
     })
+
+    it("--focus dims the other series and hides their line markers (spec 07 §3)", () => {
+        const dir = makeTmpDir()
+        const path = writeDefinition(dir, {
+            title: "Focus",
+            data: "provincial-budgets",
+            y: ["total_spending"],
+            types: ["line"],
+            selectedEntities: ["Ontario", "Quebec", "Alberta"],
+        })
+        const plain = renderDefinitionToSvg({ definitionPath: path })
+        const focused = renderDefinitionToSvg({ definitionPath: path, focus: ["Ontario"] })
+        expect(plain.svg).not.toBeNull()
+        expect(focused.svg).not.toBeNull()
+        // Non-focused series dim to the theme dim (0.2); the plain render never dims.
+        expect(plain.svg).not.toContain('opacity="0.2"')
+        expect(focused.svg).toContain('opacity="0.2"')
+        // Non-focused markers are hidden → strictly fewer <circle> than plain.
+        const circles = (svg: string): number => (svg.match(/<circle/g) ?? []).length
+        expect(circles(focused.svg as string)).toBeLessThan(circles(plain.svg as string))
+    })
+
+    it("warns on an unknown --focus series and applies no focus", () => {
+        const dir = makeTmpDir()
+        const path = writeDefinition(dir, {
+            title: "Focus",
+            data: "provincial-budgets",
+            y: ["total_spending"],
+            types: ["line"],
+            selectedEntities: ["Ontario", "Quebec"],
+        })
+        const result = renderDefinitionToSvg({ definitionPath: path, focus: ["Nowhere"] })
+        expect(result.svg).not.toBeNull()
+        expect(result.diagnostics.some((d) => d.code === "unknown-focus-series")).toBe(true)
+        expect(result.svg).not.toContain('opacity="0.2"')
+    })
 })
 
 // ---------------------------------------------------------------------------
@@ -204,7 +250,7 @@ describe("rasterize", () => {
 // End-to-end spawn smoke test (the ONE spawned-process test)
 // ---------------------------------------------------------------------------
 
-describe("bcds-charts render (spawned)", () => {
+describe("charts render (spawned)", () => {
     it("renders a definition file to SVG with exit code 0", () => {
         const dir = makeTmpDir()
         const definitionPath = writeDefinition(dir, {

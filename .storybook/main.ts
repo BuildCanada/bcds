@@ -74,6 +74,12 @@ const config: StorybookConfig = {
                     "d3-transition",
                     "d3-zoom",
                 ],
+                // Keep local workspace packages out of Vite's optimized-deps
+                // cache so Storybook sees newly added exports immediately.
+                exclude: [
+                    ...(config.optimizeDeps?.exclude || []),
+                    "@buildcanada/components",
+                ],
             },
             esbuild: {
                 ...config.esbuild,

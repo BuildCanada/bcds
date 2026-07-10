@@ -54,13 +54,42 @@ describe("line chart hover model (spec 06/11)", () => {
             selectedEntities: ["Nova Scotia", "Ontario", "Alberta"],
         })
         const layer = layoutLineChart(ctx, AREA, OPTS)
-        expect(layer.hover.targets.length).toBe(6)
+        expect(layer.hover.targets.filter((t) => t.kind === "time").length).toBe(6)
         expect(layer.hover.timeGuide).toBeDefined()
         const first = layer.hover.targets[0]
         expect(first.kind).toBe("time")
         if (first.kind !== "time") return
         expect(first.tooltip.title).toBe("2019–20")
         expect(first.tooltip.rows.map((r) => r.label)).toEqual(["Ontario", "Alberta", "Nova Scotia"])
+    })
+
+    it("emits a series hit target per end label so hovering the label focuses the line (spec 07 §3)", () => {
+        const ctx = ctxFor("provincial-budgets", {
+            y: ["total_spending"],
+            selectedEntities: ["Nova Scotia", "Ontario", "Alberta"],
+        })
+        const layer = layoutLineChart(ctx, AREA, OPTS)
+        const seriesTargets = layer.hover.targets.filter((t) => t.kind === "series")
+        expect(seriesTargets.length).toBeGreaterThan(0)
+        for (const target of seriesTargets) {
+            if (target.kind !== "series") continue
+            expect(layer.series.some((s) => s.key === target.seriesKey)).toBe(true)
+            // Labels sit in the right-reserve margin, past the plot's right edge.
+            expect(target.shape.x).toBeGreaterThanOrEqual(layer.plotArea.x + layer.plotArea.width)
+            expect(target.shape.width).toBeGreaterThan(0)
+            expect(target.shape.height).toBeGreaterThan(0)
+        }
+        // Ontario has the top value, so its label is always placed.
+        expect(seriesTargets.some((t) => t.kind === "series" && t.seriesKey === "Ontario")).toBe(true)
+    })
+
+    it("emits no series hit targets when the legend is reserved (end labels hidden)", () => {
+        const ctx = ctxFor("provincial-budgets", {
+            y: ["total_spending"],
+            selectedEntities: ["Nova Scotia", "Ontario", "Alberta"],
+        })
+        const layer = layoutLineChart(ctx, AREA, { ...OPTS, legendReserved: true })
+        expect(layer.hover.targets.every((t) => t.kind === "time")).toBe(true)
     })
 
     it("reports missing values as 'No data' rows, never zero", () => {

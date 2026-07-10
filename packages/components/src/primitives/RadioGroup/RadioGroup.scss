@@ -1,0 +1,116 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+.bc-radio-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  &__legend {
+    @include label;
+    margin-bottom: $space-1;
+    color: $text-primary;
+
+    &--visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &__options {
+    display: flex;
+    gap: $space-2;
+  }
+
+  &--vertical &__options {
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &--horizontal &__options {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: $space-1;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__control {
+    width: 20px;
+    height: 20px;
+    border: 2px solid $border-default;
+    border-radius: $radius-full;
+    background: $white;
+    box-shadow: inset 0 0 0 4px $white;
+    flex: 0 0 auto;
+    transition: all $transition-fast;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__text {
+    @include body-2;
+    color: $text-primary;
+  }
+
+  &__description {
+    @include body-3;
+    color: $text-secondary;
+  }
+
+  &__label:hover &__control {
+    border-color: $gray-500;
+  }
+
+  &__input:focus-visible + &__label &__control {
+    outline: 2px solid $auburn;
+    outline-offset: 2px;
+  }
+
+  &__input:checked + &__label &__control {
+    background-color: $auburn;
+    border-color: $auburn;
+  }
+
+  &__option--disabled &__label {
+    cursor: not-allowed;
+  }
+
+  &__option--disabled &__control {
+    background-color: $gray-100;
+    border-color: $gray-300;
+  }
+
+  &__option--disabled &__text,
+  &__option--disabled &__description {
+    color: $text-muted;
+  }
+}

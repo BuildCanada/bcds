@@ -1,7 +1,8 @@
 /**
- * bcds-charts — CLI entry point (spec 24, spec 28 §5).
+ * charts — CLI entry point (spec 24, spec 28 §5).
  *
- * Subcommands: render (definition → SVG/PNG), validate (all errors at once).
+ * Subcommands: render (definition → SVG/PNG), validate (all errors at once),
+ * scaffold (starter files), install-skill (copy the bundled agent skill).
  * Exit codes: 0 success, 1 validation/render errors, 2 bad usage.
  *
  * No shebang in this source file — build.ts prepends `#!/usr/bin/env node`
@@ -14,7 +15,9 @@ import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 
 import { CliFailure, CliUsageError } from "./errors.ts"
+import { installSkillCommand } from "./installSkill.ts"
 import { renderCommand } from "./render.ts"
+import { scaffoldCommand } from "./scaffold.ts"
 import { validateCommand } from "./validate.ts"
 
 function packageVersion(): string {
@@ -28,13 +31,15 @@ function packageVersion(): string {
 }
 
 const subCommands: Record<string, CommandDef> = {
+    "install-skill": installSkillCommand as CommandDef,
     render: renderCommand as CommandDef,
+    scaffold: scaffoldCommand as CommandDef,
     validate: validateCommand as CommandDef,
 }
 
 const main = defineCommand({
     meta: {
-        name: "bcds-charts",
+        name: "charts",
         version: packageVersion(),
         description: "Render and validate Build Canada chart definitions (spec 24)",
     },

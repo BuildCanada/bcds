@@ -3,8 +3,12 @@
 
 export * from "./axis.ts"
 export * from "./charts/discreteBar.ts"
+export * from "./charts/dumbbell.ts"
 export * from "./charts/line.ts"
+export * from "./charts/marimekko.ts"
+export * from "./charts/scatter.ts"
 export * from "./charts/shared.ts"
+export * from "./charts/slope.ts"
 export * from "./charts/stackedArea.ts"
 export * from "./charts/stackedBar.ts"
 export * from "./charts/stackedDiscreteBar.ts"

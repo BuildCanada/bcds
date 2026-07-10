@@ -6,6 +6,7 @@ import { loadFixtureDataset } from "../../fixtures/index.ts"
 import { defaultMeasurer } from "../text/createMeasurer.ts"
 import { BUILD_CANADA_SQUARE_LOGO_DATA_URI, CANADA_SPENDS_LOGO_DATA_URI } from "../theme/logos.ts"
 import { buildCanadaTheme, canadaSpendsTheme } from "../theme/themes.ts"
+import { subtitleFont, tickFont } from "./charts/shared.ts"
 import { chartTitleText, layoutChrome } from "./chrome.ts"
 
 function definitionFor(raw: Record<string, unknown>): ChartDefinition {
@@ -124,10 +125,10 @@ describe("chrome logo", () => {
         expect(logo).toMatchObject({
             kind: "image",
             role: "chrome",
-            rect: { x: 786.4, y: 16, width: 47.6, height: 47.6 },
+            rect: { x: 779.2, y: 16, width: 54.8, height: 54.8 },
             href: BUILD_CANADA_SQUARE_LOGO_DATA_URI,
         })
-        expect(layout.contentArea.y).toBe(71.6)
+        expect(layout.contentArea.y).toBe(78.8)
     })
 
     it("uses the Canada Spends logo for the Canada Spends theme", () => {
@@ -136,15 +137,21 @@ describe("chrome logo", () => {
         expect(logo).toMatchObject({
             kind: "image",
             role: "chrome",
-            rect: { x: 679.0315789473684, y: 16, width: 154.96842105263158, height: 47.6 },
+            rect: { x: 655.5909774436091, y: 16, width: 178.40902255639097, height: 54.8 },
             href: CANADA_SPENDS_LOGO_DATA_URI,
         })
-        expect(layout.contentArea.y).toBe(71.6)
+        expect(layout.contentArea.y).toBe(78.8)
     })
 
     it("does not render powered-by attribution text", () => {
         const layout = layoutChrome({ ...base, theme: buildCanadaTheme })
         expect(layout.nodes.find((node) => node.key === "chrome/attribution")).toBeUndefined()
         expect(layout.nodes.some((node) => node.kind === "text" && node.text.startsWith("Powered by"))).toBe(false)
+    })
+})
+
+describe("chrome typography", () => {
+    it("sets subtitle text larger than chart axis text", () => {
+        expect(subtitleFont(1).sizePx).toBeGreaterThan(tickFont(1).sizePx)
     })
 })

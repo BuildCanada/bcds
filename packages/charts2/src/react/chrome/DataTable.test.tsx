@@ -133,6 +133,16 @@ describe("DataTable annotations (spec 22 §2)", () => {
 })
 
 describe("DataTable scope, sort, and search (spec 22 §3)", () => {
+    it("renders search with the Build Canada TextField primitive", () => {
+        const { container } = renderTable()
+        expect(container.querySelector(".bc-textfield.bcds2-data-table__search")).not.toBeNull()
+    })
+
+    it("renders sortable table headers with the shared Button primitive", () => {
+        const { container } = renderTable()
+        expect(container.querySelector(".bc-btn.bcds2-data-table__sort-button")).not.toBeNull()
+    })
+
     it("applies the sort prop to row order", () => {
         const { container } = renderTable({ sort: { column: "total_spending", order: "desc" } })
         const names = [...container.querySelectorAll("tbody th")].map((th) => th.textContent)

@@ -1,0 +1,95 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/typography" as *;
+
+.bc-slider,
+.bc-range-slider {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  min-width: 160px;
+
+  &__label {
+    @include label;
+    color: $text-primary;
+
+    &--visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &__row,
+  &__inputs {
+    display: grid;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  &__inputs {
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    accent-color: $auburn;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid $auburn;
+      outline-offset: 4px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__value {
+    @include body-3;
+    min-width: 4ch;
+    color: $text-secondary;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__ticks {
+    position: relative;
+    height: 18px;
+    margin: 0 6px;
+  }
+
+  &__tick {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 6px;
+    background-color: $border-default;
+  }
+
+  &__tick-label {
+    @include body-3;
+    position: absolute;
+    top: 8px;
+    transform: translateX(-50%);
+    color: $text-muted;
+    white-space: nowrap;
+  }
+}
+
+.bc-range-slider {
+  &__input {
+    grid-area: 1 / 1;
+    pointer-events: auto;
+  }
+}
