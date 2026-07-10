@@ -26,6 +26,8 @@ const columnSchema = z.object({
     type: columnTypeSchema.default("numeric"),
     unit: z.string().optional(),
     shortUnit: z.string().optional(),
+    prefix: z.string().optional(),
+    suffix: z.string().optional(),
     currency: z.string().optional(),
     displayFactor: z.number().default(1),
     decimals: z.number().int().min(0).optional(),

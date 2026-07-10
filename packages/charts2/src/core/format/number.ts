@@ -29,6 +29,8 @@ export type FormatMeta = Pick<
     | "type"
     | "unit"
     | "shortUnit"
+    | "prefix"
+    | "suffix"
     | "currency"
     | "decimals"
     | "denominator"
@@ -175,16 +177,26 @@ export function formatValue(value: number, meta: FormatMeta, opts: FormatValueOp
     const isPercent = !isDerived && meta.type === "percentage"
     const isCurrency = !isDerived && meta.type === "currency"
 
-    const { sign, digits, scale } = formatNumberParts(value, meta, opts, !isPercent)
+    // The explicit suffix binds to the magnitude (after any auto scale letter),
+    // so pre-scaled data reads "$192.9B"; the prefix wraps the whole token.
+    const prefix = meta.prefix ?? ""
+    const suffix = meta.suffix ?? ""
+
+    // A suffix means the value is already pre-scaled to that unit (e.g. billions
+    // with "B"), so auto-abbreviation is suppressed — otherwise 2400 → "2.4kB".
+    const { sign, digits, scale } = formatNumberParts(value, meta, opts, !isPercent && suffix === "")
+
+    const mag = digits + scale + suffix
+    const wrap = (body: string): string => prefix + body
 
     if (isCurrency) {
         const symbol = currencySymbol(meta.currency)
         if (locale === "fr") {
             // Symbol trails in French: "1 234 $", "24 G$", "24,1 milliards $".
             const joiner = verbosity !== "long" && scale !== "" ? "" : NBSP
-            return sign + digits + scale + joiner + symbol
+            return wrap(sign + mag + joiner + symbol)
         }
-        return sign + symbol + digits + scale
+        return wrap(sign + symbol + mag)
     }
 
     let unit: string | undefined
@@ -197,13 +209,13 @@ export function formatValue(value: number, meta: FormatMeta, opts: FormatValueOp
     }
 
     if (unit) {
-        if (locale === "fr") return sign + digits + scale + NBSP + unit
+        if (locale === "fr") return wrap(sign + mag + NBSP + unit)
         // Percent-style units bind directly to the number in English ("42%", "42.5% of GDP").
         const joiner = unit.startsWith("%") ? "" : " "
-        return sign + digits + scale + joiner + unit
+        return wrap(sign + mag + joiner + unit)
     }
 
-    return sign + digits + scale
+    return wrap(sign + mag)
 }
 
 // ---------------------------------------------------------------------------

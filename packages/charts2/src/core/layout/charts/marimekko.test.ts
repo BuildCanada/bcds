@@ -199,7 +199,7 @@ describe("marimekko legend (spec 19)", () => {
 
 describe("marimekko label declutter (spec 19)", () => {
     it("keeps the widest column's label and drops labels that do not fit", () => {
-        const narrow: Rect = { x: 0, y: 0, width: 120, height: 200 }
+        const narrow: Rect = { x: 0, y: 0, width: 200, height: 200 }
         const layer = layoutMarimekko(
             ctxFor("provincial-budgets", {
                 y: ["program_spending", "debt_charges"],

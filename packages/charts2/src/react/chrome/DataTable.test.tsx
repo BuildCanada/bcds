@@ -66,7 +66,7 @@ describe("DataTable column set (spec 22 §1)", () => {
         const { container } = renderTable({ timeSelection: { start: 2024, end: 2024 } })
         const header = container.querySelector("thead")
         expect(header?.textContent).toContain("Total spending")
-        expect(header?.textContent).toContain("billion CAD")
+        expect(header?.textContent).toContain("CAD")
         expect(header?.textContent).toContain("2024–25")
         expect(header?.textContent).not.toContain("Change")
     })
@@ -91,8 +91,8 @@ describe("DataTable change math (spec 22 §1)", () => {
 
         // Ontario total_spending: 165.1 → 214.5.
         const expected = formatChange(165.1, 214.5, columns.total_spending, { locale: "en" })
-        expect(ontario[0]).toBe("$165.1")
-        expect(ontario[1]).toBe("$214.5")
+        expect(ontario[0]).toBe("$165.1B")
+        expect(ontario[1]).toBe("$214.5B")
         expect(ontario[2]).toBe(expected.absolute)
         expect(ontario[3]).toBe(expected.relative)
         expect(expected.relative).not.toBeNull()
@@ -113,7 +113,7 @@ describe("DataTable annotations (spec 22 §2)", () => {
         const { container } = renderTable({ timeSelection: { start: 2019, end: 2024 } })
         const quebec = cellTexts(bodyRow(container, "Quebec"))
         // program_spending occupies columns 4–7: start, end (missing), change, % change.
-        expect(quebec[4]).toBe("$110.4")
+        expect(quebec[4]).toBe("$110.4B")
         expect(quebec[5]).toBe(EM_DASH)
         expect(quebec[6]).toBe(EM_DASH)
         expect(quebec[7]).toBe(EM_DASH)

@@ -140,6 +140,24 @@ describe("formatValue: derived columns (denominator)", () => {
     ])
 })
 
+describe("formatValue: prefix and suffix", () => {
+    run([
+        // Suffix binds to the magnitude and suppresses auto-abbreviation, so
+        // data pre-scaled to billions reads "$192.9B" rather than "$192.9".
+        { description: "suffix on a pre-scaled currency column (en)", value: 192.9, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "tick", expected: "$192.9B" },
+        { description: "suffix suppresses abbreviation past 1e3, no '2.4kB'", value: 2400, meta: { type: "currency", currency: "CAD", suffix: "B" }, locale: "en", verbosity: "tick", expected: "$2,400B" },
+        { description: "a millions suffix reads $100M", value: 100, meta: { type: "currency", currency: "CAD", suffix: "M" }, locale: "en", verbosity: "tick", expected: "$100M" },
+        { description: "negative currency keeps the true minus before the suffix", value: -5, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 0 }, locale: "en", verbosity: "tick", expected: "−$5B" },
+        { description: "the suffix carries through long verbosity too", value: 192.9, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "long", expected: "$192.9B" },
+        { description: "prefix wraps the whole token (en)", value: 42, meta: { type: "numeric", prefix: "~" }, locale: "en", verbosity: "tick", expected: "~42" },
+        { description: "prefix and suffix together (en)", value: 5, meta: { type: "numeric", prefix: "~", suffix: "x" }, locale: "en", verbosity: "label", expected: "~5x" },
+        { description: "prefix wraps a percentage's % as well", value: 42, meta: { type: "percentage", prefix: "~" }, locale: "en", verbosity: "tick", expected: "~42%" },
+        { description: "fr: suffix binds to the magnitude before the trailing symbol", value: 192.9, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "fr", verbosity: "tick", expected: "192,9B $" },
+        { description: "fr: a plain numeric suffix attaches to the magnitude", value: 5, meta: { type: "numeric", suffix: "x" }, locale: "fr", verbosity: "label", expected: "5x" },
+        { description: "regression: absent prefix/suffix leaves currency unchanged", value: 24e9, meta: { type: "currency", currency: "CAD" }, locale: "en", verbosity: "tick", expected: "$24B" },
+    ])
+})
+
 describe("formatChange", () => {
     it("labels percentage-point changes with pp and the relative change with %", () => {
         const { absolute, relative } = formatChange(50, 53.2, percentage, { locale: "en" })

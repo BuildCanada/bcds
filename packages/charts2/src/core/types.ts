@@ -66,6 +66,11 @@ export interface ColumnMeta {
     type: ColumnType
     unit?: string
     shortUnit?: string
+    /** Literal text prepended to the formatted number (before sign/symbol). */
+    prefix?: string
+    /** Literal text appended to the formatted magnitude (e.g. a scale letter
+     *  "B"/"M" for pre-scaled data). Applied in every format branch. */
+    suffix?: string
     /** ISO currency code when type is "currency". Default "CAD". */
     currency?: string
     /** Multiplier applied for display only. Default 1. Applied AFTER denominator division. */

@@ -77,6 +77,8 @@ const bindingOverrideSchema = z.object({
     type: columnTypeSchema.optional(),
     unit: z.string().optional(),
     shortUnit: z.string().optional(),
+    prefix: z.string().optional(),
+    suffix: z.string().optional(),
     currency: z.string().optional(),
     displayFactor: z.number().optional(),
     decimals: z.number().int().min(0).optional(),

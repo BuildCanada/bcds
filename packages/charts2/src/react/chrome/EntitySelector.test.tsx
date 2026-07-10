@@ -115,8 +115,8 @@ describe("EntitySelector sorting (spec 07 §2)", () => {
         expect(health).toBeLessThan(esdc)
 
         const values = [...container.querySelectorAll(".bcds2-entity-selector__value")].map((el) => el.textContent)
-        expect(values).toContain("$154.0")
-        expect(values).toContain("$14.0")
+        expect(values).toContain("$154.0B")
+        expect(values).toContain("$14.0B")
     })
 
     it("sorts by name by default, accent-insensitively", () => {

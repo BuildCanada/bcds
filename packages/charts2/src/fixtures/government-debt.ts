@@ -71,8 +71,8 @@ const manifest = {
         gdp: {
             name: "GDP",
             type: "currency",
-            unit: "billion CAD",
-            shortUnit: "$",
+            unit: "CAD",
+            suffix: "B",
             decimals: 0,
         },
     },

@@ -105,8 +105,8 @@ const manifest = {
         spending: {
             name: "Spending",
             type: "currency",
-            unit: "billion CAD",
-            shortUnit: "$",
+            unit: "CAD",
+            suffix: "B",
             decimals: 1,
         },
     },

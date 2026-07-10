@@ -136,13 +136,13 @@ describe("dumbbell value-label modes (spec 17)", () => {
 
     it("absolute: both endpoint values beside their dots", () => {
         const layer = layoutDumbbell(ctxFor("provincial-budgets", { ...base, valueLabelMode: "absolute" }), AREA, OPTS)
-        expect(textOf(layer.nodes, "value/Ontario/start")).toBe("$200.1")
-        expect(textOf(layer.nodes, "value/Ontario/end")).toBe("$14.4")
+        expect(textOf(layer.nodes, "value/Ontario/start")).toBe("$200.1B")
+        expect(textOf(layer.nodes, "value/Ontario/end")).toBe("$14.4B")
     })
 
     it("change: a single signed difference near the end", () => {
         const layer = layoutDumbbell(ctxFor("provincial-budgets", { ...base, valueLabelMode: "change" }), AREA, OPTS)
-        expect(textOf(layer.nodes, "value/Ontario/change")).toBe("−$185.7")
+        expect(textOf(layer.nodes, "value/Ontario/change")).toBe("−$185.7B")
         expect(layer.nodes.find((n) => n.key === "value/Ontario/start")).toBeUndefined()
     })
 
