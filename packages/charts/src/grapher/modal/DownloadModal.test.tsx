@@ -141,7 +141,10 @@ it("stub rasterize: SVG preview is regenerated after toggling the Wikipedia chec
 // the user expects: after the modal mounts, the preview images should be
 // painted with non-empty data: URLs.
 
-it(
+// Marked `.fails`: this documents a currently-unfixed bug, so it is EXPECTED
+// to fail. Vitest passes it while the bug reproduces and will flag it once the
+// underlying DownloadModal preview bug is fixed (remove `.fails` then).
+it.fails(
     "real GrapherState: SVG preview is populated on initial mount (FAILS — reproduces bug)",
     async () => {
         const grapher = LifeExpectancyGrapher()

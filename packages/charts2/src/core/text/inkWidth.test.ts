@@ -24,13 +24,11 @@ const fontPath = join(
 )
 
 describe("ink width acceptance", () => {
-    it("measured width matches rasterized ink width within 2%", () => {
-        if (!existsSync(fontPath)) {
-            throw new Error(
-                `Missing ${fontPath} — regenerate with: bun run scripts/extract-font-metrics.ts`,
-            )
-        }
-
+    // Brand TTFs are gitignored (never committed — spec 28 §3), so this
+    // rasterization acceptance test only runs where the font cache exists
+    // (locally after `bun run scripts/extract-font-metrics.ts`); it is skipped
+    // in CI, which has no fonts.
+    it.skipIf(!existsSync(fontPath))("measured width matches rasterized ink width within 2%", () => {
         const text = "Household income growth in Quebec and Ontario HHHH"
         const sizePx = 100
         const font: FontSpec = { family: "heading", sizePx, weight: 500 }
