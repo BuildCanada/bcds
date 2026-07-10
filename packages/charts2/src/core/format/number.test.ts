@@ -111,7 +111,7 @@ describe("formatValue: decimals and smart defaults", () => {
     run([
         { description: "explicit decimals are honoured exactly, untrimmed", value: 24, meta: { type: "numeric", decimals: 1 }, locale: "en", verbosity: "label", expected: "24.0" },
         { description: "explicit decimals: 0 rounds to whole numbers", value: 3.7, meta: { type: "numeric", decimals: 0 }, locale: "en", verbosity: "label", expected: "4" },
-        { description: "explicit decimals apply to abbreviated mantissas too", value: 24e9, meta: { type: "currency", currency: "CAD", decimals: 1 }, locale: "en", verbosity: "tick", expected: "$24.0B" },
+        { description: "axis ticks trim trailing zeros from abbreviated mantissas", value: 24e9, meta: { type: "currency", currency: "CAD", decimals: 1 }, locale: "en", verbosity: "tick", expected: "$24B" },
         { description: "smart default trims to at most two decimals at unit scale", value: 3.14159, meta: numeric, locale: "en", verbosity: "label", expected: "3.14" },
         { description: "smart default keeps grouping below the long-form threshold", value: 1_234.5, meta: numeric, locale: "en", verbosity: "long", expected: "1,234.5" },
         { description: "very small values keep their significance", value: 0.0004, meta: numeric, locale: "en", verbosity: "label", expected: "0.0004" },
@@ -148,6 +148,9 @@ describe("formatValue: prefix and suffix", () => {
         { description: "suffix suppresses abbreviation past 1e3, no '2.4kB'", value: 2400, meta: { type: "currency", currency: "CAD", suffix: "B" }, locale: "en", verbosity: "tick", expected: "$2,400B" },
         { description: "a millions suffix reads $100M", value: 100, meta: { type: "currency", currency: "CAD", suffix: "M" }, locale: "en", verbosity: "tick", expected: "$100M" },
         { description: "negative currency keeps the true minus before the suffix", value: -5, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 0 }, locale: "en", verbosity: "tick", expected: "−$5B" },
+        { description: "axis tick trims a suffixed column's trailing zeros ($50B not $50.0B)", value: 50, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "tick", expected: "$50B" },
+        { description: "zero drops the scale suffix on the axis ($0 not $0B)", value: 0, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "tick", expected: "$0" },
+        { description: "zero drops the suffix on non-tick surfaces too (keeps its decimals)", value: 0, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "label", expected: "$0.0" },
         { description: "the suffix carries through long verbosity too", value: 192.9, meta: { type: "currency", currency: "CAD", suffix: "B", decimals: 1 }, locale: "en", verbosity: "long", expected: "$192.9B" },
         { description: "prefix wraps the whole token (en)", value: 42, meta: { type: "numeric", prefix: "~" }, locale: "en", verbosity: "tick", expected: "~42" },
         { description: "prefix and suffix together (en)", value: 5, meta: { type: "numeric", prefix: "~", suffix: "x" }, locale: "en", verbosity: "label", expected: "~5x" },

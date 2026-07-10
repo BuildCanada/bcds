@@ -99,8 +99,13 @@ function tierExponent(abs: number, threshold: number): ScaleExponent | 0 {
  * - 0 < |v| < 1: 2 significant figures, trimmed — small values keep their
  *   significance ("0.0004"), never collapse to "0"
  */
-function digitsSpecifier(abs: number, abbreviated: boolean, meta: FormatMeta): string {
-    if (meta.decimals !== undefined) return `,.${meta.decimals}f`
+function digitsSpecifier(abs: number, abbreviated: boolean, meta: FormatMeta, verbosity: Verbosity): string {
+    // Axis ticks trim trailing zeros ("$50.0B" → "$50B") but still respect the
+    // column's decimal cap, so integer (decimals: 0) columns stay whole; every
+    // other surface keeps the fixed, untrimmed decimals.
+    if (meta.decimals !== undefined) {
+        return verbosity === "tick" ? `,.${meta.decimals}~f` : `,.${meta.decimals}f`
+    }
     if (abbreviated) return ",.3~r"
     if (meta.type === "integer") return ",.0f"
     if (abs > 0 && abs < 1) return ".2~r"
@@ -135,7 +140,7 @@ function formatNumberParts(value: number, meta: FormatMeta, opts: FormatValueOpt
     }
 
     const mantissa = abs / 10 ** exponent
-    const digits = format.format(digitsSpecifier(abs, exponent > 0, meta))(mantissa)
+    const digits = format.format(digitsSpecifier(abs, exponent > 0, meta, verbosity))(mantissa)
 
     const sign = isZeroString(digits) ? "" : value < 0 ? MINUS_SIGN : showSign && value > 0 ? "+" : ""
 
@@ -186,7 +191,8 @@ export function formatValue(value: number, meta: FormatMeta, opts: FormatValueOp
     // with "B"), so auto-abbreviation is suppressed — otherwise 2400 → "2.4kB".
     const { sign, digits, scale } = formatNumberParts(value, meta, opts, !isPercent && suffix === "")
 
-    const mag = digits + scale + suffix
+    // A zero value carries no scale suffix — "$0", never "$0B".
+    const mag = digits + scale + (isZeroString(digits) ? "" : suffix)
     const wrap = (body: string): string => prefix + body
 
     if (isCurrency) {
