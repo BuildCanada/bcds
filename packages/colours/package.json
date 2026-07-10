@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/colours",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Canadian colour tokens for design systems",
   "type": "module",
   "main": "./dist/index.js",
