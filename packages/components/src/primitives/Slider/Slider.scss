@@ -137,8 +137,40 @@
 }
 
 .bc-range-slider {
+  &__rail {
+    grid-area: 1 / 1;
+    position: relative;
+    align-self: center;
+    height: 2px;
+    background: $border-default;
+    pointer-events: none;
+  }
+
+  &__fill {
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+    background: $auburn;
+    opacity: 0.35;
+  }
+
   &__input {
     grid-area: 1 / 1;
     pointer-events: auto;
+
+    // The rail element draws the track; the inputs' own tracks would
+    // otherwise paint across the other input's thumb.
+    &::-webkit-slider-runnable-track {
+      background: transparent;
+    }
+
+    &::-moz-range-track {
+      background: transparent;
+    }
+
+    &::-moz-range-progress {
+      background: transparent;
+    }
   }
 }

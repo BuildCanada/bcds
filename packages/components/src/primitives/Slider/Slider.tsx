@@ -174,6 +174,15 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
                     </div>
                 )}
                 <div className="bc-range-slider__inputs" aria-labelledby={label ? `${id}-label` : undefined}>
+                    <div className="bc-range-slider__rail" aria-hidden="true">
+                        <div
+                            className="bc-range-slider__fill"
+                            style={{
+                                left: `${max > min ? ((clamp(currentValue[0], min, max) - min) / (max - min)) * 100 : 0}%`,
+                                width: `${max > min ? ((clamp(currentValue[1], min, max) - clamp(currentValue[0], min, max)) / (max - min)) * 100 : 0}%`,
+                            }}
+                        />
+                    </div>
                     <input
                         type="range"
                         min={min}
