@@ -152,11 +152,14 @@
     height: 4px;
     transform: translateY(-50%);
     background: $auburn;
-    opacity: 0.35;
   }
 
   &__input {
     grid-area: 1 / 1;
+    // Paint above the rail — positioned elements otherwise stack over the
+    // static inputs, drawing the fill across the thumbs.
+    position: relative;
+    z-index: 1;
     pointer-events: auto;
 
     // The rail element draws the track; the inputs' own tracks would
