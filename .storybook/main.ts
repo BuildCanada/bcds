@@ -5,7 +5,6 @@ const config: StorybookConfig = {
     stories: [
         "./docs/**/*.mdx",
         "../packages/charts/src/**/*.stories.@(ts|tsx)",
-        "../packages/charts2/src/**/*.stories.@(ts|tsx)",
         "../packages/colours/src/**/*.stories.@(ts|tsx)",
         "../packages/components/src/**/*.stories.@(ts|tsx)",
     ],
@@ -59,20 +58,11 @@ const config: StorybookConfig = {
                 // Include d3 packages to ensure they're properly bundled
                 include: [
                     ...(config.optimizeDeps?.include || []),
-                    "d3",
                     "d3-array",
-                    "d3-color",
-                    "d3-ease",
-                    "d3-force",
+                    "d3-dsv",
                     "d3-format",
-                    "d3-geo",
-                    "d3-interpolate",
-                    "d3-quadtree",
                     "d3-scale",
-                    "d3-selection",
                     "d3-shape",
-                    "d3-transition",
-                    "d3-zoom",
                 ],
                 // Keep local workspace packages out of Vite's optimized-deps
                 // cache so Storybook sees newly added exports immediately.

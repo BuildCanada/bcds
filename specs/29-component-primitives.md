@@ -1,11 +1,11 @@
 # 29 — Component Primitives for Chart Chrome
 
 **Status:** Draft
-**Covers:** Shared UI primitives from `@buildcanada/components` used by chart chrome. This spec defines the component contracts needed by `charts2`; chart behavior, data state, and rendering remain owned by the chart package.
+**Covers:** Shared UI primitives from `@buildcanada/components` used by chart chrome. This spec defines the component contracts needed by `charts`; chart behavior, data state, and rendering remain owned by the chart package.
 
 ## 1. Goal
 
-`charts2` should build its non-plot chrome from the shared Build Canada component package wherever a reusable primitive exists. The component package owns accessible, branded controls. The chart package owns chart state, data semantics, layout decisions, and static export behavior.
+`charts` should build its non-plot chrome from the shared Build Canada component package wherever a reusable primitive exists. The component package owns accessible, branded controls. The chart package owns chart state, data semantics, layout decisions, and static export behavior.
 
 Required outcomes:
 
@@ -27,7 +27,7 @@ All chart-facing primitives:
 - avoid chart, data, theme, or MobX imports;
 - use Build Canada design tokens, with brand differences expressed through tokens or CSS variables.
 
-Component class names use the component package namespace (`bc-*`). Chart-specific layout classes remain in `charts2` (`bcds2-*`).
+Component class names use the component package namespace (`bc-*`). Chart-specific layout classes remain in `charts` (`bcds2-*`).
 
 ## 3. Button
 
@@ -177,7 +177,7 @@ Behavior:
 - Panels containing form controls use dialog/popover semantics, not command-menu semantics.
 - Static export ignores open interactive popovers unless explicitly requested.
 
-## 11. Charts2 Adoption Map
+## 11. Charts Adoption Map
 
 | Chart chrome surface | Component primitive | Notes |
 |---|---|---|
@@ -201,7 +201,7 @@ Component package tests:
 - disabled state tests;
 - brand token smoke tests for Build Canada and Canada Spends.
 
-`charts2` integration tests:
+`charts` integration tests:
 
 - chart chrome renders shared component class names for adopted primitives;
 - URL-backed state changes still round-trip when controls are replaced by shared components;
@@ -213,4 +213,4 @@ Component package tests:
 - Component primitives do not format chart data, fiscal years, sources, or metric values.
 - Component primitives do not own chart layout breakpoints.
 - Component primitives do not choose chart colours, series colours, or theme palettes.
-- Component primitives do not import from `charts2`.
+- Component primitives do not import from `charts`.

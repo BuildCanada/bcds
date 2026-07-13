@@ -1,0 +1,4 @@
+interface:
+  display_name: "Charts CLI"
+  short_description: "Generate charts with the charts CLI"
+  default_prompt: "Use $charts-cli to render a Build Canada chart from a definition JSON with the charts CLI."

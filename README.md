@@ -2,7 +2,7 @@
 
 Part of the [Build Canada Design System](https://github.com/BuildCanada/bcds) monorepo.
 
-A configurable data visualization library for creating interactive charts.
+Build Canada charts: a pure-function layout core with a single React SVG renderer, deterministic headless rendering, and a CLI. Specs live in `specs/` (architecture: `specs/28-architecture.md`).
 
 ## Installation
 
@@ -19,59 +19,55 @@ This library requires the following peer dependencies:
 ```json
 {
   "react": "^19.0.0",
-  "react-dom": "^19.0.0",
-  "mobx": "^6.13.0",
-  "mobx-react": "^7.6.0"
+  "react-dom": "^19.0.0"
 }
 ```
 
 ## Quick Start
 
 ```tsx
-import {
-  ChartsProvider,
-  Grapher,
-  GrapherState,
-  GRAPHER_CHART_TYPES,
-  DimensionProperty,
-  createTestDataset,
-  legacyToChartsTableAndDimensionsWithMandatorySlug,
-} from "@buildcanada/charts"
+import { buildDataset, parseCsv, parseDefinition, parseManifest } from "@buildcanada/charts/core"
+import { Chart, Tooltip } from "@buildcanada/charts"
 import "@buildcanada/charts/styles.css"
 
-// Define your data
-const myData = [
-  { year: 2020, entity: { id: 1, name: "Canada" }, value: 100 },
-  { year: 2021, entity: { id: 1, name: "Canada" }, value: 120 },
-]
+// 1. Dataset: manifest + CSV → Dataset.
+const { manifest } = parseManifest(rawManifestJson)
+const { rows } = parseCsv(csvText, manifest!)
+const { dataset } = buildDataset(manifest!, rows)
 
-const metadata = { id: 1, display: { name: "My Metric" } }
-const dimensions = [{ variableId: 1, property: DimensionProperty.y }]
-
-const dataset = createTestDataset([{ data: myData, metadata }])
-const table = legacyToChartsTableAndDimensionsWithMandatorySlug(dataset, dimensions, {})
-
-const grapherState = new GrapherState({
-  title: "My Chart",
-  chartTypes: [GRAPHER_CHART_TYPES.LineChart],
-  dimensions,
+// 2. Definition: title + data + y is a publishable chart;
+//    everything else is progressive refinement with documented defaults.
+const { definition, diagnostics } = parseDefinition({
+  title: "Provincial budget spending",
+  data: "provincial-budgets",
+  y: ["total_spending"],
+  selectedEntities: ["Ontario", "Quebec", "British Columbia"],
 })
-grapherState.inputTable = table
+if (definition === null) throw new Error(diagnostics.map((d) => d.message).join("; "))
 
+// 3. Render.
 function App() {
-  return (
-    <ChartsProvider>
-      <div style={{ width: "800px", height: "600px" }}>
-        <Grapher grapherState={grapherState} />
-      </div>
-    </ChartsProvider>
-  )
+  return <Chart definition={definition} dataset={dataset} width={850} height={600} />
 }
 ```
 
+## CLI
+
+The package ships a `charts` binary for validating and rendering chart definitions headlessly:
+
+```bash
+npm install -g @buildcanada/charts
+
+charts validate my-chart.json
+charts render my-chart.json --out chart.svg
+```
+
+See `packages/charts/README.md` for the full CLI reference.
+
 ## Documentation
 
-- **[Data Loading Guide](docs/DATA_LOADING_GUIDE.md)** - Complete guide on loading CSV/JSON data
+- **[Charts README](packages/charts/README.md)** - Package layout, quick start, and CLI reference
+- **[Specs](specs/)** - Functional and architectural specifications
 - **[Publishing Guide](docs/PUBLISHING.md)** - How to publish to npm
 
 ## Development
@@ -84,29 +80,22 @@ bun test                 # Run tests
 bun run typecheck        # TypeScript check
 ```
 
-## Components
+## Chart Types
 
-### Grapher
-
-The main charting component supporting multiple visualization types:
-- Line charts
-- Bar charts (discrete and stacked)
-- Scatter plots
-- World and regional maps
-- Stacked area charts
+- Line charts (with comparison lines and faceting)
 - Slope charts
+- Discrete bar charts (plain and stacked)
+- Stacked area and stacked bar charts
+- Dumbbell charts
+- Scatter plots
 - Marimekko charts
-
-### Explorer
-
-A data explorer that wraps Grapher and adds additional controls for exploring complex datasets.
 
 ## Architecture
 
-- Built with **React 19** and **MobX 6** for state management
-- Uses TC-39 stage 3 decorators
-- TypeScript throughout
-- SCSS for styling with BEM conventions
+- `src/core/` — DOM-free, React-free: data layer, formatting, themes, text metrics, layout → `ChartScene`
+- `src/react/` — `SceneSVG` (the only renderer) + `Chart` + interactive chrome (tooltip, timeline, entity selector, tabs, settings, data table)
+- CLI — `charts render|validate` shares the exact same render path via `renderToStaticMarkup`
+- TypeScript throughout, SCSS for styling with BEM conventions
 
 ## License
 

@@ -4,15 +4,19 @@ import { Meta } from "@storybook/addon-docs/blocks"
 
 # @buildcanada/charts
 
-A configurable data visualization library for creating interactive charts.
+Build Canada charts: a pure-function layout core with a single React SVG
+renderer, deterministic headless rendering, and a CLI.
 
 ## Features
 
-- **Multiple Chart Types**: Line charts, bar charts, stacked area, slope charts, scatter plots, and maps
-- **Interactive**: Tooltips, zoom, entity selection, and time sliders
-- **Configurable**: Custom branding, colors, and data sources
-- **Responsive**: Adapts to container size
-- **Accessible**: Keyboard navigation and screen reader support
+- **Multiple Chart Types**: Line, slope, discrete bar, stacked area/bar,
+  dumbbell, scatter, and Marimekko charts, with faceting
+- **Pure layout core**: DOM-free, React-free `layoutChart()` produces a
+  `ChartScene` rendered by a single `SceneSVG` renderer
+- **Deterministic headless rendering**: The CLI renders the exact same SVG as
+  the browser, suitable for golden-corpus testing and static export
+- **Interactive chrome**: Tooltips, timeline, entity selector, tabs, settings,
+  and data table
 
 ## Quick Start
 
@@ -23,21 +27,39 @@ bun add @buildcanada/charts
 ```
 
 ```tsx
-import { ChartsProvider, Grapher, GrapherState } from "@buildcanada/charts"
+import { buildDataset, parseCsv, parseDefinition, parseManifest } from "@buildcanada/charts/core"
+import { Chart } from "@buildcanada/charts"
 import "@buildcanada/charts/styles.css"
 
-const config = {
-  branding: { poweredByText: "My Organization" },
-  dataApi: { baseUrl: "https://api.example.com/v1/indicators/" }
-}
+// 1. Dataset: manifest + CSV → Dataset.
+const { manifest } = parseManifest(rawManifestJson)
+const { rows } = parseCsv(csvText, manifest!)
+const { dataset } = buildDataset(manifest!, rows)
 
+// 2. Definition: title + data + y is a publishable chart;
+//    everything else is progressive refinement with documented defaults.
+const { definition, diagnostics } = parseDefinition({
+    title: "Provincial budget spending",
+    data: "provincial-budgets",
+    y: ["total_spending"],
+    selectedEntities: ["Ontario", "Quebec", "British Columbia"],
+})
+if (definition === null) throw new Error(diagnostics.map((d) => d.message).join("; "))
+
+// 3. Render.
 function App() {
-  return (
-    <ChartsProvider config={config}>
-      <Grapher grapherState={grapherState} />
-    </ChartsProvider>
-  )
+    return <Chart definition={definition} dataset={dataset} width={850} height={600} />
 }
+```
+
+## CLI
+
+The package ships a `charts` binary for validating and rendering chart
+definitions headlessly:
+
+```bash
+charts validate my-chart.json
+charts render my-chart.json --out chart.svg
 ```
 
 ## Peer Dependencies
@@ -46,18 +68,6 @@ This library requires the following peer dependencies:
 
 - `react` ^19.0.0
 - `react-dom` ^19.0.0
-- `mobx` ^6.13.0
-- `mobx-react` ^7.6.0
-
-## Browse the Documentation
-
-- **[Getting Started](/docs/docs-getting-started--docs)** - Setup and basic usage
-- **[Data Loading](/docs/docs-data-loading--docs)** - Load CSV/JSON data into charts
-- **[Chart Types](/docs/docs-chart-types--docs)** - Line, bar, scatter, and more
-- **[Map Charts](/docs/docs-map-charts--docs)** - Geographic visualizations
-- **[Configuration](/docs/docs-configuration--docs)** - Customize branding and data sources
-- **[Charts/Grapher](/docs/charts-grapher--docs)** - Main chart component examples
-- **[Charts/Explorer](/docs/charts-explorer--docs)** - Data explorer with filters
 
 ## License
 

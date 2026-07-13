@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project: @buildcanada/charts
 
-A configurable data visualization library for creating interactive charts.
+Build Canada charts: a pure-function layout core with a single React SVG renderer, deterministic headless rendering, and a CLI. Functional and architectural specs live in `specs/` (architecture: `specs/28-architecture.md`).
 
 ## Commands
 
@@ -12,84 +12,44 @@ A configurable data visualization library for creating interactive charts.
 bun install              # Install dependencies
 bun run storybook        # Run Storybook on port 6006
 bun run build            # Build Storybook for production
+bun run build:packages   # Build all workspace packages
 bun run serve-storybook  # Serve production build on port 6006
 bun test                 # Run all tests
-bun test src/path/to/file.test.ts  # Run single test file
+bun test src/path/to/file.test.ts  # Run single test file (from the package dir)
 bun run typecheck        # TypeScript check
+bun run charts -- <args> # Run the charts CLI from source
 ```
 
 ## Architecture
 
-- **React 19** with **MobX 6** for state management
-- Uses TC-39 stage 3 decorators for `@computed` and `@action`
-- Observable props are listed in `makeObservable()` calls, not decorated with `@observable`
-- **Vitest** for testing with jsdom environment
+The charts package (`packages/charts`) is split into a DOM-free core and a thin React layer:
 
-## File Structure
+- `src/core/` — pure functions, no DOM or React: data layer, chart definition parsing, formatting, colour/theming, text metrics, layout. `layoutChart({ definition, dataset, size })` produces a `ChartScene`.
+- `src/react/` — `SceneSVG` (the only renderer) + `Chart` + interactive chrome (tooltip, timeline, entity selector, tabs, settings, data table).
+- `src/cli/` — `charts render|validate|scaffold|install-skill`; renders the exact same SVG as the browser via `renderToStaticMarkup`.
+- `src/fixtures/` — committed fixture datasets, loadable by name in tests/stories/CLI.
+- `src/corpus/` — golden SVG corpus + bless script (`bun run corpus:bless`).
+- `src/stories/` — Storybook stories under `Charts/`.
+- `samples/` — CLI-ready chart definitions, tested against included fixtures.
 
-```
-src/
-├── components/     # Reusable UI components (TextWrap, MarkdownTextWrap, etc.)
-├── config/         # ChartsProvider context and configuration
-├── core-table/     # Data table handling (ChartsTable, CoreTable)
-├── explorer/       # Explorer component (data explorer UI)
-├── grapher/        # Main charting engine
-│   ├── axis/           # Axis rendering
-│   ├── barCharts/      # Bar chart implementations
-│   ├── chart/          # Chart interface and type mapping
-│   ├── color/          # Color scales and schemes
-│   ├── controls/       # Interactive controls (EntityPicker, Dropdown)
-│   ├── core/           # Core graphing engine (Grapher, GrapherState)
-│   ├── lineCharts/     # Line chart implementations
-│   ├── mapCharts/      # Map visualization
-│   ├── scatterCharts/  # Scatter plot implementations
-│   ├── stackedCharts/  # Stacked area/bar charts
-│   └── ...
-├── styles/         # Global SCSS styles (entry: charts.scss)
-├── types/          # TypeScript type definitions
-└── utils/          # Utility functions
-```
+## Workspace Packages
 
-## Key Components
-
-- **Grapher**: Main charting component with multiple visualization types (line, bar, scatter, map, stacked)
-- **GrapherState**: MobX-powered state management for Grapher
-- **Explorer**: Data explorer that wraps Grapher and adds additional controls
-- **ChartsProvider**: React context for global chart configuration (branding, data API, error reporting)
+- `packages/charts` — the charting library and CLI (`@buildcanada/charts`)
+- `packages/colours` — colour palettes and themes (`@buildcanada/colours`)
+- `packages/components` — shared UI primitives and styles (`@buildcanada/components`)
 
 ## Code Style
 
 - Double quotes for string literals
 - Use type definitions for function params and return values
-- Avoid the `any` type (but note: `noImplicitAny` is disabled in tsconfig)
+- Avoid the `any` type
+- Core code must stay DOM-free and React-free; rendering happens only in `src/react/`
 - BEM conventions for CSS in separate .scss files
-- Entry point for styles: `src/styles/charts.scss`
+- Entry point for styles: `src/react/styles/charts.scss`
 - Tests use Vitest with `it()` and `expect()` from `vitest`
-
-## MobX Pattern
-
-```typescript
-class MyComponent {
-    someObservable = "value"
-
-    constructor() {
-        makeObservable(this, {
-            someObservable: observable,
-        })
-    }
-
-    @computed get derivedValue() {
-        return this.someObservable.toUpperCase()
-    }
-}
-```
-
-**Important**: Don't use `@computed` on getters that access `this.props` - props aren't observable in mobx-react.
 
 ## Peer Dependencies
 
 This package expects the following to be provided by the consuming application:
 - `react` ^19.0.0
 - `react-dom` ^19.0.0
-- `mobx` ^6.13.0
-- `mobx-react` ^7.6.0

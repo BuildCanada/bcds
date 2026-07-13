@@ -1,12 +1,9 @@
 import type { Preview } from "@storybook/react"
 
-import { ChartsDecorator } from "./decorators/ChartsDecorator"
-
-import "../packages/charts/src/styles/charts.scss"
+import "../packages/charts/src/react/styles/charts.scss"
 import "../packages/components/src/styles/main.scss"
 
 const preview: Preview = {
-    decorators: [ChartsDecorator],
     tags: ["autodocs"],
     parameters: {
         controls: {

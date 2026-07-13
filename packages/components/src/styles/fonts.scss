@@ -11,9 +11,9 @@
 }
 
 // Same woff2, registered under the font's real name (with umlauts).
-// @buildcanada/charts2 derives its font-family names from the font metrics
+// @buildcanada/charts derives its font-family names from the font metrics
 // files, so its charts request 'Söhne Kräftig' rather than the ASCII alias
-// above. Both names must resolve or charts2 text falls back to Arial.
+// above. Both names must resolve or charts text falls back to Arial.
 @font-face {
   font-family: 'Söhne Kräftig';
   src: url('/assets/fonts/soehne-kraftig.woff2') format('woff2');
