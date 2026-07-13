@@ -6,7 +6,7 @@
  */
 
 import { defineCommand } from "citty"
-import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs"
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs"
 import { homedir } from "node:os"
 import { basename, dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -14,6 +14,9 @@ import { fileURLToPath } from "node:url"
 import { CliUsageError } from "./errors.ts"
 
 export const CHARTS_SKILL_NAME = "charts-cli"
+
+/** Names this skill previously installed under; removed on install so stale copies don't linger. */
+const LEGACY_SKILL_NAMES = ["charts2-cli"]
 
 export type SkillAgent = "auto" | "all" | "codex" | "claude"
 
@@ -100,6 +103,18 @@ export function resolveInstallTargets(args: { agent?: string; path?: string }): 
     return dedupeTargets(targets.length > 0 ? targets : [makeTarget("codex")])
 }
 
+function removeLegacySkills(skillsRoot: string): void {
+    for (const name of LEGACY_SKILL_NAMES) {
+        const legacyDir = join(skillsRoot, name)
+        const skillFile = join(legacyDir, "SKILL.md")
+        // Only remove directories that are actually an old install of this skill.
+        if (!existsSync(skillFile)) continue
+        if (!readFileSync(skillFile, "utf8").includes(`name: ${name}`)) continue
+        rmSync(legacyDir, { recursive: true, force: true })
+        process.stdout.write(`removed legacy ${name} skill: ${legacyDir}\n`)
+    }
+}
+
 export function installSkill(args: { sourceDir: string; targets: SkillInstallTarget[]; force: boolean }): void {
     for (const target of args.targets) {
         if (basename(target.destination) !== CHARTS_SKILL_NAME) {
@@ -113,6 +128,7 @@ export function installSkill(args: { sourceDir: string; targets: SkillInstallTar
         }
         mkdirSync(target.skillsRoot, { recursive: true })
         cpSync(args.sourceDir, target.destination, { recursive: true })
+        removeLegacySkills(target.skillsRoot)
         process.stdout.write(`installed ${CHARTS_SKILL_NAME} for ${target.agent}: ${target.destination}\n`)
     }
 }

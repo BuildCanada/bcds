@@ -60,7 +60,7 @@ Brand fonts: **Söhne Kräftig** (headings/UI), **Financier Text** (long-form), 
 ## 5. Package & monorepo
 
 - `packages/charts`, published as `@buildcanada/charts@1.0.0` — incubated as `@buildcanada/charts2@0.x` in `packages/charts2`, then cut over to replace the legacy package.
-- Exports: `.` (core + react), `./core` (headless), `./styles.css`; bin `bcds-charts` → `dist/cli/index.js` (shebang `#!/usr/bin/env node`, added by build.ts).
+- Exports: `.` (core + react), `./core` (headless), `./styles.css`; bin `charts` → `dist/cli/index.js` (shebang `#!/usr/bin/env node`, added by build.ts).
 - Conventions cloned from `packages/components`: bun build.ts (tsc emit + asset copy), tsconfig bundler-mode, vitest happy-dom, stories aggregated by root Storybook.
 - Workspace bin is dangling until first build — run `bun run build:charts` after clone.
 

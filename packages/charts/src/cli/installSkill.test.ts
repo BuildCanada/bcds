@@ -104,4 +104,37 @@ describe("installSkill", () => {
 
         expect(readFileSync(join(destination, "SKILL.md"), "utf8")).toContain(`name: ${CHARTS_SKILL_NAME}`)
     })
+
+    it("removes a stale legacy charts2-cli install", () => {
+        const sourceDir = makeSourceSkill()
+        const skillsRoot = join(makeTmpDir(), "skills")
+        const legacyDir = join(skillsRoot, "charts2-cli")
+        mkdirSync(legacyDir, { recursive: true })
+        writeFileSync(join(legacyDir, "SKILL.md"), ["---", "name: charts2-cli", "---"].join("\n"))
+
+        installSkill({
+            sourceDir,
+            targets: [{ agent: "custom", skillsRoot, destination: join(skillsRoot, CHARTS_SKILL_NAME) }],
+            force: false,
+        })
+
+        expect(existsSync(legacyDir)).toBe(false)
+        expect(existsSync(join(skillsRoot, CHARTS_SKILL_NAME, "SKILL.md"))).toBe(true)
+    })
+
+    it("leaves an unrelated charts2-cli directory alone", () => {
+        const sourceDir = makeSourceSkill()
+        const skillsRoot = join(makeTmpDir(), "skills")
+        const unrelatedDir = join(skillsRoot, "charts2-cli")
+        mkdirSync(unrelatedDir, { recursive: true })
+        writeFileSync(join(unrelatedDir, "SKILL.md"), ["---", "name: something-else", "---"].join("\n"))
+
+        installSkill({
+            sourceDir,
+            targets: [{ agent: "custom", skillsRoot, destination: join(skillsRoot, CHARTS_SKILL_NAME) }],
+            force: false,
+        })
+
+        expect(existsSync(join(unrelatedDir, "SKILL.md"))).toBe(true)
+    })
 })
