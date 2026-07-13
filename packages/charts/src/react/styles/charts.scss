@@ -662,11 +662,17 @@ $bcds2-font: "Söhne Kräftig", "Helvetica Neue", Arial, sans-serif;
         border-radius: 0;
         overflow: hidden;
 
+        // Neutralize the primitive's own chrome (white background, auburn
+        // border, 40px min sizes) — the table toolbar draws its own frame.
         .bc-segmented-control__list {
             display: inline-flex;
+            border: none;
+            background: transparent;
         }
 
         .bc-segmented-control__item {
+            min-width: auto;
+            min-height: auto;
             padding: 4px 10px;
             border: none;
             background: var(--bcds2-bg, #fbf6f1);
@@ -747,7 +753,9 @@ $bcds2-font: "Söhne Kräftig", "Helvetica Neue", Arial, sans-serif;
         }
     }
 
-    &__sort-button {
+    // The extra .bc-btn qualifier keeps this flat-text override ahead of the
+    // Button primitive's variant styles regardless of stylesheet load order.
+    &__sort-button.bc-btn {
         padding: 0;
         border: none;
         min-height: auto;
@@ -760,6 +768,14 @@ $bcds2-font: "Söhne Kräftig", "Helvetica Neue", Arial, sans-serif;
         letter-spacing: 0;
         cursor: pointer;
 
+        &:hover:not(:disabled),
+        &:active:not(:disabled) {
+            border: none;
+            background: none;
+            color: inherit;
+            text-decoration: underline;
+        }
+
         &:focus-visible {
             outline: 2px solid var(--bcds2-accent, #932f2f);
             outline-offset: 1px;
@@ -769,7 +785,7 @@ $bcds2-font: "Söhne Kräftig", "Helvetica Neue", Arial, sans-serif;
     &__sort-arrow {
         margin-left: 4px;
         font-size: 9px;
-        color: var(--bcds2-accent, #932f2f);
+        color: inherit;
     }
 
     &__metric {
