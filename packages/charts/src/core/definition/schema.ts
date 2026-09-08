@@ -154,6 +154,8 @@ const definitionSchema = z.object({
     missingData: z.enum(["auto", "hide", "show"]).default("auto"),
     comparisonLines: z.array(comparisonLineSchema).optional(),
     seriesStrategy: z.enum(["entity", "metric"]).optional(),
+    rowGroupBreaks: z.array(z.string()).optional(),
+    rowGroupGap: z.number().min(0).max(4).optional(),
 
     hideLegend: z.boolean().default(false),
     hideSeriesLabels: z.boolean().default(false),
@@ -322,6 +324,8 @@ export function parseDefinition(raw: unknown): ParseDefinitionResult {
         ...(parsed.sort !== undefined ? { sort: parsed.sort } : {}),
         ...(parsed.comparisonLines !== undefined ? { comparisonLines: parsed.comparisonLines } : {}),
         ...(parsed.seriesStrategy !== undefined ? { seriesStrategy: parsed.seriesStrategy } : {}),
+        ...(parsed.rowGroupBreaks !== undefined ? { rowGroupBreaks: parsed.rowGroupBreaks } : {}),
+        ...(parsed.rowGroupGap !== undefined ? { rowGroupGap: parsed.rowGroupGap } : {}),
         ...(parsed.theme !== undefined ? { theme: parsed.theme } : {}),
         ...(parsed.locale !== undefined ? { locale: parsed.locale } : {}),
     }

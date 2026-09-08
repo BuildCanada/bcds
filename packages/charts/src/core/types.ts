@@ -305,6 +305,11 @@ export interface ChartDefinition {
     comparisonLines?: ComparisonLine[]
     seriesStrategy?: SeriesStrategy
 
+    /** Stacked discrete bars: insert extra vertical space after these entity rows. */
+    rowGroupBreaks?: string[]
+    /** Extra space at each row-group break, measured in normal row slots. Default 0.75. */
+    rowGroupGap?: number
+
     hideLegend: boolean
     hideSeriesLabels: boolean
     hideRelativeToggle: boolean
