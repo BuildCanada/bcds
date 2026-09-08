@@ -224,7 +224,22 @@ export function layoutStackedDiscreteBar(ctx: LayoutContext, area: Rect, opts: C
     })
 
     // --- Rows ----------------------------------------------------------------------------
-    const rows = bandPositions(bars.length, [plotArea.y, plotArea.y + plotArea.height], 1)
+    const breaks = new Set(ctx.definition.rowGroupBreaks ?? [])
+    const groupGap = ctx.definition.rowGroupGap ?? 0.75
+    const breakCount = bars.filter((bar, index) => index < bars.length - 1 && breaks.has(bar.entity)).length
+    const rows =
+        breakCount === 0 || groupGap === 0
+            ? bandPositions(bars.length, [plotArea.y, plotArea.y + plotArea.height], 1)
+            : (() => {
+                  const slot = plotArea.height / (bars.length + breakCount * groupGap)
+                  let cursor = 0
+                  return bars.map((bar, index) => {
+                      const center = plotArea.y + (cursor + 0.5) * slot
+                      cursor += 1
+                      if (index < bars.length - 1 && breaks.has(bar.entity)) cursor += groupGap
+                      return { start: center - slot / 2, center, width: slot }
+                  })
+              })()
     const barHeight = Math.min(Math.max((rows[0]?.width ?? plotArea.height) * 0.7, BAR_HEIGHT_FLOOR), BAR_HEIGHT_MAX)
     const targets: HitTarget[] = []
     const t = strings(locale)

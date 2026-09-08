@@ -1,6 +1,6 @@
 {
   "name": "@buildcanada/charts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Build Canada charts: pure layout core with a single React SVG renderer, deterministic headless rendering, and a CLI.",
   "type": "module",
   "main": "./dist/index.js",

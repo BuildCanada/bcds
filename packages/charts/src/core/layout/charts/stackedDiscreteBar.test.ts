@@ -126,6 +126,28 @@ describe("stacked discrete bar sorting and totals", () => {
     })
 })
 
+describe("stacked discrete bar row grouping", () => {
+    it("inserts extra space only after configured entity rows", () => {
+        const layer = layoutStackedDiscreteBar(
+            ctxFor("provincial-budgets", {
+                y: ["program_spending", "debt_charges"],
+                selectedEntities: ["Ontario", "Quebec", "Nova Scotia"],
+                time: "2023-24",
+                types: ["stacked-discrete-bar"],
+                sort: { by: "custom", order: "asc" },
+                rowGroupBreaks: ["Quebec"],
+                rowGroupGap: 1,
+            }),
+            AREA,
+            OPTS,
+        )
+        const labels = layer.nodes
+            .filter((node) => node.kind === "text" && node.key.startsWith("label/"))
+            .map((node) => (node.kind === "text" ? node.position.y : 0))
+        expect(labels[2] - labels[1]).toBeCloseTo(2 * (labels[1] - labels[0]))
+    })
+})
+
 describe("stacked bar both-direction stacking (spec 15)", () => {
     it("stacks mixed-sign series without negatives offsetting positives", () => {
         const ctx = ctxFor("pathological", {
